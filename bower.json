@@ -1,0 +1,24 @@
+{
+  "name": "EnglishCenter",
+  "description": "Project English Center",
+  "main": "",
+  "authors": [
+    "at-phuongtran <phuong.tran@asiantech.vn>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/AT-PHPIntership/winter-2018-english-center",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "admin-lte": "adminlte#^2.4.2"
+  },
+  "resolutions": {
+    "jquery": "3.3.1"
+  }
+}
