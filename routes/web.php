@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function() {
     Route::get('/', 'HomeController@index')->name('dashboard');
+
+    //course
+    Route::get('course', 'CourseController@index')->name('course.index');
 });

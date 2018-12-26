@@ -22,3 +22,20 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Course::class, function(Faker $faker) {
+    return [
+        'title' => $faker->catchPhrase,
+        'parent_id' => null,
+        'count_view' => $faker->randomDigit,
+        'total_rating' => $faker->numberBetween(1, 10),
+        'average' => $faker->numberBetween(1, 5),
+        'flag' => $faker->boolean,
+    ];
+});
+
+$factory->state(App\Models\Course::class, 'child', function(Faker $faker) {
+    return [
+        'parent_id' => factory('App\Models\Course')->create()->id,
+    ];
+});
