@@ -10,7 +10,7 @@
                 </span>
                 @csrf
                 @if (session('warning'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-warning">
                         {{ session('warning') }}
                     </div>
                 @endif
@@ -43,13 +43,13 @@
                 <div class="contact100-form-checkbox m-l-4">
                     <input class="input-checkbox100" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                     <label class="label-checkbox100" for="remember">
-                        Remember me
+                        {{ __('common.remember_login')}}
                     </label>
                 </div>
                 
                 <div class="container-login100-form-btn p-t-25">
                     <button type="submit" class="login100-form-btn">
-                        Login
+                        {{ __('common.btn_login')}}
                     </button>
                 </div>
             </form>

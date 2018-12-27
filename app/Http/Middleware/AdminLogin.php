@@ -11,8 +11,9 @@ class AdminLogin
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request Request
+     * @param \Closure                 $next    Routing
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -20,7 +21,7 @@ class AdminLogin
         if (Auth::check() && Auth::user()->role->name == Role::ROLE_ADMIN) {
             return $next($request);
         } else {
-            return redirect('admin/login')->with('warning', 'Your account is not access. Please try again!');
+            return redirect('admin/login')->with('warning', __('common.warning_login'));
         }
     }
 }

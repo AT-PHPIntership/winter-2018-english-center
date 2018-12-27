@@ -30,6 +30,7 @@ class User extends Authenticatable
 
     /**
      * Has one userProfile
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function userProfile()
@@ -39,6 +40,7 @@ class User extends Authenticatable
 
     /**
      * Belongs to role
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function role()

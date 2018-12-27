@@ -8,6 +8,7 @@ class UserProfile extends Model
 {
     /**
      * Belongs to user
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()

@@ -12,7 +12,7 @@ class Role extends Model
 
     /**
      * Has many users
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function users()
