@@ -28,12 +28,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function userprofile()
+    /**
+     * Has one userProfile
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function userProfile()
     {
         return $this->hasOne('App\Models\UserProfile');
     }
+
+    /**
+     * Belongs to role
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function role()
     {
-        return $this->hasOne('App\Models\Role');
+        return $this->belongsTo('App\Models\Role');
     }
 }

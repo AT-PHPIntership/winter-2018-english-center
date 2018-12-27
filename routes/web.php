@@ -19,12 +19,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::get('/', 'HomeController@index')->name('dashboard');
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth'], function() {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
     Route::post('/login', 'LoginController@login')->name('login');
     Route::get('/logout', 'LoginController@logout')->name('logout');
 });
-
-Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Role;
 
 class RolesTableSeeder extends Seeder
 {
@@ -11,19 +12,20 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::truncate();
         DB::table('roles')->insert([
             [
-            'name' => 'Admin',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-            ],
-            [
-                'name' => 'Trial',
+                'name' => Role::ROLE_ADMIN,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'name' => 'VIP',
+                'name' => Role::ROLE_TRIAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => Role::ROLE_VIP,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]
