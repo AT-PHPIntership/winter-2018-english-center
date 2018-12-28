@@ -8,13 +8,13 @@
     <div class="box-body">
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
-            <th>Email</th>
-            <th>Email Verifiled</th>
-            <th>Password</th>
-            <th>Role ID</th>
-            <th>Create</th>
-            <th>Update</th>
+            <th>{{ __('common.show_list_user.id') }}</th>
+            <th>{{ __('common.show_list_user.email') }}</th>
+            <th>{{ __('common.show_list_user.email_verified_at') }}</th>
+            <th>{{ __('common.show_list_user.password') }}</th>
+            <th>{{ __('common.show_list_user.role_id') }}</th>
+            <th>{{ __('common.show_list_user.created_at') }}</th>
+            <th>{{ __('common.show_list_user.updated_at') }}</th>
         </tr>
         @foreach($users as $user)
         <tr>

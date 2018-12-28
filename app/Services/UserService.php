@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use Config\define;
 
 class UserService
 {
@@ -13,7 +14,7 @@ class UserService
      */
     public function index()
     {
-        $users = User::paginate(5);
+        $users = User::paginate(config('define.page_site'));
         return $users;
     }
 }
