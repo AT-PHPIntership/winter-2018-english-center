@@ -6,20 +6,20 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">@lang('layout_admin.course.title')</h3>
+                  <h3 class="box-title">@lang('course.title')</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                              <th width=@lang('layout_admin.course.width')>ID</th>
-                              <th>Title</th>
-                              <th>Sub Course</th>
-                              <th width=@lang('layout_admin.course.width')>Count View</th>
-                              <th width=@lang('layout_admin.course.width')>Total Rating</th>
-                              <th>Average</th>
-                              <th>Action</th>
+                              <th width=@lang('course.width')>@lang('course.id')</th>
+                              <th>@lang('course.count_view')</th>
+                              <th>@lang('course.title')</th>
+                              <th width=@lang('course.sub_course')>@lang('course.width')</th>
+                              <th width=@lang('course.width')>@lang('course.total_rating')</th>
+                              <th>@lang('course.average')</th>
+                              <th>@lang('course.action')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,8 +32,7 @@
                                     {{ 'none' }}
                                     @else
                                         @php
-                                            $parent = \App\Models\Course::where('id', $course['parent_id'])->first();
-                                            echo $parent->title;
+                                            echo $course->parent_id->title;
                                         @endphp
                                     @endif
                                 </td>
@@ -48,15 +47,6 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                                <th>CSS grade</th>
-                            </tr>
-                        </tfoot>
                     </table>
                     <div class="box-footer clearfix">
                         <ul class="pagination pagination-sm no-margin pull-right">

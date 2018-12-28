@@ -21,7 +21,7 @@ class CreateCoursesTable extends Migration
             $table->integer('count_view');
             $table->integer('total_rating')->default(0);
             $table->float('average')->comment('average rating');
-            $table->boolean('flag')->comment('next course');
+            $table->boolean('flag')->comment('0:TRIAL account, 1:VIP account');
             $table->timestamps();
             $table->softDeletes();
         });

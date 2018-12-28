@@ -43,8 +43,4 @@ return [
         'almsaeed_studio' => 'Almsaeed Studio',
         'all_rights' => 'All rights reserved.',
     ],
-    'course' => [
-         'title' => 'Data Course',
-         'width' => '50px'
-    ],
 ];
