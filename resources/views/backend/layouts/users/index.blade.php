@@ -16,26 +16,26 @@
             <th>Create</th>
             <th>Update</th>
         </tr>
+        @foreach($users as $user)
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>    
+            <td>{{ $user->id }}</td>
+            <td>{{ $user->email }}</td>
+            <td>{{ $user->email_verified_at }}</td>
+            <td>{{ $user->password }}</td>
+            <td>{{ $user->role_id }}</td>
+            <td>{{ $user->created_at }}</td>
+            <td>{{ $user->updated_at }}</td>
+        </tr>
+        @endforeach    
     </table>
     </div>
     <!-- /.box-body -->
-    <div class="box-footer clearfix">
-    <ul class="pagination pagination-sm no-margin pull-right">
-        <li><a href="#">&laquo;</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">&raquo;</a></li>
-    </ul>
+    <div class="box-footer clearfix" style="margin-left: 400px;">
+        <div class="row">
+            <div class="col-md-12">
+            {{$users->links()}}
+            </div>
+        </div>
     </div>
 </div>
 @endsection
