@@ -6,7 +6,6 @@ use App\Models\Course;
 
 class CourseService
 {
-    protected $course;
     /**
      * Function index get all course
      *
@@ -14,7 +13,7 @@ class CourseService
     **/
     public function index()
     {
-        $course = Course::all();
+        $course = Course::orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
         return $course;
     }
 }

@@ -16,11 +16,12 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('parent_id');
+            $table->nestedSet();
+            $table->foreign('parent_id')->references('id')->on('courses')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('count_view');
             $table->integer('total_rating')->default(0);
-            $table->float('average');
-            $table->boolean('flag');
+            $table->float('average')->comment('average rating');
+            $table->boolean('flag')->comment('next course');
             $table->timestamps();
             $table->softDeletes();
         });

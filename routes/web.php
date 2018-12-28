@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('course', 'CourseController@index');
-
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'adminLogin'], function() {
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('users', 'UserController');

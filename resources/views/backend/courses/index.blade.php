@@ -1,26 +1,23 @@
 @extends('backend.layouts.master')
-
 @section('title', 'HOME')
-
 @section('content')
-
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Data Table With Full Features</h3>
+                  <h3 class="box-title">@lang('layout_admin.course.title')</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                              <th width="50px">ID</th>
+                              <th width=@lang('layout_admin.course.width')>ID</th>
                               <th>Title</th>
                               <th>Sub Course</th>
-                              <th width="50px">Count View</th>
-                              <th width="50px">Total Rating</th>
+                              <th width=@lang('layout_admin.course.width')>Count View</th>
+                              <th width=@lang('layout_admin.course.width')>Total Rating</th>
                               <th>Average</th>
                               <th>Action</th>
                             </tr>
@@ -35,7 +32,7 @@
                                     {{ 'none' }}
                                     @else
                                         @php
-                                            $parent = DB::table('courses')->where('id', $course['parent_id'])->first();
+                                            $parent = \App\Models\Course::where('id', $course['parent_id'])->first();
                                             echo $parent->title;
                                         @endphp
                                     @endif
@@ -61,13 +58,14 @@
                             </tr>
                         </tfoot>
                     </table>
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            {{ $courses->links() }}
+                        </ul>
+                    </div>
                 </div>
-                <!-- /.box-body -->
             </div>
-            <!-- /.box -->
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 </section>
 @endsection

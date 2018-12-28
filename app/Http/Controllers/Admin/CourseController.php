@@ -16,6 +16,6 @@ class CourseController extends Controller
     public function index()
     {
         $courses = app(CourseService::class)->index();
-        return view('backend.courses.index', compact('courses'));
+        return view('backend.courses.index')->with('courses', $courses);
     }
 }
