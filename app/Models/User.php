@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'role_id', 'email', 'password',
     ];
 
     /**
@@ -27,4 +27,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Has one userProfile
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function userProfile()
+    {
+        return $this->hasOne('App\Models\UserProfile');
+    }
+
+    /**
+     * Belongs to role
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Role');
+    }
 }

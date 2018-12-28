@@ -40,7 +40,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_user')</a></li>
+            <li><a href="{{route('admin.users.index')}}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_user')</a></li>
             <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_user')</a></li>
           </ul>
         </li>
