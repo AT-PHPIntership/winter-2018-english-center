@@ -1,6 +1,6 @@
 <?php
 return [
-    'show_list_user' => 
+    'show_list_user' =>
     [
         'title' => 'List Users',
         'id' => 'ID',
@@ -11,7 +11,7 @@ return [
         'created_at' => 'Create',
         'updated_at' => 'Update',
     ],
-    'create_user' => 
+    'create_user' =>
     [
         'title' => 'Create User',
         'name' => 'Name',
@@ -21,7 +21,7 @@ return [
         'age' => 'Age',
         'birthday' => 'Birthday',
         'phone' => 'Phone',
-        'role' => 
+        'role' =>
         [
             'name' => 'Role',
             'url' => 'Avatar',
