@@ -13,7 +13,7 @@ class CourseService
     **/
     public function index()
     {
-        $course = Course::orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
-        return $course;
+        $courses = Course::with('parent')->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
+        return $courses;
     }
 }

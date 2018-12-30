@@ -19,7 +19,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('users', 'UserController');
 
-    Route::resource('course', 'CourseController');
+    Route::resource('courses', 'CourseController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
