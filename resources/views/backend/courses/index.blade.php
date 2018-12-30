@@ -13,11 +13,11 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                              <th width=@lang('course.width')>@lang('course.id')</th>
-                              <th>@lang('course.count_view')</th>
+                              <th>@lang('course.id')</th>
                               <th>@lang('course.title')</th>
-                              <th width=@lang('course.sub_course')>@lang('course.width')</th>
-                              <th width=@lang('course.width')>@lang('course.total_rating')</th>
+                              <th>@lang('course.parent')</th>
+                              <th>@lang('course.count_view')</th>
+                              <th>@lang('course.total_rating')</th>
                               <th>@lang('course.average')</th>
                               <th>@lang('course.action')</th>
                             </tr>
@@ -25,15 +25,13 @@
                         <tbody>
                             @foreach ($courses as $key => $course)
                             <tr>
-                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $course->id }}</td>
                                 <td>{{ $course->title }}</td>
                                 <td>
-                                    @if($course['parent_id'] == 0)
-                                    {{ 'none' }}
+                                    @if(!$course['parent_id'])
+                                        {{ 'none' }}
                                     @else
-                                        @php
-                                            echo $course->parent_id->title;
-                                        @endphp
+                                        {{ $course->parent->title }}
                                     @endif
                                 </td>
                                 <td>{{ $course->count_view }}</td>

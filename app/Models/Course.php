@@ -7,7 +7,6 @@ use Kalnoy\Nestedset\NodeTrait;
 
 class Course extends Model
 {
-    use NodeTrait;
     protected $fillable = [ 'title', 'parent_id', 'count_view', 'total_rating', 'average'];
     protected $table = 'courses';
     /**
@@ -26,6 +25,6 @@ class Course extends Model
      */
     public function parent()
     {
-        return $this->belongsTo('App\Models\Course', 'id', 'parent_id');
+        return $this->belongsTo('App\Models\Course', 'parent_id', 'id');
     }
 }
