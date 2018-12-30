@@ -13,32 +13,32 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                              <th width=@lang('course.width')>@lang('course.id')</th>
-                              <th>@lang('course.count_view')</th>
-                              <th>@lang('course.title')</th>
-                              <th width=@lang('course.sub_course')>@lang('course.width')</th>
-                              <th width=@lang('course.width')>@lang('course.total_rating')</th>
-                              <th>@lang('course.average')</th>
-                              <th>@lang('course.action')</th>
+                              <th>@lang('course.list_course.id')</th>
+                              <th>@lang('course.list_course.title')</th>
+                              <th>@lang('course.list_course.parent')</th>
+                              <th>@lang('course.list_course.count_view')</th>
+                              <th>@lang('course.list_course.total_rating')</th>
+                              <th>@lang('course.list_course.average')</th>
+                              <th>@lang('course.list_course.flag')</th>
+                              <th>@lang('course.list_course.action')</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($courses as $key => $course)
                             <tr>
-                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $course->id }}</td>
                                 <td>{{ $course->title }}</td>
                                 <td>
-                                    @if($course['parent_id'] == 0)
-                                    {{ 'none' }}
+                                    @if(!$course['parent_id'])
+                                        {{ 'none' }}
                                     @else
-                                        @php
-                                            echo $course->parent_id->title;
-                                        @endphp
+                                        {{ $course->parent->title }}
                                     @endif
                                 </td>
                                 <td>{{ $course->count_view }}</td>
                                 <td>{{ $course->total_rating }}</td>
                                 <td>{{ $course->average }}</td>
+                                <td>{{ $course->flag }}</td>
                                 <td>
                                     <a href="#" class="btn btn-warning">Edit</a>
                                     <button type="button" class="btn btn-danger form-delete btn-delete-item">   Delete
