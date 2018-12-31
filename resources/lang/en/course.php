@@ -10,4 +10,11 @@
             'average' => 'Average',
             'action' => 'Action',
         ],
+        'create_course' => [
+            'title' => 'Add course',
+            'parent' => 'Course Parent',
+            'name' => 'Course Name',
+            'flag' => 'Course Flag',
+            'css' => 'margin-left: 400px;font-weight: bold;text-transform: uppercase;',
+        ],
     ];

@@ -18,4 +18,13 @@ class CourseController extends Controller
         $courses = app(CourseService::class)->index();
         return view('backend.courses.index')->with('courses', $courses);
     }
+    /**
+      * Show the form for creating a new resource.
+      *
+      * @return \Illuminate\Http\Response
+      */
+    public function create()
+    {
+        return view('backend.courses.create');
+    }
 }
