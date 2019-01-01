@@ -8,6 +8,7 @@
             'parent' => 'Parent',
             'total_rating' => 'Total Rating',
             'average' => 'Average',
+            'flag' => 'flag',
             'action' => 'Action',
         ],
         'create_course' => [
@@ -16,5 +17,8 @@
             'name' => 'Course Name',
             'flag' => 'Course Flag',
             'css' => 'margin-left: 400px;font-weight: bold;text-transform: uppercase;',
+            'bnt' => 'Submit',
+            'reset' => 'Cancel',
+            'back' => 'Back',
         ],
     ];
