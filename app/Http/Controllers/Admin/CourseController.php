@@ -18,4 +18,13 @@ class CourseController extends Controller
         $courses = app(CourseService::class)->index();
         return view('backend.courses.index')->with('courses', $courses);
     }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit()
+    {
+        return view('backend.courses.edit');
+    }
 }
