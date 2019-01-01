@@ -27,7 +27,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $courses = Course::where('parent_id', '=', null)->get();
+        $courses = app(CourseService::class)->create();
         return view('backend.courses.create', compact('courses'));
     }
     /**
