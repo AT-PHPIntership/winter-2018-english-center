@@ -7,29 +7,31 @@
       <div class="box-header with-border">
         <h3 class="box-title" style="@lang('course.create_course.css')">@lang('course.create_course.title')</h3>
       </div>
-      <form role="form">
+      <form>
+        @csrf
         <div class="box-body">
-          <div class="form-group">
-            <label>@lang('course.create_course.parent')</label>
-            <select class="form-control select2">
-              <option selected="selected">#</option>
-              <option>#</option>
-            </select>
-          </div>
           <div class="form-group">
             <label>@lang('course.create_course.name')</label>
             <input type="text" class="form-control" placeholder="Add name course ...">
           </div>
           <div class="form-group">
+            <label>@lang('course.create_course.parent')</label>
+            <select class="form-control select2">
+              <option></option>
+            </select>
+          </div>
+          <div class="form-group">
             <label>@lang('course.create_course.flag')</label>
-            <select class="form-control select2" style="width: 100%;">
-              <option selected="selected">0</option>
+            <select class="form-control select2">
+              <option>0</option>
               <option>1</option>
             </select>
           </div>
         </div>
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">@lang('course.create_course.bnt')</button>
+          <a href="{{ route('admin.courses.index')}}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
+          <button type="reset" class="btn btn-default pull-right">@lang('course.create_course.reset')</button>
+          <button type="submit" class="btn btn-primary pull-right">@lang('course.create_course.btn')</button>
         </div>
       </form>
     </div>

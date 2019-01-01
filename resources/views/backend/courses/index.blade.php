@@ -19,6 +19,7 @@
                               <th>@lang('course.list_course.count_view')</th>
                               <th>@lang('course.list_course.total_rating')</th>
                               <th>@lang('course.list_course.average')</th>
+                              <th>@lang('course.list_course.flag')</th>
                               <th>@lang('course.list_course.action')</th>
                             </tr>
                         </thead>
@@ -37,6 +38,7 @@
                                 <td>{{ $course->count_view }}</td>
                                 <td>{{ $course->total_rating }}</td>
                                 <td>{{ $course->average }}</td>
+                                <td>{{ $course->flag }}</td>
                                 <td>
                                     <a href="#" class="btn btn-warning">Edit</a>
                                     <button type="button" class="btn btn-danger form-delete btn-delete-item">   Delete

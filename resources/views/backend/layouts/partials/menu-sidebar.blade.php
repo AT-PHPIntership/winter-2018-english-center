@@ -52,8 +52,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('admin.course.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_course')</a></li>
-            <li><a href="{{ route('admin.course.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_course')</a></li>
+            <li><a href="{{ route('admin.courses.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_course')</a></li>
+            <li><a href="{{ route('admin.courses.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_course')</a></li>
           </ul>
         </li>
         <li class="treeview">
