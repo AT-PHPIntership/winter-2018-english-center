@@ -17,13 +17,24 @@ class CourseService
         return $course;
     }
     /**
-     * Function index get all course
+     * Function getCourse get all course
      *
      * @return App\Services\CourseService
     **/
-    public function create()
+    public function getCourse()
     {
-        $course = Course::where('parent_id', '=', null)->get();
-        return $course;
+        $courses = Course::where('parent_id', null)->get();
+        return $courses;
+    }
+    /**
+     * Function store insert course
+     *
+     * @param ValidationCourse $request comment
+     *
+     * @return App\Services\CourseService
+    **/
+    public function store($request)
+    {
+        return Course::create($request->all());
     }
 }
