@@ -40,4 +40,13 @@ class CourseController extends Controller
         app(CourseService::class)->store($requestCourse);
         return redirect()->route('admin.courses.index')->with('success', 'New Course added successfully.');
     }
+    /**
+      * Show the form for editing the specified resource.
+      *
+      * @return \Illuminate\Http\Response
+      */
+    public function edit()
+    {
+        return view('backend.courses.edit');
+    }
 }
