@@ -50,7 +50,7 @@
               <td>{{ $course->average }}</td>
               <td>{{ $course->flag }}</td>
               <td>
-                <a href="#" class="btn btn-warning">Edit</a>
+                <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning">Edit</a>
                 <button type="button" class="btn btn-danger form-delete btn-delete-item">   Delete
                 </button>
               </td>
