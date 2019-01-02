@@ -37,4 +37,28 @@ class CourseService
     {
         return Course::create($request->all());
     }
+    /**
+     * Function edit course
+     *
+     * @param Course $id comment
+     *
+     * @return App\Services\CourseService
+    **/
+    public function edit($id)
+    {
+        $course = Course::find($id);
+        return $course;
+    }
+    /**
+     * Function update course
+     *
+     * @param ValidationCourse $request comment
+     * @param ValidationCourse $course  comment
+     *
+     * @return App\Services\CourseService
+    **/
+    public function update($request, $course)
+    {
+        return $course->update($request->all());
+    }
 }

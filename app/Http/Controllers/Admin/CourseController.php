@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CourseService;
 use App\Http\Requests\ValidationCourse;
+use App\Models\Course;
 
 class CourseController extends Controller
 {
@@ -43,10 +44,26 @@ class CourseController extends Controller
     /**
       * Edit the form for editing the specified resource.
       *
+      * @param Course $id comment
+      *
       * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('backend.courses.edit');
+        $course = app(CourseService::class)->edit($id);
+        return view('backend.courses.edit')->with('course', $course);
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\ValidationCourse $requestCourse comment
+     * @param Course $course comment
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ValidationCourse $requestCourse, Course $course)
+    {
+        app(CourseService::class)->update($requestCourse, $course);
+        return redirect()->route('admin.courses.index')->with('success', 'New Course added successfully.');
     }
 }
