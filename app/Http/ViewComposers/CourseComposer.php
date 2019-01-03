@@ -7,7 +7,8 @@ use App\Services\CourseService;
 
 class CourseComposer
 {
-    protected $courses;
+    /* @param CourseService $coursesService comment */
+    protected $coursesService;
 
     /**
      * Create a new profile composer.
@@ -16,8 +17,9 @@ class CourseComposer
      */
     public function __construct(CourseService $courses)
     {
-        $this->courses = $courses;
+        $this->coursesService = $courses;
     }
+
     /**
      * Bind data to the view.
      *
@@ -27,6 +29,6 @@ class CourseComposer
      */
     public function compose(View $view)
     {
-        $view->with('courses', $this->courses->getCourse());
+        $view->with('courses', $this->coursesService->getCourse());
     }
 }
