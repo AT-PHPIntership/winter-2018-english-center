@@ -7,7 +7,10 @@ use Kalnoy\Nestedset\NodeTrait;
 
 class Course extends Model
 {
-    protected $fillable = [ 'title', 'parent_id', 'count_view', 'total_rating', 'average'];
+    const VIP = 1;
+    const TRIAL = 0;
+    
+    protected $fillable = [ 'title', 'parent_id', 'count_view', 'total_rating', 'average', 'flag'];
     protected $table = 'courses';
     /**
      * Has many courses
@@ -19,9 +22,9 @@ class Course extends Model
         return $this->hasMany('App\Models\Course', 'parent_id', 'id');
     }
     /**
-     * Has many courses
+     * BelongsTo courses
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function parent()
     {

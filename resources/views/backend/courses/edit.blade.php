@@ -1,13 +1,24 @@
 @extends('backend.layouts.master')
 @section('title', 'HOME')
 @section('content')
+<section class="content-header">
+   <h1>@lang('course.update_course.title')</h1>
+   <ol class="breadcrumb">
+     <li>
+       <a href="{{ route('admin.dashboard') }}">
+       <i class="fas fa-tachometer-alt"></i>@lang('layout_admin.home')
+       </a>
+     </li>
+     <li>
+       <a href="{{ route('admin.courses.index') }}">@lang('course.list_course.courses')</a>
+     </li>
+     <li class="active">@lang('course.update_course.title')</li>
+   </ol>
+</section>
 <section class="content">
   <div class="col-md-12">
     @include('backend.blocks.error')
     <div class="box box-primary">
-      <div class="box-header with-border">
-        <h3 class="box-title" style="@lang('course.update_course.css')">@lang('course.update_course.title')</h3>
-      </div>
       <form action="{{ route('admin.courses.update', $course->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -22,7 +33,7 @@
                 @if($course->parent_id == null)
                  <option value="" selected></option>
                  @foreach ($courses as $courseparent)
-                     <option value="{{ $courseparent->id }}">{{ $courseparent->title }}</option>
+                    <option value="{{ $courseparent->id }}">{{ $courseparent->title }}</option>
                  @endforeach
                  @else
                  <option value=""></option>
@@ -35,8 +46,8 @@
           <div class="form-group">
             <label>@lang('course.update_course.flag')</label>
             <select name="flag" class="form-control select2">
-                <option>{{ config('define.edit_course.0') }}</option>
-                <option>{{ config('define.edit_course.1') }}</option>
+              <option value="{{ \App\Models\Course::VIP }}" {{ $course->flag ? 'selected' : ''}}>{{ config('define.courses.vip') }}</option>
+              <option value="{{ \App\Models\Course::TRIAL }}" {{ $course->flag ? '' : 'selected'}}>{{ config('define.courses.trial') }}</option>
             </select>
           </div>
         </div>

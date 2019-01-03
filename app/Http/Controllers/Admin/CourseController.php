@@ -57,13 +57,13 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\ValidationCourse $requestCourse comment
-     * @param Course $course comment
+     * @param Course                            $course        comment
      *
      * @return \Illuminate\Http\Response
      */
     public function update(ValidationCourse $requestCourse, Course $course)
     {
         app(CourseService::class)->update($requestCourse, $course);
-        return redirect()->route('admin.courses.index')->with('success', 'New Course added successfully.');
+        return redirect()->route('admin.courses.index')->with('success', 'Update Course successfully.');
     }
 }
