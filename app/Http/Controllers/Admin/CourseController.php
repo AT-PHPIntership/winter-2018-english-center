@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CourseService;
-use App\Http\Requests\ValidationCourse;
-use App\Models\Course;
+use App\Http\Requests\CreateCourseRequest;
+use Illuminate\Support\Facades\Lang;
 
 class CourseController extends Controller
 {
@@ -20,6 +20,7 @@ class CourseController extends Controller
         $courses = app(CourseService::class)->index();
         return view('backend.courses.index')->with('courses', $courses);
     }
+
     /**
       * Show the form for creating a new resource.
       *
@@ -29,17 +30,18 @@ class CourseController extends Controller
     {
         return view('backend.courses.create');
     }
+    
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $requestCourse ValidationCourse comment
+     * @param \Illuminate\Http\Request $requestCourse CreateCourseRequest comment
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidationCourse $requestCourse)
+    public function store(CreateCourseRequest $requestCourse)
     {
         app(CourseService::class)->store($requestCourse);
-        return redirect()->route('admin.courses.index')->with('success', 'New Course added successfully.');
+        return redirect()->route('admin.courses.index')->with('success', Lang::get('course.create_course.success'));
     }
     /**
       * Edit the form for editing the specified resource.

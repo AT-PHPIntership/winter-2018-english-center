@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidationCourse extends FormRequest
+class CreateCourseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,6 +25,19 @@ class ValidationCourse extends FormRequest
     {
         return [
             'title' => 'required|string',
+            'parent_id' => 'required|exists:courses,id',
+            'flag' => 'required|boolean',
+        ];
+    }
+    /**
+     * Custom message for validation
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'parent_id.exists' => 'Not exists course parent in courses',
         ];
     }
 }

@@ -8,7 +8,7 @@
     <div class="col-md-6">
       <div class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i> Success!</h4>
+        <h4><i class="icon fa fa-check"></i>@lang('course.list_course.success')</h4>
         <p>* {{ Session::get('success') }}</p>
       </div>
     </div>
@@ -50,8 +50,8 @@
               <td>{{ $course->average }}</td>
               <td>{{ $course->flag }}</td>
               <td>
-                <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning">Edit</a>
-                <button type="button" class="btn btn-danger form-delete btn-delete-item">   Delete
+                <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
+                <button type="button" class="btn btn-danger form-delete btn-delete-item">@lang('course.list_course.delete')
                 </button>
               </td>
             </tr>
