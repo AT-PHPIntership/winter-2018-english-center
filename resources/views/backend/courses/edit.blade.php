@@ -17,7 +17,6 @@
 </section>
 <section class="content">
   <div class="col-md-12">
-    @include('backend.blocks.error')
     <div class="box box-primary">
       <form action="{{ route('admin.courses.update', $course->id) }}" method="POST">
         @csrf
@@ -26,6 +25,9 @@
           <div class="form-group">
             <label>@lang('course.update_course.name')</label>
             <input name="title" type="text" class="form-control" value="{{ $course->title }}">
+            @if ($errors->has('title'))
+              <span class="text-red help is-danger">* {{ $errors->first('title') }}</span>
+            @endif
           </div>
           <div class="form-group">
             <label>@lang('course.update_course.parent')</label>
@@ -42,6 +44,9 @@
                  @endforeach
                 @endif
             </select>
+            @if ($errors->has('parent_id'))
+              <span class="text-red help is-danger">* {{ $errors->first('parent_id') }}</span>
+            @endif
           </div>
           <div class="form-group">
             <label>@lang('course.update_course.flag')</label>
@@ -49,12 +54,15 @@
               <option value="{{ \App\Models\Course::VIP }}" {{ $course->flag ? 'selected' : ''}}>{{ config('define.courses.vip') }}</option>
               <option value="{{ \App\Models\Course::TRIAL }}" {{ $course->flag ? '' : 'selected'}}>{{ config('define.courses.trial') }}</option>
             </select>
+            @if ($errors->has('flag'))
+              <span class="text-red help is-danger">* {{ $errors->first('flag') }}</span>
+            @endif
           </div>
         </div>
         <div class="box-footer">
-          <a href="{{ route('admin.courses.index')}}" class="btn btn-info btn-default">@lang('course.update_course.back')</a>
-          <button type="reset" class="btn btn-default pull-right">@lang('course.update_course.reset')</button>
-          <button type="submit" class="btn btn-primary pull-right">@lang('course.update_course.btn')</button>
+          <a href="{{ route('admin.courses.index')}}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
+          <button type="reset" class="btn btn-default pull-right">@lang('course.create_course.reset')</button>
+          <button type="submit" class="btn btn-primary pull-right">@lang('course.create_course.btn')</button>
         </div>
       </form>
     </div>

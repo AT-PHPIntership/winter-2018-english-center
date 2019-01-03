@@ -22,14 +22,14 @@
         @csrf
         <div class="box-body">
           <div class="form-group">
-            <label>@lang('course.create_course.name')</label>
+            <label>@lang('course.list_course.name')</label>
             <input name="title" type="text" class="form-control" placeholder="Add name course ...">
             @if ($errors->has('title'))
               <span class="text-red help is-danger">* {{ $errors->first('title') }}</span>
             @endif
           </div>
           <div class="form-group">
-            <label>@lang('course.create_course.parent')</label>
+            <label>@lang('course.list_course.parent')</label>
             <select name="parent_id" class="form-control select2">
               <option></option>
               @foreach ($courses as $course)

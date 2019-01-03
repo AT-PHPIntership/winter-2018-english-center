@@ -29,6 +29,7 @@ class CreateCourseRequest extends FormRequest
             'flag' => 'required|boolean',
         ];
     }
+    
     /**
      * Custom message for validation
      *
