@@ -16,7 +16,6 @@
             'parent' => 'Course Parent',
             'name' => 'Course Name',
             'flag' => 'Course Flag',
-            'css' => 'margin-left: 400px;font-weight: bold;text-transform: uppercase;',
             'btn' => 'Submit',
             'reset' => 'Cancel',
             'back' => 'Back',

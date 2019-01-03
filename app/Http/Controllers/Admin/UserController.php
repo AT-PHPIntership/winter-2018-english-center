@@ -36,4 +36,13 @@ class UserController extends Controller
         $users = $this->userService->index();
         return view('backend.layouts.users.index', compact('users'));
     }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('backend.layouts.users.create');
+    }
 }
