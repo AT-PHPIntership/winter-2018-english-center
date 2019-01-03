@@ -7,7 +7,7 @@ use Kalnoy\Nestedset\NodeTrait;
 
 class Course extends Model
 {
-    protected $fillable = [ 'title', 'parent_id', 'count_view', 'total_rating', 'average'];
+    protected $fillable = [ 'title', 'parent_id', 'count_view', 'total_rating', 'average', 'flag'];
     protected $table = 'courses';
     /**
      * Has many courses

@@ -6,7 +6,7 @@
     @include('backend.blocks.error')
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title" style="@lang('course.create_course.css')">@lang('course.create_course.title')</h3>
+        <h3 class="box-title">@lang('course.create_course.title')</h3>
       </div>
       <form action="{{ route('admin.courses.store') }}" method="POST">
         @csrf
@@ -27,8 +27,8 @@
           <div class="form-group">
             <label>@lang('course.create_course.flag')</label>
             <select name="flag" class="form-control select2">
-              <option>0</option>
-              <option>1</option>
+              <option value="0">{{ config('define.courses.vip') }}</option>
+              <option value="1">{{ config('define.courses.trial') }}</option>
             </select>
           </div>
         </div>
