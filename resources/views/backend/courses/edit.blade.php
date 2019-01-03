@@ -1,12 +1,23 @@
 @extends('backend.layouts.master')
 @section('title', 'HOME')
 @section('content')
+<section class="content-header">
+  <h1>@lang('course.create_course.title')</h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="{{ route('admin.dashboard') }}">
+      <i class="fas fa-tachometer-alt"></i>@lang('layout_admin.home')
+      </a>
+    </li>
+    <li>
+      <a href="{{ route('admin.courses.index') }}">@lang('course.list_course.courses')</a>
+    </li>
+    <li class="active">@lang('course.update_course.title')</li>
+  </ol>
+</section>
 <section class="content">
   <div class="col-md-12">
     <div class="box box-primary">
-      <div class="box-header with-border">
-        <h3 class="box-title">@lang('course.update_course.title')</h3>
-      </div>
       <form>
         @csrf
         <div class="box-body">
@@ -23,8 +34,8 @@
           <div class="form-group">
             <label>@lang('course.update_course.flag')</label>
             <select name="flag" class="form-control select2">
-              <option>0</option>
-              <option>1</option>
+              <option>{{ config('define.courses.vip') }}</option>
+              <option>{{ config('define.courses.trial') }}</option>
             </select>
           </div>
         </div>

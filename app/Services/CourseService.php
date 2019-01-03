@@ -23,7 +23,7 @@ class CourseService
     **/
     public function getCourse()
     {
-        $courses = Course::where('parent_id', null)->get();
+        $courses = Course::select('id', 'title')->where('parent_id', null)->get();
         return $courses;
     }
     /**
@@ -35,6 +35,6 @@ class CourseService
     **/
     public function store($request)
     {
-        return Course::create($request->all());
+        return Course::create($request->only(['title', 'parent_id', 'flag']));
     }
 }

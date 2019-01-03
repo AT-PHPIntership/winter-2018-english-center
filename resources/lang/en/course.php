@@ -8,17 +8,22 @@
             'parent' => 'Parent',
             'total_rating' => 'Total Rating',
             'average' => 'Average',
-            'flag' => 'flag',
+            'flag' => 'Flag',
             'action' => 'Action',
+            'success' => ' Success!',
+            'edit' => 'Edit',
+            'delete' => 'Delete',
+            'courses' => 'Courses',
         ],
         'create_course' => [
-            'title' => 'Add Course',
+            'title' => 'Create Course',
             'parent' => 'Course Parent',
             'name' => 'Course Name',
             'flag' => 'Course Flag',
             'btn' => 'Submit',
             'reset' => 'Cancel',
             'back' => 'Back',
+            'success' => 'New Course added successfully.',
         ],
         'update_course' => [
             'title' => 'Edit course',
@@ -28,6 +33,5 @@
             'btn' => 'Submit',
             'reset' => 'Cancel',
             'back' => 'Back',
-            'edit' => 'Edit'
         ],
     ];
