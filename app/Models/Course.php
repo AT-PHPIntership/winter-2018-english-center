@@ -7,8 +7,18 @@ use Kalnoy\Nestedset\NodeTrait;
 
 class Course extends Model
 {
+    const VIP = 1;
+    const TRIAL = 0;
+
     protected $fillable = [ 'title', 'parent_id', 'count_view', 'total_rating', 'average', 'flag'];
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
     protected $table = 'courses';
+
     /**
      * Has many courses
      *
@@ -18,6 +28,7 @@ class Course extends Model
     {
         return $this->hasMany('App\Models\Course', 'parent_id', 'id');
     }
+    
     /**
      * BelongsTo courses
      *
