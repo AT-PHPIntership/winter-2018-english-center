@@ -8,9 +8,8 @@
                 <div class="box-header">
                   <h3 class="box-title">@lang('course.title')</h3>
                 </div>
-                <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                               <th>@lang('course.list_course.id')</th>

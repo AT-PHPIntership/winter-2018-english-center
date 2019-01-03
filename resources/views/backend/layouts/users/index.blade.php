@@ -2,7 +2,7 @@
 @section('content')
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title" style="margin-left: 400px;font-weight: bold;text-transform: uppercase;">List Users</h3>
+        <h3 class="box-title" style="margin-left: 400px;font-weight: bold;text-transform: uppercase;">{{ __('user.show_list_user.title') }}</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">

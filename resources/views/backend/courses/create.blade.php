@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title" style="@lang('course.create_course.css')">@lang('course.create_course.title')</h3>
+        <h3 class="box-title">@lang('course.create_course.title')</h3>
       </div>
       <form>
         @csrf
@@ -23,8 +23,8 @@
           <div class="form-group">
             <label>@lang('course.create_course.flag')</label>
             <select class="form-control select2">
-              <option>0</option>
-              <option>1</option>
+              <option>{{ config('define.courses.vip') }}</option>
+              <option>{{ config('define.courses.trial') }}</option>
             </select>
           </div>
         </div>
