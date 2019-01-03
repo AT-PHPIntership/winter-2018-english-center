@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title" style="@lang('course.update_course.css')">@lang('course.update_course.title')</h3>
+        <h3 class="box-title">@lang('course.update_course.title')</h3>
       </div>
       <form>
         @csrf
