@@ -19,9 +19,9 @@ class Course extends Model
         return $this->hasMany('App\Models\Course', 'parent_id', 'id');
     }
     /**
-     * belongsTo courses
+     * BelongsTo courses
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function parent()
     {
