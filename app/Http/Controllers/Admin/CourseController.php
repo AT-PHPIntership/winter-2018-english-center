@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\CourseService;
 use App\Http\Requests\CreateCourseRequest;
 use Illuminate\Support\Facades\Lang;
+use App\Models\Course;
 
 class CourseController extends Controller
 {
@@ -58,12 +59,12 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\ValidationCourse $requestCourse comment
-     * @param Course                            $course        comment
+     * @param \Illuminate\Http\CreateCourseRequest $requestCourse comment
+     * @param Course                               $course        comment
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidationCourse $requestCourse, Course $course)
+    public function update(CreateCourseRequest $requestCourse, Course $course)
     {
         app(CourseService::class)->update($requestCourse, $course);
         return redirect()->route('admin.courses.index')->with('success', 'Update Course successfully.');

@@ -46,8 +46,7 @@ class CourseService
     **/
     public function edit($id)
     {
-        $course = Course::find($id);
-        return $course;
+        return Course::findOrFail($id);
     }
     /**
      * Function update course
