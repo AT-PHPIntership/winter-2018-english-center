@@ -2,7 +2,7 @@
 @section('title', 'HOME')
 @section('content')
 <section class="content-header">
-  <h1>@lang('course.create_course.title')</h1>
+  <h1>@lang('course.update_course.title')</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
@@ -22,17 +22,17 @@
         @csrf
         <div class="box-body">
           <div class="form-group">
-            <label>@lang('course.update_course.name')</label>
+            <label>@lang('course.list_course.name')</label>
             <input type="text" class="form-control">
           </div>
           <div class="form-group">
-            <label>@lang('course.update_course.parent')</label>
+            <label>@lang('course.list_course.parent')</label>
             <select class="form-control select2">
               <option></option>
             </select>
           </div>
           <div class="form-group">
-            <label>@lang('course.update_course.flag')</label>
+            <label>@lang('course.create_course.flag')</label>
             <select name="flag" class="form-control select2">
               <option>{{ config('define.courses.vip') }}</option>
               <option>{{ config('define.courses.trial') }}</option>
@@ -40,9 +40,9 @@
           </div>
         </div>
         <div class="box-footer">
-          <a href="{{ route('admin.courses.index')}}" class="btn btn-info btn-default">@lang('course.update_course.back')</a>
-          <button type="reset" class="btn btn-default pull-right">@lang('course.update_course.reset')</button>
-          <button type="submit" class="btn btn-primary pull-right">@lang('course.update_course.btn')</button>
+          <a href="{{ route('admin.courses.index')}}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
+          <button type="reset" class="btn btn-default pull-right">@lang('course.create_course.reset')</button>
+          <button type="submit" class="btn btn-primary pull-right">@lang('course.create_course.btn')</button>
         </div>
       </form>
     </div>
