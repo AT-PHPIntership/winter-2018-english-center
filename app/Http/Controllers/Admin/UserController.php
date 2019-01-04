@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -44,5 +45,17 @@ class UserController extends Controller
     public function create()
     {
         return view('backend.users.create');
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param UserRequest $request Request
+     *
+     * @return void
+     */
+    public function store(UserRequest $request)
+    {
+        $this->userService->store($request->all());
+        return redirect()->route('admin.users.index')->with('message', __('common.add_sussess'));
     }
 }
