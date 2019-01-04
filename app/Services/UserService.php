@@ -21,27 +21,14 @@ class UserService
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request request
+     * @param \Illuminate\Http\Request $data data
      *
      * @return \Illuminate\Http\Response
      */
-    public function store($request)
+    public function store($data)
     {
-        $user = [
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'phone' => $request->phone,
-            'role_id' => $request->role
-        ];
-        $user = User::create($user);
-        $profile = [
-            'name' => $request->name,
-            'age' => $request->age,
-            'url' => $request->url,
-            'birthday' => $request->birthday,
-            'phone' => $request->phone,
-            'user_id' => $user->id,
-        ];
-        UserProfile::create($profile);
+        $data['password'] = bcrypt($data['password']);
+        $user = User::create($data);
+        $user->userProfile()->create($data);
     }
 }

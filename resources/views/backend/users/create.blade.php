@@ -75,14 +75,14 @@
             </div>
             <div class="form-group">
                 <label for="role">{{ __('user.create_user.role.name') }}</label>
-                <select class="form-control" name="role">
+                <select class="form-control" name="role_id">
                     @foreach ($roles as $role)
                     <option value="{{ $role->id }}" <?php echo ($role->name == App\Models\Role::ROLE_TRIAL) ? "selected" : " " ?>>{{ $role->name }}</option>
                     @endforeach
                 </select>
-                @if ($errors->has('role'))
+                @if ($errors->has('role_id'))
                  <span class="help-block col-sm-12">
-                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('role') }}</strong>
+                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('role_id') }}</strong>
                  </span>
                @endif
             </div>
