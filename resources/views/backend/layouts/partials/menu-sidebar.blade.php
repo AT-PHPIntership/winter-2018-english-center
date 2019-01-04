@@ -57,7 +57,7 @@
           </ul>
         </li>
         <li class="treeview">
-          <a href="#">
+          <a href="{{ route('admin.levels.index') }}">
             <i class="fa fa-table"></i> <span>@lang('layout_admin.sidebar.level_management')</span>
           </a>
         </li>
