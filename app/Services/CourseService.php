@@ -16,6 +16,7 @@ class CourseService
         $courses = Course::with('parent')->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
         return $courses;
     }
+
     /**
      * Function getCourse get all course
      *
@@ -26,6 +27,7 @@ class CourseService
         $courses = Course::select('id', 'title')->where('parent_id', null)->get();
         return $courses;
     }
+
     /**
      * Function store insert course
      *
@@ -37,6 +39,7 @@ class CourseService
     {
         return Course::create($request->only(['title', 'parent_id', 'flag']));
     }
+
     /**
      * Function edit course
      *
@@ -49,6 +52,7 @@ class CourseService
         $course = Course::find($id);
         return $course;
     }
+
     /**
      * Function update course
      *
@@ -60,5 +64,17 @@ class CourseService
     public function update($request, $course)
     {
         return $course->update($request->all());
+    }
+
+    /**
+     * Function destroy course
+     *
+     * @param Course $course comment
+     *
+     * @return App\Services\CourseService
+    **/
+    public function destroy($course)
+    {
+        return $course->delete();
     }
 }

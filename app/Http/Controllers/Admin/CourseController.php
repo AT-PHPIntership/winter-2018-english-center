@@ -69,4 +69,17 @@ class CourseController extends Controller
         app(CourseService::class)->update($requestCourse, $course);
         return redirect()->route('admin.courses.index')->with('success', 'Update Course successfully.');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Course $course comment
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Course $course)
+    {
+        app(CourseService::class)->destroy($course);
+        return redirect()->route('admin.courses.index')->with('success', 'Delete Course successfully.');
+    }
 }
