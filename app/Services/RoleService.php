@@ -14,7 +14,6 @@ class RoleService
      */
     public function getAll()
     {
-        $roles = Role::all();
-        return $roles;
+        return Role::all();
     }
 }

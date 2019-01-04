@@ -75,9 +75,9 @@
             </div>
             <div class="form-group">
                 <label for="role">{{ __('user.create_user.role.name') }}</label>
-                <select class="form-control" name="role" value="{{ old('role') }}">
+                <select class="form-control" name="role">
                     @foreach ($roles as $role)
-                    <option  <?php echo ($role->name == 'Trial') ? "selected" : " " ?>>{{ $role->name }}</option>
+                    <option value="{{ $role->id }}" <?php echo ($role->name == App\Models\Role::ROLE_TRIAL) ? "selected" : " " ?>>{{ $role->name }}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('role'))
