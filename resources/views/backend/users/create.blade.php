@@ -7,47 +7,93 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form role="form">
+    <form role="form" method="POST" action="{{ route('admin.users.store') }}">
+    @csrf
         <div class="box-body">
             <div class="form-group">
                 <label for="name">{{ __('user.create_user.name') }}</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter name">
+                <input type="text" class="form-control" name="name" placeholder="Enter name" value="{{ old('name') }}">
+                @if ($errors->has('name'))
+                 <span class="help-block col-sm-12">
+                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('name') }}</strong>
+                 </span>
+               @endif
             </div>
             <div class="form-group">
                 <label for="email">{{ __('user.create_user.email') }}</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email">
+                <input type="email" class="form-control" name="email" placeholder="Enter email" value="{{ old('email') }}">
+                @if ($errors->has('email'))
+                 <span class="help-block col-sm-12">
+                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('email') }}</strong>
+                 </span>
+               @endif
             </div>
             <div class="form-group">
                 <label for="password">{{ __('user.create_user.password') }}</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password">
+                <input type="password" class="form-control" name="password" placeholder="Enter password">
+                @if ($errors->has('password'))
+                 <span class="help-block col-sm-12">
+                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('password') }}</strong>
+                 </span>
+               @endif
             </div>
             <div class="form-group">
                 <label for="confirm_password">{{ __('user.create_user.confirm_pass') }}</label>
-                <input type="password" class="form-control" id="confirm_password" placeholder="Enter confirm password">
+                <input type="password" class="form-control" name="confirm_password" placeholder="Enter confirm password">
+                @if ($errors->has('confirm_password'))
+                 <span class="help-block col-sm-12">
+                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('confirm_password') }}</strong>
+                 </span>
+               @endif
             </div>
             <div class="form-group">
                 <label for="age">{{ __('user.create_user.age') }}</label>
-                <input type="text" class="form-control" id="age" placeholder="Enter age">
+                <input type="text" class="form-control" name="age" placeholder="Enter age" value="{{ old('age') }}">
+                @if ($errors->has('age'))
+                 <span class="help-block col-sm-12">
+                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('age') }}</strong>
+                 </span>
+               @endif
             </div>
             <div class="form-group">
                 <label for="birthday">{{ __('user.create_user.birthday') }}</label>
-                <input type="date" class="form-control" id="age">
+                <input type="date" class="form-control" name="birthday" value="{{ old('birthday') }}">
+                @if ($errors->has('birthday'))
+                 <span class="help-block col-sm-12">
+                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('birthday') }}</strong>
+                 </span>
+               @endif
             </div>
             <div class="form-group">
                 <label for="phone">{{ __('user.create_user.phone') }}</label>
-                <input type="text" class="form-control" id="phone">
+                <input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
+                @if ($errors->has('phone'))
+                 <span class="help-block col-sm-12">
+                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('phone') }}</strong>
+                 </span>
+               @endif
             </div>
             <div class="form-group">
                 <label for="role">{{ __('user.create_user.role.name') }}</label>
-                <select class="form-control">
-                    <option>{{ __('user.create_user.role.admin') }}</option>
-                    <option>{{ __('user.create_user.role.trial') }}</option>
-                    <option>{{ __('user.create_user.role.vip') }}</option>
+                <select class="form-control" name="role_id">
+                    @foreach ($roles as $role)
+                    <option value="{{ $role->id }}" <?php echo ($role->name == App\Models\Role::ROLE_TRIAL) ? "selected" : " " ?>>{{ $role->name }}</option>
+                    @endforeach
                 </select>
+                @if ($errors->has('role_id'))
+                 <span class="help-block col-sm-12">
+                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('role_id') }}</strong>
+                 </span>
+               @endif
             </div>
             <div class="form-group">
                 <label for="url">{{ __('user.create_user.url') }}</label>
-                <input type="file" id="url">
+                <input type="file" name="url" value="{{ old('url') }}">
+                @if ($errors->has('url'))
+                 <span class="help-block col-sm-12">
+                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('url') }}</strong>
+                 </span>
+               @endif
             </div>
             
         </div>
