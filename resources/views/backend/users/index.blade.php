@@ -4,6 +4,12 @@
     <div class="box-header with-border">
         <h3 class="box-title" style="margin-left: 400px;font-weight: bold;text-transform: uppercase;">{{ __('user.show_list_user.title') }}</h3>
     </div>
+    @csrf
+    @if (session('message'))
+        <div class="alert alert-warning">
+            {{ session('message') }}
+        </div>
+    @endif
     <!-- /.box-header -->
     <div class="box-body">
     <table class="table table-bordered">

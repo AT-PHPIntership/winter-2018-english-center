@@ -1,11 +1,11 @@
 <?php
     return [
-        'title' => 'List Course',
         'list_course' => [
+            'title' => 'List Course',
             'id' => 'ID',
-            'count_view' => 'View',
             'name' => 'Course Name',
             'parent' => 'Course Parent',
+            'count_view' => 'View',
             'total_rating' => 'Total Rating',
             'average' => 'Average',
             'flag' => 'Flag',
@@ -17,7 +17,6 @@
         ],
         'create_course' => [
             'title' => 'Create Course',
-            'flag' => 'Course Flag',
             'btn' => 'Submit',
             'reset' => 'Cancel',
             'back' => 'Back',
@@ -25,5 +24,7 @@
         ],
         'update_course' => [
             'title' => 'Edit Course',
+            'success' => 'Update Course successfully.',
+            'select' => 'Choose here',
         ],
     ];
