@@ -25,5 +25,6 @@
         ],
         'update_course' => [
             'title' => 'Edit Course',
+            'success' => 'Update Course successfully.',
         ],
     ];

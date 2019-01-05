@@ -67,6 +67,6 @@ class CourseController extends Controller
     public function update(CreateCourseRequest $requestCourse, Course $course)
     {
         app(CourseService::class)->update($requestCourse, $course);
-        return redirect()->route('admin.courses.index')->with('success', 'Update Course successfully.');
+        return redirect()->route('admin.courses.index')->with('success', Lang::get('course.update_course.success'));
     }
 }
