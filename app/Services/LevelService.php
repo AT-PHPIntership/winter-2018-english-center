@@ -13,7 +13,6 @@ class LevelService
     **/
     public function index()
     {
-        $levels = Level::all();
-        return $levels;
+        return Level::all();
     }
 }
