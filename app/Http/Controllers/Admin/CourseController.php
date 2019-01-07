@@ -61,14 +61,14 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\CreateCourseRequest $requestCourse comment
-     * @param Course                               $course        comment
+     * @param \Illuminate\Http\CreateCourseRequest $requestCourse requestCourse
+     * @param Course                               $course        course
      *
      * @return \Illuminate\Http\Response
      */
     public function update(CreateCourseRequest $requestCourse, Course $course)
     {
-        app(CourseService::class)->update($requestCourse, $course);
+        app(CourseService::class)->update($requestCourse->all(), $course);
         return redirect()->route('admin.courses.index')->with('success', Lang::get('course.update_course.success'));
     }
 
