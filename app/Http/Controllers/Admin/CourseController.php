@@ -43,4 +43,14 @@ class CourseController extends Controller
         app(CourseService::class)->store($requestCourse);
         return redirect()->route('admin.courses.index')->with('success', Lang::get('course.create_course.success'));
     }
+    
+    /**
+      * Edit the form for editing the specified resource.
+      *
+      * @return \Illuminate\Http\Response
+     */
+    public function edit()
+    {
+        return view('backend.courses.edit');
+    }
 }
