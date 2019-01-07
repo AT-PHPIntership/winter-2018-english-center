@@ -55,13 +55,13 @@ class CourseService
     /**
      * Function update course
      *
-     * @param ValidationCourse $request comment
-     * @param ValidationCourse $course  comment
+     * @param ValidationCourse $data   requestCourse
+     * @param Course           $course course
      *
      * @return App\Services\CourseService
     **/
-    public function update($request, $course)
+    public function update($data, $course)
     {
-        return $course->update($request->all());
+        return $course->update($data);
     }
 }
