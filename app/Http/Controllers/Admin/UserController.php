@@ -56,6 +56,6 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $this->userService->store($request->all());
-        return redirect()->route('admin.users.index')->with('message', __('common.add_sussess'));
+        return redirect()->route('admin.users.index')->with('success', __('common.success'));
     }
 }
