@@ -44,6 +44,7 @@ class CourseController extends Controller
         app(CourseService::class)->store($requestCourse);
         return redirect()->route('admin.courses.index')->with('success', Lang::get('course.create_course.success'));
     }
+
     /**
       * Edit the form for editing the specified resource.
       *
@@ -56,6 +57,7 @@ class CourseController extends Controller
         $course = app(CourseService::class)->edit($id);
         return view('backend.courses.edit')->with('course', $course);
     }
+
     /**
      * Update the specified resource in storage.
      *

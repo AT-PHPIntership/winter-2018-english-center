@@ -19,37 +19,34 @@
   <div class="col-md-12">
     <div class="box box-primary">
       <form action="{{ route('admin.courses.update', $course->id) }}" method="POST">
-        @csrf
         @method('PUT')
+        @csrf
         <div class="box-body">
           <div class="form-group">
-            <label>@lang('course.update_course.name')</label>
+            <label>@lang('course.list_course.name')</label>
             <input name="title" type="text" class="form-control" value="{{ $course->title }}">
             @if ($errors->has('title'))
               <span class="text-red help is-danger">* {{ $errors->first('title') }}</span>
             @endif
           </div>
           <div class="form-group">
-            <label>@lang('course.update_course.parent')</label>
+            <label>@lang('course.list_course.parent')</label>
             <select name="parent_id" class="form-control select2">
                 @if($course->parent_id == null)
-                 <option value="" selected></option>
+                 <option value="0" selected disabled hidden>@lang('course.update_course.select')</option>
                  @foreach ($courses as $courseparent)
                     <option value="{{ $courseparent->id }}">{{ $courseparent->title }}</option>
                  @endforeach
                  @else
-                 <option value=""></option>
+                 <option value="0"></option>
                  @foreach ($courses as $courseparent)
                   <option value="{{ $courseparent->id }}" {{ $course->parent_id == $courseparent->id ? "selected": "" }}>{{ $courseparent->title }}</option>
                  @endforeach
                 @endif
             </select>
-            @if ($errors->has('parent_id'))
-              <span class="text-red help is-danger">* {{ $errors->first('parent_id') }}</span>
-            @endif
           </div>
           <div class="form-group">
-            <label>@lang('course.update_course.flag')</label>
+            <label>@lang('course.list_course.flag')</label>
             <select name="flag" class="form-control select2">
               <option value="{{ \App\Models\Course::VIP }}" {{ $course->flag ? 'selected' : ''}}>{{ config('define.courses.vip') }}</option>
               <option value="{{ \App\Models\Course::TRIAL }}" {{ $course->flag ? '' : 'selected'}}>{{ config('define.courses.trial') }}</option>
