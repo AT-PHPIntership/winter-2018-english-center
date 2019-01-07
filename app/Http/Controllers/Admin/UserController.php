@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
 use App\Http\Requests\UserRequest;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -27,6 +28,7 @@ class UserController extends Controller
     {
         $this->userService = $userService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,6 +39,7 @@ class UserController extends Controller
         $users = $this->userService->index();
         return view('backend.users.index', compact('users'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -46,6 +49,7 @@ class UserController extends Controller
     {
         return view('backend.users.create');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -57,5 +61,17 @@ class UserController extends Controller
     {
         $this->userService->store($request->all());
         return redirect()->route('admin.users.index')->with('success', __('common.success'));
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param User $user User
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(User $user)
+    {
+        return view('backend.users.show', compact('user'));
     }
 }

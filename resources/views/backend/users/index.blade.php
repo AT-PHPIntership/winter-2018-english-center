@@ -46,7 +46,7 @@
                             <td>{{ $user->password }}</td>
                             <td>{{ $user->role_id }}</td>
                             <td>
-                                <a href="#" class="btn btn-warning">@lang('common.detail')</a>
+                                <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-warning">@lang('common.detail')</a>
                             </td>
                             <td>
                                 <a href="#" class="btn btn-warning">@lang('common.edit')</a>
