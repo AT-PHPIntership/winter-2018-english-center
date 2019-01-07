@@ -62,7 +62,7 @@
                 <form method="POST" action="{{ route('admin.courses.destroy', $course->id) }}" class="inline" onsubmit="return confirmedDelete()">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete Course" data-confirm="'Are you sure you want to delete?">@lang('course.list_course.delete')
+                    <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete Course">@lang('course.list_course.delete')
                     </button>
                 </form>
               </td>
