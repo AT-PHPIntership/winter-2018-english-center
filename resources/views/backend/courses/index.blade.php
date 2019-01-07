@@ -2,14 +2,14 @@
 @section('title', 'HOME')
 @section('content')
 <section class="content-header">
-  <h1>@lang('course.title')</h1>
+  <h1>@lang('course.list_course.title')</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
       <i class="fas fa-tachometer-alt"></i>@lang('layout_admin.home')
       </a>
     </li>
-    <li class="active">@lang('course.title')</li>
+    <li class="active">@lang('course.list_course.title')</li>
   </ol>
 </section>
 <section class="content">
@@ -32,7 +32,7 @@
           <thead>
             <tr>
               <th>@lang('course.list_course.id')</th>
-              <th>@lang('course.list_course.title')</th>
+              <th>@lang('course.list_course.name')</th>
               <th>@lang('course.list_course.parent')</th>
               <th>@lang('course.list_course.count_view')</th>
               <th>@lang('course.list_course.total_rating')</th>
