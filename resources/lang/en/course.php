@@ -1,11 +1,11 @@
 <?php
     return [
-        'title' => 'List Course',
         'list_course' => [
+            'title' => 'List Course',
             'id' => 'ID',
+            'name' => 'Course Name',
+            'parent' => 'Course Parent',
             'count_view' => 'View',
-            'title' => 'Name',
-            'parent' => 'Parent',
             'total_rating' => 'Total Rating',
             'average' => 'Average',
             'flag' => 'Flag',
@@ -17,12 +17,14 @@
         ],
         'create_course' => [
             'title' => 'Create Course',
-            'parent' => 'Course Parent',
-            'name' => 'Course Name',
-            'flag' => 'Course Flag',
             'btn' => 'Submit',
             'reset' => 'Cancel',
             'back' => 'Back',
             'success' => 'New Course added successfully.',
+        ],
+        'update_course' => [
+            'title' => 'Edit Course',
+            'success' => 'Update Course successfully.',
+            'select' => 'Choose here',
         ],
     ];

@@ -10,6 +10,20 @@ return [
         'role_id' => 'Role ID',
         'created_at' => 'Create',
         'updated_at' => 'Update',
+        'show' => 'Show',
+        'action' => 'Action',
+        'show_user' =>
+        [
+            'title' => 'User Detail',
+            'age' => 'Age',
+            'birthday' => 'Birthday',
+            'phone' => 'Phone',
+            'course_level' => 'Course Level',
+            'lession_level' => 'Lession Level',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'button' => 'Back'
+        ],
     ],
     'create_user' =>
     [
