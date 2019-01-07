@@ -10,6 +10,8 @@ return [
         'role_id' => 'Role ID',
         'created_at' => 'Create',
         'updated_at' => 'Update',
+        'show' => 'Show',
+        'action' => 'Action',
     ],
     'create_user' =>
     [
