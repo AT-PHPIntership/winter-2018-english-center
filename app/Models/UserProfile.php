@@ -12,7 +12,8 @@ class UserProfile extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'age', 'url', 'birthday', 'phone', 'user_id'
+        'name', 'age', 'url', 'birthday','phone', 'user_id',
+        'course_level', 'lession_level', 'created_at', 'updated_at'
     ];
     /**
      * Belongs to user
