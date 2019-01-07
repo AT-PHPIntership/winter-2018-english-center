@@ -10,7 +10,6 @@
             'average' => 'Average',
             'flag' => 'Flag',
             'action' => 'Action',
-            'success' => ' Success!',
             'edit' => 'Edit',
             'delete' => 'Delete',
             'courses' => 'Courses',
@@ -20,11 +19,9 @@
             'btn' => 'Submit',
             'reset' => 'Cancel',
             'back' => 'Back',
-            'success' => 'New Course added successfully.',
         ],
         'update_course' => [
             'title' => 'Edit Course',
-            'success' => 'Update Course successfully.',
             'select' => 'Choose here',
         ],
     ];

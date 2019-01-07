@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CourseService;
 use App\Http\Requests\CreateCourseRequest;
-use Illuminate\Support\Facades\Lang;
 use App\Models\Course;
 
 class CourseController extends Controller
@@ -42,7 +41,7 @@ class CourseController extends Controller
     public function store(CreateCourseRequest $requestCourse)
     {
         app(CourseService::class)->store($requestCourse);
-        return redirect()->route('admin.courses.index')->with('success', Lang::get('course.create_course.success'));
+        return redirect()->route('admin.courses.index')->with('success', __('common.success'));
     }
 
     /**
@@ -69,7 +68,7 @@ class CourseController extends Controller
     public function update(CreateCourseRequest $requestCourse, Course $course)
     {
         app(CourseService::class)->update($requestCourse->all(), $course);
-        return redirect()->route('admin.courses.index')->with('success', Lang::get('course.update_course.success'));
+        return redirect()->route('admin.courses.index')->with('success', __('common.success'));
     }
 
     /**
@@ -82,6 +81,6 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         app(CourseService::class)->destroy($course);
-        return redirect()->route('admin.courses.index')->with('success', 'Delete Course successfully.');
+        return redirect()->route('admin.courses.index')->with('success', __('common.success'));
     }
 }

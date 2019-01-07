@@ -19,8 +19,7 @@
     <div class="col-md-6">
       <div class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i>@lang('course.list_course.success')</h4>
-        <p>* {{ Session::get('success') }}</p>
+        <h4><i class="icon fa fa-check"></i>* {{ Session::get('success') }}</h4>
       </div>
     </div>
   </div>
