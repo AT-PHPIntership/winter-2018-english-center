@@ -19,9 +19,9 @@
             'btn' => 'Submit',
             'reset' => 'Cancel',
             'back' => 'Back',
+            'select' => 'Choose here',
         ],
         'update_course' => [
             'title' => 'Edit Course',
-            'select' => 'Choose here',
         ],
     ];

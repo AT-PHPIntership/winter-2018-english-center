@@ -25,7 +25,7 @@ class CreateCourseRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'parent_id' => 'exists:courses, id',
+            'parent_id' => 'nullable|exists:courses,id',
             'flag' => 'required|boolean',
         ];
     }
@@ -35,10 +35,10 @@ class CreateCourseRequest extends FormRequest
      *
      * @return array
      */
-    // public function messages()
-    // {
-    //     return [
-    //         'parent_id.exists' => 'Not exists course parent in courses',
-    //     ];
-    // }
+    public function messages()
+    {
+        return [
+            'parent_id.exists' => 'Not exists course parent in courses',
+        ];
+    }
 }

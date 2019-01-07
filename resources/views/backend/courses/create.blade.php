@@ -31,7 +31,7 @@
           <div class="form-group">
             <label>@lang('course.list_course.parent')</label>
             <select name="parent_id" class="form-control select2">
-              <option value="0"></option>
+              <option value="">@lang('course.create_course.select')</option>
               @foreach ($courses as $course)
               <option value="{{ $course->id }}">{{ $course->title }}</option>
               @endforeach

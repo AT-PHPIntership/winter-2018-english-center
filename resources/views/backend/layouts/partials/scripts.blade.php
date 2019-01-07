@@ -17,3 +17,5 @@
 <script src="js/main.js"></script>
 <!-- Show delete confimation when click button delete -->
 <script src="js/common.js"></script>
+<!-- Show alert when create, update, delete -->
+<script src="js/show.js"></script>
