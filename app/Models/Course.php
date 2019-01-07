@@ -7,6 +7,8 @@ use Kalnoy\Nestedset\NodeTrait;
 
 class Course extends Model
 {
+    use SoftDeletes;
+    
     const VIP = 1;
     const TRIAL = 0;
     
