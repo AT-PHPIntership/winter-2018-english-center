@@ -31,7 +31,6 @@ class UpdateUserRequest extends FormRequest
             'confirm_password' => 'same:password',
             'age' => 'required|numeric|min:5|max:100',
             'birthday' => 'required|date|before:today',
-            'age' => 'required|numeric|min:5|max:100',
             'phone' => 'required|min:10',
         ];
     }
