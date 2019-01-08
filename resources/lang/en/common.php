@@ -8,6 +8,6 @@ return [
     'edit' => 'Edit',
     'delete' => 'Delete',
     'back' => 'Back',
-    'reset' => 'Cancel',
-    'btn' => 'Submit'
+    'reset' => 'Reset',
+    'btn' => 'Submit',
 ];
