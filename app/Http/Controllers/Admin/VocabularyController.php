@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\VocabularyService;
+use App\Http\Requests\CreateVocabularyRequest;
+use Excel;
+use App\Models\Vocabulary;
+use App\Http\Controllers\Admin\Item;
 
 class VocabularyController extends Controller
 {
@@ -27,5 +31,19 @@ class VocabularyController extends Controller
     public function create()
     {
         return view('backend.vocabularies.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request CreateVocabularyRequest request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CreateVocabularyRequest $request)
+    {
+        app(VocabularyService::class)->import($request);
+        // app(VocabularyService::class)->uploadSound($request);
+        return redirect()->route('admin.vocabularies.index')->with('success', 'Insert Record successfully.');
     }
 }

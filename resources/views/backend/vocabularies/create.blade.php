@@ -22,20 +22,20 @@
         <div class="panel panel-default">
           <div class="panel-heading">{{ __('vocabulary.import_voca.voca_import') }}</div>
           <div class="panel-body">
-            <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+            <form class="form-horizontal" method="POST" action="{{ route('admin.vocabularies.store') }}" enctype="multipart/form-data">
               @csrf
               <div class="form-group">
                 <label for="csv_file" class="col-md-4 control-label">{{ __('vocabulary.import_voca.import_file') }}</label>
                 <div class="col-md-6">
-                  <input id="csv_file" type="file" class="form-control" name="csv_file" required>
+                  <input id="csv_file" type="file" class="form-control" name="import_file" required>
                 </div>
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label class="col-md-4 control-label">{{ __('vocabulary.list_vocabulary.sound') }}</label>
                 <div class="col-md-6">
-                  <input name="title" type="text" class="form-control" placeholder="Add name course ...">
+                  <input name="sound" type="text" class="form-control" placeholder="Add name course ...">
                 </div>
-              </div>
+              </div> --}}
               <div class="form-group">
                 <div class="col-md-8 col-md-offset-4">
                   <button type="submit" class="btn btn-primary">
