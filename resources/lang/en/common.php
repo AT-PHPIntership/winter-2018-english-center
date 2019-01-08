@@ -7,4 +7,7 @@ return [
     'detail' => 'Detail',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'back' => 'Back',
+    'reset' => 'Reset',
+    'btn' => 'Submit',
 ];
