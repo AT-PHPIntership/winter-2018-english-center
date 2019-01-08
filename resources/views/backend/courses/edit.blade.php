@@ -33,12 +33,12 @@
             <label>@lang('course.list_course.parent')</label>
             <select name="parent_id" class="form-control select2">
                 @if($course->parent_id == null)
-                 <option value="0" selected disabled hidden>@lang('course.update_course.select')</option>
+                 <option value="" selected disabled hidden>@lang('course.create_course.select')</option>
                  @foreach ($courses as $courseparent)
                     <option value="{{ $courseparent->id }}">{{ $courseparent->title }}</option>
                  @endforeach
                  @else
-                 <option value="0"></option>
+                 <option value=""></option>
                  @foreach ($courses as $courseparent)
                   <option value="{{ $courseparent->id }}" {{ $course->parent_id == $courseparent->id ? "selected": "" }}>{{ $courseparent->title }}</option>
                  @endforeach

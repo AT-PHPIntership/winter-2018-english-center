@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 
 class UserController extends Controller
@@ -73,5 +74,32 @@ class UserController extends Controller
     public function show(User $user)
     {
         return view('backend.users.show', compact('user'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param User $user user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(User $user)
+    {
+        return view('backend.users.edit', compact('user'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request request
+     * @param User                     $user    user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateUserRequest $request, User $user)
+    {
+        $data = $request->except(['_token','_method']);
+        $this->userService->update($data, $user);
+        return redirect()->route('admin.users.index')->with('success', __('common.success'));
     }
 }
