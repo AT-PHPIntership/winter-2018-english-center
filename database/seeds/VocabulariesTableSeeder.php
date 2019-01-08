@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Vocabulary;
 
 class VocabulariesTableSeeder extends Seeder
 {
@@ -11,6 +12,6 @@ class VocabulariesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Vocabulary::class, 5)->create();
+        factory(App\Models\Vocabulary::class, 10)->create();
     }
 }

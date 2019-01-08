@@ -2,14 +2,14 @@
 @section('title', 'HOME')
 @section('content')
 <section class="content-header">
-  <h1>@lang('course.list_course.title')</h1>
+  <h1>@lang('vocabulary.title')</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
       <i class="fas fa-tachometer-alt"></i>@lang('layout_admin.home')
       </a>
     </li>
-    <li class="active">@lang('course.list_course.title')</li>
+    <li class="active">@lang('vocabulary.title')</li>
   </ol>
 </section>
 <section class="content">
@@ -34,6 +34,7 @@
               <th>@lang('vocabulary.list_vocabulary.id')</th>
               <th>@lang('vocabulary.list_vocabulary.title')</th>
               <th>@lang('vocabulary.list_vocabulary.content')</th>
+              <th>@lang('vocabulary.list_vocabulary.sound')</th>
               <th>@lang('vocabulary.list_vocabulary.action')</th>
             </tr>
           </thead>
@@ -41,6 +42,7 @@
             @foreach ($vocabularies as $key => $vocabulary)
             <tr>
               <td>{{ $vocabulary->id }}</td>
+              <td>{{ $vocabulary->title }}</td>
               <td>{{ $vocabulary->content }}</td>
               <td>{{ $vocabulary->sound }}</td>
               <td>
