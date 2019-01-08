@@ -30,10 +30,8 @@ class UserRequest extends FormRequest
             'confirm_password' => 'required|same:password',
             'age' => 'required|numeric|min:5|max:100',
             'birthday' => 'required|date|before:today',
-            'age' => 'required|numeric|min:5|max:100',
             'phone' => 'required|min:10',
             'role_id' => 'required',
-            'url' => 'required',
         ];
     }
 }
