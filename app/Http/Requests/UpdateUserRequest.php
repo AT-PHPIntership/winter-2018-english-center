@@ -27,9 +27,8 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:50',
             'email' => 'required|email|unique:users,email,'. $this->user->id,
-            'old_password' => 'required',
-            'password' => 'required|min:6',
-            'confirm_password' => 'required|same:password',
+            'password' => 'min:6',
+            'confirm_password' => 'same:password',
             'age' => 'required|numeric|min:5|max:100',
             'birthday' => 'required|date|before:today',
             'age' => 'required|numeric|min:5|max:100',
@@ -49,8 +48,8 @@ class UpdateUserRequest extends FormRequest
         // checks user old password
         // before making changes
         $validator->after(function ($validator) {
-            if (!Hash::check($this->old_password, $this->user()->password)) {
-                $validator->errors()->add('old_password', __(user.edit_user.message));
+            if (!empty($this->old_password) && !Hash::check($this->old_password, $this->user->password)) {
+                $validator->errors()->add('old_password', __('user.edit_user.message'));
             }
         });
         return;
