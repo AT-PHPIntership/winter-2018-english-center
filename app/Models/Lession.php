@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lession extends Model
 {
-    protected $fillable = ['name', 'image', 'video', 'count_view'];
+    protected $fillable = ['name', 'image', 'video', 'count_view', 'total_rating', 'average', 'role'];
 
     protected $table = 'lessions';
 
     /**
-     * BelongsTo lessions
+     * BelongsTo courses
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -21,7 +21,7 @@ class Lession extends Model
     }
 
     /**
-     * BelongsTo lessions
+     * BelongsTo levels
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -31,7 +31,7 @@ class Lession extends Model
     }
 
     /**
-     * BelongsToMany levels
+     * BelongsToMany vocabularies
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
