@@ -9,7 +9,7 @@ class Course extends Model
 {
     const VIP = 1;
     const TRIAL = 0;
-
+    
     protected $fillable = [ 'title', 'parent_id', 'count_view', 'total_rating', 'average', 'flag'];
 
     /**
@@ -40,7 +40,7 @@ class Course extends Model
     }
 
     /**
-     * HasMany courses
+     * HasMany lessions
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
