@@ -18,6 +18,16 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
      * Define putPHPToJavaScript
      *
      * @return void
@@ -28,15 +38,5 @@ class AppServiceProvider extends ServiceProvider
             'define' => config('define'),
             'trans'  => __('js'),
         ]);
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }

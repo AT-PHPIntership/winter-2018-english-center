@@ -102,4 +102,17 @@ class UserController extends Controller
         $this->userService->update($data, $user);
         return redirect()->route('admin.users.index')->with('success', __('common.success'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param User $user user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(User $user)
+    {
+        $this->userService->destroy($user);
+        return redirect()->route('admin.users.index')->with('success', __('common.success'));
+    }
 }
