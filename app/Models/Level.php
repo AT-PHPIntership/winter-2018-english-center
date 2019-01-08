@@ -12,5 +12,5 @@ class Level extends Model
 
     protected $fillable = ['level'];
 
-    protected $table = 'levels';
+    protected $table = 'm_level';
 }
