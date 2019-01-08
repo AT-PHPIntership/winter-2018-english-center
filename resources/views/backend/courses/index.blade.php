@@ -1,6 +1,17 @@
 @extends('backend.layouts.master')
 @section('title', 'HOME')
 @section('content')
+<section class="content-header">
+  <h1>@lang('course.list_course.title')</h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="{{ route('admin.dashboard') }}">
+      <i class="fas fa-tachometer-alt"></i>@lang('layout_admin.home')
+      </a>
+    </li>
+    <li class="active">@lang('course.list_course.title')</li>
+  </ol>
+</section>
 <section class="content">
   <div class="row">
   @if (Session::has('success'))
@@ -16,15 +27,12 @@
   @endif
   <div class="col-xs-12">
     <div class="box">
-      <div class="box-header">
-        <h3 class="box-title">@lang('course.title')</h3>
-      </div>
       <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
           <thead>
             <tr>
               <th>@lang('course.list_course.id')</th>
-              <th>@lang('course.list_course.title')</th>
+              <th>@lang('course.list_course.name')</th>
               <th>@lang('course.list_course.parent')</th>
               <th>@lang('course.list_course.count_view')</th>
               <th>@lang('course.list_course.total_rating')</th>
@@ -50,8 +58,9 @@
               <td>{{ $course->average }}</td>
               <td>{{ $course->flag }}</td>
               <td>
-                <a href="#" class="btn btn-warning">@lang('course.list_course.edit')</a>
-                <button type="button" class="btn btn-danger form-delete btn-delete-item">@lang('course.list_course.delete')</button>
+                <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
+                <button type="button" class="btn btn-danger form-delete btn-delete-item">@lang('course.list_course.delete')
+                </button>
               </td>
             </tr>
             @endforeach

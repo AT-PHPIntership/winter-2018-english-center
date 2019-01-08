@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vocabulary extends Model
 {
-    protected $fillable = ['content', 'sound'];
+    protected $fillable = ['title', 'content', 'sound'];
 
     protected $table = 'vocabularies';
 

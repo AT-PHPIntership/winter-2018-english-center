@@ -15,7 +15,7 @@ class Level extends Model
     protected $table = 'levels';
    
     /**
-     * Hasmany levels
+     * Hasmany lessions
      *
      * @return \Illuminate\Database\Eloquent\Relations\Hasmany
      */

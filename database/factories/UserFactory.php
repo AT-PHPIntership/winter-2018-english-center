@@ -56,6 +56,7 @@ $factory->define(App\Models\Lession::class, function(Faker $faker) {
 
 $factory->define(App\Models\Vocabulary::class, function(Faker $faker) {
     return [
+        'title' => $faker->catchPhrase,
         'content' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'sound' => $faker->url,
     ];

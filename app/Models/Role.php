@@ -11,6 +11,15 @@ class Role extends Model
     const ROLE_VIP = 'VIP';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+    ];
+
+    /**
      * Has many users
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
