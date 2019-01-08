@@ -32,8 +32,9 @@
           <thead>
             <tr>
               <th>@lang('vocabulary.list_vocabulary.id')</th>
-              <th>@lang('vocabulary.list_vocabulary.title')</th>
-              <th>@lang('vocabulary.list_vocabulary.content')</th>
+              <th>@lang('vocabulary.list_vocabulary.vocabulary')</th>
+              <th>@lang('vocabulary.list_vocabulary.word_type')</th>
+              <th>@lang('vocabulary.list_vocabulary.means')</th>
               <th>@lang('vocabulary.list_vocabulary.sound')</th>
               <th>@lang('vocabulary.list_vocabulary.action')</th>
             </tr>
@@ -42,8 +43,9 @@
             @foreach ($vocabularies as $key => $vocabulary)
             <tr>
               <td>{{ $vocabulary->id }}</td>
-              <td>{{ $vocabulary->title }}</td>
-              <td>{{ $vocabulary->content }}</td>
+              <td>{{ $vocabulary->vocabulary }}</td>
+              <td>{{ $vocabulary->word_type }}</td>
+              <td>{{ $vocabulary->means }}</td>
               <td>{{ $vocabulary->sound }}</td>
               <td>
                 <a href="#" class="btn btn-warning">@lang('course.list_course.edit')</a>
@@ -57,7 +59,7 @@
         </table>
         <div class="box-footer clearfix">
           <ul class="pagination pagination-sm no-margin pull-right">
-            {{-- {{ $vocabulary->links() }} --}}
+            {{ $vocabularies->links() }}
           </ul>
         </div>
       </div>

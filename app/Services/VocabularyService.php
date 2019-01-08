@@ -12,6 +12,6 @@ class VocabularyService
     **/
     public function index()
     {
-        return Vocabulary::all();
+        return Vocabulary::orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
     }
 }
