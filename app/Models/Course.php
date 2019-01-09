@@ -41,4 +41,14 @@ class Course extends Model
     {
         return $this->belongsTo('App\Models\Course', 'parent_id', 'id');
     }
+
+    /**
+     * HasMany lessions
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lessions()
+    {
+        return $this->hasMany('App\Models\Lession');
+    }
 }

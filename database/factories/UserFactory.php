@@ -39,3 +39,26 @@ $factory->state(App\Models\Course::class, 'child', function(Faker $faker) {
         'parent_id' => factory('App\Models\Course')->create()->id,
     ];
 });
+
+$factory->define(App\Models\Lession::class, function(Faker $faker) {
+    return [
+        'course_id' => factory('App\Models\Course')->create()->id,
+        'name' => $faker->catchPhrase,
+        'image' => $faker->imageUrl($width = 640, $height = 480),
+        'video'=> $faker->url,
+        'count_view' => $faker->randomDigit,
+        'total_rating' => $faker->numberBetween(1, 10),
+        'average' => $faker->numberBetween(1, 5),
+        'level_id' => $faker->randomElement([1,2,3]),
+        'role' => $faker->boolean,
+    ];
+});
+
+$factory->define(App\Models\Vocabulary::class, function(Faker $faker) {
+    return [
+        'vocabulary' => $faker->word,
+        'word_type' => $faker->word,
+        'means' => $faker->catchPhrase,
+        'sound' => $faker->url,
+    ];
+});
