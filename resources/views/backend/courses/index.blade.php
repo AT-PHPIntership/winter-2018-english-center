@@ -19,8 +19,7 @@
     <div class="col-md-6">
       <div class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i>@lang('course.list_course.success')</h4>
-        <p>* {{ Session::get('success') }}</p>
+        <h4><i class="icon fa fa-check"></i>* {{ Session::get('success') }}</h4>
       </div>
     </div>
   </div>
@@ -59,8 +58,12 @@
               <td>{{ $course->flag }}</td>
               <td>
                 <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
-                <button type="button" class="btn btn-danger form-delete btn-delete-item">@lang('course.list_course.delete')
-                </button>
+                <form method="POST" action="{{ route('admin.courses.destroy', $course->id) }}" class="inline" onsubmit="return confirmedDelete()">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete Course">@lang('course.list_course.delete')
+                    </button>
+                </form>
               </td>
             </tr>
             @endforeach

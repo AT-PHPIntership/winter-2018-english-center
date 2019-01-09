@@ -13,3 +13,9 @@
 <script src="bower_components/admin-lte/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="bower_components/admin-lte/dist/js/demo.js"></script>
+<!-- handle pass value php to Javascript -->
+<script src="js/main.js"></script>
+<!-- Show delete confimation when click button delete -->
+<script src="js/common.js"></script>
+<!-- Show alert when create, update, delete -->
+<script src="js/show.js"></script>

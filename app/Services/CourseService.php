@@ -64,4 +64,16 @@ class CourseService
     {
         return $course->update($data);
     }
+
+    /**
+     * Function destroy course
+     *
+     * @param Course $course comment
+     *
+     * @return App\Services\CourseService
+    **/
+    public function destroy($course)
+    {
+        return $course->delete();
+    }
 }
