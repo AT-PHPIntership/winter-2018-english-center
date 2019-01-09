@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
+use App\Services\ImageService;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
@@ -19,15 +20,24 @@ class UserController extends Controller
     private $userService;
 
     /**
+     * Where to receipt users from ImageService.
+     *
+     * @var $imageService
+     */
+    private $imageService;
+
+    /**
      * Create a new controller instance.
      *
-     * @param UserService $userService UserService
+     * @param UserService  $userService  UserService
+     * @param ImageService $imageService ImageService
      *
      * @return void
      */
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, ImageService $imageService)
     {
         $this->userService = $userService;
+        $this->imageService = $imageService;
     }
 
     /**
@@ -60,6 +70,10 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        $data = $request->except(['_token','_method']);
+        if ($request->hasFile('url')) {
+            $data['url'] = $this->imageService->uploadImage($data['url']);
+        }
         $this->userService->store($request->all());
         return redirect()->route('admin.users.index')->with('success', __('common.success'));
     }
@@ -99,6 +113,9 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         $data = $request->except(['_token','_method']);
+        if ($request->hasFile('url')) {
+            $data['url'] = $this->imageService->uploadImage($data['url']);
+        }
         $this->userService->update($data, $user);
         return redirect()->route('admin.users.index')->with('success', __('common.success'));
     }

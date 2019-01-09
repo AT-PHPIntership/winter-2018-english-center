@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
-                <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
+                <form action="{{ route('admin.users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="box-body">
@@ -118,7 +118,7 @@
                         </div>
                         <div class="form-group">
                             <label for="url">{{ __('user.create_user.url') }}</label>
-                            <img class="profile-user-img img-responsive img-circle" src="{{ $user->userProfile->url }}" alt="User profile picture">
+                            <img class="profile-user-img img-responsive img-circle" src="storage/avatar/{{ $user->userProfile->url }}" alt="User profile picture">
                             <input type="file" name="url" value="{{ $user->userProfile->url }}">
                             @if ($errors->has('url'))
                             <span class="help-block col-sm-12">
