@@ -18,7 +18,7 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <!-- form start -->
-                <form role="form" method="POST" action="{{ route('admin.users.store') }}">
+                <form role="form" method="POST" action="{{ route('admin.users.store') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="box-body">
                         <div class="form-group">
