@@ -13,4 +13,14 @@ class Level extends Model
     protected $fillable = ['level'];
 
     protected $table = 'm_level';
+   
+    /**
+     * Hasmany lessions
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\Hasmany
+     */
+    public function lessions()
+    {
+        return $this->hasMany('App\Models\Lession');
+    }
 }
