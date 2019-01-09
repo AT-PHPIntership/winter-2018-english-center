@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::resource('users', 'UserController');
 
     Route::resource('courses', 'CourseController');
+
+    Route::resource('levels', 'LevelController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
