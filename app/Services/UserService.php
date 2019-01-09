@@ -57,7 +57,6 @@ class UserService
     **/
     public function destroy($user)
     {
-        $user->userProfile->delete();
         $user->delete();
     }
 }
