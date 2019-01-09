@@ -13,7 +13,7 @@ class LevelsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('levels')->insert([
+        DB::table('m_level')->insert([
             [
                 'level' => Level::LEVEL_BASIC,
                 'created_at' => Carbon::now(),
