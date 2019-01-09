@@ -30,6 +30,8 @@ return [
         'title' => 'Create User',
         'name' => 'Name',
         'email' => 'Email',
+        'old_password' => 'Old Password',
+        'new_password' => 'New Password',
         'password' => 'Password',
         'confirm_pass' => 'Confirm Password',
         'age' => 'Age',
@@ -45,5 +47,10 @@ return [
         ],
         'url' => 'Avatar',
         'button' => 'Create',
+    ],
+    'edit_user' =>
+    [
+        'title' => 'Edit User',
+        'message' => 'Your old password is incorrect.',
     ]
 ];
