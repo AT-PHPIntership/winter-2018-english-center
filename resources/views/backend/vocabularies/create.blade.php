@@ -30,12 +30,6 @@
                   <input id="csv_file" type="file" class="form-control" name="import_file" required>
                 </div>
               </div>
-              {{-- <div class="form-group">
-                <label class="col-md-4 control-label">{{ __('vocabulary.list_vocabulary.sound') }}</label>
-                <div class="col-md-6">
-                  <input name="sound" type="text" class="form-control" placeholder="Add name course ...">
-                </div>
-              </div> --}}
               <div class="form-group">
                 <div class="col-md-8 col-md-offset-4">
                   <button type="submit" class="btn btn-primary">

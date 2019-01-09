@@ -8,4 +8,8 @@ return [
         'vip' => 'VIP',
         'trial' => 'TRIAL',
     ],
+    'oxford' => [
+        'app_id' => env('OXFORD_ID'),
+        'app_key' => env('OXFORD_KEY'),
+    ],
 ];
