@@ -70,7 +70,8 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        if ($request->has('url')) {
+        $data = $request->except(['_token','_method']);
+        if ($request->hasFile('url')) {
             $data['url'] = $this->imageService->uploadImage($data['url']);
         }
         $this->userService->store($request->all());
@@ -112,7 +113,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         $data = $request->except(['_token','_method']);
-        if ($request->has('url')) {
+        if ($request->hasFile('url')) {
             $data['url'] = $this->imageService->uploadImage($data['url']);
         }
         $this->userService->update($data, $user);

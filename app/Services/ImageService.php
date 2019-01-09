@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Config\define;
+use Faker\Factory as Faker;
 
 class ImageService
 {
@@ -15,7 +15,8 @@ class ImageService
      */
     public function uploadImage($image)
     {
-        $fileName = time() . '_' . $image->getClientOriginalName();
+        $faker= Faker::create();
+        $fileName = $faker->uuid . '_' . $image->getClientOriginalName();
         $image->move('storage/avatar', $fileName);
         return $fileName;
     }
