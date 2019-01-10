@@ -12,8 +12,14 @@
         ],
         'import_voca' => [
             'title' => 'Create Vocabularies',
-            'voca_import' => 'Vocabularies Import',
+            'voca_import' => 'Import File',
+            'voca_create' => 'Add Vocabulary',
             'import_file' => 'CSV file to import',
             'submit' => 'Submit',
+        ],
+        'create_voca' => [
+            'vocabulary' => 'Vocabulary',
+            'word_type'  => 'Word Type',
+            'means' => 'Means',
         ],
     ];

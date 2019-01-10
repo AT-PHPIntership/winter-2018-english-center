@@ -42,7 +42,11 @@ class VocabularyController extends Controller
      */
     public function store(CreateVocabularyRequest $request)
     {
-        app(VocabularyService::class)->import($request);
-        return redirect()->route('admin.vocabularies.index')->with('success', 'Insert Record successfully.');
+
+        $data = app(VocabularyService::class)->importFile($request);
+        if ($data) {
+            return redirect()->route('admin.vocabularies.index');
+        }
+        return redirect()->back();
     }
 }

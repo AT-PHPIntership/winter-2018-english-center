@@ -18,52 +18,72 @@ class VocabularyService
         return Vocabulary::orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
     }
 
+    /**
+     * Function filterVoca check vocabulary
+     *
+     * @param Excel $data get data file csv
+     *
+     * @return App\Services\VocabularyService
+    **/
     public function filterVoca($data)
     {
-        $collection = collect($data->pluck('vocabulary'));
+        $fileData = collect($data->pluck('vocabulary'));
         $vocabularies = Vocabulary::pluck('vocabulary');
-        $diff = $collection->diff($vocabularies);
+        $compare = $fileData->diff($vocabularies);
 
-        return $data->whereIn('vocabulary', $diff);
+        return $data->whereIn('vocabulary', $compare);
     }
     
-    public function import($request)
+    /**
+     * Function importFile import file csv vocabulary
+     *
+     * @param CreateVocabularyRequest $request get data file csv
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function importFile($request)
     {
         try {
             $path = $request->file('import_file')->getRealPath();
-            $data = Excel::load($path, function($reader) {
-        })->get();
+            $data = Excel::load($path)->get();
             $lineError = 0;
             $vocabularies = $this->filterVoca($data);
             if ($vocabularies->count()) {
                 foreach ($vocabularies as $key => $value) {
-                    $arr[$key] = ['vocabulary' => $value->vocabulary, 'word_type' => $value->word_type, 'means' => $value->means];
+                    $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
                     $lineError = $key + 2;
                     $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
-
-                    // dd($vocabularyContent);
-                    dd(collect($vocabularyContent->results)->flatten(2)->values()->all());
                     if ($vocabularyContent == false) {
                         unset($vocabularies->$key);
                         continue;
                     }
-                    $value = $vocabularies->get('audioFile');
-
-                    $arr[$key]['sound'] = $vocabularyContent->results[0]->lexicalEntries[0]->pronunciations[0]->audioFile;
+                    $arr[$key]['word_type'] = collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory');
+                    $arr[$key]['sound'] = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
                 }
                 if (!empty($arr)) {
                     Vocabulary::insert($arr);
                 }
             }
+            \DB::commit();
+            session()->flash('success', __('common.success'));
+            return true;
         } catch (\Exception $e) {
-            dd($e->getMessage(), $lineError);
+            session()->flash('error', __('common.error', ['attribute' => $e->getMessage(), 'line' => $lineError]));
+            return false;
         }
     }
 
+    /**
+     * Function getVocabularyContent get data vocabulary
+     *
+     * @param Vocabulary $vocabulary get data api
+     *
+     * @return App\Services\VocabularyService
+    **/
     protected function getVocabularyContent(string $vocabulary)
     {
         $client = new Client();
-        $response = $client->request('GET', 'https://od-api.oxforddictionaries.com/api/v1/entries/en/'. $vocabulary, [ 
+        $response = $client->request('GET', 'https://od-api.oxforddictionaries.com/api/v1/entries/en/'. $vocabulary, [
             'headers' => [
                 'app_id'  => config('define.oxford.app_id'),
                 'app_key' => config('define.oxford.app_key')
@@ -72,8 +92,7 @@ class VocabularyService
         ]);
 
         if ($response->getStatusCode() == Response::HTTP_NOT_FOUND) {
-            // throw new \InvalidArgumentException("Vocabulary not found !");//false
-            return false;
+            throw new \InvalidArgumentException("Vocabulary is wrong");
         }
 
         return json_decode($response->getBody()->getContents());
