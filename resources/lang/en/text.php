@@ -8,4 +8,10 @@ return [
         'sound' => 'Sound',
         'action' => 'Action',
     ],
+    'create_text' =>
+    [
+        'title' => 'Create Text',
+        'content' => 'Content',
+        'sound' => 'Sound',
+    ],
 ];

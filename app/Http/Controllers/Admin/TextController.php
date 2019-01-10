@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\TextService;
+use App\Http\Requests\TextRequest;
 
 class TextController extends Controller
 {
@@ -36,5 +37,32 @@ class TextController extends Controller
     {
         $texts = $this->textService->index();
         return view('backend.texts.index', compact('texts'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('backend.texts.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param TextRequest $request Request
+     *
+     * @return void
+     */
+    public function store(TextRequest $request)
+    {
+        $data = $request->except(['_token','_method']);
+        if ($request->hasFile('url')) {
+            $data['url'] = $this->imageService->uploadImage($data['url']);
+        }
+        $this->userService->store($request->all());
+        return redirect()->route('admin.users.index')->with('success', __('common.success'));
     }
 }
