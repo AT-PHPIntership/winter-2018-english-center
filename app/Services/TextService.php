@@ -13,9 +13,7 @@ class TextService
      */
     public function index()
     {
-        // dd(Text::all());
         $texts = Text::paginate(config('define.page_site'));
-        // dd($texts);
         return $texts;
     }
 }

@@ -35,7 +35,6 @@ class TextController extends Controller
     public function index()
     {
         $texts = $this->textService->index();
-        // dd($texts);
         return view('backend.texts.index', compact('texts'));
     }
 }
