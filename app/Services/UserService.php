@@ -28,7 +28,6 @@ class UserService
      */
     public function store($data)
     {
-        $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
         $user->userProfile()->create($data);
     }
@@ -43,8 +42,19 @@ class UserService
     */
     public function update($data, $user)
     {
-        $data['password'] = bcrypt($data['password']);
         $user->update($data);
         $user->userProfile->update($data);
+    }
+
+    /**
+     * Function destroy course
+     *
+     * @param User $user user
+     *
+     * @return App\Services\CourseService
+    **/
+    public function destroy($user)
+    {
+        $user->delete();
     }
 }

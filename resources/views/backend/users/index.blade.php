@@ -51,7 +51,11 @@
                             <td>
                                 <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning">@lang('common.edit')</a>
                                 @if ($user->role->name != App\Models\Role::ROLE_ADMIN)
-                                <button type="button" class="btn btn-danger form-delete btn-delete-item">@lang('common.delete')</button>
+                                <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline" onsubmit="return confirmedDelete()">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete User">@lang('common.delete')</button>
+                                </form>
                                 @endif
                             </td>
                         </tr>
