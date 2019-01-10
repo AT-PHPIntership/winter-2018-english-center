@@ -39,4 +39,14 @@ class Lession extends Model
     {
         return $this->belongsToMany('App\Models\Vocabulary');
     }
+
+    /**
+     * Has one text
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function text()
+    {
+        return $this->hasMany('App\Models\Text');
+    }
 }

@@ -62,3 +62,10 @@ $factory->define(App\Models\Vocabulary::class, function(Faker $faker) {
         'sound' => $faker->url,
     ];
 });
+
+$factory->define(App\Models\Text::class, function(Faker $faker) {
+    return [
+        'content' => $faker->text,
+        'sound' => $faker->url,
+    ];
+});
