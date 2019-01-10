@@ -22,6 +22,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::resource('courses', 'CourseController');
 
     Route::resource('levels', 'LevelController');
+
+    Route::resource('texts', 'TextController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {

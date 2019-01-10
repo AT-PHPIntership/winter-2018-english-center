@@ -93,7 +93,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_text')</a></li>
+            <li><a href="{{ route('admin.texts.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_text')</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_text')</a></li>
           </ul>
         </li>
