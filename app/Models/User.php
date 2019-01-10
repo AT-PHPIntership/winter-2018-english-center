@@ -47,4 +47,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Role');
     }
+
+    /**
+     * The function help encrypt the password when user enter into
+     *
+     * @param string $password [input password to hash]
+     *
+     * @return \Illuminate\Support\Facades\Hash;
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
 }

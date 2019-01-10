@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
+use JavaScript;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->putPHPToJavaScript();
+        User::observe(UserObserver::class);
     }
 
     /**
@@ -24,5 +28,18 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    /**
+     * Define putPHPToJavaScript
+     *
+     * @return void
+     */
+    protected function putPHPToJavaScript()
+    {
+        JavaScript::put([
+            'define' => config('define'),
+            'trans'  => __('js'),
+        ]);
     }
 }
