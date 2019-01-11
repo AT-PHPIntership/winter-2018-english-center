@@ -53,18 +53,14 @@ class VocabularyService
                     $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
                     $lineError = $key + 2;
                     $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
-                    if ($vocabularyContent == false) {
-                        unset($vocabularies->$key);
-                        continue;
-                    }
-                    $arr[$key]['word_type'] = collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory');
-                    $arr[$key]['sound'] = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
+                    $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
+                    $arr[$key]['word_type'] = $parseVocabulary['word_type'];
+                    $arr[$key]['sound'] = $parseVocabulary['sound'];
                 }
                 if (!empty($arr)) {
                     Vocabulary::insert($arr);
                 }
             }
-            \DB::commit();
             session()->flash('success', __('common.success'));
             return true;
         } catch (\Exception $e) {
@@ -99,6 +95,21 @@ class VocabularyService
     }
 
     /**
+     * Function parseVocabularyContent pasrse vocabulary
+     *
+     * @param Vocabulary $vocabularyContent parse api
+     *
+     * @return App\Services\VocabularyService
+    **/
+    protected function parseVocabularyContent($vocabularyContent)
+    {
+        return [
+            'word_type' => collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory'),
+            'sound'     => collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile,
+        ];
+    }
+
+    /**
      * Function store create data vocabulary
      *
      * @param CreateVocabularyRequest $request create data api
@@ -114,5 +125,34 @@ class VocabularyService
         $vocabulary->means = $request->get('means');
         $vocabulary->sound = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
         $vocabulary->save();
+    }
+
+    /**
+     * Function update vocabulary
+     *
+     * @param ValidationVocabulary $data       requestVocabulary
+     * @param Vocabulary           $vocabulary vocabulary
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function update($data, $vocabulary)
+    {
+        $vocabularyContent = $this->getVocabularyContent($data['vocabulary']);
+        $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
+        $data['word_type'] = $parseVocabulary['word_type'];
+        $data['sound']= $parseVocabulary['sound'];
+        return $vocabulary->update($data);
+    }
+
+    /**
+     * Function destroy vocabulary
+     *
+     * @param Vocabulary $vocabulary vocabulary
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function destroy($vocabulary)
+    {
+        return $vocabulary->delete();
     }
 }
