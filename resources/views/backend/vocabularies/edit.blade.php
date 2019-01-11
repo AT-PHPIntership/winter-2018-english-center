@@ -43,13 +43,9 @@
               <span class="text-red help is-danger">* {{ $errors->first('means') }}</span>
             @endif
           </div>
-          <div class="form-group">
-            <label>@lang('vocabulary.list_vocabulary.sound')</label>
-            <input name="sound" type="text" class="form-control" value="{{ $vocabulary->sound }}">
-          </div>
         </div>
         <div class="box-footer">
-          <a href="{{ route('admin.courses.index')}}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
+          <a href="{{ route('admin.vocabularies.index')}}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
           <button type="reset" class="btn btn-default pull-right">@lang('course.create_course.reset')</button>
           <button type="submit" class="btn btn-primary pull-right">@lang('course.create_course.btn')</button>
         </div>

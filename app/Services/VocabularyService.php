@@ -128,18 +128,6 @@ class VocabularyService
     }
 
     /**
-     * Function edit vocabulary
-     *
-     * @param Vocabulary $id comment
-     *
-     * @return App\Services\VocabularyService
-    **/
-    public function edit($id)
-    {
-        return Vocabulary::findOrFail($id);
-    }
-
-    /**
      * Function update vocabulary
      *
      * @param ValidationVocabulary $data       requestVocabulary

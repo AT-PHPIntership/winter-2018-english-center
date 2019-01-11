@@ -66,13 +66,12 @@ class VocabularyController extends Controller
     /**
       * Edit the form for editing the specified resource.
       *
-      * @param Vocabulary $id vocabulary
+      * @param Vocabulary $vocabulary vocabulary
       *
       * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Vocabulary $vocabulary)
     {
-        $vocabulary = app(VocabularyService::class)->edit($id);
         return view('backend.vocabularies.edit')->with('vocabulary', $vocabulary);
     }
 
