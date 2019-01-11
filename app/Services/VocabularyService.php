@@ -53,10 +53,6 @@ class VocabularyService
                     $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
                     $lineError = $key + 2;
                     $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
-                    if ($vocabularyContent == false) {
-                        unset($vocabularies->$key);
-                        continue;
-                    }
                     $arr[$key]['word_type'] = collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory');
                     $arr[$key]['sound'] = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
                 }
@@ -64,7 +60,6 @@ class VocabularyService
                     Vocabulary::insert($arr);
                 }
             }
-            \DB::commit();
             session()->flash('success', __('common.success'));
             return true;
         } catch (\Exception $e) {

@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\VocabularyService;
 use App\Http\Requests\CreateVocabularyRequest;
-use Excel;
 use App\Models\Vocabulary;
-use App\Http\Controllers\Admin\Item;
 
 class VocabularyController extends Controller
 {
@@ -42,11 +40,7 @@ class VocabularyController extends Controller
      */
     public function store(CreateVocabularyRequest $request)
     {
-
         $data = app(VocabularyService::class)->importFile($request);
-        if ($data) {
-            return redirect()->route('admin.vocabularies.index');
-        }
-        return redirect()->back();
+        return $data ? redirect()->route('admin.vocabularies.index') : redirect()->back();
     }
 }
