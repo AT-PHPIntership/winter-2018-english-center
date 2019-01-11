@@ -81,7 +81,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_vocabularies')</a></li>
+            <li><a href="{{ route('admin.vocabularies.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_vocabularies')</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_vocabularies')</a></li>
           </ul>
         </li>
