@@ -8,6 +8,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class VocabularyService
 {
+    protected $client;
+
+    public function __construct()
+    {
+        $client = new Client();
+        $this->client = $client;
+    }
+
     /**
      * Function index get all vocabulary
      *
@@ -48,22 +56,20 @@ class VocabularyService
             $data = Excel::load($path)->get();
             $lineError = config('define.import_file.line_defaul');
             $vocabularies = $this->filterVoca($data);
-            if ($vocabularies->count()) {
-                foreach ($vocabularies as $key => $value) {
-                    $arr = [];
-                    $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
-                    $lineError = $key + config('define.import_file.line_error');
-                    $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
-                    $arr[$key]['word_type'] = collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory');
-                    $arr[$key]['sound'] = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
-                }
-                Vocabulary::insert($arr);
+            $arr = [];
+            foreach ($vocabularies as $key => $value) {
+                $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
+                $lineError = $key + config('define.import_file.line_error');
+                $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
+                $arr[$key]['word_type'] = collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory');
+                $arr[$key]['sound'] = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
             }
+            Vocabulary::insert($arr);
             session()->flash('success', __('common.success'));
-            // return true;
+            return true;
         } catch (\Exception $e) {
             session()->flash('error', __('common.error', ['attribute' => $e->getMessage(), 'line' => $lineError]));
-            // return false;
+            return false;
         }
     }
 
@@ -76,8 +82,7 @@ class VocabularyService
     **/
     protected function getVocabularyContent(string $vocabulary)
     {
-        $client = new Client();
-        $response = $client->request('GET', 'https://od-api.oxforddictionaries.com/api/v1/entries/en/'. $vocabulary, [
+        $response = $client->request('GET', config('define.oxford.get_api'). $vocabulary, [
             'headers' => [
                 'app_id'  => config('define.oxford.app_id'),
                 'app_key' => config('define.oxford.app_key')
@@ -86,7 +91,7 @@ class VocabularyService
         ]);
 
         if ($response->getStatusCode() == Response::HTTP_NOT_FOUND) {
-            throw new \InvalidArgumentException("Vocabulary is wrong");
+            throw new \InvalidArgumentException(config('define.import_file.file_error'));
         }
 
         return json_decode($response->getBody()->getContents());
