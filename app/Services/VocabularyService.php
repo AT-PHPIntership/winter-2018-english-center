@@ -9,6 +9,16 @@ use Symfony\Component\HttpFoundation\Response;
 class VocabularyService
 {
     /**
+     * Function construct defaul
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function __construct()
+    {
+        return $client = new Client();
+    }
+
+    /**
      * Function index get all vocabulary
      *
      * @return App\Services\VocabularyService
@@ -77,8 +87,7 @@ class VocabularyService
     **/
     protected function getVocabularyContent(string $vocabulary)
     {
-        $client = new Client();
-        $response = $client->request('GET', 'https://od-api.oxforddictionaries.com/api/v1/entries/en/'. $vocabulary, [
+        $response = $client->request('GET', config('define.courses.limit_rows'). $vocabulary, [
             'headers' => [
                 'app_id'  => config('define.oxford.app_id'),
                 'app_key' => config('define.oxford.app_key')
