@@ -46,20 +46,19 @@ class VocabularyService
         try {
             $path = $request->file('import_file')->getRealPath();
             $data = Excel::load($path)->get();
-            $lineError = 0;
+            $lineError = config('define.import_file.line_defaul');
             $vocabularies = $this->filterVoca($data);
             if ($vocabularies->count()) {
                 foreach ($vocabularies as $key => $value) {
+                    $arr = [];
                     $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
-                    $lineError = $key + 2;
+                    $lineError = $key + config('define.import_file.line_error');
                     $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
                     $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
                     $arr[$key]['word_type'] = $parseVocabulary['word_type'];
                     $arr[$key]['sound'] = $parseVocabulary['sound'];
                 }
-                if (!empty($arr)) {
-                    Vocabulary::insert($arr);
-                }
+                Vocabulary::insert($arr);
             }
             session()->flash('success', __('common.success'));
             return true;
@@ -112,7 +111,7 @@ class VocabularyService
     /**
      * Function store create data vocabulary
      *
-     * @param CreateVocabularyRequest $request create data api
+     * @param ValidationVocabulary $data create data api
      *
      * @return App\Services\VocabularyService
     **/
@@ -122,7 +121,7 @@ class VocabularyService
         $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
         $data['word_type'] = $parseVocabulary['word_type'];
         $data['sound'] = $parseVocabulary['sound'];
-        return Vocabulary::create($data);
+        Vocabulary::create($data);
     }
 
     /**
@@ -139,7 +138,7 @@ class VocabularyService
         $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
         $data['word_type'] = $parseVocabulary['word_type'];
         $data['sound']= $parseVocabulary['sound'];
-        return $vocabulary->update($data);
+        $vocabulary->update($data);
     }
 
     /**
@@ -151,6 +150,6 @@ class VocabularyService
     **/
     public function destroy($vocabulary)
     {
-        return $vocabulary->delete();
+        $vocabulary->delete();
     }
 }

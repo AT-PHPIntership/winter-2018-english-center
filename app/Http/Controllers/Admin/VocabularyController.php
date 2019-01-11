@@ -7,9 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\VocabularyService;
 use App\Http\Requests\ImportVocabularyRequest;
 use App\Http\Requests\CreateVocabularyRequest;
-use Excel;
 use App\Models\Vocabulary;
-use App\Http\Controllers\Admin\Item;
 
 class VocabularyController extends Controller
 {
@@ -53,7 +51,7 @@ class VocabularyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $requestVoca CreateVocabularyRequest request vocabulary
+     * @param \Illuminate\Http\Request $request CreateVocabularyRequest request vocabulary
      *
      * @return \Illuminate\Http\Response
      */
