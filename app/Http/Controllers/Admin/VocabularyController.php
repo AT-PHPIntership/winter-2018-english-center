@@ -89,4 +89,17 @@ class VocabularyController extends Controller
         app(VocabularyService::class)->update($request->all(), $vocabulary);
         return redirect()->route('admin.vocabularies.index')->with('success', __('common.success'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Vocabulary $vocabulary vocabulary
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Vocabulary $vocabulary)
+    {
+        app(VocabularyService::class)->destroy($vocabulary);
+        return redirect()->route('admin.vocabularies.index')->with('success', __('common.success'));
+    }
 }
