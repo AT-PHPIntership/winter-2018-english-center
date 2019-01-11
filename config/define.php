@@ -15,5 +15,6 @@ return [
     'import_file' => [
         'line_defaul' => 0,
         'line_error' => 2,
+        'api' => 'https://od-api.oxforddictionaries.com/api/v1/entries/en/',
     ],
 ];

@@ -8,6 +8,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class VocabularyService
 {
+    public function __construct()
+    {
+        return $client = new Client();
+    }
+
     /**
      * Function index get all vocabulary
      *
@@ -60,10 +65,10 @@ class VocabularyService
                 Vocabulary::insert($arr);
             }
             session()->flash('success', __('common.success'));
-            // return true;
+            return true;
         } catch (\Exception $e) {
             session()->flash('error', __('common.error', ['attribute' => $e->getMessage(), 'line' => $lineError]));
-            // return false;
+            return false;
         }
     }
 
@@ -76,8 +81,7 @@ class VocabularyService
     **/
     protected function getVocabularyContent(string $vocabulary)
     {
-        $client = new Client();
-        $response = $client->request('GET', 'https://od-api.oxforddictionaries.com/api/v1/entries/en/'. $vocabulary, [
+        $response = $client->request('GET', config('define.courses.limit_rows'). $vocabulary, [
             'headers' => [
                 'app_id'  => config('define.oxford.app_id'),
                 'app_key' => config('define.oxford.app_key')
