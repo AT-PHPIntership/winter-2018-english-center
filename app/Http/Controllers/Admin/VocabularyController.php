@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\VocabularyService;
-use App\Http\Requests\CreateImportFileRequest;
+use App\Http\Requests\ImportVocabularyRequest;
 use App\Http\Requests\CreateVocabularyRequest;
 use Excel;
 use App\Models\Vocabulary;
@@ -37,11 +37,11 @@ class VocabularyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request CreateImportFileRequest request
+     * @param \Illuminate\Http\Request $request ImportVocabularyRequest request
      *
      * @return \Illuminate\Http\Response
      */
-    public function importFile(CreateImportFileRequest $request)
+    public function importFile(ImportVocabularyRequest $request)
     {
         $data = app(VocabularyService::class)->importFile($request);
         if ($data) {
@@ -57,9 +57,9 @@ class VocabularyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateVocabularyRequest $requestVoca)
+    public function store(CreateVocabularyRequest $request)
     {
-        app(VocabularyService::class)->store($requestVoca);
+        app(VocabularyService::class)->store($request->all());
         return redirect()->route('admin.vocabularies.index')->with('success', __('common.success'));
     }
 

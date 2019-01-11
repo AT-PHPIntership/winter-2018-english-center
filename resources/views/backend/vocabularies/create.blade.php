@@ -79,21 +79,14 @@
                         @csrf
                         <div class="box-body">
                           <div class="form-group">
-                            <label>@lang('vocabulary.create_voca.vocabulary')</label>
+                            <label>@lang('vocabulary.list_vocabulary.vocabulary')</label>
                             <input name="vocabulary" type="text" class="form-control" placeholder="Add name vocabulary ...">
                             @if ($errors->has('vocabulary'))
                               <span class="text-red help is-danger">* {{ $errors->first('vocabulary') }}</span>
                             @endif
                           </div>
                           <div class="form-group">
-                            <label>@lang('vocabulary.create_voca.word_type')</label>
-                            <input name="word_type" type="text" class="form-control" placeholder="Word type ...">
-                            @if ($errors->has('word_type'))
-                              <span class="text-red help is-danger">* {{ $errors->first('word_type') }}</span>
-                            @endif
-                          </div>
-                          <div class="form-group">
-                            <label>@lang('vocabulary.create_voca.means')</label>
+                            <label>@lang('vocabulary.list_vocabulary.means')</label>
                             <input name="means" type="text" class="form-control" placeholder="Means ...">
                             @if ($errors->has('means'))
                               <span class="text-red help is-danger">* {{ $errors->first('means') }}</span>

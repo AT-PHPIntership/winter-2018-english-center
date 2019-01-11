@@ -25,7 +25,6 @@ class CreateVocabularyRequest extends FormRequest
     {
         return [
             'vocabulary' => 'required|string',
-            'word_type' => 'required|string',
             'means' => 'required|string',
         ];
     }

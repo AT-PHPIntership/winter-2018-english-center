@@ -116,15 +116,13 @@ class VocabularyService
      *
      * @return App\Services\VocabularyService
     **/
-    public function store($request)
+    public function store($data)
     {
-        $vocabularyContent = $this->getVocabularyContent($request->vocabulary);
-        $vocabulary = new Vocabulary();
-        $vocabulary->vocabulary = $request->get('vocabulary');
-        $vocabulary->word_type = $request->get('word_type');
-        $vocabulary->means = $request->get('means');
-        $vocabulary->sound = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
-        $vocabulary->save();
+        $vocabularyContent = $this->getVocabularyContent($data['vocabulary']);
+        $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
+        $data['word_type'] = $parseVocabulary['word_type'];
+        $data['sound'] = $parseVocabulary['sound'];
+        return Vocabulary::create($data);
     }
 
     /**
