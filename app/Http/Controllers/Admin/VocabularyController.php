@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\VocabularyService;
+use App\Http\Requests\CreateImportFileRequest;
 use App\Http\Requests\CreateVocabularyRequest;
 use Excel;
 use App\Models\Vocabulary;
@@ -36,17 +37,29 @@ class VocabularyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request CreateVocabularyRequest request
+     * @param \Illuminate\Http\Request $request CreateImportFileRequest request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateVocabularyRequest $request)
+    public function importFile(CreateImportFileRequest $request)
     {
-
         $data = app(VocabularyService::class)->importFile($request);
         if ($data) {
             return redirect()->route('admin.vocabularies.index');
         }
         return redirect()->back();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $requestVoca CreateVocabularyRequest request vocabulary
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CreateVocabularyRequest $requestVoca)
+    {
+        app(VocabularyService::class)->store($requestVoca);
+        return redirect()->route('admin.vocabularies.index')->with('success', __('common.success'));
     }
 }

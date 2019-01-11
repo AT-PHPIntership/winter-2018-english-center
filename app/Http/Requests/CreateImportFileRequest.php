@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateVocabularyRequest extends FormRequest
+class CreateImportFileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class CreateVocabularyRequest extends FormRequest
     public function rules()
     {
         return [
-            'vocabulary' => 'required|string',
-            'word_type' => 'required|string',
-            'means' => 'required|string',
+            'import_file' => 'required|file|max:10000',
         ];
     }
 }

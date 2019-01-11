@@ -97,4 +97,22 @@ class VocabularyService
 
         return json_decode($response->getBody()->getContents());
     }
+
+    /**
+     * Function store create data vocabulary
+     *
+     * @param CreateVocabularyRequest $request create data api
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function store($request)
+    {
+        $vocabularyContent = $this->getVocabularyContent($request->vocabulary);
+        $vocabulary = new Vocabulary();
+        $vocabulary->vocabulary = $request->get('vocabulary');
+        $vocabulary->word_type = $request->get('word_type');
+        $vocabulary->means = $request->get('means');
+        $vocabulary->sound = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
+        $vocabulary->save();
+    }
 }

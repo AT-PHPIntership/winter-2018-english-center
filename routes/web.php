@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
 
     Route::resource('levels', 'LevelController');
 
+    Route::post('vocabulary', 'VocabularyController@importFile')->name('vocabularies.import');
     Route::resource('vocabularies', 'VocabularyController');
 });
 
