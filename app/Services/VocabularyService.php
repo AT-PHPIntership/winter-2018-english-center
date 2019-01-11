@@ -53,12 +53,9 @@ class VocabularyService
                     $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
                     $lineError = $key + 2;
                     $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
-                    if ($vocabularyContent == false) {
-                        unset($vocabularies->$key);
-                        continue;
-                    }
-                    $arr[$key]['word_type'] = collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory');
-                    $arr[$key]['sound'] = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
+                    $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
+                    $arr[$key]['word_type'] = $parseVocabulary['word_type'];
+                    $arr[$key]['sound'] = $parseVocabulary['sound'];
                 }
                 if (!empty($arr)) {
                     Vocabulary::insert($arr);
@@ -96,6 +93,14 @@ class VocabularyService
         }
 
         return json_decode($response->getBody()->getContents());
+    }
+
+    protected function parseVocabularyContent($vocabularyContent)
+    {
+        return [
+            'word_type' => collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory'),
+            'sound'     => collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile,
+        ];
     }
 
     /**
@@ -139,10 +144,9 @@ class VocabularyService
     public function update($data, $vocabulary)
     {
         $vocabularyContent = $this->getVocabularyContent($data['vocabulary']);
-        $vocabulary->vocabulary = $data['vocabulary'];
-        $vocabulary->word_type = $data['word_type'];
-        $vocabulary->means = $data['means'];
-        $vocabulary->sound = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
-        $vocabulary->save();
+        $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
+        $data['word_type'] = $parseVocabulary['word_type'];
+        $data['sound']= $parseVocabulary['sound'];
+        return $vocabulary->update($data);
     }
 }
