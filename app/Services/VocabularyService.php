@@ -145,4 +145,16 @@ class VocabularyService
         $vocabulary->sound = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
         $vocabulary->save();
     }
+
+    /**
+     * Function destroy vocabulary
+     *
+     * @param Vocabulary $vocabulary vocabulary
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function destroy($vocabulary)
+    {
+        return $vocabulary->delete();
+    }
 }
