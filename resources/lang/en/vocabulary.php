@@ -19,8 +19,8 @@
         ],
         'create_voca' => [
             'title' => 'Additional Vocabulary',
-            'vocabulary' => 'Vocabulary',
-            'word_type'  => 'Word Type',
-            'means' => 'Means',
+        ],
+        'update_voca' => [
+            'title' => 'Edit vocabulary'
         ],
     ];

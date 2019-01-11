@@ -8,8 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class VocabularyService
 {
-    protected $client;
+    public $client;
 
+    /**
+     * Function construct new Client
+     *
+     * @return App\Services\VocabularyService
+    **/
     public function __construct()
     {
         $client = new Client();
@@ -56,13 +61,17 @@ class VocabularyService
             $data = Excel::load($path)->get();
             $lineError = config('define.import_file.line_defaul');
             $vocabularies = $this->filterVoca($data);
-            $arr = [];
-            foreach ($vocabularies as $key => $value) {
-                $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
-                $lineError = $key + config('define.import_file.line_error');
-                $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
-                $arr[$key]['word_type'] = collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory');
-                $arr[$key]['sound'] = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
+            if ($vocabularies->count()) {
+                foreach ($vocabularies as $key => $value) {
+                    $arr = [];
+                    $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
+                    $lineError = $key + config('define.import_file.line_error');
+                    $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
+                    $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
+                    $arr[$key]['word_type'] = $parseVocabulary['word_type'];
+                    $arr[$key]['sound'] = $parseVocabulary['sound'];
+                }
+                Vocabulary::insert($arr);
             }
             Vocabulary::insert($arr);
             session()->flash('success', __('common.success'));
@@ -82,7 +91,8 @@ class VocabularyService
     **/
     protected function getVocabularyContent(string $vocabulary)
     {
-        $response = $client->request('GET', config('define.oxford.get_api'). $vocabulary, [
+        $response = $this->client->request('GET', config('define.oxford.get_api'). $vocabulary, [
+
             'headers' => [
                 'app_id'  => config('define.oxford.app_id'),
                 'app_key' => config('define.oxford.app_key')
@@ -95,5 +105,65 @@ class VocabularyService
         }
 
         return json_decode($response->getBody()->getContents());
+    }
+
+    /**
+     * Function parseVocabularyContent pasrse vocabulary
+     *
+     * @param Vocabulary $vocabularyContent parse api
+     *
+     * @return App\Services\VocabularyService
+    **/
+    protected function parseVocabularyContent($vocabularyContent)
+    {
+        return [
+            'word_type' => collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory'),
+            'sound'     => collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile,
+        ];
+    }
+
+    /**
+     * Function store create data vocabulary
+     *
+     * @param ValidationVocabulary $data create data api
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function store($data)
+    {
+        $vocabularyContent = $this->getVocabularyContent($data['vocabulary']);
+        $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
+        $data['word_type'] = $parseVocabulary['word_type'];
+        $data['sound'] = $parseVocabulary['sound'];
+        Vocabulary::create($data);
+    }
+
+    /**
+     * Function update vocabulary
+     *
+     * @param ValidationVocabulary $data       requestVocabulary
+     * @param Vocabulary           $vocabulary vocabulary
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function update($data, $vocabulary)
+    {
+        $vocabularyContent = $this->getVocabularyContent($data['vocabulary']);
+        $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
+        $data['word_type'] = $parseVocabulary['word_type'];
+        $data['sound']= $parseVocabulary['sound'];
+        $vocabulary->update($data);
+    }
+
+    /**
+     * Function destroy vocabulary
+     *
+     * @param Vocabulary $vocabulary vocabulary
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function destroy($vocabulary)
+    {
+        $vocabulary->delete();
     }
 }

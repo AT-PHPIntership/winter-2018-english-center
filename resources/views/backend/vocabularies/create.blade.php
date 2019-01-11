@@ -44,9 +44,9 @@
                       </a>
                     </h4>
                   </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
+                  <div id="collapseOne" class="panel-collapse collapse">
                     <div class="box-body">
-                      <form class="form-horizontal" method="POST" action="{{ route('admin.vocabularies.store') }}" enctype="multipart/form-data">
+                      <form class="form-horizontal" method="POST" action="{{ route('admin.vocabularies.import') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                           <label for="csv_file" class="col-md-4 control-label">{{ __('vocabulary.import_voca.import_file') }}</label>
@@ -73,28 +73,30 @@
                       </a>
                     </h4>
                   </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
+                  <div id="collapseTwo" class="panel-collapse collapse in">
                     <div class="box-body">
-                      <form action="" method="POST">
+                      <form action="{{ route('admin.vocabularies.store') }}" method="POST">
                         @csrf
                         <div class="box-body">
                           <div class="form-group">
-                            <label>@lang('vocabulary.create_voca.vocabulary')</label>
-                            <input name="title" type="text" class="form-control" placeholder="Add name vocabulary ...">
+                            <label>@lang('vocabulary.list_vocabulary.vocabulary')</label>
+                            <input name="vocabulary" type="text" class="form-control" placeholder="Add name vocabulary ...">
+                            @if ($errors->has('vocabulary'))
+                              <span class="text-red help is-danger">* {{ $errors->first('vocabulary') }}</span>
+                            @endif
                           </div>
                           <div class="form-group">
-                            <label>@lang('vocabulary.create_voca.word_type')</label>
-                            <input name="title" type="text" class="form-control" placeholder="Word type ...">
-                          </div>
-                          <div class="form-group">
-                            <label>@lang('vocabulary.create_voca.means')</label>
-                            <input name="title" type="text" class="form-control" placeholder="Means ...">
+                            <label>@lang('vocabulary.list_vocabulary.means')</label>
+                            <input name="means" type="text" class="form-control" placeholder="Means ...">
+                            @if ($errors->has('means'))
+                              <span class="text-red help is-danger">* {{ $errors->first('means') }}</span>
+                            @endif
                           </div>
                         </div>
                         <div class="box-footer">
-                          <a href="#" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
+                          <a href="{{ route('admin.vocabularies.index') }}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
                           <button type="reset" class="btn btn-default pull-right">@lang('course.create_course.reset')</button>
-                          <button type="submit" class="btn btn-primary pull-right">@lang('course.create_course.btn')</button>
+                          <button type="submit" class="btn btn-primary pull-right">{{ __('course.create_course.btn') }}</button>
                         </div>
                       </form>
                     </div>
