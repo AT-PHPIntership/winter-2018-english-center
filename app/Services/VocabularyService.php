@@ -115,4 +115,34 @@ class VocabularyService
         $vocabulary->sound = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
         $vocabulary->save();
     }
+
+    /**
+     * Function edit vocabulary
+     *
+     * @param Vocabulary $id comment
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function edit($id)
+    {
+        return Vocabulary::findOrFail($id);
+    }
+
+    /**
+     * Function update vocabulary
+     *
+     * @param ValidationVocabulary $data       requestVocabulary
+     * @param Vocabulary           $vocabulary vocabulary
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function update($data, $vocabulary)
+    {
+        $vocabularyContent = $this->getVocabularyContent($data['vocabulary']);
+        $vocabulary->vocabulary = $data['vocabulary'];
+        $vocabulary->word_type = $data['word_type'];
+        $vocabulary->means = $data['means'];
+        $vocabulary->sound = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
+        $vocabulary->save();
+    }
 }
