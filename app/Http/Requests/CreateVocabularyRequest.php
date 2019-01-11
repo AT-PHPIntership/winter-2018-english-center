@@ -24,7 +24,7 @@ class CreateVocabularyRequest extends FormRequest
     public function rules()
     {
         return [
-            'import_file' => 'required|mimes:text/csv',
+            'import_file' => 'required',
         ];
     }
 }

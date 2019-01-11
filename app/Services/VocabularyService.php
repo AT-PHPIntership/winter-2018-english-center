@@ -46,25 +46,24 @@ class VocabularyService
         try {
             $path = $request->file('import_file')->getRealPath();
             $data = Excel::load($path)->get();
-            $lineError = 0;
+            $lineError = config('define.import_file.line_defaul');
             $vocabularies = $this->filterVoca($data);
             if ($vocabularies->count()) {
                 foreach ($vocabularies as $key => $value) {
+                    $arr = [];
                     $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
-                    $lineError = $key + 2;
+                    $lineError = $key + config('define.import_file.line_error');
                     $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
                     $arr[$key]['word_type'] = collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory');
                     $arr[$key]['sound'] = collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile;
                 }
-                if (!empty($arr)) {
-                    Vocabulary::insert($arr);
-                }
+                Vocabulary::insert($arr);
             }
             session()->flash('success', __('common.success'));
-            return true;
+            // return true;
         } catch (\Exception $e) {
             session()->flash('error', __('common.error', ['attribute' => $e->getMessage(), 'line' => $lineError]));
-            return false;
+            // return false;
         }
     }
 

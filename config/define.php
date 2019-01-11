@@ -12,4 +12,8 @@ return [
         'app_id' => env('OXFORD_ID'),
         'app_key' => env('OXFORD_KEY'),
     ],
+    'import_file' => [
+        'line_defaul' => 0,
+        'line_error' => 2,
+    ],
 ];
