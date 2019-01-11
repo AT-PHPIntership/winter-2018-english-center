@@ -18,4 +18,14 @@ class VocabularyController extends Controller
         $vocabularies = app(VocabularyService::class)->index();
         return view('backend.vocabularies.index')->with('vocabularies', $vocabularies);
     }
+
+    /**
+      * Show the form for creating a new resource.
+      *
+      * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('backend.vocabularies.create');
+    }
 }
