@@ -62,4 +62,14 @@ class VocabularyController extends Controller
         app(VocabularyService::class)->store($requestVoca);
         return redirect()->route('admin.vocabularies.index')->with('success', __('common.success'));
     }
+
+    /**
+      * Edit the form for editing the specified resource.
+      *
+      * @return \Illuminate\Http\Response
+     */
+    public function edit()
+    {
+        return view('backend.vocabularies.edit');
+    }
 }

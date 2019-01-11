@@ -54,7 +54,7 @@
                 </div>
               </td>
               <td>
-                <a href="#" class="btn btn-warning">@lang('course.list_course.edit')</a>
+                <a href="{{ route('admin.vocabularies.edit', $vocabulary->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
                 <button type="button" class="btn btn-danger form-delete btn-delete-item">@lang('course.list_course.delete')
                 </button>
               </td>
