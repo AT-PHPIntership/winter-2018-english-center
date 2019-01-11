@@ -61,7 +61,6 @@ class VocabularyService
                     Vocabulary::insert($arr);
                 }
             }
-            \DB::commit();
             session()->flash('success', __('common.success'));
             return true;
         } catch (\Exception $e) {
@@ -95,6 +94,13 @@ class VocabularyService
         return json_decode($response->getBody()->getContents());
     }
 
+    /**
+     * Function parseVocabularyContent pasrse vocabulary
+     *
+     * @param Vocabulary $vocabularyContent parse api
+     *
+     * @return App\Services\VocabularyService
+    **/
     protected function parseVocabularyContent($vocabularyContent)
     {
         return [
@@ -148,5 +154,17 @@ class VocabularyService
         $data['word_type'] = $parseVocabulary['word_type'];
         $data['sound']= $parseVocabulary['sound'];
         return $vocabulary->update($data);
+    }
+
+    /**
+     * Function destroy vocabulary
+     *
+     * @param Vocabulary $vocabulary vocabulary
+     *
+     * @return App\Services\VocabularyService
+    **/
+    public function destroy($vocabulary)
+    {
+        return $vocabulary->delete();
     }
 }
