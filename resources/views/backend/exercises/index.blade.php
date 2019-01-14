@@ -2,14 +2,14 @@
 @section('title', 'HOME')
 @section('content')
 <section class="content-header">
-  <h1>@lang('course.list_course.title')</h1>
+  <h1>@lang('exercise.title')</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
       <i class="fas fa-tachometer-alt"></i>@lang('layout_admin.home')
       </a>
     </li>
-    <li class="active">@lang('course.list_course.title')</li>
+    <li class="active">@lang('exercise.title')</li>
   </ol>
 </section>
 <section class="content">
@@ -33,6 +33,7 @@
               <th>@lang('exercise.list_exercise.id')</th>
               <th>@lang('exercise.list_exercise.exercises')</th>
               <th>@lang('exercise.list_exercise.lessons')</th>
+              <th>@lang('exercise.list_exercise.course')</th>
               <th>@lang('exercise.list_exercise.action')</th>
             </tr>
           </thead>
@@ -40,7 +41,7 @@
             @foreach ($exercises as $exercise)
             <tr>
               <td>{{ $exercise->id }}</td>
-              <td>{{ $exercise->title }}</td>
+              <td><a href="#">{{ $exercise->title }}</a></td>
               <td>
                 @if(!$exercise['lesson_id'])
                 {{ 'none' }}
@@ -48,6 +49,7 @@
                 {{ $exercise->lesson->name }}
                 @endif
               </td>
+              <td>{{ $exercise->lesson->course->title }}</td>
               <td>
                 <a href="#" class="btn btn-warning">@lang('course.list_course.edit')</a>
                 <form method="POST" action="#}" class="inline" onsubmit="return confirmedDelete()">
@@ -63,7 +65,7 @@
         </table>
         <div class="box-footer clearfix">
           <ul class="pagination pagination-sm no-margin pull-right">
-            {{-- {{ $courses->links() }} --}}
+            {{ $exercises->links() }}
           </ul>
         </div>
       </div>
