@@ -45,7 +45,7 @@
                             <td>{{ $lesson->name }}</td>
                             <td>{{ $lesson->course->title }}</td>
                             <td>{{ $lesson->level->level }}</td>
-                            <td>{{ $lesson->getRoleNameAttribute() }}</td>
+                            <td>{{ $lesson->role_name }}</td>
                             <td>
                                 <a href="" class="btn btn-warning">@lang('common.detail')</a>
                             </td>
