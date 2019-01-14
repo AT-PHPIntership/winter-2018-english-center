@@ -41,11 +41,12 @@ class VocabularyController extends Controller
      */
     public function importFile(ImportVocabularyRequest $request)
     {
-        $data = app(VocabularyService::class)->importFile($request);
-        if ($data) {
+        try {
+            app(VocabularyService::class)->importFile($request);
             return redirect()->route('admin.vocabularies.index');
+        } catch (\Exception $e) {
+            return redirect()->back();
         }
-        return redirect()->back();
     }
 
     /**

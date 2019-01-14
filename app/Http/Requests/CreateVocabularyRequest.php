@@ -24,8 +24,21 @@ class CreateVocabularyRequest extends FormRequest
     public function rules()
     {
         return [
-            'vocabulary' => 'required|string',
-            'means' => 'required|string',
+            'vocabulary' => 'required|regex:/[^-0-9\/]+/',
+            'means' => 'required|regex:/[^-0-9\/]+/',
+        ];
+    }
+
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'vocabulary.regex' => 'Can not enter numeric.',
+            'means.regex' => 'Can not enter numeric.',
         ];
     }
 }

@@ -24,7 +24,7 @@ class ImportVocabularyRequest extends FormRequest
     public function rules()
     {
         return [
-            'import_file' => 'required|file|max:10000',
+            'import_file' => 'required|file|max:10000|mimes:csv,txt',
         ];
     }
 }

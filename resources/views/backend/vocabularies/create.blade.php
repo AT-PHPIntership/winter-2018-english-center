@@ -53,6 +53,9 @@
                           <div class="col-md-6">
                             <input id="csv_file" type="file" class="form-control" name="import_file" required>
                           </div>
+                          @if ($errors->has('import_file'))
+                            <span class="text-red help is-danger">* {{ $errors->first('import_file') }}</span>
+                          @endif
                         </div>
                         <div class="form-group">
                           <div class="col-md-8 col-md-offset-4">

@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class VocabularyService
 {
-    public $client;
+    protected $client;
 
     /**
      * Function construct new Client
@@ -17,8 +17,7 @@ class VocabularyService
     **/
     public function __construct()
     {
-        $client = new Client();
-        $this->client = $client;
+        $this->client = new Client();
     }
 
     /**
@@ -61,24 +60,20 @@ class VocabularyService
             $data = Excel::load($path)->get();
             $lineError = config('define.import_file.line_defaul');
             $vocabularies = $this->filterVoca($data);
-            if ($vocabularies->count()) {
-                foreach ($vocabularies as $key => $value) {
-                    $arr = [];
-                    $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
-                    $lineError = $key + config('define.import_file.line_error');
-                    $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
-                    $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
-                    $arr[$key]['word_type'] = $parseVocabulary['word_type'];
-                    $arr[$key]['sound'] = $parseVocabulary['sound'];
-                }
-                Vocabulary::insert($arr);
+            $arr = [];
+            foreach ($vocabularies as $key => $value) {
+                $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
+                $lineError = $key + config('define.import_file.line_error');
+                $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
+                $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
+                $arr[$key]['word_type'] = $parseVocabulary['word_type'];
+                $arr[$key]['sound'] = $parseVocabulary['sound'];
             }
             Vocabulary::insert($arr);
             session()->flash('success', __('common.success'));
-            return true;
         } catch (\Exception $e) {
             session()->flash('error', __('common.error', ['attribute' => $e->getMessage(), 'line' => $lineError]));
-            return false;
+            throw $e;
         }
     }
 
@@ -151,7 +146,7 @@ class VocabularyService
         $vocabularyContent = $this->getVocabularyContent($data['vocabulary']);
         $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
         $data['word_type'] = $parseVocabulary['word_type'];
-        $data['sound']= $parseVocabulary['sound'];
+        $data['sound'] = $parseVocabulary['sound'];
         $vocabulary->update($data);
     }
 
