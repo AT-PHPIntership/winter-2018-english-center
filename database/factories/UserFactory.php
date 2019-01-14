@@ -40,7 +40,7 @@ $factory->state(App\Models\Course::class, 'child', function(Faker $faker) {
     ];
 });
 
-$factory->define(App\Models\Lession::class, function(Faker $faker) {
+$factory->define(App\Models\Lesson::class, function(Faker $faker) {
     return [
         'course_id' => factory('App\Models\Course')->create()->id,
         'name' => $faker->catchPhrase,
@@ -51,6 +51,7 @@ $factory->define(App\Models\Lession::class, function(Faker $faker) {
         'average' => $faker->numberBetween(1, 5),
         'level_id' => $faker->randomElement([1,2,3]),
         'role' => $faker->boolean,
+        'text' => $faker->text,
     ];
 });
 

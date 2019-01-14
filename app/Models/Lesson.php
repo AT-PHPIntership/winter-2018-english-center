@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Lession extends Model
+class Lesson extends Model
 {
     protected $fillable = ['name', 'image', 'video', 'count_view', 'total_rating', 'average', 'role'];
 
-    protected $table = 'lessions';
+    protected $table = 'lessons';
 
     /**
      * BelongsTo courses

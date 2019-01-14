@@ -47,8 +47,8 @@ class Course extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function lessions()
+    public function lessons()
     {
-        return $this->hasMany('App\Models\Lession');
+        return $this->hasMany('App\Models\Lesson');
     }
 }
