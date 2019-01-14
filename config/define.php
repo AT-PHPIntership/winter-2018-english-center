@@ -8,4 +8,7 @@ return [
         'vip' => 'VIP',
         'trial' => 'TRIAL',
     ],
+    'order_by_desc' =>'desc',
+    'vip' => 'VIP',
+    'trial' => 'TRIAL',
 ];

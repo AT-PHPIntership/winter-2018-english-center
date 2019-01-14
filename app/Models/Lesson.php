@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    protected $fillable = ['name', 'image', 'video', 'count_view', 'total_rating', 'average', 'role'];
+    protected $fillable = ['name', 'image', 'video', 'count_view', 'total_rating', 'average', 'role', 'text'];
 
     protected $table = 'lessons';
+
+    const VIP = 1;
+    const TRIAL = 0;
 
     /**
      * BelongsTo courses
