@@ -40,7 +40,7 @@ $factory->state(App\Models\Course::class, 'child', function(Faker $faker) {
     ];
 });
 
-$factory->define(App\Models\Lession::class, function(Faker $faker) {
+$factory->define(App\Models\Lesson::class, function(Faker $faker) {
     return [
         'course_id' => factory('App\Models\Course')->create()->id,
         'name' => $faker->catchPhrase,

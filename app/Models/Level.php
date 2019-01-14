@@ -19,8 +19,8 @@ class Level extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\Hasmany
      */
-    public function lessions()
+    public function lessons()
     {
-        return $this->hasMany('App\Models\Lession');
+        return $this->hasMany('App\Models\Lesson');
     }
 }

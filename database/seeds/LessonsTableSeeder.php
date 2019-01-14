@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class LessionsTableSeeder extends Seeder
+class LessonsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +16,8 @@ class LessionsTableSeeder extends Seeder
         $courseId = DB::table('courses')->pluck('id')->toArray();
         $levelId = DB::table('levels')->pluck('id')->toArray();
 
-        for($i = 0; $i <= 5; $i++) {
-            factory(App\Models\Lession::class, 5)->create([
+        for ($i = 0; $i <= 5; $i++) {
+            factory(App\Models\Lesson::class, 5)->create([
                 'course_id' => $faker->randomElement($courseId),
                 'level_id' => $faker->randomElement($levelId)
             ]);
