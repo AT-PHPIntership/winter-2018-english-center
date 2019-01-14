@@ -55,4 +55,13 @@ class Lesson extends Model
         }
         return config('define.trial');
     }
+    /**
+     * HasMany exercises
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function exercises()
+    {
+        return $this->hasMany('App\Models\Exercise');
+    }
 }
