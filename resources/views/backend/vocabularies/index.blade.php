@@ -19,8 +19,8 @@
     <div class="col-md-6">
       <div class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i>@lang('course.list_course.success')</h4>
-        <p>* {{ Session::get('success') }}</p>
+        <h4><i class="icon fa fa-check"></i>* {{ Session::get('success') }}</h4>
+        
       </div>
     </div>
   </div>
@@ -46,11 +46,21 @@
               <td>{{ $vocabulary->vocabulary }}</td>
               <td>{{ $vocabulary->word_type }}</td>
               <td>{{ $vocabulary->means }}</td>
-              <td>{{ $vocabulary->sound }}</td>
               <td>
-                <a href="#" class="btn btn-warning">@lang('course.list_course.edit')</a>
-                <button type="button" class="btn btn-danger form-delete btn-delete-item">@lang('course.list_course.delete')
-                </button>
+                <div id="player">
+                    <audio controls>
+                        <source src="{{ $vocabulary->sound }}" type="audio/mpeg">
+                    </audio>
+                </div>
+              </td>
+              <td>
+                <a href="{{ route('admin.vocabularies.edit', $vocabulary->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
+                <form method="POST" action="{{ route('admin.vocabularies.destroy', $vocabulary->id) }}" class="inline" onsubmit="return confirmedDelete()">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete Course">@lang('course.list_course.delete')
+                    </button>
+                </form>
               </td>
             </tr>
             </tr>

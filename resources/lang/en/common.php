@@ -4,6 +4,7 @@ return [
     'remember_login' => 'Remember me',
     'btn_login' => 'Login',
     'success' => 'Success!',
+    'error' => ':attribute at line :line !',
     'detail' => 'Detail',
     'edit' => 'Edit',
     'delete' => 'Delete',

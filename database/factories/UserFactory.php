@@ -51,6 +51,7 @@ $factory->define(App\Models\Lesson::class, function(Faker $faker) {
         'average' => $faker->numberBetween(1, 5),
         'level_id' => $faker->randomElement([1,2,3]),
         'role' => $faker->boolean,
+        'text' => $faker->text,
     ];
 });
 
