@@ -45,11 +45,7 @@
                             <td>{{ $lesson->name }}</td>
                             <td>{{ $lesson->course->title }}</td>
                             <td>{{ $lesson->level->level }}</td>
-                            @if ($lesson->role == App\Models\Lesson::VIP)
-                                <td>{{ config('define.vip') }}</td>
-                            @elseif ($lesson->role == App\Models\Lesson::TRIAL)
-                                <td>{{ config('define.trial') }}</td>
-                            @endif
+                            <td>{{ $lesson->getRoleNameAttribute() }}</td>
                             <td>
                                 <a href="" class="btn btn-warning">@lang('common.detail')</a>
                             </td>

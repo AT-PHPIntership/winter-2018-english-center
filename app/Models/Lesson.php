@@ -42,4 +42,17 @@ class Lesson extends Model
     {
         return $this->belongsToMany('App\Models\Vocabulary');
     }
+
+     /**
+     * Get the getRoleNameAttribute for the lesson.
+     *
+     * @return void
+     */
+    public function getRoleNameAttribute()
+    {
+        if ($this->role == self::VIP) {
+            return config('define.vip');
+        }
+        return config('define.trial');
+    }
 }
