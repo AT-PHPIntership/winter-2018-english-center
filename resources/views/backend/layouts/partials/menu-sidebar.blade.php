@@ -105,7 +105,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_exercise')</a></li>
+            <li><a href="{{ route('admin.exercises.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_exercise')</a></li>
             <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_exercise')</a></li>
           </ul>
         </li>

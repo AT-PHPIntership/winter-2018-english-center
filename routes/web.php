@@ -24,6 +24,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::resource('levels', 'LevelController');
 
     Route::resource('vocabularies', 'VocabularyController');
+
+    Route::resource('exercises', 'ExerciseController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
