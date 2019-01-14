@@ -15,8 +15,8 @@ class Vocabulary extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function lessions()
+    public function lessons()
     {
-        return $this->belongsToMany('App\Models\Lession');
+        return $this->belongsToMany('App\Models\Lesson');
     }
 }

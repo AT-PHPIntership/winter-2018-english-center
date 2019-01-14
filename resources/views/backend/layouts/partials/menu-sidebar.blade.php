@@ -63,14 +63,14 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-folder"></i> <span>@lang('layout_admin.sidebar.lession_management')</span>
+            <i class="fa fa-folder"></i> <span>@lang('layout_admin.sidebar.lesson_management')</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_lession')</a></li>
-            <li><a href="../examples/profile.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_lession')</a></li>
+            <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_lesson')</a></li>
+            <li><a href="../examples/profile.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_lesson')</a></li>
           </ul>
         </li>
         <li class="treeview">
