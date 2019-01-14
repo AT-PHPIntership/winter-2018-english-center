@@ -14,7 +14,7 @@ class LessonsTableSeeder extends Seeder
         $faker = Faker\Factory::create();
 
         $courseId = DB::table('courses')->pluck('id')->toArray();
-        $levelId = DB::table('levels')->pluck('id')->toArray();
+        $levelId = DB::table('m_level')->pluck('id')->toArray();
 
         for ($i = 0; $i <= 5; $i++) {
             factory(App\Models\Lesson::class, 5)->create([
