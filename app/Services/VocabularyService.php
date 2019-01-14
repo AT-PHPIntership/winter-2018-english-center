@@ -86,7 +86,7 @@ class VocabularyService
     **/
     protected function getVocabularyContent(string $vocabulary)
     {
-        $response = $this->client->request('GET', config('define.oxford.get_api'). $vocabulary, [
+        $response = $this->client->request('GET', sprintf(config('define.oxford.get_api').$vocabulary), [
 
             'headers' => [
                 'app_id'  => config('define.oxford.app_id'),
@@ -107,7 +107,7 @@ class VocabularyService
      *
      * @param Vocabulary $vocabularyContent parse api
      *
-     * @return App\Services\VocabularyService
+     * @return VocabularyContent array
     **/
     protected function parseVocabularyContent($vocabularyContent)
     {
@@ -122,7 +122,7 @@ class VocabularyService
      *
      * @param ValidationVocabulary $data create data api
      *
-     * @return App\Services\VocabularyService
+     * @return void
     **/
     public function store($data)
     {
@@ -139,7 +139,7 @@ class VocabularyService
      * @param ValidationVocabulary $data       requestVocabulary
      * @param Vocabulary           $vocabulary vocabulary
      *
-     * @return App\Services\VocabularyService
+     * @return void
     **/
     public function update($data, $vocabulary)
     {
@@ -155,7 +155,7 @@ class VocabularyService
      *
      * @param Vocabulary $vocabulary vocabulary
      *
-     * @return App\Services\VocabularyService
+     * @return void
     **/
     public function destroy($vocabulary)
     {
