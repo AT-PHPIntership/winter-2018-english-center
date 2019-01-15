@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\LessonService;
+use App\Models\Lesson;
 
 class LessonController extends Controller
 {
@@ -36,5 +37,18 @@ class LessonController extends Controller
     {
         $lessons = $this->lessonService->index();
         return view('backend.lessons.index', compact('lessons'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Lesson $lesson Lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Lesson $lesson)
+    {
+        $lessons = $this->lessonService->show($lesson);
+        return view('backend.lessons.show', compact('lessons'));
     }
 }

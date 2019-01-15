@@ -17,4 +17,17 @@ class LessonService
         $lessons = Lesson::with(['course', 'level'])->orderBy('created_at', config('define.order_by_desc'))->paginate(config('define.page_site'));
         return $lessons;
     }
+
+    /**
+     * Show resource in storage.
+     *
+     * @param \Illuminate\Http\Request $lesson lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($lesson)
+    {
+        $lesson = Lesson::where('id', $lesson->id)->with(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers'])->get();
+        return $lesson;
+    }
 }
