@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    protected $fillable = ['name', 'image', 'video', 'count_view', 'total_rating', 'average', 'role'];
+    protected $fillable = ['name', 'image', 'video', 'count_view', 'total_rating', 'average', 'role', 'text'];
 
     protected $table = 'lessons';
+
+    const VIP = 1;
+    const TRIAL = 0;
 
     /**
      * BelongsTo courses
@@ -40,6 +43,18 @@ class Lesson extends Model
         return $this->belongsToMany('App\Models\Vocabulary');
     }
 
+     /**
+     * Get the getRoleNameAttribute for the lesson.
+     *
+     * @return void
+     */
+    public function getRoleNameAttribute()
+    {
+        if ($this->role == self::VIP) {
+            return config('define.vip');
+        }
+        return config('define.trial');
+    }
     /**
      * HasMany exercises
      *
