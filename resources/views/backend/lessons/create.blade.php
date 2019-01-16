@@ -42,6 +42,7 @@
                         <div class="form-group">
                             <label for="role">{{ __('lesson.create_lesson.role') }}</label>
                             <select class="form-control" name="role">
+                                <option value="">Select Role</option>
                                 <option value="{{  App\Models\Lesson::TRIAL }}">{{ config('define.trial') }}</option>
                                 <option value="{{  App\Models\Lesson::VIP }}">{{ config('define.vip') }}</option>
                             </select>
@@ -53,36 +54,38 @@
                         </div>
                         <div class="form-group">
                             <label for="level">{{ __('lesson.create_lesson.level') }}</label>
-                            <select class="form-control" name="level">
+                            <select class="form-control" name="level_id">
+                                <option value="">Select Level</option>
                                 @foreach ($levels as $level)
                                     <option value="{{ $level->id }}" <?php echo ($level->level == App\Models\Level::LEVEL_BASIC) ? "selected" : " " ?>>{{ $level->level }}</option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('level'))
+                            @if ($errors->has('level_id'))
                                 <span class="help-block col-sm-12">
-                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('level') }}</strong>
+                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('level_id') }}</strong>
                                 </span>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="course">{{ __('lesson.create_lesson.course') }}</label>
-                            <select class="form-control" name="course">
+                            <select class="form-control" name="course_id">
+                                <option value="">Select Course</option>
                                 @foreach ($courses as $course)
                                     <option value="{{ $course->id }}">{{ $course->title }}</option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('course'))
+                            @if ($errors->has('course_id'))
                                 <span class="help-block col-sm-12">
-                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('course') }}</strong>
+                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('course_id') }}</strong>
                                 </span>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="img">{{ __('lesson.create_lesson.image') }}</label>
-                            <input type="file" name="img" value="{{ old('img') }}">
-                            @if ($errors->has('img'))
+                            <input type="file" name="image" value="{{ old('image') }}">
+                            @if ($errors->has('image'))
                                 <span class="help-block col-sm-12">
-                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('img') }}</strong>
+                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('image') }}</strong>
                                 </span>
                             @endif
                         </div>

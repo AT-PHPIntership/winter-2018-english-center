@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\LessonService;
+use App\Services\ImageService;
+use App\Http\Requests\LessonRequest;
 
 class LessonController extends Controller
 {
@@ -16,15 +18,24 @@ class LessonController extends Controller
     private $lessonService;
 
     /**
+     * Where to receipt users from ImageService.
+     *
+     * @var $imageService
+     */
+    private $imageService;
+
+    /**
      * Create a new controller instance.
      *
      * @param LessonService $lessonService LessonService
+     * @param ImageService  $imageService  ImageService
      *
      * @return void
      */
-    public function __construct(LessonService $lessonService)
+    public function __construct(LessonService $lessonService, ImageService $imageService)
     {
         $this->lessonService = $lessonService;
+        $this->imageService = $imageService;
     }
 
     /**
@@ -46,5 +57,22 @@ class LessonController extends Controller
     public function create()
     {
         return view('backend.lessons.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param LessonRequest $request Request
+     *
+     * @return void
+     */
+    public function store(LessonRequest $request)
+    {
+        $data = $request->except(['_token']);
+        if ($request->hasFile('image')) {
+            $data['image'] = $this->imageService->uploadImage($data['image']);
+        }
+        $this->lessonService->store($request->all());
+        return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
     }
 }
