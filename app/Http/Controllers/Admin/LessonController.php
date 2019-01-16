@@ -69,10 +69,8 @@ class LessonController extends Controller
     public function store(LessonRequest $request)
     {
         $data = $request->except(['_token']);
-        if ($request->hasFile('image')) {
-            $data['image'] = $this->imageService->uploadImage($data['image']);
-        }
-        $this->lessonService->store($request->all());
+        $data['image'] = $this->imageService->uploadImageLesson($data['image']);
+        $this->lessonService->store($data);
         return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
     }
 }

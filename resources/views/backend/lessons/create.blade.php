@@ -57,7 +57,7 @@
                             <select class="form-control" name="level_id">
                                 <option value="">Select Level</option>
                                 @foreach ($levels as $level)
-                                    <option value="{{ $level->id }}" <?php echo ($level->level == App\Models\Level::LEVEL_BASIC) ? "selected" : " " ?>>{{ $level->level }}</option>
+                                    <option value="{{ $level->id }}">{{ $level->level }}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('level_id'))
