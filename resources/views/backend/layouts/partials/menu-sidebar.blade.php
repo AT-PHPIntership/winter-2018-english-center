@@ -69,7 +69,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_lesson')</a></li>
+            <li><a href="{{ route('admin.lessons.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_lesson')</a></li>
             <li><a href="../examples/profile.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_lesson')</a></li>
           </ul>
         </li>

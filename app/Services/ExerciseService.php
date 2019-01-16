@@ -25,7 +25,7 @@ class ExerciseService
     **/
     public function show($exercise)
     {
-        $exercise = Exercise::where('id', $exercise->id)->with(['questions', 'questions.answers'])->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
+        $exercise = Exercise::where('id', $exercise)->with(['questions', 'questions.answers'])->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
         return $exercise;
     }
 }
