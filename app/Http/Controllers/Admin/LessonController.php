@@ -37,4 +37,14 @@ class LessonController extends Controller
         $lessons = $this->lessonService->index();
         return view('backend.lessons.index', compact('lessons'));
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('backend.lessons.create');
+    }
 }

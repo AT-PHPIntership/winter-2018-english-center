@@ -11,4 +11,15 @@ return [
         'show' => 'Show',
         'action' => 'Action',
     ],
+    'create_lesson' =>
+    [
+        'title' => 'Create Lesson',
+        'name' => 'Name',
+        'text' => 'Text',
+        'role' => 'Role',
+        'level' => 'Level',
+        'course' => 'Course',
+        'image' => 'Image',
+        'video' => 'Video',
+    ]
 ];
