@@ -49,4 +49,13 @@ class Lesson extends Model
     {
         return $this->belongsToMany('App\Models\User');
     }
+    /**
+     * HasMany exercises
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function exercises()
+    {
+        return $this->hasMany('App\Models\Exercise');
+    }
 }

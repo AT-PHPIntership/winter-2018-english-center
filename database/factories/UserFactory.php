@@ -51,6 +51,7 @@ $factory->define(App\Models\Lesson::class, function(Faker $faker) {
         'average' => $faker->numberBetween(1, 5),
         'level_id' => $faker->randomElement([1,2,3]),
         'role' => $faker->boolean,
+        'text' => $faker->text,
     ];
 });
 
@@ -60,5 +61,27 @@ $factory->define(App\Models\Vocabulary::class, function(Faker $faker) {
         'word_type' => $faker->word,
         'means' => $faker->catchPhrase,
         'sound' => $faker->url,
+    ];
+});
+
+$factory->define(App\Models\Exercise::class, function(Faker $faker) {
+    return [
+        'lesson_id' => factory('App\Models\Lesson')->create()->id,
+        'title' => $faker->catchPhrase,
+    ];
+});
+
+$factory->define(App\Models\Question::class, function(Faker $faker) {
+    return [
+        'exercise_id' => factory('App\Models\Exercise')->create()->id,
+        'content' => $faker->catchPhrase,
+    ];
+});
+
+$factory->define(App\Models\Answer::class, function(Faker $faker) {
+    return [
+        'question_id' => factory('App\Models\Question')->create()->id,
+        'answers' => $faker->word,
+        'status' => $faker->boolean,
     ];
 });
