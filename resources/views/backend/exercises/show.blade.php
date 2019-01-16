@@ -45,12 +45,20 @@
               <td>
                 <div class="form-group">
                   @foreach ($question->answers as $key => $answer)
-                  <div class="radio">
-                    <label>
-                    <input {{ $answer->status ? "checked" : "" }} type="radio" name="{{ $key }}" value="{{ $answer->id }}">
-                    {{ $answer->answers }}
-                    </label>
-                  </div>
+                    @if($answer->status == 1)
+                      <div>
+                        <label name="{{ $key }}" value="{{ $answer->id }}">
+                            {{ $answer->answers }}
+                            <img src="images/icons/active.gif">
+                        </label>
+                      </div>
+                    @else
+                    <div>
+                        <label name="{{ $key }}" value="{{ $answer->id }}">
+                            {{ $answer->answers }}
+                        </label>
+                      </div>
+                    @endif
                   @endforeach
                 </div>
               </td>

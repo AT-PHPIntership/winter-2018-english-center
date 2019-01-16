@@ -7,5 +7,9 @@
             'lessons' => 'Lessons',
             'course' => 'Courses',
             'action' => 'Action',
+            'exercises' => 'Exercises'
+        ],
+        'create_exercise' => [
+            'title' => 'Create Exercise',
         ],
     ];
