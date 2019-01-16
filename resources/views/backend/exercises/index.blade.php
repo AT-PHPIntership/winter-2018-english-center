@@ -33,7 +33,6 @@
               <th>@lang('exercise.list_exercise.id')</th>
               <th>@lang('exercise.list_exercise.exercises')</th>
               <th>@lang('exercise.list_exercise.lessons')</th>
-              <th>@lang('exercise.list_exercise.course')</th>
               <th>@lang('exercise.list_exercise.action')</th>
             </tr>
           </thead>
@@ -49,7 +48,6 @@
                 {{ $exercise->lesson->name }}
                 @endif
               </td>
-              <td>{{ $exercise->lesson->course->title }}</td>
               <td>
                 <a href="#" class="btn btn-warning">@lang('course.list_course.edit')</a>
                 <form method="POST" action="#}" class="inline" onsubmit="return confirmedDelete()">
