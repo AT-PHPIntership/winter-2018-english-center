@@ -39,4 +39,14 @@ class Lesson extends Model
     {
         return $this->belongsToMany('App\Models\Vocabulary');
     }
+
+    /**
+     * BelongsToMany user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User');
+    }
 }
