@@ -66,14 +66,14 @@
                         </div>
                         <div class="form-group">
                             <label for="course">{{ __('lesson.create_lesson.course') }}</label>
-                            <select class="form-control" name="level">
+                            <select class="form-control" name="course">
                                 @foreach ($courses as $course)
                                     <option value="{{ $course->id }}">{{ $course->title }}</option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('level'))
+                            @if ($errors->has('course'))
                                 <span class="help-block col-sm-12">
-                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('level') }}</strong>
+                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('course') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="form-group">
                             <label for="video">{{ __('lesson.create_lesson.video') }}</label>
-                            <input type="file" name="video" value="{{ old('video') }}">
+                            <input type="url" class="form-control" name="video" placeholder="Enter url video" value="{{ old('video') }}">
                             @if ($errors->has('video'))
                                 <span class="help-block col-sm-12">
                                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('video') }}</strong>
@@ -97,7 +97,6 @@
                         </div>
                     </div>
                     <!-- /.box-body -->
-
                     <div class="box-footer">
                         <a href="{{ route('admin.lessons.index')}}" class="btn btn-info btn-default">@lang('common.back')</a>
                         <button type="reset" class="btn btn-default pull-right">@lang('common.reset')</button>
