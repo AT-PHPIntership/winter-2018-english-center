@@ -51,4 +51,14 @@ class Course extends Model
     {
         return $this->hasMany('App\Models\Lesson');
     }
+
+    /**
+     * BelongsToMany user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User');
+    }
 }
