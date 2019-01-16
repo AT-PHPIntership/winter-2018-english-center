@@ -48,15 +48,15 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.show_lesson.img') }}</b>
-                                <img class="profile-user-img img-responsive img-circle col-lg-10" src="{{ $lesson->image }}" alt="">
+                                <img class="profile-user-img img-responsive img-circle col-lg-10" src="/storage/lesson/{{ $lesson->image }}" alt="">
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.show_lesson.video') }}</b>
                                 <span class="col-lg-10">
-                                    <video src="{{ $lesson->video }}" controls>
-                                    </video>
+                                    <iframe src="{{ $lesson->video }}" controls allowfullscreen>
+                                    </iframe>
                                 </span>
                             </div>
                         </li>
