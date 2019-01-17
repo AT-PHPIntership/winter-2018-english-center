@@ -49,6 +49,26 @@ class User extends Authenticatable
     }
 
     /**
+     * BelongsToMany course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function courses()
+    {
+        return $this->belongsToMany('App\Models\Course');
+    }
+
+    /**
+     * BelongsToMany lesson
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function lessons()
+    {
+        return $this->belongsToMany('App\Models\Lesson');
+    }
+
+    /**
      * The function help encrypt the password when user enter into
      *
      * @param string $password [input password to hash]

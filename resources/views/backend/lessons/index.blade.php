@@ -1,15 +1,14 @@
 @extends('backend.layouts.master')
 @section('content')
 <section class="content-header">
-  <h1>@lang('user.show_list_user.title')</h1>
+  <h1>@lang('lesson.list_lesson.title')</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
       <i class="fas fa-tachometer-alt"></i>@lang('layout_admin.home')
       </a>
     </li>
-
-    <li class="active">@lang('user.show_list_user.title')</li>
+    <li class="active">@lang('lesson.list_lesson.title')</li>
   </ol>
 </section>
 <section class="content">
@@ -30,33 +29,33 @@
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr class="row">
-                            <th class="col-lg-1">{{ __('user.show_list_user.id') }}</th>
-                            <th class="col-lg-2">{{ __('user.show_list_user.email') }}</th>
-                            <th class="col-lg-4">{{ __('user.show_list_user.password') }}</th>
-                            <th class="col-lg-1">{{ __('user.show_list_user.role') }}</th>
-                            <th class="col-lg-1">{{ __('user.show_list_user.show') }}</th>
-                            <th class="col-lg-3">{{ __('user.show_list_user.action') }}</th>
+                            <th class="col-lg-1">{{ __('lesson.list_lesson.id') }}</th>
+                            <th class="col-lg-3">{{ __('lesson.list_lesson.name') }}</th>
+                            <th class="col-lg-2">{{ __('lesson.list_lesson.course') }}</th>
+                            <th class="col-lg-2">{{ __('lesson.list_lesson.level') }}</th>
+                            <th class="col-lg-1">{{ __('lesson.list_lesson.role') }}</th>
+                            <th class="col-lg-1">{{ __('lesson.list_lesson.show') }}</th>
+                            <th class="col-lg-2">{{ __('lesson.list_lesson.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($lessons as $lesson)
                         <tr class="row">
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->password }}</td>
-                            <td>{{ $user->role->name }}</td>
+                            <td>{{ $lesson->id }}</td>
+                            <td>{{ $lesson->name }}</td>
+                            <td>{{ $lesson->course->title }}</td>
+                            <td>{{ $lesson->level->level }}</td>
+                            <td>{{ $lesson->role_name }}</td>
                             <td>
-                                <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-warning">@lang('common.detail')</a>
+                                <a href="" class="btn btn-warning">@lang('common.detail')</a>
                             </td>
                             <td>
-                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning">@lang('common.edit')</a>
-                                @if ($user->role->name != App\Models\Role::ROLE_ADMIN)
-                                <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline" onsubmit="return confirmedDelete()">
+                                <a href="" class="btn btn-warning">@lang('common.edit')</a>
+                                <form method="POST" action="" class="inline" onsubmit="return confirmedDelete()">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete User">@lang('common.delete')</button>
                                 </form>
-                                @endif
                             </td>
                         </tr>
                         @endforeach 
@@ -64,7 +63,7 @@
                     </table>
                     <div class="box-footer clearfix">
                     <ul class="pagination pagination-sm no-margin pull-right">
-                        {{ $users->links() }}
+                        {{ $lessons->links() }}
                     </ul>
                     </div>
                 </div>

@@ -96,14 +96,6 @@
                         @endif
                         </div>
                         <div class="form-group">
-                            <label for="phone">{{ __('user.show_list_user.show_user.course_level') }}</label>
-                            <input type="text" class="form-control" name="course_level" value="{{ $user->userProfile->course_level }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">{{ __('user.show_list_user.show_user.lession_level') }}</label>
-                            <input type="text" class="form-control" name="lession_level" value="{{ $user->userProfile->lession_level }}">
-                        </div>
-                        <div class="form-group">
                             <label for="role">{{ __('user.create_user.role.name') }}</label>
                             <select class="form-control" name="role_id">
                                 @foreach ($roles as $role)
@@ -118,7 +110,7 @@
                         </div>
                         <div class="form-group">
                             <label for="url">{{ __('user.create_user.url') }}</label>
-                            <img class="profile-user-img img-responsive img-circle" src="storage/avatar/{{ $user->userProfile->url }}" alt="User profile picture">
+                            <img class="profile-user-img img-responsive img-circle" src="storage/avatar/{{ $user->userProfile->url }}" alt="">
                             <input type="file" name="url" value="{{ $user->userProfile->url }}">
                             @if ($errors->has('url'))
                             <span class="help-block col-sm-12">
@@ -128,7 +120,7 @@
                         </div>     
                     </div>
                     <div class="box-footer">
-                        <a href="{{ route('admin.users.index')}}" class="btn btn-info btn-default">@lang('common.back')</a>
+                        <a href="{{ URL::previous() }}" class="btn btn-info btn-default">@lang('common.back')</a>
                         <button type="reset" class="btn btn-default pull-right">@lang('common.reset')</button>
                         <button type="submit" class="btn btn-primary pull-right">@lang('common.btn')</button>
                     </div>

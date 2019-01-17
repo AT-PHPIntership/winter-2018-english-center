@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Models\Lesson;
+use Config\define;
 
 class LessonService
 {
@@ -12,6 +13,7 @@ class LessonService
     **/
     public function index()
     {
-        return Lesson::all();
+        $lessons = Lesson::with(['course', 'level'])->orderBy('created_at', config('define.order_by_desc'))->paginate(config('define.page_site'));
+        return $lessons;
     }
 }
