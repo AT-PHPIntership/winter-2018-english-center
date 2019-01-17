@@ -53,7 +53,27 @@ class ExerciseController extends Controller
      */
     public function store(CreateExerciseRequest $request)
     {
+        dd($request->all());
         app(ExerciseService::class)->store($request->all());
         return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
+    }
+
+    /**
+      * Edit the form for editing the specified resource.
+      *
+      * @param Course $id comment
+      *
+      * @return \Illuminate\Http\Response
+     */
+    public function edit(Exercise $exercise)
+    {
+        return view('backend.exercises.edit')->with('exercise', $exercise);
+    }
+
+    public function update(CreateExerciseRequest $request, Exercise $exercise)
+    {
+        // dd($request->all());
+        app(ExerciseService::class)->update($request->all(), $exercise);
+        return redirect()->route('admin.exercises.index');
     }
 }

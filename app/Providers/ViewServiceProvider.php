@@ -18,7 +18,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         view()->composer(['backend.courses.create','backend.courses.edit','backend.exercises.create'], 'App\Http\ViewComposers\CourseComposer');
         view()->composer(['backend.users.create', 'backend.users.edit'], RoleComposer::class);
-        view()->composer(['backend.exercises.create'], LessonComposer::class);
+        view()->composer(['backend.exercises.create', 'backend.exercises.edit'], LessonComposer::class);
     }
 
     /**

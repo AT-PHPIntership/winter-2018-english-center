@@ -2,6 +2,9 @@ $(document).ready(function(){
   var key = 0;
 $("#add-questions").on("click", function(){
     var output = '<div id="a" class="box box-info">';
+    output += '<div>';
+    output += '<button type="button" class="btn btn-default remove-questions" style="float: right">x</button>';
+    output += '</div>';
     output += '<div class="box-body">';
     output += '<div class="form-group">';
     output += '<label>New question</label>';
@@ -55,5 +58,11 @@ $("#add-questions").on("click", function(){
     output += '</div>';
     $("#question").append(output);
     key++;
+    var listBtnRemove = document.getElementsByClassName('remove-questions');
+       for (var i = 0; i < listBtnRemove.length; i++) {
+         listBtnRemove[i].addEventListener("click", function(){
+           $(this.parentElement.parentElement).remove();
+      });
+    }
 });
 });

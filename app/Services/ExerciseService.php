@@ -44,4 +44,9 @@ class ExerciseService
             $question->answers()->createMany($value['answers']);
         }
     }
+
+    public function update($data, $exercise)
+    {
+        $exercise = $exercise->update($data);
+    }
 }
