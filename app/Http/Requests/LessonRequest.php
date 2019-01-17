@@ -29,6 +29,7 @@ class LessonRequest extends FormRequest
             'role' => 'required',
             'level_id' => 'required',
             'course_id' => 'required',
+            'vocabularies_id' => 'required',
             'image' => 'required',
             'video' => 'required|url',
         ];

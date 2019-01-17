@@ -19,6 +19,7 @@ return [
         'role' => 'Role',
         'level' => 'Level',
         'course' => 'Course',
+        'vocabulary' => 'Vocabularies',
         'image' => 'Image',
         'video' => 'Video',
     ]

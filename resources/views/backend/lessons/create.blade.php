@@ -81,6 +81,20 @@
                             @endif
                         </div>
                         <div class="form-group">
+                            <label for="vocabulary">{{ __('lesson.create_lesson.vocabulary') }}</label>
+                            <select class="form-control select2" multiple="multiple" data-placeholder="  Select a Vocabulary"
+                                    style="width: 100%;" name="vocabularies_id[]">
+                                @foreach ($vocabularies as $vocabulary)
+                                    <option value="{{ $vocabulary->id }}">{{ $vocabulary->vocabulary }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('vocabularies_id'))
+                                <span class="help-block col-sm-12">
+                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('vocabularies_id') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label for="img">{{ __('lesson.create_lesson.image') }}</label>
                             <input type="file" name="image" value="{{ old('image') }}">
                             @if ($errors->has('image'))

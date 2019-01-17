@@ -28,6 +28,7 @@ class LessonService
     public function store($data)
     {
         $lesson = Lesson::create($data);
+        $lesson->vocabularies()->attach($data['vocabularies_id']);
         return $lesson;
     }
 }
