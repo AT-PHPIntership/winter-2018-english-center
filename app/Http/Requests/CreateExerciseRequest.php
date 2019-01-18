@@ -25,8 +25,7 @@ class CreateExerciseRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'lesson_id' => 'nullable',
-            'content' => 'nullable',
+            'lesson' => 'required|string',
         ];
     }
 }
