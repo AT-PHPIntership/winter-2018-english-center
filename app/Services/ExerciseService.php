@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Models\Exercise;
+use App\Models\Answer;
 
 class ExerciseService
 {
@@ -41,7 +42,12 @@ class ExerciseService
         $exercise = Exercise::create($data);
         foreach ($data['questions'] as $value) {
             $question = $exercise->questions()->create($value);
-            $question->answers()->createMany($value['answers']);
+            collect($value['answers'])->map(function ($v, $k) use ($question, $value, &$answers) {
+                $answers[$question->id.$k]['answers'] = $v;
+                $answers[$question->id.$k]['status'] = $k == $value['status'];
+                $answers[$question->id.$k]['question_id'] = $question->id;
+            });
         }
+        Answer::insert($answers);
     }
 }
