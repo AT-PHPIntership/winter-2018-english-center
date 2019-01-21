@@ -110,7 +110,7 @@ class VocabularyController extends Controller
      */
     public function show(Vocabulary $vocabulary)
     {
-        $vocabularies = app(VocabularyService::class)->show($vocabulary);
-        return view('backend.vocabularies.show', compact('vocabularies'));
+        // $vocabularies = app(VocabularyService::class)->show($vocabulary);
+        return view('backend.vocabularies.show', compact('vocabulary'));
     }
 }
