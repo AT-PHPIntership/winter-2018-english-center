@@ -41,6 +41,6 @@ class LessonService
      */
     public function edit($data)
     {
-        return $lesson = Lesson::where('id', $data->id)->with('vocabularies')->first();
+        return Lesson::where('id', $data->id)->with('vocabularies')->first();
     }
 }
