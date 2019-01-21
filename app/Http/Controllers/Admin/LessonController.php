@@ -48,7 +48,7 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        $lessons = $this->lessonService->show($lesson);
-        return view('backend.lessons.show', compact('lessons'));
+        $lesson = $this->lessonService->show($lesson);
+        return view('backend.lessons.show', compact('lesson'));
     }
 }

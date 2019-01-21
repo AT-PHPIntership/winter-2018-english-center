@@ -32,7 +32,6 @@
             <div class="box">
                 <div class="box-body">
                     <ul class="list-group list-group-unbordered">
-                        @foreach($lessons as $lesson)
                         <li class="list-group-item">
                             <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.id') }}</b>
@@ -134,7 +133,6 @@
                                 <span class="col-lg-10">{{ $lesson->updated_at }}</span>
                             </div>
                         </li>
-                        @endforeach
                     </ul>
                     <a href="{{ URL::previous() }}" class="btn btn-primary"><b>@lang('common.back')</b></a>
                 </div>
