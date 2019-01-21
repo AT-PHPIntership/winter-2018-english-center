@@ -43,4 +43,20 @@ class LessonService
     {
         return Lesson::where('id', $data->id)->with('vocabularies')->first();
     }
+
+    /**
+    * Handle update user to database
+    *
+    * @param \Illuminate\Http\Request $data   data
+    * @param Lesson                   $lesson lesson
+    *
+    * @return void
+    */
+    public function update($data, $lesson)
+    {
+        $lesson->update($data);
+        if (isset($data['vocabulary_id'])) {
+            $lesson->vocabularies()->sync($data['vocabulary_id']);
+        }
+    }
 }

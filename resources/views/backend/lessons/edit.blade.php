@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">{{ __('lesson.create_lesson.text') }}</label>
-                            <textarea class="form-control" name="text" placeholder="{{ $lesson->text }}"></textarea>
+                            <textarea class="form-control" name="text">{{ $lesson->text }}</textarea>
                             @if ($errors->has('text'))
                                 <span class="help-block col-sm-12">
                                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('text') }}</strong>
