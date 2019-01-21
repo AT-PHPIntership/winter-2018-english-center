@@ -100,4 +100,16 @@ class VocabularyController extends Controller
         app(VocabularyService::class)->destroy($vocabulary);
         return redirect()->route('admin.vocabularies.index')->with('success', __('common.success'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Vocabulary $vocabulary Vocabulary
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Vocabulary $vocabulary)
+    {
+        return view('backend.vocabularies.show', compact('vocabulary'));
+    }
 }
