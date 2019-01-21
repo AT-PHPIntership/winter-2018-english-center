@@ -56,6 +56,15 @@ class Lesson extends Model
         return config('define.trial');
     }
     /**
+     * BelongsToMany user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User');
+    }
+    /**
      * HasMany exercises
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
