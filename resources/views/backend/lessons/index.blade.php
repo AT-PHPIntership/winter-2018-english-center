@@ -50,7 +50,7 @@
                                 <a href="" class="btn btn-warning">@lang('common.detail')</a>
                             </td>
                             <td>
-                                <a href="" class="btn btn-warning">@lang('common.edit')</a>
+                                <a href="{{ route('admin.lessons.edit', $lesson->id) }}" class="btn btn-warning">@lang('common.edit')</a>
                                 <form method="POST" action="" class="inline" onsubmit="return confirmedDelete()">
                                     @csrf
                                     @method('DELETE')

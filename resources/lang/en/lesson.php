@@ -22,5 +22,9 @@ return [
         'vocabulary' => 'Vocabularies',
         'image' => 'Image',
         'video' => 'Video',
+    ],
+    'edit_lesson' =>
+    [
+        'title' => 'Edit Lesson',
     ]
 ];

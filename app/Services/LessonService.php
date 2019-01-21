@@ -31,4 +31,16 @@ class LessonService
         $lesson->vocabularies()->attach($data['vocabularies_id']);
         return $lesson;
     }
+
+    /**
+     * Edit resource in storage.
+     *
+     * @param \Illuminate\Http\Request $data data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($data)
+    {
+        return $lesson = Lesson::where('id', $data->id)->with('vocabularies')->first();
+    }
 }

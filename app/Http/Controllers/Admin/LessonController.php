@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\LessonService;
 use App\Services\ImageService;
 use App\Http\Requests\LessonRequest;
+use App\Models\Lesson;
 
 class LessonController extends Controller
 {
@@ -72,5 +73,18 @@ class LessonController extends Controller
         $data['image'] = $this->imageService->uploadImageLesson($data['image']);
         $this->lessonService->store($data);
         return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Lesson $lesson Lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Lesson $lesson)
+    {
+        $lesson = app(LessonService::class)->edit($lesson);
+        return view('backend.lessons.edit', compact('lesson'));
     }
 }
