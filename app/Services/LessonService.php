@@ -27,6 +27,6 @@ class LessonService
      */
     public function show($lesson)
     {
-        return load(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers']);
+        return $lesson->load(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers']);
     }
 }
