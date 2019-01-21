@@ -51,7 +51,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('admin.lessons.edit', $lesson->id) }}" class="btn btn-warning">@lang('common.edit')</a>
-                                <form method="POST" action="" class="inline" onsubmit="return confirmedDelete()">
+                                <form method="POST" action="{{ route('admin.lessons.destroy', $lesson->id) }}" class="inline" onsubmit="return confirmedDelete()">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete User">@lang('common.delete')</button>

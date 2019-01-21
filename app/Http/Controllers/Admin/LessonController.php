@@ -106,4 +106,17 @@ class LessonController extends Controller
         $this->lessonService->update($data, $lesson);
         return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Lesson $lesson lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Lesson $lesson)
+    {
+        $this->lessonService->destroy($lesson);
+        return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
+    }
 }
