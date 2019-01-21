@@ -27,7 +27,7 @@ class LessonService
      */
     public function show($lesson)
     {
-        $lesson = Lesson::with(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers'])->find($lesson->id);
+        $lesson->load(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers']);
         return $lesson;
     }
 }
