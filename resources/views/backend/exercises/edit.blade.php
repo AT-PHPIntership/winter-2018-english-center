@@ -82,6 +82,8 @@
               </div>
               @endforeach
               @endif
+            <div id="question" class="col-md-10 col-xs-offset-1">
+            </div>
             </div>
           </div>
           <div class="box-footer">

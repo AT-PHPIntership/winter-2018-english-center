@@ -2,11 +2,11 @@
   <div class="box box-info">
     <div class="box-body">
       <div class="form-group">
-        <label>New question</label>
+        <label>{{ __('question.create_question.title') }}</label>
         <input name="questions[key][content]" class="form-control" id="exampleInputEmail1" placeholder="Enter question">
       </div>
       <div class="form-group">
-        <label class="col-sm-2 col-xs-offset-2 control-label">Answer 1</label>
+        <label class="col-sm-2 col-xs-offset-2 control-label">{{ __('question.create_question.answer1') }}</label>
         <div class="col-lg-6">
           <div class="input-group">
             <input name="questions[key][answers][]" type="text" class="form-control">
@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 col-xs-offset-2 control-label">Answer 2</label>
+        <label class="col-sm-2 col-xs-offset-2 control-label">{{ __('question.create_question.answer2') }}</label>
         <div class="col-lg-6">
           <div class="input-group">
             <input name="questions[key][answers][]" type="text" class="form-control">
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 col-xs-offset-2 control-label">Answer 3</label>
+        <label class="col-sm-2 col-xs-offset-2 control-label">{{ __('question.create_question.answer3') }}</label>
         <div class="col-lg-6">
           <div class="input-group">
             <input name="questions[key][answers][]" type="text" class="form-control">
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 col-xs-offset-2 control-label">Answer 4</label>
+        <label class="col-sm-2 col-xs-offset-2 control-label">{{ __('question.create_question.answer4') }}</label>
         <div class="col-lg-6">
           <div class="input-group" name="status">
             <input name="questions[key][answers][]" type="text" class="form-control">
