@@ -85,8 +85,8 @@
             <li><a href="{{ route('admin.vocabularies.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_vocabularies')</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="#">
+          <a href="{{ route('admin.comments.index') }}">
             <i class="fa fa-file"></i> <span>@lang('layout_admin.sidebar.comment_management')</span>
           </a>
         </li>
