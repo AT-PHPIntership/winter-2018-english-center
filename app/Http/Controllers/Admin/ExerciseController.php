@@ -82,4 +82,17 @@ class ExerciseController extends Controller
         app(ExerciseService::class)->update($request->all(), $exercise);
         return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Exercise $exercise exercise
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Exercise $exercise)
+    {
+        app(ExerciseService::class)->destroy($exercise);
+        return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
+    }
 }
