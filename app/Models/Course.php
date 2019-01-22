@@ -61,4 +61,14 @@ class Course extends Model
     {
         return $this->belongsToMany('App\Models\User');
     }
+
+    /**
+     * MorphMany comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable');
+    }
 }

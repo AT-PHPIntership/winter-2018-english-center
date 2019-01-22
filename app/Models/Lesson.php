@@ -73,4 +73,14 @@ class Lesson extends Model
     {
         return $this->hasMany('App\Models\Exercise');
     }
+
+    /**
+     * MorphMany lesson
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable');
+    }
 }
