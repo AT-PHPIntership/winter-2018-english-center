@@ -72,4 +72,16 @@ class LessonService
         $lesson->vocabularies()->detach();
         $lesson->delete();
     }
+
+    /**
+     * Show resource in storage.
+     *
+     * @param \Illuminate\Http\Request $lesson lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($lesson)
+    {
+        return $lesson->load(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers']);
+    }
 }

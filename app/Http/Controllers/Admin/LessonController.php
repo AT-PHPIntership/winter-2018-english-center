@@ -78,6 +78,7 @@ class LessonController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * Display the specified resource.
      *
      * @param Lesson $lesson Lesson
      *
@@ -118,5 +119,18 @@ class LessonController extends Controller
     {
         $this->lessonService->destroy($lesson);
         return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param Lesson $lesson Lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Lesson $lesson)
+    {
+        $lesson = $this->lessonService->show($lesson);
+        return view('backend.lessons.show', compact('lesson'));
     }
 }

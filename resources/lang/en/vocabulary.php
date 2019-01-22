@@ -7,8 +7,14 @@
             'word_type' => 'Word Type',
             'means' => 'Means',
             'sound' => 'Sound',
+            'show' => 'Show',
             'action' => 'Action',
             'vocabularies' => 'Vocabularies',
+            
+        ],
+        'show_vocabulary' => [
+            'title' => 'Vocabulary Detail',
+            'belong_lessons' => 'Belong To Lessons',
         ],
         'import_voca' => [
             'title' => 'Create Vocabularies',

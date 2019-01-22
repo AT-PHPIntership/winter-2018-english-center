@@ -47,7 +47,7 @@
                             <td>{{ $lesson->level->level }}</td>
                             <td>{{ $lesson->role_name }}</td>
                             <td>
-                                <a href="" class="btn btn-warning">@lang('common.detail')</a>
+                                <a href="{{ route('admin.lessons.show', $lesson->id) }}" class="btn btn-warning">@lang('common.detail')</a>
                             </td>
                             <td>
                                 <a href="{{ route('admin.lessons.edit', $lesson->id) }}" class="btn btn-warning">@lang('common.edit')</a>
@@ -62,9 +62,9 @@
                     </tbody>
                     </table>
                     <div class="box-footer clearfix">
-                    <ul class="pagination pagination-sm no-margin pull-right">
-                        {{ $lessons->links() }}
-                    </ul>
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            {{ $lessons->links() }}
+                        </ul>
                     </div>
                 </div>
             </div>

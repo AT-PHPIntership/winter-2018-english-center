@@ -45,9 +45,9 @@
           </div>
         </div>
         <div class="box-footer">
-          <a href="{{ route('admin.vocabularies.index')}}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
-          <button type="reset" class="btn btn-default pull-right">@lang('course.create_course.reset')</button>
-          <button type="submit" class="btn btn-primary pull-right">@lang('course.create_course.btn')</button>
+          <a href="{{ URL::previous() }}" class="btn btn-info btn-default">@lang('common.back')</a>
+          <button type="reset" class="btn btn-default pull-right">@lang('common.reset')</button>
+          <button type="submit" class="btn btn-primary pull-right">@lang('common.btn')</button>
         </div>
       </form>
     </div>
