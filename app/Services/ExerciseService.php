@@ -2,6 +2,9 @@
 namespace App\Services;
 
 use App\Models\Exercise;
+use App\Models\Question;
+use App\Models\Answer;
+use Carbon\Carbon;
 
 class ExerciseService
 {
@@ -41,12 +44,36 @@ class ExerciseService
         $exercise = Exercise::create($data);
         foreach ($data['questions'] as $value) {
             $question = $exercise->questions()->create($value);
-            $question->answers()->createMany($value['answers']);
+            collect($value['answers'])->map(function ($v, $k) use ($question, $value, &$answers) {
+                $answers[$question->id.$k]['answers'] = $v;
+                $answers[$question->id.$k]['status'] = $k == $value['status'];
+                $answers[$question->id.$k]['question_id'] = $question->id;
+            });
         }
+        Answer::insert($answers);
     }
 
+    /**
+     * Function update exercise
+     *
+     * @param ValidationExercise $data     requestExercise
+     * @param Exercise           $exercise exercise
+     *
+     * @return App\Services\ExerciseService
+    **/
     public function update($data, $exercise)
     {
-        $exercise = $exercise->update($data);
+        $exercise->update($data);
+        foreach ($data['questions'] as $question) {
+            $questionId = Question::find($question['id']);
+            $questionId->update(array_except($question, ['answers', 'status']));
+            $questionId->answers()->delete();
+            collect($question['answers'])->map(function ($v, $k) use ($question, &$answers) {
+                $answers[$question['id'].$k]['answers'] = $v;
+                $answers[$question['id'].$k]['status'] = $k == $question['status'];
+                $answers[$question['id'].$k]['question_id'] = $question['id'];
+            });
+        }
+        Answer::insert($answers);
     }
 }

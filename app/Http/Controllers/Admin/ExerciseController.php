@@ -53,7 +53,6 @@ class ExerciseController extends Controller
      */
     public function store(CreateExerciseRequest $request)
     {
-        dd($request->all());
         app(ExerciseService::class)->store($request->all());
         return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
     }
@@ -61,7 +60,7 @@ class ExerciseController extends Controller
     /**
       * Edit the form for editing the specified resource.
       *
-      * @param Course $id comment
+      * @param Exercise $exercise exercise
       *
       * @return \Illuminate\Http\Response
      */
@@ -70,10 +69,17 @@ class ExerciseController extends Controller
         return view('backend.exercises.edit')->with('exercise', $exercise);
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\CreateExerciseRequest $request  requestCourse
+     * @param Exercise                               $exercise exercise
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function update(CreateExerciseRequest $request, Exercise $exercise)
     {
-        // dd($request->all());
         app(ExerciseService::class)->update($request->all(), $exercise);
-        return redirect()->route('admin.exercises.index');
+        return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
     }
 }

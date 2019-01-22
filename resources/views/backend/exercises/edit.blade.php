@@ -45,25 +45,33 @@
                 @endforeach
                 @endif
               </select>
+                @if ($errors->has('lesson_id'))
+                <span class="text-red help is-danger">* {{ $errors->first('lesson_id') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+              <button type='button' id="add-questions" class="btn btn-default">+</button>
+              <button type='button' id="remove-questions" class="btn btn-default">x</button>
             </div>
             <div class="form-group">
               @if($exercise->questions != null)
-              @foreach ($exercise->questions as $key => $question)
-              <div id="question" class="col-md-10 col-xs-offset-1">
+              @foreach ($exercise->questions as $a => $question)
+              <div id="questions" class="col-md-10 col-xs-offset-1">
                 <div class="box box-info">
                   <div class="box-body">
                     <div class="form-group">
                       <label>{{ __('exercise.update_exercise.question') }}</label>
-                      <input name="questions['+ key + '][content]" class="form-control" id="exampleInputEmail1" value="{{ $question->content }}">
+                      <input type="hidden" name="questions[{{ $a }}][id]" class="form-control" value="{{ $question->id }}">
+                      <input name="questions[{{ $a }}][content]" class="form-control" value="{{ $question->content }}">
                     </div>
                     @foreach ($question->answers as $key => $answers)
                     <div class="form-group">
                       <label class="col-sm-2 col-xs-offset-2 control-label">Answer {{ $key + 1 }}</label>
                       <div class="col-lg-6">
                         <div class="input-group">
-                          <input name="questions['+ key + '][answers][0][answers]]" type="text" class="form-control" value="{{ $answers->answers }}">
+                          <input name="questions[{{ $a }}][answers][]" type="text" class="form-control" value="{{ $answers->answers }}">
                           <span class="input-group-addon">
-                          <input {{ $answers->status ? "checked" : "" }} type="radio" name="{{ $key }}" class="radio" value="">
+                          <input {{ $answers->status ? "checked" : "" }} type="radio" name="questions[{{ $a }}][status]]" class="radio" value="{{ $key }}">
                           </span>
                         </div>
                       </div>
@@ -86,4 +94,8 @@
     </div>
   </div>
 </section>
+<!-- add answers template -->
+<div hidden>
+  @include('backend.exercises.sub-template.answer')
+</div>
 @endsection
