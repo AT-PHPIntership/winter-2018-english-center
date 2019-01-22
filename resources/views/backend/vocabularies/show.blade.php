@@ -34,7 +34,6 @@
       <div class="box">
         <div class="box-body">
           <ul class="list-group list-group-unbordered">
-            @foreach($vocabularies as $vocabulary)
             <li class="list-group-item">
                 <div class="row">
                     <b class="col-lg-2">{{ __('vocabulary.list_vocabulary.id') }}</b>
@@ -71,17 +70,6 @@
                     </span>
                 </div>
             </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <b class="col-lg-2">{{ __('vocabulary.show_vocabulary.belong_lessons') }}</b>
-                    <span class="col-lg-10">
-                        @foreach($vocabulary->lessons as $lesson)
-                        <a>{{ $lesson->name }}</a>&emsp;
-                        @endforeach
-                    </span>
-                </div>
-            </li>
-            @endforeach
           </ul>
           <a href="{{ route('admin.vocabularies.index') }}" class="btn btn-primary"><b>@lang('common.back')</b></a>
           <a href="{{ route('admin.vocabularies.edit', $vocabulary->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
