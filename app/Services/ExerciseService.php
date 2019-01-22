@@ -76,4 +76,16 @@ class ExerciseService
         }
         Answer::insert($answers);
     }
+
+    /**
+     * Function destroy exercise
+     *
+     * @param Exercise $exercise exercise
+     *
+     * @return App\Services\ExerciseService
+    **/
+    public function destroy($exercise)
+    {
+        return $exercise->delete();
+    }
 }
