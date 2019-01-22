@@ -161,17 +161,4 @@ class VocabularyService
     {
         $vocabulary->delete();
     }
-
-    /**
-     * Show resource in storage.
-     *
-     * @param \Illuminate\Http\Request $vocabulary vocabulary
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($vocabulary)
-    {
-        $vocabulary = Vocabulary::where('id', $vocabulary->id)->with(['lessons'])->get();
-        return $vocabulary;
-    }
 }
