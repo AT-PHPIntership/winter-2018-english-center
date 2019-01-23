@@ -85,3 +85,14 @@ $factory->define(App\Models\Answer::class, function(Faker $faker) {
         'status' => $faker->boolean,
     ];
 });
+
+$factory->define(App\Models\System::class, function(Faker $faker) {
+    return [
+        'whyus' => $faker->text,
+        'aboutus' => $faker->text,
+        'phone' => '09'.$faker->randomNumber(8),
+        'email' => $faker->unique()->safeEmail,
+        'web' => $faker->url,
+        'address' => $faker->address,
+    ];
+});

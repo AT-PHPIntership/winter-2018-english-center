@@ -16,7 +16,9 @@
     "tests"
   ],
   "dependencies": {
-    "admin-lte": "adminlte#^2.4.2"
+    "admin-lte": "adminlte#^2.4.2",
+    "select2": "~4.0",
+    "slick-carousel": "^1.8.1"
   },
   "resolutions": {
     "jquery": "3.3.1"
