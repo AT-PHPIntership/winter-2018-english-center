@@ -40,5 +40,6 @@ return [
     'edit_lesson' =>
     [
         'title' => 'Edit Lesson',
+        'placeholder' => 'Enter url video',
     ]
 ];

@@ -26,3 +26,4 @@
         $(".select2").select2();
     });
 </script>
+<script src="bower_components/ckeditor/ckeditor.js"></script>

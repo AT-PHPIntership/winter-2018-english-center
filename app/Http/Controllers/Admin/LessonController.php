@@ -70,6 +70,7 @@ class LessonController extends Controller
      */
     public function store(LessonRequest $request)
     {
+        dd($request->ajax);
         $data = $request->except(['_token']);
         $data['image'] = $this->imageService->uploadImageLesson($data['image']);
         $this->lessonService->store($data);
@@ -78,7 +79,6 @@ class LessonController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * Display the specified resource.
      *
      * @param Lesson $lesson Lesson
      *
@@ -109,6 +109,7 @@ class LessonController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * Remove the specified resource from storage.
      *
      * @param Lesson $lesson lesson
@@ -122,6 +123,8 @@ class LessonController extends Controller
     }
     
     /**
+=======
+>>>>>>> c79c8862f56417fef5fbad551e623549f080440c
      * Display the specified resource.
      *
      * @param Lesson $lesson Lesson
