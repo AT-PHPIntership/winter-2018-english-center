@@ -19,4 +19,14 @@ class Comment extends Model
     {
         return $this->morphTo();
     }
+
+    /**
+     * BelongsTo user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }
