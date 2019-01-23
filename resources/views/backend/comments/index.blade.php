@@ -32,7 +32,6 @@
             <tr>
               <th>@lang('course.list_course.id')</th>
               <th>@lang('comment.user_name')</th>
-              <th>@lang('comment.lesson_name')</th>
               <th>@lang('comment.course_name')</th>
               <th>@lang('comment.content')</th>
               <th>@lang('course.list_course.action')</th>
@@ -41,21 +40,9 @@
           <tbody>
             @foreach ($comments as $key => $comment)
             <tr>
-              <td>{{ $comment->id }}</td>
-              <td>{{ $comment->user_id }}</td>
+              <td>{{ $comment->user->userProfile->name }}</td>
               <td>
-                @if(!$comment['parent_id'])
-                {{ 'none' }}
-                @else
-                {{ $comment->lesson_id }}
-                @endif
-              </td>
-              <td>
-                @if(!$comment['parent_id'])
-                {{ 'none' }}
-                @else
-                {{ $comment->course_id }}
-                @endif
+                {{ $comment->commentable->name }}
               </td>
               <td>{{ $comment->content }}</td>
               <td>

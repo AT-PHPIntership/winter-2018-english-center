@@ -8,10 +8,14 @@ use App\Services\CommentService;
 
 class CommentController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $comments = app(CommentService::class)->index();
-        // dd($comments);
         return view('backend.comments.index')->with('comments', $comments);
     }
 }
