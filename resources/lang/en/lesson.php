@@ -21,5 +21,6 @@ return [
         'course' => 'Course',
         'image' => 'Image',
         'video' => 'Video',
+        'placeholder' => 'Enter url video',
     ]
 ];

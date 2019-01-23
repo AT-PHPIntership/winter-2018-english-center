@@ -31,8 +31,22 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="email">{{ __('lesson.create_lesson.text') }}</label>
-                            <textarea class="form-control" name="text" placeholder="Enter text" value="{{ old('text') }}"></textarea>
+                            <label>@lang('lesson.create_lesson.text')</label>
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <div class="pull-right box-tools">
+                                        <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body pad">
+                                    <form>
+                                        <textarea class="ckeditor" name="text" rows="10" cols="80">
+                                        </textarea>
+                                    </form>
+                                </div>
+                            </div>
                             @if ($errors->has('text'))
                                 <span class="help-block col-sm-12">
                                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('text') }}</strong>
@@ -88,7 +102,7 @@
                         </div>
                         <div class="form-group">
                             <label for="video">{{ __('lesson.create_lesson.video') }}</label>
-                            <input type="url" class="form-control" name="video" placeholder="Enter url video" value="{{ old('video') }}">
+                            <input type="url" class="form-control" name="video" placeholder="@lang('lesson.create_lesson.placeholder')" value="{{ old('video') }}">
                             @if ($errors->has('video'))
                                 <span class="help-block col-sm-12">
                                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('video') }}</strong>

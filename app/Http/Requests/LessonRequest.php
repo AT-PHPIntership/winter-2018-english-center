@@ -26,7 +26,7 @@ class LessonRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:50',
             'text' => 'required',
-            'img' => 'required',
+            'img' => 'required|mimes:jpg,jpeg,png|max:4096',
             'video' => 'required',
         ];
     }

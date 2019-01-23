@@ -19,3 +19,4 @@
 <script src="js/common.js"></script>
 <!-- Show alert when create, update, delete -->
 <script src="js/show.js"></script>
+<script src="bower_components/ckeditor/ckeditor.js"></script>
