@@ -59,4 +59,16 @@ class LessonService
             $lesson->vocabularies()->sync($data['vocabulary_id']);
         }
     }
+    
+    /**
+     * Show resource in storage.
+     *
+     * @param \Illuminate\Http\Request $lesson lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($lesson)
+    {
+        return $lesson->load(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers']);
+    }
 }

@@ -29,8 +29,8 @@ class LessonRequest extends FormRequest
             'role' => 'required',
             'level_id' => 'required',
             'course_id' => 'required',
-            'vocabulary_id' => 'required',
-            'image' => 'required',
+            'vocabularies_id' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png|max:4096',
             'video' => 'required|url',
         ];
     }

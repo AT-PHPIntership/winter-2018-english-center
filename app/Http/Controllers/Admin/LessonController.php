@@ -70,6 +70,7 @@ class LessonController extends Controller
      */
     public function store(LessonRequest $request)
     {
+        dd($request->ajax);
         $data = $request->except(['_token']);
         $data['image'] = $this->imageService->uploadImageLesson($data['image']);
         $this->lessonService->store($data);
@@ -105,5 +106,18 @@ class LessonController extends Controller
         }
         $this->lessonService->update($data, $lesson);
         return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Lesson $lesson Lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Lesson $lesson)
+    {
+        $lesson = $this->lessonService->show($lesson);
+        return view('backend.lessons.show', compact('lesson'));
     }
 }
