@@ -31,4 +31,15 @@ class LessonService
         $lesson->vocabularies()->attach($data['vocabularies_id']);
         return $lesson;
     }
+    /**
+     * Show resource in storage.
+     *
+     * @param \Illuminate\Http\Request $lesson lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($lesson)
+    {
+        return $lesson->load(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers']);
+    }
 }
