@@ -12,7 +12,7 @@ class CommentService
     **/
     public function index()
     {
-        $comments = Comment::with('user')->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
+        $comments = Comment::where('parent_id', null)->with('user')->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
         return $comments;
     }
 }
