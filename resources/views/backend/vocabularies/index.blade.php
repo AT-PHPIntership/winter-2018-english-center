@@ -30,18 +30,19 @@
       <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
           <thead>
-            <tr>
-              <th>@lang('vocabulary.list_vocabulary.id')</th>
-              <th>@lang('vocabulary.list_vocabulary.vocabulary')</th>
-              <th>@lang('vocabulary.list_vocabulary.word_type')</th>
-              <th>@lang('vocabulary.list_vocabulary.means')</th>
-              <th>@lang('vocabulary.list_vocabulary.sound')</th>
-              <th>@lang('vocabulary.list_vocabulary.action')</th>
+            <tr class="row">
+              <th class="col-lg-1">@lang('vocabulary.list_vocabulary.id')</th>
+              <th class="col-lg-1">@lang('vocabulary.list_vocabulary.vocabulary')</th>
+              <th class="col-lg-1">@lang('vocabulary.list_vocabulary.word_type')</th>
+              <th class="col-lg-3">@lang('vocabulary.list_vocabulary.means')</th>
+              <th class="col-lg-3">@lang('vocabulary.list_vocabulary.sound')</th>
+              <th class="col-lg-1">@lang('vocabulary.list_vocabulary.show')</th>
+              <th class="col-lg-2">@lang('vocabulary.list_vocabulary.action')</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($vocabularies as $key => $vocabulary)
-            <tr>
+            <tr class="row">
               <td>{{ $vocabulary->id }}</td>
               <td>{{ $vocabulary->vocabulary }}</td>
               <td>{{ $vocabulary->word_type }}</td>
@@ -52,6 +53,9 @@
                         <source src="{{ $vocabulary->sound }}" type="audio/mpeg">
                     </audio>
                 </div>
+              </td>
+              <td>
+                <a href="{{ route('admin.vocabularies.show', $vocabulary->id) }}" class="btn btn-warning">@lang('common.detail')</a>
               </td>
               <td>
                 <a href="{{ route('admin.vocabularies.edit', $vocabulary->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
