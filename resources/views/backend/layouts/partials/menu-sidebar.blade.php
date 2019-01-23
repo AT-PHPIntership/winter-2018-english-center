@@ -26,8 +26,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">@lang('layout_admin.sidebar.main_navigation')</li>
-        <li class="treeview">
-          <a href="#">
+        <li class="#">
+          <a href="{{ route('admin.dashboard') }}">
             <i class="fa fa-dashboard"></i> <span>@lang('layout_admin.dashboard')</span>
           </a>
         </li>
