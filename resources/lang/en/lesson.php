@@ -22,5 +22,6 @@ return [
         'vocabulary' => 'Vocabularies',
         'image' => 'Image',
         'video' => 'Video',
+        'placeholder' => 'Enter url video',
     ]
 ];

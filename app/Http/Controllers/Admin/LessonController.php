@@ -68,6 +68,7 @@ class LessonController extends Controller
      */
     public function store(LessonRequest $request)
     {
+        dd($request->ajax);
         $data = $request->except(['_token']);
         $data['image'] = $this->imageService->uploadImageLesson($data['image']);
         $this->lessonService->store($data);
