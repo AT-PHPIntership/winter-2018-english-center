@@ -12,8 +12,8 @@ class SystemService
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAll()
+    public function get()
     {
-        return System::all();
+        return System::first();
     }
 }

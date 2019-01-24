@@ -27,4 +27,15 @@ return [
         'conditions' => 'Conditions'
 
     ],
+    'about_us' => [
+        'title' => 'WHY EDUCAT ?',
+        'btn' => 'Learn Now',
+    ],
+    'courses' => [
+        'title' => 'POPULAR COURSES',
+        'intro' => 'There are many popular courses of center',
+        'date' => 'Date:',
+        'btn' => 'Learn Now',
+        'allcourses' => 'Browse All Courses '
+    ],
 ];

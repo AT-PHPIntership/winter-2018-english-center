@@ -1,4 +1,3 @@
-@foreach ($systems as $system)
 <!--Newsletter Area Start-->
 <div class="newsletter-area">
     <div class="container">
@@ -108,4 +107,3 @@
     </div>
 </footer>
 <!--End of Footer Area-->
-@endforeach

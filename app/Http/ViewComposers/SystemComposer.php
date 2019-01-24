@@ -35,6 +35,6 @@ class SystemComposer
      */
     public function compose(View $view)
     {
-        $view->with('systems', $this->systemsService->getAll());
+        $view->with('system', $this->systemsService->get());
     }
 }

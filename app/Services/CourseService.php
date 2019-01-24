@@ -76,4 +76,14 @@ class CourseService
     {
         return $course->delete();
     }
+
+    /**
+     * Function get course
+     *
+     * @return App\Services\CourseService
+    **/
+    public function get()
+    {
+        return Course::all()->take(3);
+    }
 }

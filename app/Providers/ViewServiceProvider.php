@@ -16,9 +16,9 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['backend.courses.create','backend.courses.edit'], 'App\Http\ViewComposers\CourseComposer');
+        view()->composer(['backend.courses.create','backend.courses.edit', 'frontend.home'], 'App\Http\ViewComposers\CourseComposer');
         view()->composer(['backend.users.create', 'backend.users.edit'], RoleComposer::class);
-        view()->composer(['frontend.layouts.partials.footer',], SystemComposer::class);
+        view()->composer(['frontend.layouts.partials.footer', 'frontend.home',], SystemComposer::class);
     }
 
     /**
