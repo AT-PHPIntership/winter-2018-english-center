@@ -16,29 +16,29 @@
   </ol>
 </section>
 <section class="content">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box box-primary">
-        <form action="{{ route('admin.exercises.store') }}" method="POST">
-          @csrf
-          <div class="box-body">
-            <div class="form-group">
-              <label>@lang('exercise.list_exercise.exercises')</label>
-              <input name="title" type="text" class="form-control" placeholder="Add name exercise ...">
-              @if ($errors->has('title'))
-              <span class="text-red help is-danger">* {{ $errors->first('title') }}</span>
-              @endif
+<divc class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <form action="{{ route('admin.exercises.store') }}" method="POST">
+        @csrf
+        <div class="box-body">
+          <div class="form-group">
+            <label>@lang('exercise.list_exercise.exercises')</label>
+            <input name="title" type="text" class="form-control" placeholder="Add name exercise ...">
+            @if ($errors->has('title'))
+            <span class="text-red help is-danger">* {{ $errors->first('title') }}</span>
+            @endif
             </div>
             <div class="form-group">
               <label>@lang('exercise.list_exercise.lessons')</label>
-              <select name="lesson" class="form-control select2">
+              <select name="lesson_id" class="form-control select2">
                 <option value="">@lang('course.create_course.select')</option>
                 @foreach ($lessons as $lesson)
                 <option value="{{ $lesson->id }}">{{ $lesson->name }}</option>
                 @endforeach
               </select>
-              @if ($errors->has('lesson'))
-              <span class="text-red help is-danger">* {{ $errors->first('lesson') }}</span>
+              @if ($errors->has('lesson_id'))
+              <span class="text-red help is-danger">* {{ $errors->first('lesson_id') }}</span>
               @endif
             </div>
             <div class="form-group">
@@ -57,6 +57,7 @@
       </div>
     </div>
   </div>
+</div>
 </section>
 <!-- add answers template -->
 <div hidden>

@@ -12,4 +12,8 @@
         'create_exercise' => [
             'title' => 'Create Exercise',
         ],
+        'update_exercise' => [
+            'title' => 'Edit Exercise',
+            'question' => 'Questions',
+        ],
     ];

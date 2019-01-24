@@ -34,4 +34,14 @@ class Exercise extends Model
     {
         return $this->hasMany('App\Models\Question');
     }
+
+     /**
+     * HasMany questions
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function answers()
+    {
+        return $this->hasManyThrough('App\Models\Answer', 'App\Models\Question', 'exercise_id', 'question_id');
+    }
 }

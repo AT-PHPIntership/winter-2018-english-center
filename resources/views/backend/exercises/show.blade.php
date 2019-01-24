@@ -63,7 +63,7 @@
                 </div>
               </td>
               <td>
-                <a href="#" class="btn btn-warning">@lang('course.list_course.edit')</a>
+                <a href="{{ route('admin.exercises.edit', $exercise->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
                 <form method="POST" action="#}" class="inline" onsubmit="return confirmedDelete()">
                   @csrf
                   @method('DELETE')

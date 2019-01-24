@@ -56,4 +56,30 @@ class ExerciseController extends Controller
         app(ExerciseService::class)->store($request->all());
         return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
     }
+
+    /**
+      * Edit the form for editing the specified resource.
+      *
+      * @param Exercise $exercise exercise
+      *
+      * @return \Illuminate\Http\Response
+     */
+    public function edit(Exercise $exercise)
+    {
+        return view('backend.exercises.edit')->with('exercise', $exercise);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\CreateExerciseRequest $request  requestCourse
+     * @param Exercise                               $exercise exercise
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CreateExerciseRequest $request, Exercise $exercise)
+    {
+        app(ExerciseService::class)->update($request->all(), $exercise);
+        return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
+    }
 }
