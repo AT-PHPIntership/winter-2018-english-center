@@ -15,4 +15,17 @@ class ExerciseService
         $exercise = Exercise::with('lesson')->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
         return $exercise;
     }
+
+    /**
+     * Function show details exercise
+     *
+     * @param App\Models\Exercise $exercise exercise
+     *
+     * @return App\Services\ExerciseService
+    **/
+    public function show($exercise)
+    {
+        $exercise = Exercise::where('id', $exercise)->with(['questions', 'questions.answers'])->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
+        return $exercise;
+    }
 }
