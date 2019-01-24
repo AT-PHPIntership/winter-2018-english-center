@@ -12,7 +12,6 @@
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         @include('frontend.layouts.partials.header')
-        @include('frontend.layouts.partials.slider')
         <div class="content-wrapper">
             @yield('content')
         </div>
