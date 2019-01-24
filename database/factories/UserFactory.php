@@ -31,6 +31,8 @@ $factory->define(App\Models\Course::class, function(Faker $faker) {
         'total_rating' => $faker->numberBetween(1, 10),
         'average' => $faker->numberBetween(1, 5),
         'flag' => $faker->boolean,
+        'content' => $faker->text,
+        'image' => $faker->imageUrl($width = 640, $height = 480),
     ];
 });
 
