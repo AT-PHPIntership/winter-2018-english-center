@@ -46,7 +46,7 @@
               <td>{{ $comment->content }}</td>
               <td>
                 <a href="{{ route('admin.comments.show', $comment->id) }}" class="btn btn-warning">@lang('comment.detail')</a>
-                <form method="POST" action="#" class="inline" onsubmit="return confirmedDelete()">
+                <form method="POST" action="{{ route('admin.comments.destroy', $comment->id) }}" class="inline" onsubmit="return confirmedDelete()">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete Course">@lang('course.list_course.delete')

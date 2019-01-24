@@ -101,3 +101,14 @@ $factory->define(App\Models\Comment::class, function(Faker $faker) {
         'commentable_id' => $commentable->id,
     ];
 });
+
+$factory->define(App\Models\System::class, function(Faker $faker) {
+    return [
+        'whyus' => $faker->text,
+        'aboutus' => $faker->text,
+        'phone' => '09'.$faker->randomNumber(8),
+        'email' => $faker->unique()->safeEmail,
+        'web' => $faker->url,
+        'address' => $faker->address,
+    ];
+});
