@@ -19,7 +19,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="box box-primary">
-        <form action="{{ route('admin.exercises.store') }}" method="POST">
+        <form id="Questions" action="{{ route('admin.exercises.store') }}" method="POST">
           @csrf
           <div class="box-body">
             <div class="form-group">

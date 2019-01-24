@@ -28,7 +28,7 @@ class ExerciseController extends Controller
       *
       * @return \Illuminate\Http\Response
      */
-    public function show(Exercise $exercise)
+    public function show($exercise)
     {
         $exercises = app(ExerciseService::class)->show($exercise);
         return view('backend.exercises.show')->with('exercises', $exercises);

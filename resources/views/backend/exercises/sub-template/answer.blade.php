@@ -3,7 +3,7 @@
     <div class="box-body">
       <div class="form-group">
         <label>{{ __('question.create_question.title') }}</label>
-        <input name="questions[key][content]" class="form-control" id="exampleInputEmail1" placeholder="Enter question">
+        <input name="questions[key][content]" class="form-control" placeholder="Enter question">
       </div>
       <div class="form-group">
         <label class="col-sm-2 col-xs-offset-2 control-label">{{ __('question.create_question.answer1') }}</label>
