@@ -16,196 +16,270 @@
 </section>
 <!-- Main content -->
 <section class="content">
-  <!-- Small boxes (Stat box) -->
+  <!-- Info boxes -->
   <div class="row">
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="small-box bg-aqua">
-        <div class="inner">
-          <h3>150</h3>
-          <p>New Orders</p>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-pricetag-outline"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Total Courses</span>
+          <span class="info-box-number">{{ $statisticals['totalCourses'] }}</span>
         </div>
-        <div class="icon">
-          <i class="ion ion-bag"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <!-- /.info-box-content -->
       </div>
+      <!-- /.info-box -->
     </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="small-box bg-green">
-        <div class="inner">
-          <h3>53<sup style="font-size: 20px">%</sup></h3>
-          <p>Bounce Rate</p>
+    <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-green"><i class="ion ion-ios-book-outline"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Total Lessons</span>
+          <span class="info-box-number">{{ $statisticals['totalLessons'] }}</span>
         </div>
-        <div class="icon">
-          <i class="ion ion-stats-bars"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <!-- /.info-box-content -->
       </div>
+      <!-- /.info-box -->
     </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="small-box bg-yellow">
-        <div class="inner">
-          <h3>44</h3>
-          <p>User Registrations</p>
+    
+    <!-- /.col -->
+
+    <!-- fix for small devices only -->
+    <div class="clearfix visible-sm-block"></div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Likes</span>
+          <span class="info-box-number">41,410</span>
         </div>
-        <div class="icon">
-          <i class="ion ion-person-add"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <!-- /.info-box-content -->
       </div>
+      <!-- /.info-box -->
     </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="small-box bg-red">
-        <div class="inner">
-          <h3>65</h3>
-          <p>Unique Visitors</p>
+    <!-- /.col -->
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">New Members</span>
+          <span class="info-box-number">{{ $statisticals['totalUsers'] }}</span>
         </div>
-        <div class="icon">
-          <i class="ion ion-pie-graph"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <!-- /.info-box-content -->
       </div>
+      <!-- /.info-box -->
     </div>
-    <!-- ./col -->
+    <!-- /.col -->
   </div>
   <!-- /.row -->
+
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->
-    <section class="col-lg-7 connectedSortable ui-sortable">
-      <!-- TO DO List -->
-      <div class="box box-primary">
-        <div class="box-header ui-sortable-handle" style="cursor: move;">
-          <i class="ion ion-clipboard"></i>
-          <h3 class="box-title">To Do List</h3>
+    <div class="col-md-7">
+      <!-- TABLE: LATEST ORDERS -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Latest Orders</h3>
+
           <div class="box-tools pull-right">
-            <ul class="pagination pagination-sm inline">
-              <li><a href="#">«</a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">»</a></li>
-            </ul>
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
-          <ul class="todo-list ui-sortable">
-            <li>
-              <!-- drag handle -->
-              <span class="handle ui-sortable-handle">
-              <i class="fa fa-ellipsis-v"></i>
-              <i class="fa fa-ellipsis-v"></i>
-              </span>
-              <!-- checkbox -->
-              <input type="checkbox" value="">
-              <!-- todo text -->
-              <span class="text">Design a nice theme</span>
-              <!-- Emphasis label -->
-              <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-              <!-- General tools such as edit or delete-->
-              <div class="tools">
-                <i class="fa fa-edit"></i>
-                <i class="fa fa-trash-o"></i>
-              </div>
-            </li>
-            <li>
-              <span class="handle ui-sortable-handle">
-              <i class="fa fa-ellipsis-v"></i>
-              <i class="fa fa-ellipsis-v"></i>
-              </span>
-              <input type="checkbox" value="">
-              <span class="text">Make the theme responsive</span>
-              <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-              <div class="tools">
-                <i class="fa fa-edit"></i>
-                <i class="fa fa-trash-o"></i>
-              </div>
-            </li>
-            <li>
-              <span class="handle ui-sortable-handle">
-              <i class="fa fa-ellipsis-v"></i>
-              <i class="fa fa-ellipsis-v"></i>
-              </span>
-              <input type="checkbox" value="">
-              <span class="text">Let theme shine like a star</span>
-              <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-              <div class="tools">
-                <i class="fa fa-edit"></i>
-                <i class="fa fa-trash-o"></i>
-              </div>
-            </li>
-            <li>
-              <span class="handle ui-sortable-handle">
-              <i class="fa fa-ellipsis-v"></i>
-              <i class="fa fa-ellipsis-v"></i>
-              </span>
-              <input type="checkbox" value="">
-              <span class="text">Let theme shine like a star</span>
-              <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-              <div class="tools">
-                <i class="fa fa-edit"></i>
-                <i class="fa fa-trash-o"></i>
-              </div>
-            </li>
-            <li>
-              <span class="handle ui-sortable-handle">
-              <i class="fa fa-ellipsis-v"></i>
-              <i class="fa fa-ellipsis-v"></i>
-              </span>
-              <input type="checkbox" value="">
-              <span class="text">Check your messages and notifications</span>
-              <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-              <div class="tools">
-                <i class="fa fa-edit"></i>
-                <i class="fa fa-trash-o"></i>
-              </div>
-            </li>
-            <li>
-              <span class="handle ui-sortable-handle">
-              <i class="fa fa-ellipsis-v"></i>
-              <i class="fa fa-ellipsis-v"></i>
-              </span>
-              <input type="checkbox" value="">
-              <span class="text">Let theme shine like a star</span>
-              <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-              <div class="tools">
-                <i class="fa fa-edit"></i>
-                <i class="fa fa-trash-o"></i>
-              </div>
-            </li>
-          </ul>
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Item</th>
+                <th>Status</th>
+                <th>Popularity</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                <td>Call of Duty IV</td>
+                <td><span class="label label-success">Shipped</span></td>
+                <td>
+                  <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                <td>Samsung Smart TV</td>
+                <td><span class="label label-warning">Pending</span></td>
+                <td>
+                  <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                <td>iPhone 6 Plus</td>
+                <td><span class="label label-danger">Delivered</span></td>
+                <td>
+                  <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                <td>Samsung Smart TV</td>
+                <td><span class="label label-info">Processing</span></td>
+                <td>
+                  <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                <td>Samsung Smart TV</td>
+                <td><span class="label label-warning">Pending</span></td>
+                <td>
+                  <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                <td>iPhone 6 Plus</td>
+                <td><span class="label label-danger">Delivered</span></td>
+                <td>
+                  <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                <td>Call of Duty IV</td>
+                <td><span class="label label-success">Shipped</span></td>
+                <td>
+                  <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.table-responsive -->
         </div>
         <!-- /.box-body -->
-        <div class="box-footer clearfix no-border">
-          <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+        <div class="box-footer clearfix">
+          <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+          <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
         </div>
+        <!-- /.box-footer -->
       </div>
       <!-- /.box -->
-      <!-- quick email widget -->
-      <div class="box box-info">
+    </div>
+    <!-- /.col -->
+
+    <div class="col-md-5">
+        
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">Browser Usage</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
         <div class="box-body">
-          <form action="#" method="post">
-            <div>
-              <textarea class="textarea" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;" placeholder="Message"></textarea><input type="hidden" name="_wysihtml5_mode" value="1"><iframe class="wysihtml5-sandbox" security="restricted" allowtransparency="true" frameborder="0" width="0" height="0" marginwidth="0" marginheight="0" style="display: inline-block; background-color: rgb(255, 255, 255); border-collapse: separate; border-color: rgb(221, 221, 221); border-style: solid; border-width: 1px; clear: none; float: none; margin: 0px; outline: rgb(51, 51, 51) none 0px; outline-offset: 0px; padding: 10px; position: static; top: auto; left: auto; right: auto; bottom: auto; z-index: auto; vertical-align: baseline; text-align: start; box-sizing: border-box; box-shadow: none; border-radius: 0px; width: 100%; height: 125px;"></iframe>
+          <div class="row">
+            <div class="col-md-7">
+              <div class="chart-responsive">
+                <canvas id="pieChart" height="155" width="192" style="width: 192px; height: 155px;"></canvas>
+              </div>
+              <!-- ./chart-responsive -->
             </div>
-          </form>
+            <!-- /.col -->
+            <div class="col-md-5">
+              <ul class="chart-legend clearfix">
+                <li><i class="fa fa-circle-o text-red"></i> {{ $statisticals['maxLessonUser'][0]->name }}</li>
+                <li><i class="fa fa-circle-o text-green"></i> {{ $statisticals['maxLessonUser'][1]->name }}</li>
+                <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxLessonUser'][2]->name }}</li>
+                <li><i class="fa fa-circle-o text-aqua"></i> {{ $statisticals['maxLessonUser'][3]->name }}</li>
+                <li><i class="fa fa-circle-o text-light-blue"></i> {{ $statisticals['maxLessonUser'][4]->name }}</li>
+              </ul>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
         </div>
       </div>
-    </section>
-    <!-- /.Left col -->
+      <!-- Info Boxes Style 2 -->
+      <div class="info-box bg-yellow">
+        <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Inventory</span>
+          <span class="info-box-number">5,200</span>
+
+          <div class="progress">
+            <div class="progress-bar" style="width: 50%"></div>
+          </div>
+          <span class="progress-description">
+                50% Increase in 30 Days
+              </span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+      <div class="info-box bg-green">
+        <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Mentions</span>
+          <span class="info-box-number">92,050</span>
+
+          <div class="progress">
+            <div class="progress-bar" style="width: 20%"></div>
+          </div>
+          <span class="progress-description">
+                20% Increase in 30 Days
+              </span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+      <div class="info-box bg-aqua">
+        <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Direct Messages</span>
+          <span class="info-box-number">163,921</span>
+
+          <div class="progress">
+            <div class="progress-bar" style="width: 40%"></div>
+          </div>
+          <span class="progress-description">
+                40% Increase in 30 Days
+              </span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
   </div>
-  <!-- /.row (main row) -->
+  <!-- /.row -->
 </section>
 <!-- /.content -->
 <div class="control-sidebar-bg"></div>
 <!-- ./wrapper -->
+<script type="text/javascript">
+    var lesson1 = {!! json_encode($statisticals['maxLessonUser'][0]) !!};
+    var lesson2 = {!! json_encode($statisticals['maxLessonUser'][1]) !!};
+    var lesson3 = {!! json_encode($statisticals['maxLessonUser'][2]) !!};
+    var lesson4 = {!! json_encode($statisticals['maxLessonUser'][3]) !!};
+    var lesson5 = {!! json_encode($statisticals['maxLessonUser'][4]) !!};
+    console.log(lesson1, lesson2, lesson3, lesson4, lesson5);
+</script>
 @endsection
