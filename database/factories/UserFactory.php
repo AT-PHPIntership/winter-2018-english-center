@@ -98,3 +98,11 @@ $factory->define(App\Models\System::class, function(Faker $faker) {
         'address' => $faker->address,
     ];
 });
+
+$factory->define(App\Models\Slider::class, function(Faker $faker) {
+    return [
+        'image' => $faker->imageUrl($width = 640, $height = 480),
+        'title' => $faker->catchPhrase,
+        'content' => $faker->text,
+    ];
+});
