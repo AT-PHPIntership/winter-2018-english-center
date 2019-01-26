@@ -27,13 +27,22 @@ return [
         'conditions' => 'Conditions'
 
     ],
+    'slider' => [
+        'btn' => 'View Courses',
+    ],
     'about_us' => [
         'title' => 'WHY EDUCAT ?',
         'btn' => 'Learn Now',
     ],
     'courses' => [
-        'title' => 'POPULAR COURSES',
-        'intro' => 'There are many popular courses of center',
+        'new' => [
+            'title' => 'NEW COURSES',
+            'intro' => 'There are many new courses of center',
+        ],
+        'popular' => [
+            'title' => 'POPULAR COURSES',
+            'intro' => 'There are many popular courses of center',
+        ],
         'date' => 'Date:',
         'btn' => 'Learn Now',
         'allcourses' => 'Browse All Courses '

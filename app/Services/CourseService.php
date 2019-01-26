@@ -78,12 +78,32 @@ class CourseService
     }
 
     /**
-     * Function get course
+     * Function get popular courses
      *
      * @return App\Services\CourseService
     **/
-    public function get()
+    public function getPopularCourses()
     {
-        return Course::all()->take(3);
+        return \DB::table('courses')
+                    ->join('course_user', 'course_user.course_id', '=', 'courses.id')
+                    ->select('courses.*', \DB::raw('count(*) as total'))
+                    ->groupBy('courses.id')
+                    ->orderBy('total', 'desc')
+                    ->limit(3)
+                    ->get();
+    }
+
+    /**
+     * Function get new courses
+     *
+     * @return App\Services\CourseService
+    **/
+    public function getNewCourses()
+    {
+        return \DB::table('courses')
+                    ->select('courses.*')
+                    ->orderBy('created_at', 'desc')
+                    ->limit(3)
+                    ->get();
     }
 }
