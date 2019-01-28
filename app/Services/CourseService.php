@@ -89,7 +89,7 @@ class CourseService
                     ->select('courses.*', \DB::raw('count(*) as total'))
                     ->groupBy('courses.id')
                     ->orderBy('total', 'desc')
-                    ->limit(3)
+                    ->limit(config('define.courses.limit_courses'))
                     ->get();
     }
 
@@ -103,7 +103,7 @@ class CourseService
         return \DB::table('courses')
                     ->select('courses.*')
                     ->orderBy('created_at', 'desc')
-                    ->limit(3)
+                    ->limit(config('define.courses.limit_courses'))
                     ->get();
     }
 }
