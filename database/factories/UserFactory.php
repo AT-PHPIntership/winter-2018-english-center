@@ -101,7 +101,7 @@ $factory->define(App\Models\System::class, function(Faker $faker) {
 
 $factory->define(App\Models\Slider::class, function(Faker $faker) {
     return [
-        'image' => $faker->imageUrl($width = 640, $height = 480),
+        'image' => $faker->imageUrl($width = 1920, $height = 800),
         'title' => $faker->catchPhrase,
         'content' => $faker->text,
     ];

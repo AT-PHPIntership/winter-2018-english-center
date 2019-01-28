@@ -3,6 +3,7 @@
 return [
     'page_site' => 20,
     'courses' => [
+        'limit_courses' => 3,
         'limit_rows' => 10,
         'order_by_desc' =>'desc',
         'vip' => 'VIP',

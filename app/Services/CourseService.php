@@ -76,4 +76,34 @@ class CourseService
     {
         return $course->delete();
     }
+
+    /**
+     * Function get popular courses
+     *
+     * @return App\Services\CourseService
+    **/
+    public function getPopularCourses()
+    {
+        return \DB::table('courses')
+                    ->join('course_user', 'course_user.course_id', '=', 'courses.id')
+                    ->select('courses.*', \DB::raw('count(*) as total'))
+                    ->groupBy('courses.id')
+                    ->orderBy('total', 'desc')
+                    ->limit(config('define.courses.limit_courses'))
+                    ->get();
+    }
+
+    /**
+     * Function get new courses
+     *
+     * @return App\Services\CourseService
+    **/
+    public function getNewCourses()
+    {
+        return \DB::table('courses')
+                    ->select('courses.*')
+                    ->orderBy('created_at', 'desc')
+                    ->limit(config('define.courses.limit_courses'))
+                    ->get();
+    }
 }
