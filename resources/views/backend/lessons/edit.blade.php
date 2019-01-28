@@ -81,15 +81,9 @@
                         </div>
                         <div class="form-group">
                             <label for="vocabulary">{{ __('lesson.create_lesson.vocabulary') }}</label>
-                            <select class="form-control select2" multiple="multiple" data-placeholder="  Select a Vocabulary" style="width: 100%;" name="vocabulary_id[]">
-                                @php
-                                    $vocabularyIds = [];
-                                    foreach ($lesson->vocabularies as $oldVocabulary) {
-                                        $vocabularyIds[] = $oldVocabulary->id;
-                                    }
-                                @endphp
-                                @foreach ($vocabularies as $vocabulary)
-                                <option {{(collect($vocabularyIds)->contains($vocabulary->id)) ? "selected": "" }} value="{{ $vocabulary->id }}">{{ $vocabulary->vocabulary }}</option>
+                            <select id="list-vocalbularies" class="form-control" multiple="multiple" style="width: 100%;" name="vocabulary_id[]">
+                                @foreach ($lesson->vocabularies as $oldVocabulary) 
+                                    <option  selected="selected" value="{{ $oldVocabulary->id }}">{{ $oldVocabulary->vocabulary }}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('vocabulary_id'))
@@ -128,4 +122,7 @@
         </div>
     </div>
 </section>
+@endsection
+@section('script')
+    <script type="text/javascript" src="{!! asset('js/vocalbularies.js') !!}"></script>
 @endsection
