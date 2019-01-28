@@ -112,4 +112,25 @@ class VocabularyController extends Controller
     {
         return view('backend.vocabularies.show', compact('vocabulary'));
     }
+
+    /**
+     * Get List Vocabularies
+     *
+     * @param Request $request Request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getListVocabularies(Request $request)
+    {
+        if ($request->ajax()) {
+            $vocalbularies = Vocabulary::select(['id', 'vocabulary as text'])->where('vocabulary', 'LIKE', '%' . $request["term"] . '%')->paginate(config('define.page_site_vocabulary'));
+            $results = [
+                "results" => $vocalbularies->items(),
+                "pagination" => [
+                    "more" => $vocalbularies->hasMorePages()
+                ]
+            ];
+            return response()->json($results);
+        }
+    }
 }
