@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-7 col-xs-12">
                     <div class="header-top-right">
-                        <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.login')</a>
+                        <div class="content"><a href="{{ route('login') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.login')</a>
                         </div>
                         <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.register')</a>
                         </div>
@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <div class="logo">
-                        <a href=""><img src="frontend/img/logo/logo.png" alt="EDUCAT"></a>
+                        <a href=""><img src="front_end/img/logo/logo.png" alt="EDUCAT"></a>
                     </div>
                 </div>
                 <div class="col-md-9 hidden-sm hidden-xs">
