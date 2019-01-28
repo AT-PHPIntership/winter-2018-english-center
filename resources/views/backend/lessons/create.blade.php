@@ -94,11 +94,7 @@
                         </div>
                         <div class="form-group">
                             <label for="vocabulary">{{ __('lesson.create_lesson.vocabulary') }}</label>
-                            <select class="form-control select2" multiple="multiple" data-placeholder="  Select a Vocabulary"
-                                    style="width: 100%;" name="vocabularies_id[]">
-                                @foreach ($vocabularies as $vocabulary)
-                                    <option value="{{ $vocabulary->id }}">{{ $vocabulary->vocabulary }}</option>
-                                @endforeach
+                            <select id="list-vocalbularies" class="form-control" multiple style="width: 100%;" name="vocabularies_id[]">
                             </select>
                             @if ($errors->has('vocabularies_id'))
                                 <span class="help-block col-sm-12">
@@ -137,4 +133,7 @@
         </div>
     </div>
 </section>
+@endsection
+@section('script')
+    <script type="text/javascript" src="{!! asset('js/vocalbularies.js') !!}"></script>
 @endsection
