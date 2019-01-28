@@ -109,6 +109,19 @@ class LessonController extends Controller
     }
 
     /**
+     * Remove the specified resource from storage.
+     *
+     * @param Lesson $lesson lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Lesson $lesson)
+    {
+        $this->lessonService->destroy($lesson);
+        return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
+    }
+    
+    /**
      * Display the specified resource.
      *
      * @param Lesson $lesson Lesson

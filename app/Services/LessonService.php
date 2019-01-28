@@ -59,6 +59,20 @@ class LessonService
             $lesson->vocabularies()->sync($data['vocabulary_id']);
         }
     }
+
+    /**
+     * Function destroy lesson
+     *
+     * @param Lesson $lesson lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function destroy($lesson)
+    {
+        $lesson->vocabularies()->detach();
+        $lesson->delete();
+    }
+
     
     /**
      * Show resource in storage.
