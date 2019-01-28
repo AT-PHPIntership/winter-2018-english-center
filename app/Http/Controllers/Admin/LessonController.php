@@ -109,7 +109,6 @@ class LessonController extends Controller
     }
 
     /**
-<<<<<<< HEAD
      * Remove the specified resource from storage.
      *
      * @param Lesson $lesson lesson
@@ -123,8 +122,6 @@ class LessonController extends Controller
     }
     
     /**
-=======
->>>>>>> c79c8862f56417fef5fbad551e623549f080440c
      * Display the specified resource.
      *
      * @param Lesson $lesson Lesson
