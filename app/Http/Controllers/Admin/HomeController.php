@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\StastiticalService;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('backend.index');
+        $statisticals = app(StastiticalService::class)->getData();
+        return view('backend.index')->with('statisticals', $statisticals);
     }
 }
