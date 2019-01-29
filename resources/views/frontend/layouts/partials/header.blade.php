@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <div class="logo">
-                        <a href=""><img src="frontend/img/logo/logo.png" alt="EDUCAT"></a>
+                        <a href=""><img src="front_end/img/logo/logo.png" alt="EDUCAT"></a>
                     </div>
                 </div>
                 <div class="col-md-9 hidden-sm hidden-xs">
