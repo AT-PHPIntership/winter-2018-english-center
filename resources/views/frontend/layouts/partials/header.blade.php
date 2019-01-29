@@ -33,9 +33,65 @@
                                     <li><a href="">@lang('layout_user.header.about')</a></li>
                                     <li><a href="">@lang('layout_user.header.courses')</a>
                                         <ul class="sub-menu">
-                                            <li><a href=""></a></li>
+                                            <li>
+                                                <a href="">bxbbx</a>
+                                            </li>
                                         </ul>
                                     </li>
+                                    <li><a href="index.html">Features</a>
+                                                        <ul class="sub-menu">
+                                                            <li><a href="#">Sliders<i class="zmdi zmdi-chevron-right"></i></a>
+                                                                <ul class="inside-menu">
+                                                                    <li><a href="slider-style-1.html">Slider Style 1</a></li>
+                                                                    <li><a href="slider-style-2.html">Slider Style 2</a></li>
+                                                                    <li><a href="slider-style-3.html">Slider Style 3</a></li>
+                                                                    <li><a href="background-image.html">Image Background </a></li>
+                                                                    <li><a href="image-overlay-light.html">Overlay Light </a></li>
+                                                                    <li><a href="image-overlay-dark.html">Overlay Dark </a></li>
+                                                                    <li><a href="video-background.html">Video Background </a></li>
+                                                                    <li><a href="fixed-image.html">Fixed Image</a></li>
+                                                                    <li><a href="overlay-fixed-image.html">Overlay Fixed Image</a></li>
+                                                                    <li><a href="text-animation-1.html">Text Animation 1 </a></li>
+                                                                    <li><a href="text-animation-2.html">Text Animation 2 </a></li>
+                                                                    <li><a href="text-animation-3.html">Text Animation 3 </a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="#">Menu Style<i class="zmdi zmdi-chevron-right"></i></a>
+                                                                <ul class="inside-menu">
+                                                                    <li><a href="theme-menu-1.html">Theme Menu 1</a></li>
+                                                                    <li><a href="theme-menu-2.html">Theme Menu 2</a></li>
+                                                                    <li><a href="theme-menu-3.html">Theme Menu 3</a></li>
+                                                                    <li><a href="without-top-bar.html">Without Top Bar</a></li>
+                                                                    <li><a href="menu-center.html">Menu Center</a></li>
+                                                                    <li><a href="menu-transparent.html">Transparent</a></li>
+                                                                    <li><a href="menu-semi-transparent.html">Semi Transparent</a></li>
+                                                                    <li><a href="menu-dark.html">Menu Dark</a></li>
+                                                                    <li><a href="borderd-menu.html">Menu Border</a></li>
+                                                                    <li><a href="menu-top-border.html">Top Border Hover</a></li>
+                                                                    <li><a href="menu-sticky.html">Menu Sticky</a></li>
+                                                                    <li><a href="menu-non-sticky.html">Menu Non Sticky</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="#">Page Title<i class="zmdi zmdi-chevron-right"></i></a>
+                                                                <ul class="inside-menu">
+                                                                    <li><a href="breadcrumb-dark.html">Title Dark</a></li>
+                                                                    <li><a href="breadcrumb-fixed.html">Title Fixed</a></li>
+                                                                    <li><a href="breadcrumb-image.html">Title Image</a></li>
+                                                                    <li><a href="breadcrumb-transparent.html">Title Transparent</a></li>
+                                                                    <li><a href="breadcrumb-left.html">Title Left</a></li>
+                                                                    <li><a href="breadcrumb-right.html">Title Right</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="#">Footer Style<i class="zmdi zmdi-chevron-right"></i></a>
+                                                                <ul class="inside-menu">
+                                                                    <li><a href="footer-style-1.html">Footer Style 1</a></li>
+                                                                    <li><a href="footer-style-2.html">Footer Style 2</a></li>
+                                                                    <li><a href="footer-style-3.html">Footer Style 3</a></li>
+                                                                    <li><a href="footer-style-4.html">Footer Style 4</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
                                     <li><a href="">@lang('layout_user.header.level')</a>
                                         <ul class="sub-menu">
                                             <li><a href=""></a></li>
