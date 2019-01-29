@@ -31,6 +31,8 @@ $factory->define(App\Models\Course::class, function(Faker $faker) {
         'total_rating' => $faker->numberBetween(1, 10),
         'average' => $faker->numberBetween(1, 5),
         'flag' => $faker->boolean,
+        'content' => $faker->text,
+        'image' => $faker->imageUrl($width = 640, $height = 480),
     ];
 });
 
@@ -83,5 +85,24 @@ $factory->define(App\Models\Answer::class, function(Faker $faker) {
         'question_id' => factory('App\Models\Question')->create()->id,
         'answers' => $faker->word,
         'status' => $faker->boolean,
+    ];
+});
+
+$factory->define(App\Models\System::class, function(Faker $faker) {
+    return [
+        'whyus' => $faker->text,
+        'aboutus' => $faker->text,
+        'phone' => '09'.$faker->randomNumber(8),
+        'email' => $faker->unique()->safeEmail,
+        'web' => $faker->url,
+        'address' => $faker->address,
+    ];
+});
+
+$factory->define(App\Models\Slider::class, function(Faker $faker) {
+    return [
+        'image' => $faker->imageUrl($width = 1920, $height = 800),
+        'title' => $faker->catchPhrase,
+        'content' => $faker->text,
     ];
 });
