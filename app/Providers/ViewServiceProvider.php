@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Http\ViewComposers\RoleComposer;
 use App\Http\ViewComposers\LevelComposer;
 use App\Http\ViewComposers\VocabularyComposer;
+use App\Http\ViewComposers\SystemComposer;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,7 @@ class ViewServiceProvider extends ServiceProvider
         view()->composer(['backend.users.create', 'backend.users.edit'], RoleComposer::class);
         view()->composer(['backend.lessons.create'], LevelComposer::class);
         view()->composer(['backend.lessons.create'], VocabularyComposer::class);
+        view()->composer(['frontend.layouts.partials.footer', 'frontend.home',], SystemComposer::class);
     }
 
     /**

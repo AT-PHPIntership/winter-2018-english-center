@@ -13,7 +13,7 @@ class Course extends Model
     const VIP = 1;
     const TRIAL = 0;
     
-    protected $fillable = [ 'title', 'parent_id', 'count_view', 'total_rating', 'average', 'flag'];
+    protected $fillable = [ 'title', 'parent_id', 'count_view', 'total_rating', 'average', 'flag', 'content', 'image'];
 
     /**
      * The database table used by the model.
