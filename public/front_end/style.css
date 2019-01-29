@@ -1,12 +1,10 @@
 /*-----------------------------------------------------------------------------------
-
     Template Name: Educat
     Template URI: http://devitems.com
     Description: This is html5 template
     Author: BootExperts
     Author URI: http://devitems.com
     Version: 1.0
-
 -----------------------------------------------------------------------------------
     
     CSS INDEX
@@ -54,7 +52,6 @@
     24. About Page
     25. Shortcode
     26. Scrollup
-
 -----------------------------------------------------------------------------------*/
 
 /*----------------------------------------*/
@@ -409,7 +406,7 @@ body {
 /*------------------------------------------*/
 /*  Dropdown Menu
 /*------------------------------------------*/
-.mainmenu ul.sub-menu {
+.mainmenu ul.sub-menu, .mainmenu ul.sub-menu ul.inside-menu {
     background-color: #ffffff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     left: -23px;
@@ -436,16 +433,21 @@ body {
     padding: 0;
     position: relative;
 }
-.mainmenu ul#nav li ul.sub-menu > li a {
+.mainmenu ul#nav li ul.sub-menu > li a, .mega-menu a {
     color: #2d3e50;
     display: block;
     font-size: 13px;
     font-weight: 300;
-    line-height: 32px;
+    line-height: 33px;
     text-transform: capitalize;
 }
+.mainmenu li > .sub-menu i {
+    float: right;
+    font-size: 17px;
+    top: 10px;
+}
 .mainmenu ul#nav li:last-child, .header-two .mainmenu ul#nav li:last-child {margin-right: 0}
-.mainmenu > nav > ul#nav > li:hover ul.sub-menu {
+.mainmenu > nav > ul#nav > li:hover ul.sub-menu, .mainmenu ul.sub-menu li:hover ul.inside-menu {
     opacity: 1;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     filter: alpha(opacity=100);
@@ -453,6 +455,94 @@ body {
             transform: scaleY(1);
     z-index: 9999;
 }
+.mainmenu ul.sub-menu ul.inside-menu {
+    left: 169px;
+    top: -2px;
+    width: 195px;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: 0 0 0;
+            transform-origin: 0 0 0;
+    -webkit-transition: all 0.6s ease 0s;
+            transition: all 0.6s ease 0s;
+}
+.mainmenu ul.sub-menu li:hover ul.inside-menu {
+    opacity: 1;
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    z-index: 9999;
+}
+.fixed {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99999;
+}
+/*----------------------------------------*/
+/*  Megamenu
+/*----------------------------------------*/
+.mega-menu {
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    left: -23px;
+    margin: 0;
+    padding: 26px 21px 20px;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    z-index: -99;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+    -webkit-transform-origin: 0 0 0;
+            transform-origin: 0 0 0;
+    -webkit-transition: all 0.6s ease 0s;
+            transition: all 0.6s ease 0s;
+}
+.mainmenu nav > ul > li:hover .mega-menu {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    z-index: 9999;
+}
+.mega-menu h3 {
+    color: #2d3e50;
+    font-family: montserratregular;
+    font-size: 12px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    position: relative
+}
+.mega-menu h3:after {
+    background: #909090 none repeat scroll 0 0;
+    bottom: 8px;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 25px;
+}
+.mm-5-column {
+    left: -445px;
+    width: 790px;
+}
+.mm-4-column {
+  width: 650px;
+  left: -305px;
+}
+.mm-3-column {
+  left: -187px;
+  width: 532px;
+}
+.col-2{width: 50%}
+.col-3{width: 33.333%}
+.col-4{width: 25%}
+.col-5{width: 20%}
 /*----------------------------------------*/
 /*  2.2.3 Header Searchbox
 /*----------------------------------------*/
