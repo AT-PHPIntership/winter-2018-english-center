@@ -42,8 +42,11 @@ Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
         Route::get('/login', 'AuthController@showLoginForm')->name('login');
         Route::post('/login', 'AuthController@login')->name('login');
         Route::get('/logout', 'AuthController@logout')->name('logout');
+
+        Route::get('/profiles', 'ProfileController@show')->name('profiles.show');
+        Route::get('/profiles/edit', 'ProfileController@edit')->name('profiles.edit');
+        Route::put('/profiles', 'ProfileController@update')->name('profiles.update');
     });
-    ;
 });
 
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin'], function() {
