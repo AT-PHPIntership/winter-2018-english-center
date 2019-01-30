@@ -7,10 +7,17 @@
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-7 col-xs-12">
                     <div class="header-top-right">
-                        <div class="content"><a href="{{ route('login') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.login')</a>
-                        </div>
-                        <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.register')</a>
-                        </div>
+                        @if(!Auth::check())
+                            <div class="content"><a href="{{ route('user.login') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.login')</a>
+                            </div>
+                            <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.register')</a>
+                            </div>
+                        @else
+                            <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>{{ Auth::user()->userProfile->name }}</a>
+                            </div>
+                            <div class="content"><a href="{{ route('user.logout') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.logout')</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -29,7 +36,7 @@
                         <div class="mainmenu">
                             <nav>
                                 <ul id="nav">
-                                    <li class="current"><a href="">@lang('layout_user.header.home')</a></li>
+                                    <li class="current"><a href="{{ route('home') }}">@lang('layout_user.header.home')</a></li>
                                     <li><a href="">@lang('layout_user.header.about')</a></li>
                                     <li><a href="">@lang('layout_user.header.courses')</a>
                                         <ul class="sub-menu">

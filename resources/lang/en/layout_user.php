@@ -59,5 +59,7 @@ return [
         'google' => 'Google',
         'not_member' => 'Not a member?',
         'sign_up' => 'Sign up now',
+        'warning' => 'You must Login!'
     ],
+    'logout' => 'Log Out',
 ];
