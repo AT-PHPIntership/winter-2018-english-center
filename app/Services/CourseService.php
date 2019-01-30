@@ -24,8 +24,7 @@ class CourseService
     **/
     public function getCourse()
     {
-        $courses = Course::select('id', 'title', 'count_view', 'content', 'image')->where('parent_id', null)->get();
-        return $courses;
+        return Course::where('parent_id', null)->get();
     }
 
     /**
@@ -105,15 +104,5 @@ class CourseService
                     ->orderBy('created_at', 'desc')
                     ->limit(config('define.courses.limit_courses'))
                     ->get();
-    }
-
-    /**
-     * Function index get all course
-     *
-     * @return App\Services\CourseService
-    **/
-    public function getCourseAll()
-    {
-        return Course::all();
     }
 }
