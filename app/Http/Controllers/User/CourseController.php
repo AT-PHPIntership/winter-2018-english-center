@@ -15,6 +15,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('frontend.pages.course');
+        $courses = app(CourseService::class)->getCourse();
+        return view('frontend.pages.course')->with('courses', $courses);
     }
 }
