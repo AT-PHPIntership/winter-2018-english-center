@@ -3,7 +3,13 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST" action="{{ route('user.login') }}">
+				@csrf
+				@if (session('warning'))
+                    <div class="alert alert-warning">
+                        {{ session('warning') }}
+                    </div>
+                @endif
 					<span class="login100-form-title p-b-55">
 						@lang('layout_user.login.title')
 					</span>
@@ -14,14 +20,24 @@
 						<span class="symbol-input100">
 							<span class="lnr lnr-envelope"></span>
 						</span>
+						@if ($errors->has('email'))
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $errors->first('email') }}</strong>
+							</span>
+						@endif
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "@lang('layout_user.login.pass_validate')">
-						<input class="input100" type="password" name="pass" placeholder="@lang('layout_user.login.pass_placeholder')">
+						<input class="input100" type="password" name="password" placeholder="@lang('layout_user.login.pass_placeholder')">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-lock"></span>
 						</span>
+						@if ($errors->has('password'))
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $errors->first('password') }}</strong>
+							</span>
+						@endif
 					</div>
 
 					<div class="contact100-form-checkbox m-l-4">
@@ -32,7 +48,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn p-t-25">
-						<button class="login100-form-btn">
+						<button type="submit" class="login100-form-btn">
 							@lang('layout_user.login.title')
 						</button>
 					</div>
