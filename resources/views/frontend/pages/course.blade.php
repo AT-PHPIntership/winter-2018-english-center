@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="breadcrumb-text">
-          <h1 class="text-center">{{ __('layout_user.show_courses.our_courses') }}</h1>
+          <h1 class="text-center">{{ __('layout_user.courses.show_courses.our_courses') }}</h1>
           <div class="breadcrumb-bar">
             <ul class="breadcrumb text-center">
               <li><a href="index.html">{{ __('layout_user.header.home') }}</a></li>
@@ -44,7 +44,7 @@
                </div>
             </div>
             <p></p>
-            <a class="button-default" href="#">LEARN Now</a>
+            <a class="button-default" href="#">@lang('layout_user.courses.btn')</a>
           </div>
         </div>
       </div>

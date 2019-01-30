@@ -38,10 +38,8 @@
                       <li>
                         <a href="#">{{ $parentCourse->title }}<i class="zmdi zmdi-chevron-right"></i></a>
                         <ul class="inside-menu">
-                          @foreach ($course as $item)
-                          @if($parentCourse->id === $item->parent_id)
-                          <li><a href="#">{{ $item->title }}</a></li>
-                          @endif
+                          @foreach ($parentCourse->children as $childrenCourse)
+                            <li><a href="#">{{ $childrenCourse->title }}</a></li>
                           @endforeach
                         </ul>
                       </li>
