@@ -1,4 +1,24 @@
 @extends('frontend.layouts.master')
+@section('styles')
+	<!--===============================================================================================-->	
+		<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<!--===============================================================================================-->	
+		<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="bower_components/select2/dist/css/select2.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="css/util.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--===============================================================================================-->
+@endsection
 @section('content')
 	<div class="limiter">
 		<div class="container-login100">
@@ -66,4 +86,16 @@
 			</div>
 		</div>
 	<div>
+@endsection
+@section('scripts')
+	<!--===============================================================================================-->
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<!--===============================================================================================-->
+		<script src="vendor/bootstrap/js/popper.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+		<script src="bower_components/select2/dist/js/select2.min.js"></script>
+	<!--===============================================================================================-->
+		<script src="js/login/main.js"></script>
+	<!--===============================================================================================-->
 @endsection
