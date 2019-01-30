@@ -13,7 +13,7 @@
                             <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.register')</a>
                             </div>
                         @else
-                            <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>{{ Auth::user()->userProfile->name }}</a>
+                            <div class="content"><a href="{{ route('user.profiles.show') }}"><i class="zmdi zmdi-account"></i>{{ Auth::user()->userProfile->name }}</a>
                             </div>
                             <div class="content"><a href="{{ route('user.logout') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.logout')</a>
                             </div>
