@@ -47,4 +47,10 @@ return [
         'btn' => 'Learn Now',
         'allcourses' => 'Browse All Courses '
     ],
+    'levels' => [
+        'title' => 'LEVEL',
+        'date' => 'Date:',
+        'btn' => 'Learn Now',
+        'intro' => 'There are many lessons of level'
+    ],
 ];

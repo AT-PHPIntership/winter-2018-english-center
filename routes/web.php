@@ -37,6 +37,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['namespace' => 'User'], function() {
+Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], function() {
     Route::get('/', 'HomeController@index');
+
+    Route::get('/levels', 'HomeController@listLevel')->name('levels');
+    Route::get('/levels/{level}/detail', 'HomeController@showLevel')->name('level.detail');
 });

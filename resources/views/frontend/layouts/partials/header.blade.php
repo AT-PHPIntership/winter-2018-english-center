@@ -36,9 +36,14 @@
                                             <li><a href=""></a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="">@lang('layout_user.header.level')</a>
+                                    <li>
+                                        <a href=" {{ route('user.levels') }} ">@lang('layout_user.header.level')</a>
                                         <ul class="sub-menu">
-                                            <li><a href=""></a></li>
+                                            @foreach ($levels as $level)
+                                            <li>
+                                                <a href="{{ route('user.level.detail', $level->id) }}">{{ $level->level }}</a>
+                                            </li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                     <li><a href="">@lang('layout_user.header.contact')</a></li>
