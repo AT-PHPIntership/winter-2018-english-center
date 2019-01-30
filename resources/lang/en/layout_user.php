@@ -45,6 +45,9 @@ return [
         ],
         'date' => 'Date:',
         'btn' => 'Learn Now',
-        'allcourses' => 'Browse All Courses '
+        'allcourses' => 'Browse All Courses ',
+        'show_courses' => [
+            'our_courses' => 'Our Courses',
+        ],
     ],
 ];
