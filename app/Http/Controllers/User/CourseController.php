@@ -18,4 +18,14 @@ class CourseController extends Controller
         $courses = app(CourseService::class)->getCourse();
         return view('frontend.pages.course')->with('courses', $courses);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
+    {
+        return view('frontend.pages.detail_course');
+    }
 }

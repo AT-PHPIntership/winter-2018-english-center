@@ -440,6 +440,7 @@ body {
     font-weight: 300;
     line-height: 33px;
     text-transform: capitalize;
+    text-decoration: none;
 }
 .mainmenu li > .sub-menu i {
     float: right;
@@ -1102,7 +1103,7 @@ body {
     font-size: 42px;
     text-align: center;
 }
-.single-event-text > h3 a, .single-event-text > h3 {color: #4c4c4c; text-transform: capitalize;}
+.single-event-text > h3 a, .single-event-text > h3 {color: #4c4c4c; text-transform: capitalize;text-decoration: none}
 .single-event-item:hover h3 a {color: #86bc42;}
 .single-event-text > h3 {font-family: "montserratregular"; margin-bottom: 5px;}
 .single-event-text {

@@ -62,12 +62,12 @@
             <div class="col-md-4 col-sm-6">
                 <div class="single-event-item">
                   <div class="single-event-image">
-                    <a href="#">
+                    <a href="{{ route('user.detail', $childrenCourse->id) }}">
                     <img src="{{ $childrenCourse->image }}" alt="">
                     </a>
                   </div>
                   <div class="single-event-text">
-                    <h3><a href="#">{{ $childrenCourse->title }}</a></h3>
+                    <h3><a href="{{ route('user.detail', $childrenCourse->id) }}">{{ $childrenCourse->title }}</a></h3>
                     <div class="single-item-content">
                        <div class="single-item-comment-view">
                            <span><i class="zmdi zmdi-eye"></i>{{ $childrenCourse->count_view }}</span>
