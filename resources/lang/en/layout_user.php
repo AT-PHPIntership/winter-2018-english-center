@@ -50,5 +50,10 @@ return [
         'show_courses' => [
             'our_courses' => 'Our Courses',
         ],
+        'course_detail' =>[
+            'course_detail' => 'Course Detail',
+            'cmt' => 'Comments',
+            'related_courses' => 'Related Courses',
+        ],
     ],
 ];
