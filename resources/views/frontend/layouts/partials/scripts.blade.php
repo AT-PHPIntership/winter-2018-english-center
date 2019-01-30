@@ -45,4 +45,4 @@
         
 		<!-- main JS
 		============================================ -->		
-        <script src="front_end/js/main.js"></script>
+		<script src="front_end/js/main.js"></script>

@@ -47,4 +47,17 @@ return [
         'btn' => 'Learn Now',
         'allcourses' => 'Browse All Courses '
     ],
+    'login' => [
+        'title' => 'Login',
+        'email_validate' => 'Valid email is required: ex@abc.xyz',
+        'pass_validate' => 'Password is required',
+        'email_placeholder' => 'Email',
+        'pass_placeholder' => 'Password',
+        'remember_me' => 'Remember me',
+        'login_with' => 'Or login with',
+        'facebook' => 'Facebook',
+        'google' => 'Google',
+        'not_member' => 'Not a member?',
+        'sign_up' => 'Sign up now',
+    ],
 ];

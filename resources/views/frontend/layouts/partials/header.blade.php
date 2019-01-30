@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-7 col-xs-12">
                     <div class="header-top-right">
-                        <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.login')</a>
+                        <div class="content"><a href="{{ route('login') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.login')</a>
                         </div>
                         <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.register')</a>
                         </div>
