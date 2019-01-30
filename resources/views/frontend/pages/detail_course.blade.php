@@ -29,24 +29,21 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="overlay-effect">
-                  <a href="#"><img alt="" src="img/details/1.jpg"></a>
+                  <a href=""><img alt="" src="{{ $course->image}}"></a>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="single-item-text">
-                  <h4>Photoshop CC 2017</h4>
+                  <h4>{{ $course->title }}</h4>
                   <div class="single-item-text-info">
-                    <span>By: <span>Salim Rana</span></span>
-                    <span>Date: <span>20.5.15</span></span>
+                    <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $course->created_at}}</span></span>
                   </div>
                   <div class="course-text-content">
-                    <p></p>
-                    <p></p>
+                    <p>{{ $course->content }}</p>
                   </div>
                   <div class="single-item-content">
                     <div class="single-item-comment-view">
-                      <span><i class="zmdi zmdi-eye"></i>59</span>
-                      <span><i class="zmdi zmdi-comments"></i>19</span>
+                      <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
                     </div>
                     <div class="single-item-rating">
                       <i class="zmdi zmdi-star"></i>
@@ -62,14 +59,16 @@
           </div>
           <div class="course-duration">
             <div class="duration-title">
-              <div class="text"><span>Lessons</span> <span class="text-right">Estimated Time</span></div>
+              <div class="text"><span>{{ __('layout_user.courses.course_detail.lessons') }}</span> <span class="text-right">{{ __('layout_user.courses.course_detail.open_time') }}</span></div>
             </div>
             <div class="duration-text">
-              <div class="text"><span>Print design</span> <span class="text-right">15 days</span></div>
-              <div class="text"><span>web design</span> <span class="text-right">10 days</span></div>
-              <div class="text"><span>apps design</span> <span class="text-right">16 days</span></div>
-              <div class="text"><span>web design</span> <span class="text-right">20 days</span></div>
-              <div class="text"><span>web design</span> <span class="text-right">22 days</span></div>
+                @foreach ($lessons as $lesson)
+                @if($lesson->course_id === $course->id)
+                  <div class="text">
+                    <a href="#">{{ $lesson->name }}</a>
+                    <span class="text-right">{{ $lesson->created_at }}</span></div>
+                @endif
+                @endforeach
             </div>
           </div>
           <div class="comments">
@@ -81,21 +80,7 @@
               <div class="comment-text">
                 <div class="author-info">
                   <h4><a href="#">MD Tokdir Ali</a></h4>
-                  <span class="reply"><a href="#">Reply</a></span>
-                  <span class="comment-time">Posted on Jun 12, 2015 /</span>
-                </div>
-                <p></p>
-              </div>
-            </div>
-            <div class="single-comment comment-reply">
-              <div class="author-image">
-                <img src="img/comment/2.jpg" alt="">
-              </div>
-              <div class="comment-text">
-                <div class="author-info">
-                  <h4><a href="#">MD Kopal Ali</a></h4>
-                  <span class="reply"><a href="#">Reply</a></span>
-                  <span class="comment-time">Posted on Jun 12, 2015 /</span>
+                  <span class="comment-time">Posted on Jun 12, 2015</span>
                 </div>
                 <p></p>
               </div>
@@ -107,8 +92,7 @@
               <div class="comment-text">
                 <div class="author-info">
                   <h4><a href="#">MR Soytan Ali</a></h4>
-                  <span class="reply"><a href="#">Reply</a></span>
-                  <span class="comment-time">Posted on Jun 12, 2015 /</span>
+                  <span class="comment-time">Posted on Jun 12, 2015</span>
                 </div>
                 <p></p>
               </div>
@@ -118,38 +102,6 @@
       </div>
       <div class="col-md-3">
         <div class="sidebar-widget">
-          <div class="single-sidebar-widget">
-            <div class="tution-wrapper">
-              <div class="tution-fee">
-                <h1>$100</h1>
-              </div>
-              <div class="tutor-image">
-                <img src="img/teacher/5.jpg" alt="">
-              </div>
-              <div class="single-teacher-text">
-                <h3><a href="#">Salim Rana</a></h3>
-                <h4>Teacher</h4>
-                <p>There are mvarians of sages of Lorem Ipsum available, but the mrity  a have suffealteration in soe orm, by injected</p>
-                <div class="social-links">
-                  <a href="#"><i class="zmdi zmdi-facebook"></i></a>
-                  <a href="#"><i class="zmdi zmdi-twitter"></i></a>
-                  <a href="#"><i class="zmdi zmdi-google-old"></i></a>
-                  <a href="#"><i class="zmdi zmdi-instagram"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="single-sidebar-widget">
-            <h4 class="title">Search by Tags</h4>
-            <ul class="tags">
-              <li><a href="#">Photoshop</a></li>
-              <li><a href="#">Design</a></li>
-              <li><a href="#">Tutorial</a></li>
-              <li><a href="#">Courses</a></li>
-              <li><a href="#">Premium</a></li>
-              <li><a href="#">Designtuto</a></li>
-            </ul>
-          </div>
           <div class="single-sidebar-widget">
             <h4 class="title">{{ __('layout_user.courses.course_detail.related_courses') }}</h4>
             <div class="single-item">

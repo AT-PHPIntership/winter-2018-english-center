@@ -54,6 +54,9 @@ return [
             'course_detail' => 'Course Detail',
             'cmt' => 'Comments',
             'related_courses' => 'Related Courses',
+            'date_time' => 'Date Time: ',
+            'lessons' => 'Lessons',
+            'open_time' => 'Open Time',
         ],
     ],
 ];
