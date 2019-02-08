@@ -73,30 +73,22 @@
           </div>
           <div class="comments">
             <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
-            <div class="single-comment">
-              <div class="author-image">
-                <img src="img/comment/1.jpg" alt="">
-              </div>
-              <div class="comment-text">
-                <div class="author-info">
-                  <h4><a href="#">MD Tokdir Ali</a></h4>
-                  <span class="comment-time">Posted on Jun 12, 2015</span>
+            @foreach ($comments as $comment)
+                @if($comment->commentable_id == $course->id )
+                <div class="single-comment">
+                  <div class="author-image">
+                    <img src="{{ $comment->user->userProfile['url'] }}" alt="">
+                  </div>
+                  <div class="comment-text">
+                    <div class="author-info">
+                      <h4><a href="#">{{ $comment->user->userProfile['name'] }}</a></h4>
+                      <span class="comment-time"><span>Post on </span>{{ $comment->created_at }}</span>
+                    </div>
+                    <p>{{ $comment->content }}</p>
+                  </div>
                 </div>
-                <p></p>
-              </div>
-            </div>
-            <div class="single-comment">
-              <div class="author-image">
-                <img src="img/comment/3.jpg" alt="">
-              </div>
-              <div class="comment-text">
-                <div class="author-info">
-                  <h4><a href="#">MR Soytan Ali</a></h4>
-                  <span class="comment-time">Posted on Jun 12, 2015</span>
-                </div>
-                <p></p>
-              </div>
-            </div>
+                @endif
+            @endforeach
           </div>
         </div>
       </div>
@@ -106,19 +98,17 @@
             <h4 class="title">{{ __('layout_user.courses.course_detail.related_courses') }}</h4>
             <div class="single-item">
               <div class="single-item-image overlay-effect">
-                <a href="#"><img alt="" src="img/course/1.jpg"></a>
+                <a href=""><img alt="" src="{{ $course->image }}"></a>
               </div>
               <div class="single-item-text">
-                <h4><a href="#">Photoshop CC 2017</a></h4>
+                <h4><a href="#">{{ $course->title }}</a></h4>
                 <div class="single-item-text-info">
-                  <span>By: <span>M S Nawaz</span></span>
-                  <span>Date: <span>20.5.15</span></span>
+                  <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $course->created_at}}</span></span>
                 </div>
                 <p></p>
                 <div class="single-item-content">
                   <div class="single-item-comment-view">
-                    <span><i class="zmdi zmdi-eye"></i>59</span>
-                    <span><i class="zmdi zmdi-comments"></i>19</span>
+                      <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
                   </div>
                   <div class="single-item-rating">
                     <i class="zmdi zmdi-star"></i>

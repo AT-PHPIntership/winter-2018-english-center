@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CourseService;
 use App\Services\LessonService;
+use App\Services\CommentService;
 use App\Models\Course;
 
 class CourseController extends Controller
@@ -29,6 +30,7 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         $lessons = app(LessonService::class)->getLesson();
-        return view('frontend.pages.detail_course', compact('course', 'lessons'));
+        $comments = app(CommentService::class)->index();
+        return view('frontend.pages.detail_course', compact('course', 'lessons', 'comments'));
     }
 }

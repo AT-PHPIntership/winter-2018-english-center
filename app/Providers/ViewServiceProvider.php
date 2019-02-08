@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Http\ViewComposers\RoleComposer;
 use App\Http\ViewComposers\SystemComposer;
+use App\Http\ViewComposers\LessonComposer;
+
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,7 @@ class ViewServiceProvider extends ServiceProvider
         view()->composer(['backend.courses.create','backend.courses.edit', 'frontend.layouts.partials.header', 'frontend.pages.course', 'frontend.pages.detail_course'], 'App\Http\ViewComposers\CourseComposer');
         view()->composer(['backend.users.create', 'backend.users.edit'], RoleComposer::class);
         view()->composer(['frontend.layouts.partials.footer', 'frontend.home',], SystemComposer::class);
+
     }
 
     /**

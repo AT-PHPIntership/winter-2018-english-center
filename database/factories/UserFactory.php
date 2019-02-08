@@ -106,3 +106,19 @@ $factory->define(App\Models\Slider::class, function(Faker $faker) {
         'content' => $faker->text,
     ];
 });
+
+$factory->define(App\Models\Comment::class, function(Faker $faker) {
+    $commentable = [
+        App\Models\Lesson::class,
+        App\Models\Course::class
+    ]; 
+    $commentableType = $faker->randomElement($commentable);
+    $commentable = factory($commentableType)->create();
+    return [
+        'parent_id' => factory('App\Models\Comment')->create()->id,
+        'user_id' => factory('App\Models\User')->create()->id,
+        'content' => $faker->sentence,
+        'commentable_type' => $faker->randomElement(['lessons', 'courses']),
+        'commentable_id' => $commentable->id,
+    ];
+});

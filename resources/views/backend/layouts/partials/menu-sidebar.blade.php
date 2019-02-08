@@ -85,17 +85,10 @@
             <li><a href="{{ route('admin.vocabularies.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_vocabularies')</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-file"></i> <span>@lang('layout_admin.sidebar.text_management')</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+        <li class="#">
+          <a href="{{ route('admin.comments.index') }}">
+            <i class="fa fa-file"></i> <span>@lang('layout_admin.sidebar.comment_management')</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_text')</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_text')</a></li>
-          </ul>
         </li>
         <li class="treeview">
           <a href="#">
@@ -105,8 +98,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_exercise')</a></li>
-            <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_exercise')</a></li>
+            <li><a href="{{ route('admin.exercises.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_exercise')</a></li>
+            <li><a href="{{ route('admin.exercises.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_exercise')</a></li>
           </ul>
         </li>
       </ul>
