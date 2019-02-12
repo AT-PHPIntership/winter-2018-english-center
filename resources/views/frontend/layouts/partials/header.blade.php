@@ -46,7 +46,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="">@lang('layout_user.header.contact')</a></li>
+                                    <li><a href="{{ route('user.contact') }}">@lang('layout_user.header.contact')</a></li>
                                 </ul>
                             </nav>
                         </div>
