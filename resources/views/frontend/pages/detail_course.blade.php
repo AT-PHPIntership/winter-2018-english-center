@@ -65,7 +65,7 @@
               @foreach ($lessons as $lesson)
               @if($lesson->course_id === $course->id)
               <div class="text">
-                <a href="">{{ $lesson->name }}</a>
+                <a href="{{ route('user.lesson.detail', $lesson->id) }}">{{ $lesson->name }}</a>
                 <span class="text-right">{{ $lesson->created_at }}</span>
               </div>
               @endif

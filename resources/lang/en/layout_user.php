@@ -59,4 +59,11 @@ return [
             'open_time' => 'Open Time',
         ],
     ],
+    'lessons' => [
+        'lesson_detail' => [
+            'lesson_detail' => 'Lesson Details',
+            'recent_lesson' => 'Recent Lesson',
+            'exercise' => 'Exercise',
+        ],
+    ],
 ];
