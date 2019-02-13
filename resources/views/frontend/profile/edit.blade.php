@@ -87,7 +87,7 @@
                         </div>
                         <div class="form-group">
                             <label for="url">{{ __('user.create_user.url') }}</label>
-                            <img class="profile-user-img img-responsive img-circle" src="storage/avatar/{{ Auth::user()->userProfile->url }}" alt="">
+                            <img class="profile-user-img img-responsive img-circle" src="{{ !(substr(Auth::user()->userProfile->url,0,4) == 'http') ? 'storage/avatar/' .Auth::user()->userProfile->url : Auth::user()->userProfile->url }}" alt="">
                             <input type="file" name="url" value="{{ Auth::user()->userProfile->url }}">
                             @if ($errors->has('url'))
                                 <span class="help-block col-sm-12">

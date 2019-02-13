@@ -8,7 +8,7 @@
     <section class="content">
         <div class="box box-primary">
             <div class="box-body box-profile">
-                <img class="profile-user-img img-responsive img-circle" src="storage/avatar/{{ Auth::user()->userProfile->url }}" alt="">
+                <img class="profile-user-img img-responsive img-circle" src="{{ !(substr(Auth::user()->userProfile->url,0,4) == 'http') ? 'storage/avatar/' .Auth::user()->userProfile->url : Auth::user()->userProfile->url }}" alt="">
 
                 <h3 class="profile-username text-center">{{ Auth::user()->userProfile->name }}</h3>
 

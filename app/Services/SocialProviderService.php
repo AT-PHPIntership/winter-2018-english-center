@@ -6,9 +6,29 @@ use App\Models\SocialProvider;
 use App\Models\User;
 use Laravel\Socialite\Two\InvalidStateException;
 use DB;
+use App\Services\ImageService;
 
 class SocialProviderService
 {
+    /**
+     * Where to receipt users from ImageService.
+     *
+     * @var $imageService
+     */
+    private $imageService;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param ImageService $imageService ImageService
+     *
+     * @return void
+     */
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
     /**
      * Obtain the user information from provider.
      *
