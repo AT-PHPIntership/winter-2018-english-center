@@ -62,32 +62,33 @@
               <div class="text"><span>{{ __('layout_user.courses.course_detail.lessons') }}</span> <span class="text-right">{{ __('layout_user.courses.course_detail.open_time') }}</span></div>
             </div>
             <div class="duration-text">
-                @foreach ($lessons as $lesson)
-                @if($lesson->course_id === $course->id)
-                  <div class="text">
-                    <a href="#">{{ $lesson->name }}</a>
-                    <span class="text-right">{{ $lesson->created_at }}</span></div>
-                @endif
-                @endforeach
+              @foreach ($lessons as $lesson)
+              @if($lesson->course_id === $course->id)
+              <div class="text">
+                <a href="">{{ $lesson->name }}</a>
+                <span class="text-right">{{ $lesson->created_at }}</span>
+              </div>
+              @endif
+              @endforeach
             </div>
           </div>
           <div class="comments">
             <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             @foreach ($comments as $comment)
-                @if($comment->commentable_id == $course->id )
-                <div class="single-comment">
-                  <div class="author-image">
-                    <img src="{{ $comment->user->userProfile['url'] }}" alt="">
-                  </div>
-                  <div class="comment-text">
-                    <div class="author-info">
-                      <h4><a href="#">{{ $comment->user->userProfile['name'] }}</a></h4>
-                      <span class="comment-time"><span>Post on </span>{{ $comment->created_at }}</span>
-                    </div>
-                    <p>{{ $comment->content }}</p>
-                  </div>
+            @if($comment->commentable_id == $course->id )
+            <div class="single-comment">
+              <div class="author-image">
+                <img src="{{ $comment->user->userProfile['url'] }}" alt="">
+              </div>
+              <div class="comment-text">
+                <div class="author-info">
+                  <h4><a href="#">{{ $comment->user->userProfile['name'] }}</a></h4>
+                  <span class="comment-time"><span>Post on </span>{{ $comment->created_at }}</span>
                 </div>
-                @endif
+                <p>{{ $comment->content }}</p>
+              </div>
+            </div>
+            @endif
             @endforeach
           </div>
         </div>
@@ -96,19 +97,21 @@
         <div class="sidebar-widget">
           <div class="single-sidebar-widget">
             <h4 class="title">{{ __('layout_user.courses.course_detail.related_courses') }}</h4>
+            @foreach ($course->parent->children as $parentCourse)
+            @if ($parentCourse->id != $course->id)
             <div class="single-item">
               <div class="single-item-image overlay-effect">
-                <a href=""><img alt="" src="{{ $course->image }}"></a>
+                <a href="{{ route('user.detail', $parentCourse->id) }}"><img alt="" src="{{ $parentCourse->image }}"></a>
               </div>
               <div class="single-item-text">
-                <h4><a href="#">{{ $course->title }}</a></h4>
+                <h4><a href="{{ route('user.detail', $parentCourse->id) }}">{{ $parentCourse->title }}</a></h4>
                 <div class="single-item-text-info">
-                  <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $course->created_at}}</span></span>
+                  <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $parentCourse->created_at}}</span></span>
                 </div>
                 <p></p>
                 <div class="single-item-content">
                   <div class="single-item-comment-view">
-                      <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
+                    <span><i class="zmdi zmdi-eye"></i>{{ $parentCourse->count_view }}</span>
                   </div>
                   <div class="single-item-rating">
                     <i class="zmdi zmdi-star"></i>
@@ -123,6 +126,8 @@
                 <a class="button-default" href="#">{{ __('layout_user.courses.btn') }}</a>
               </div>
             </div>
+            @endif
+            @endforeach
           </div>
         </div>
       </div>

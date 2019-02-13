@@ -25,12 +25,13 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param Course $course course
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Course $course)
     {
-        $lessons = app(LessonService::class)->getLesson();
-        $comments = app(CommentService::class)->index();
-        return view('frontend.pages.detail_course', compact('course', 'lessons', 'comments'));
+        $lessons = app(LessonService::class)->index();
+        return view('frontend.pages.detail_course', compact('course', 'lessons'));
     }
 }

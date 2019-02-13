@@ -28,9 +28,4 @@ class LessonService
     {
         return $lesson->load(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers']);
     }
-
-    public function getLesson()
-    {
-        return Lesson::all();
-    }
 }

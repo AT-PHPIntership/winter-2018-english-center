@@ -2201,4 +2201,10 @@ span.c-text {display: inline-block;}
     color: #4c4c4c;
     text-transform: capitalize;
     text-decoration: none;
+    padding: 40px;
 }
+.text a:hover {
+    color: #86bc42;
+    text-decoration: none;
+}
+.text a:active, a:hover, a:focus {outline: 0 none; text-decoration: none}
