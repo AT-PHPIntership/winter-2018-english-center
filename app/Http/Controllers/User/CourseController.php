@@ -5,6 +5,9 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CourseService;
+use App\Services\LessonService;
+use App\Services\CommentService;
+use App\Models\Course;
 
 class CourseController extends Controller
 {
@@ -22,10 +25,13 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param Course $course course
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Course $course)
     {
-        return view('frontend.pages.detail_course');
+        $lessons = app(LessonService::class)->index();
+        return view('frontend.pages.detail_course', compact('course', 'lessons'));
     }
 }

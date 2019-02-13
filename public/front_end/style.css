@@ -1643,6 +1643,7 @@ body {
     font-size: 24px;
     margin-bottom: 2px;
     padding-top: 32px;
+    text-transform: capitalize;
 }
 .single-course-details .single-item-text-info {margin-bottom: 23px;}
 .course-text-content p:first-child {margin-bottom: 21px;}
@@ -2195,3 +2196,15 @@ span.c-text {display: inline-block;}
     z-index: 9999;
 }
 #scrollUp:hover {background-color: #2D3E50;}
+
+.text a {
+    color: #4c4c4c;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 40px;
+}
+.text a:hover {
+    color: #86bc42;
+    text-decoration: none;
+}
+.text a:active, a:hover, a:focus {outline: 0 none; text-decoration: none}
