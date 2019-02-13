@@ -79,7 +79,7 @@
 						</span>
 					</div>
 
-					<a href="#" class="btn-face m-b-10">
+					<a href="{{route('user.social', ['provider'=>'facebook'])}}" class="btn-face m-b-10">
 						<i class="fa fa-facebook-official"></i>
 						@lang('layout_user.login.facebook')
 					</a>
