@@ -44,7 +44,7 @@ class SocialProviderService
                     );
                     DB::commit();
                 } else {
-                    throw new InvalidStateException(__('Trung email'));
+                    throw new InvalidStateException(__('common.error_login'));
                 }
             } catch (\Exception $ex) {
                 DB::rollback();
