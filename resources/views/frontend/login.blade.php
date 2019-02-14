@@ -105,7 +105,7 @@
 							@lang('layout_user.login.not_member')
 						</span>
 
-						<a class="txt1 bo1 hov1" href="#">
+						<a class="txt1 bo1 hov1" href="{{ route('user.register') }}">
 							@lang('layout_user.login.sign_up')						
 						</a>
 					</div>
