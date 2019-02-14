@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Socialite;
 use App\Services\SocialProviderService;
+use App\Http\Requests\RegisterUserRequest;
+use App\Services\ActivationService;
 
 class AuthController extends Controller
 {
@@ -72,5 +74,41 @@ class AuthController extends Controller
         $this->guard()->logout();
         $request->session()->invalidate();
         return $this->loggedOut($request) ?: redirect()->route('home');
+    }
+
+    /**
+    * Display register page for user..
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function showRegisterForm()
+    {
+        return view('frontend.register');
+    }
+
+    /**
+     * Register user of the application.
+     *
+     * @param \Illuminate\Http\Request $request Request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function register(RegisterUserRequest $request)
+    {
+        app(ActivationService::class)->register($request->all());
+        return redirect()->route('user.login');
+    }
+
+     /**
+     * Handle user register and send email
+     *
+     *@param string $token [identify user]
+     *
+     * @return register view
+     */
+    public function activation($token)
+    {
+        app(ActivationService::class)->activation($token);
+        return redirect()->route('user.login');
     }
 }

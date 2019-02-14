@@ -45,6 +45,10 @@ Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
         //Login by Social account
         Route::get('auth/{provider}', 'AuthController@redirectToProvider')->name('social');
         Route::get('auth/{provider}/callback', 'AuthController@handleProviderCallback');
+        //register
+        Route::get('/register', 'AuthController@showRegisterForm')->name('register');
+        Route::post('/register', 'AuthController@register')->name('register');
+        Route::get('activation/{token}', 'AuthController@activation')->name('activation');
 
         Route::get('/profiles', 'ProfileController@show')->name('profiles.show');
         Route::get('/profiles/edit', 'ProfileController@edit')->name('profiles.edit');
