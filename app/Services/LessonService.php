@@ -41,7 +41,6 @@ class LessonService
      */
     public function edit($data)
     {
-        // return Lesson::where('id', $data->id)->with('vocabularies')->first();
         return $data->load(['vocabularies']);
     }
 
