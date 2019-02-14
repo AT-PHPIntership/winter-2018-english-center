@@ -26,30 +26,47 @@
       <div class="col-lg-9 col-md-8">
         <div class="news-details-content">
           <div class="single-latest-item">
-            <img src="img/details/2.jpg" alt="">  
+            <div class="single-event-image">
+              <img src="{{ $lesson->image }}" alt="">
+            </div>
             <div class="single-latest-text">
-              <h3></h3>
+              <h3>{{ $lesson->name }}</h3>
               <div class="single-item-comment-view">
-                <span><i class="zmdi zmdi-calendar-check"></i>25 jun 2050</span>
-                <span><i class="zmdi zmdi-eye"></i>59</span>
-                <span><i class="zmdi zmdi-comments"></i>19</span>
+                <span><i class="zmdi zmdi-calendar-check"></i>{{ $lesson->created_at }}</span>
+                <span><i class="zmdi zmdi-eye"></i>{{ $lesson->count_view }}</span>
               </div>
-              <p></p>
-              <div class="quote-section">
-                <p></p>
+              <strong>Vocabulary:</strong>
+              <div class="single-item-comment-view">
+                <table border="2" cellspacing="10" cellpadding="10" id='{{count($lesson->vocabularies)}}'>
+                  <tbody>
+                    @foreach ($lesson->vocabularies as $key => $items)
+                    <tr>
+                      <td>{{ $items->vocabulary }}</td>
+                      <td>{{ $items->word_type }}</td>
+                      <td style="cursor:pointer;">
+                        <a type="button" class="uba_audioButton" >
+                          <audio>
+                            <source src="{{$items->sound}}" type="audio/mpeg">
+                          </audio>
+                        </a>
+                      </td>
+                      <td>{{ $items->means }}</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
               </div>
-              <p></p>
-              <div class="tags-and-links">
-                <div class="social-links">
-                  <span>Share:</span>
-                  <a href="#"><i class="zmdi zmdi-facebook"></i></a>
-                  <a href="#"><i class="zmdi zmdi-twitter"></i></a>
-                  <a href="#"><i class="zmdi zmdi-google-old"></i></a>
-                  <a href="#"><i class="zmdi zmdi-instagram"></i></a>
+              <div class="col-md-12 detail-text-video">
+                <div class="detail-text">
+                  <p>{{ $lesson->text }}></p>
+                </div>
+                <div class="detail-video">
+                  <iframe width="420" height="345" src="{{ $lesson->video }}">
+                  </iframe>
                 </div>
               </div>
               <div class="">
-                  <h4>{{ __('layout_user.lessons.lesson_detail.exercise')}}</h4>
+                <h4>{{ __('layout_user.lessons.lesson_detail.exercise')}}</h4>
               </div>
             </div>
           </div>
@@ -102,17 +119,18 @@
           <div class="single-sidebar-widget">
             <h4 class="title">{{ __('layout_user.lessons.lesson_detail.recent_lesson') }}</h4>
             <div class="recent-content">
+            @foreach ($recentLessons as $items)
               <div class="recent-content-item">
-                <a href="#"><img src="img/event/7.jpg" alt=""></a>
+                <a href="{{ route('user.lesson.detail', $items->id) }}"><img src="{{ $items->image }}" alt=""></a>
                 <div class="recent-text">
-                  <h4><a href="#">Learn English in</a></h4>
+                  <h4><a href="">{{ $items->name }}</a></h4>
                   <div class="single-item-comment-view">
-                    <span><i class="zmdi zmdi-eye"></i>59</span>
-                    <span><i class="zmdi zmdi-comments"></i>19</span>
+                    <span><i class="zmdi zmdi-eye"></i>{{ $items->count_view }}</span>
                   </div>
                   <p></p>
                 </div>
               </div>
+            @endforeach
             </div>
           </div>
         </div>

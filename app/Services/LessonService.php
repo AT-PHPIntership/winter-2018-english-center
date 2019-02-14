@@ -28,4 +28,15 @@ class LessonService
     {
         return $lesson->load(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers']);
     }
+
+    /**
+     * Function index get recent lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function recentLesson()
+    {
+        $recentLessons = Lesson::orderBy('created_at', config('define.order_by_desc'))->take(config('define.recentLessons'))->get();
+        return $recentLessons;
+    }
 }
