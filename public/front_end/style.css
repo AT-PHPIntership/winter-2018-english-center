@@ -2233,9 +2233,67 @@ table td {
 }
 
 .detail-video {
-    text-align: center; 
+    text-align: center;
+    margin-bottom: 100px;
 }
 
 .detail-text p {
     text-indent: 50px;
+}
+
+.basic_index {
+    font-weight: bold;
+    float: left;
+    padding: 0px 10px;
+    margin-right: 10px;
+    text-align: center;
+    border-radius: 4px;
+    background: antiquewhite;
+}
+
+.basic_alert_note {
+    text-align: center;
+    margin: 30px 0px 15px;
+    color: #3A110B;
+    float: left;
+    width: 100%;
+}
+
+.basic_q_title {
+    color: #005053;
+    text-align: justify;
+    float: left;
+    width: 90%;
+    min-height: 30px;
+}
+.radio, .checkbox {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.box_bt_ctrl {
+    margin: 10px 0px 10px;
+    width: 100%;
+    text-align: center;
+    float: left;
+}
+
+.result-lesson {
+    margin-top: 50px;
+}
+
+.result-lesson .correct {
+    color: red;
+}
+
+.pagination-content {
+    display: block;
+    line-height: 0;
+    text-align: center;
+}
+
+.pagination li {
+    display: inline-block;
 }

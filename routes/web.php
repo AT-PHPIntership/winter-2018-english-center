@@ -46,4 +46,5 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
     Route::get('course', 'CourseController@index')->name('course');
     Route::get('/detail/{course}', 'CourseController@show')->name('detail');
     Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail');
+    Route::post('user/lesson', 'LessonController@resutlLesson');
 });

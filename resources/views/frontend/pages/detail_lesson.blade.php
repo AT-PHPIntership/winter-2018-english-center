@@ -27,19 +27,19 @@
         <div class="news-details-content">
           <div class="single-latest-item">
             <div class="single-event-image">
-              <img src="{{ $lesson->image }}" alt="">
+              <img src="{{ $lessons->image }}" alt="">
             </div>
             <div class="single-latest-text">
-              <h3>{{ $lesson->name }}</h3>
+              <h3>{{ $lessons->name }}</h3>
               <div class="single-item-comment-view">
-                <span><i class="zmdi zmdi-calendar-check"></i>{{ $lesson->created_at }}</span>
-                <span><i class="zmdi zmdi-eye"></i>{{ $lesson->count_view }}</span>
+                <span><i class="zmdi zmdi-calendar-check"></i>{{ $lessons->created_at }}</span>
+                <span><i class="zmdi zmdi-eye"></i>{{ $lessons->count_view }}</span>
               </div>
               <strong>Vocabulary:</strong>
               <div class="single-item-comment-view">
-                <table border="2" cellspacing="10" cellpadding="10" id='{{count($lesson->vocabularies)}}'>
+                <table border="2" cellspacing="10" cellpadding="10" id='{{count($lessons->vocabularies)}}'>
                   <tbody>
-                    @foreach ($lesson->vocabularies as $key => $items)
+                    @foreach ($lessons->vocabularies as $key => $items)
                     <tr>
                       <td>{{ $items->vocabulary }}</td>
                       <td>{{ $items->word_type }}</td>
@@ -58,18 +58,67 @@
               </div>
               <div class="col-md-12 detail-text-video">
                 <div class="detail-text">
-                  <p>{{ $lesson->text }}></p>
+                  <p>{{ $lessons->text }}></p>
                 </div>
                 <div class="detail-video">
-                  <iframe width="420" height="345" src="{{ $lesson->video }}">
+                  <iframe width="420" height="345" src="{{ $lessons->video }}">
                   </iframe>
                 </div>
               </div>
-              <div class="">
-                <h4>{{ __('layout_user.lessons.lesson_detail.exercise')}}</h4>
+              <div class="exercises" data-question='{{$lessons->exercises->pluck('questions')->map(function ($item, $key) {
+                        return collect($item)->count();
+                    })->sum()}}'>
+                <h3><i class="fa fa-edit"></i><strong>{{ __('layout_user.lessons.lesson_detail.exercise')}}</strong></h3>
+                @foreach ($lessons->exercises as $key => $exercises)
+                <div class="comment_bai_hoc clear">
+                  <div class="clear"></div>
+                  <div class="ghichu0 clear bo_goc">
+                    <h4 class="exercises[{{ $key }}][title]">{{ $exercises->title }}</h4>
+                  </div>
+                  @foreach ($exercises->questions as $q => $questions)
+                  <div class="details" data-user='{{ Auth::user()->id }}' data-token='{{ csrf_token() }}'>
+                    <div class="basic_ques">
+                      <p class="basic_index">{{ $key + 1}}</p>
+                      <div class="basic_index" id="exercises[{{ $key }}][questions][{{ $q }}][content]">{{ $questions->content }}</div>
+                      <div class="form-group col-lg-12">
+                        @foreach ($questions->answers as $a => $answers)
+                        <div class="radio-exercise col-lg-3">
+                          <label>
+                          <input type="radio" name="exercises[{{ $key }}]questions[{{ $q }}][answers][]" id="{{ $answers->id }}" value="{{ $a }}">
+                          {{ $answers->answers }} 
+                          </label>
+                        </div>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
+                </div>
+                @endforeach
+              </div>
+              <div class="basic_alert_note">{{ __('layout_user.lessons.lesson_detail.complete_exercise')}}<strong> {{ __('common.btn') }}</strong> {{ __('layout_user.lessons.lesson_detail.complete_exercise_below')}}</div>
+              <div class="box_bt_ctrl">
+                <button type="button" class="btn btn-success">
+                  <i class="fa fa-credit-card"></i> {{ __('common.btn') }}
+                </button>
+              </div>
+              @if ($errors->has('radio'))
+                <span class="text-red help is-danger">* {{ $errors->first('radio') }}</span>
+              @endif
+              <div class="result-lesson">
               </div>
             </div>
           </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pagination-content">
+                        <ul class="pagination">
+                            <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
+                            <li class="current"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
           <div class="comments">
             <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             <div class="single-comment">
@@ -119,7 +168,7 @@
           <div class="single-sidebar-widget">
             <h4 class="title">{{ __('layout_user.lessons.lesson_detail.recent_lesson') }}</h4>
             <div class="recent-content">
-            @foreach ($recentLessons as $items)
+              @foreach ($recentLessons as $items)
               <div class="recent-content-item">
                 <a href="{{ route('user.lesson.detail', $items->id) }}"><img src="{{ $items->image }}" alt=""></a>
                 <div class="recent-text">
@@ -130,7 +179,7 @@
                   <p></p>
                 </div>
               </div>
-            @endforeach
+              @endforeach
             </div>
           </div>
         </div>
