@@ -71,4 +71,14 @@ class Course extends Model
     {
         return $this->morphMany('App\Models\Comment', 'commentable');
     }
+
+    /**
+     * MorphMany comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function goals()
+    {
+        return $this->morphMany('App\Models\Goalable', 'goalable');
+    }
 }

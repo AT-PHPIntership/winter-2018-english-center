@@ -83,4 +83,14 @@ class Lesson extends Model
     {
         return $this->morphMany('App\Models\Comment', 'commentable');
     }
+
+    /**
+     * MorphMany lesson
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function goals()
+    {
+        return $this->morphMany('App\Models\Goalable', 'goalable');
+    }
 }
