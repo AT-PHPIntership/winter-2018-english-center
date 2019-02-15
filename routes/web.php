@@ -53,6 +53,8 @@ Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
         Route::get('/profiles', 'ProfileController@show')->name('profiles.show');
         Route::get('/profiles/edit', 'ProfileController@edit')->name('profiles.edit');
         Route::put('/profiles', 'ProfileController@update')->name('profiles.update');
+
+        Route::get('search/courses', 'HomeController@getListCourses')->name('courses.search');
     });
 });
 
