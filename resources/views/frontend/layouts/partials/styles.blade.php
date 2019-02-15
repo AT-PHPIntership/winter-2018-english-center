@@ -55,4 +55,3 @@
 		<!-- Modernizr JS
 		============================================ -->		
         <script src="front_end/js/vendor/modernizr-2.8.3.min.js"></script>
-        

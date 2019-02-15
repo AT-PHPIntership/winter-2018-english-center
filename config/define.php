@@ -22,5 +22,5 @@ return [
         'line_error' => 2,
         'file_error' => 'Vocabulary is wrong',
     ],
-    'recentLessons' => 5,
+    'recent_lessons' => 5,
 ];

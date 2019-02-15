@@ -64,6 +64,8 @@ return [
             'lesson_detail' => 'Lesson Details',
             'recent_lesson' => 'Recent Lesson',
             'exercise' => 'Exercise',
+            'complete_exercise' => 'After completing the exercise, click "',
+            'complete_exercise_below' => '" below',
         ],
     ],
 ];
