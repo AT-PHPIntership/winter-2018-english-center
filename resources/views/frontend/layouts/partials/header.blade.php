@@ -10,7 +10,7 @@
                         @if(!Auth::check())
                             <div class="content"><a href="{{ route('user.login') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.login')</a>
                             </div>
-                            <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.register')</a>
+                            <div class="content"><a href="{{ route('user.register') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.register')</a>
                             </div>
                         @else
                             <div class="content"><a href="{{ route('user.profiles.show') }}"><i class="zmdi zmdi-account"></i>{{ Auth::user()->userProfile->name }}</a>

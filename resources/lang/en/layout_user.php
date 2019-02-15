@@ -61,5 +61,29 @@ return [
         'sign_up' => 'Sign up now',
         'warning' => 'You must Login!'
     ],
+    'register' => [
+        'title' => 'Register',
+        'name_validate' => 'User Name is required',
+        'email_validate' => 'Valid email is required: ex@abc.xyz',
+        'confirmpass_validate' => 'Confirm Password is required',
+        'pass_validate' => 'Password is required',
+        'email_placeholder' => 'Email',
+        'pass_placeholder' => 'Password',
+        'passconfirm_placeholder' => 'Confirm Password',
+        'username_placeholder' => 'User Name',
+        'warning' => 'You must Login!',
+        'btn' => 'Sign Up',
+        'email' => [
+            'code' => 'Your link verify has been send. Please, check your email!',
+            'error' => 'Error! Please try again!',
+            'active' => 'Your email is actived! Lets login!',
+            'invalid' => 'Your email is invalid!'
+        ],
+        'activation' => [
+            'title' => 'Wellcome to EnglishCenter!',
+            'link' => 'Please, click link:',
+            'btn' => 'confirm',
+        ],
+    ],
     'logout' => 'Log Out',
 ];
