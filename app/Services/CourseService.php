@@ -106,4 +106,32 @@ class CourseService
                     ->limit(config('define.courses.limit_courses'))
                     ->get();
     }
+
+    /**
+     * Get courses based on query
+     *
+     * @param object $query [query get product]
+     *
+     * @return collection
+     */
+    public function ajaxCourseSearch($query)
+    {
+        return \DB::table('courses')
+            ->select('id', 'title')
+            ->where('title', 'LIKE', "%{$query}%")
+            ->limit(config('define.courses.page_site_course'))
+            ->get();
+    }
+
+    /**
+     * Get courses based on query
+     *
+     * @param object $query [query get product]
+     *
+     * @return collection
+     */
+    public function courseSearch($query)
+    {
+        return Course::where('title', 'LIKE', "%{$query}%")->paginate(config('define.courses.page_site_course'))->appends(['search'=> $query]);
+    }
 }

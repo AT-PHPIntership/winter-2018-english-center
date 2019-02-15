@@ -86,4 +86,8 @@ return [
         ],
     ],
     'logout' => 'Log Out',
+    'search' => [
+        'find' => 'Find ',
+        'result' => ' results'
+    ],
 ];

@@ -60,12 +60,13 @@
                         <!--Search Form-->
                         <div class="search">
                             <div class="search-form">
-                                <form id="search-form" action="#">
-                                    <input type="search" placeholder="Search here..." name="search" />
+                                <form id="search-form" action="{{ route('user.courses.search') }}" method="GET" autocomplete="off">
+                                    <input id="search" type="search" placeholder="Search here..." name="search" />
                                     <button type="submit">
                                         <span><i class="fa fa-search"></i></span>
                                     </button>
-                                </form>                                
+                                </form>
+                                <div class="dropdown-menu" id="courseList"></div>
                             </div>
                         </div>
                         <!--End of Search Form-->

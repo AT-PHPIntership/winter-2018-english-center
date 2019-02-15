@@ -2,10 +2,14 @@
 		============================================ -->		
         <script src="front_end/js/vendor/jquery-1.12.4.min.js"></script>
         
-		<!-- bootstrap JS
+		<!-- Search JS
 		============================================ -->		
-        <script src="front_end/js/bootstrap.min.js"></script>
-        
+		<script src="front_end/js/search.js"></script>
+		
+        <!-- bootstrap JS
+		============================================ -->		
+		<script src="front_end/js/bootstrap.min.js"></script>
+		
         <!-- nivo slider js
 		============================================ -->       
 		<script src="front_end/lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>

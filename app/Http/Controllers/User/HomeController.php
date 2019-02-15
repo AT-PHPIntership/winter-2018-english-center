@@ -35,4 +35,23 @@ class HomeController extends Controller
         $newCourses = $this->courseService->getNewCourses();
         return view('frontend.home')->with(['sliders' => $sliders, 'popularCourses' => $popularCourses, 'newCourses' => $newCourses]);
     }
+
+    /**
+     * Get product from keyword in search field
+     *
+     *@param request $request [request to get product]
+     *
+     * @return compare view
+     */
+    public function getListCourses(Request $request)
+    {
+        if ($request->ajax()) {
+            $response = $this->courseService->ajaxCourseSearch($request->get('query'));
+            return response()->json($response);
+        } else {
+            $query = $request->get('search');
+            $search = $this->courseService->courseSearch($query);
+            return view('frontend.search', compact('search'));
+        }
+    }
 }
