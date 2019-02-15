@@ -1909,7 +1909,7 @@ span.comment-time {padding-right: 3px; position: relative;}
     border-bottom: 2px solid #86bc42;
     padding: 0 35px;
 }
-.single-event-image img {width: 100%;}
+.single-event-image img {width: 100%; height: 350px}
 .event-details-content .single-event-text h3 {font-size: 28px;}
 .event-details-content .single-event-text > p {color: #4e4e4e; line-height: 24px;}
 .event-details-content .single-event-text {border: 0 none; padding: 32px 0 40px;}
@@ -2208,3 +2208,34 @@ span.c-text {display: inline-block;}
     text-decoration: none;
 }
 .text a:active, a:hover, a:focus {outline: 0 none; text-decoration: none}
+
+table {
+    width: 600px;
+    text-align: center; 
+    margin: 20px;
+}
+
+table td {
+    padding: 5px 20px;
+}
+
+.uba_audioButton {
+    background: url('/images/icons/audio_short.png') no-repeat;
+    background-position: 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    width: 26px;
+    height: 30px;
+}
+.uba_audioButton:hover {
+    background-position: 0 -85px;
+}
+
+.detail-video {
+    text-align: center; 
+}
+
+.detail-text p {
+    text-indent: 50px;
+}
