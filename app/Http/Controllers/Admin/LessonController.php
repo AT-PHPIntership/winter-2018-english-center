@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\LessonService;
 use App\Services\ImageService;
 use App\Http\Requests\LessonRequest;
+use App\Http\Requests\UpdateLessonRequest;
 use App\Models\Lesson;
 
 class LessonController extends Controller
@@ -75,6 +76,50 @@ class LessonController extends Controller
         return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Lesson $lesson Lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Lesson $lesson)
+    {
+        $lesson = app(LessonService::class)->edit($lesson);
+        return view('backend.lessons.edit', compact('lesson'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request request
+     * @param Lesson                   $lesson  lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateLessonRequest $request, Lesson $lesson)
+    {
+        $data = $request->except(['_token','_method']);
+        if ($request->hasFile('image')) {
+            $data['image'] = $this->imageService->uploadImageLesson($data['image']);
+        }
+        $this->lessonService->update($data, $lesson);
+        return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Lesson $lesson lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Lesson $lesson)
+    {
+        $this->lessonService->destroy($lesson);
+        return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
+    }
+    
     /**
      * Display the specified resource.
      *
