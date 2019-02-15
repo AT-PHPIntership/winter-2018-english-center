@@ -79,12 +79,12 @@
 						</span>
 					</div>
 
-					<a href="#" class="btn-face m-b-10">
+					<a href="{{route('user.social', ['provider'=>'facebook'])}}" class="btn-face m-b-10">
 						<i class="fa fa-facebook-official"></i>
 						@lang('layout_user.login.facebook')
 					</a>
 
-					<a href="#" class="btn-google m-b-10">
+					<a href="{{route('user.social', ['provider'=>'google'])}}" class="btn-google m-b-10">
 						<img src="images/icons/icon-google.png" alt="GOOGLE">
 						@lang('layout_user.login.google')
 					</a>

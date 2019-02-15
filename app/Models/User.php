@@ -79,4 +79,14 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+
+     /**
+     * The function display relationship between user and social provider
+     *
+     * @return \App\Models\SocialProvider
+     */
+    public function socialProviders()
+    {
+        return $this->hasMany('App\Models\SocialProvider');
+    }
 }

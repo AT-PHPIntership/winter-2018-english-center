@@ -1,6 +1,7 @@
 <?php
 return [
     'warning_login' => 'Your account is not access. Please try again!',
+    'error_login' => 'Your Email already exists!',
     'remember_login' => 'Remember me',
     'btn_login' => 'Login',
     'success' => 'Success!',
