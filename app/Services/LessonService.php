@@ -19,6 +19,62 @@ class LessonService
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $data data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store($data)
+    {
+        $lesson = Lesson::create($data);
+        $lesson->vocabularies()->attach($data['vocabularies_id']);
+        return $lesson;
+    }
+
+    /**
+     * Edit resource in storage.
+     *
+     * @param \Illuminate\Http\Request $data data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($data)
+    {
+        return $data->load(['vocabularies']);
+    }
+
+    /**
+    * Handle update user to database
+    *
+    * @param \Illuminate\Http\Request $data   data
+    * @param Lesson                   $lesson lesson
+    *
+    * @return void
+    */
+    public function update($data, $lesson)
+    {
+        $lesson->update($data);
+        if (isset($data['vocabulary_id'])) {
+            $lesson->vocabularies()->sync($data['vocabulary_id']);
+        }
+    }
+
+    /**
+     * Function destroy lesson
+     *
+     * @param Lesson $lesson lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function destroy($lesson)
+    {
+        $lesson->vocabularies()->detach();
+        $lesson->delete();
+    }
+
+    
+    /**
      * Show resource in storage.
      *
      * @param \Illuminate\Http\Request $lesson lesson
