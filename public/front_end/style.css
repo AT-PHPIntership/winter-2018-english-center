@@ -456,7 +456,7 @@ body {
     z-index: 9999;
 }
 .mainmenu ul.sub-menu ul.inside-menu {
-    left: -216px;
+    left: 169px;
     top: -2px;
     width: 195px;
     -webkit-transform: scaleX(0);
