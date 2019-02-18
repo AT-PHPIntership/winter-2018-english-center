@@ -19,3 +19,11 @@
 <script src="js/common.js"></script>
 <!-- Show alert when create, update, delete -->
 <script src="js/show.js"></script>
+<script src="bower_components/select2/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function()
+    {
+        $(".select2").select2();
+    });
+</script>
+<script src="bower_components/ckeditor/ckeditor.js"></script>

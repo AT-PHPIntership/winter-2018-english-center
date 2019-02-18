@@ -75,6 +75,26 @@ return [
         'name1' => 'Phan Thi Cam',
         'name2' => 'Tran Xuan Phuong',
         'position' => 'Developer Educat'
-
+    ],
+    'levels' => [
+        'title' => 'LEVEL',
+        'date' => 'Date:',
+        'btn' => 'Learn Now',
+        'describe_1' => 'There are',
+        'describe_2' => 'lessons of level'
+    ],
+    'contact' => [
+        'title' => 'CONTACT US',
+        'home' => 'Home',
+        'contact' => 'CONTACT',
+        'contact_info' => 'contact info',
+        'social_media' => 'social media',
+        'message' => 'send your message',
+        'placeholder' => [
+            'name' => 'Name',
+            'email' => 'Email',
+            'message' => 'Message',
+        ],
+        'submit' => 'SUBMIT'
     ],
 ];

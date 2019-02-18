@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <div class="logo">
-                        <a href=""><img src="front_end/img/logo/logo.png" alt="EDUCAT"></a>
+                        <a href="{{ route('user.home') }}"><img src="front_end/img/logo/logo.png" alt="EDUCAT"></a>
                     </div>
                 </div>
                 <div class="col-md-9 hidden-sm hidden-xs">
@@ -29,19 +29,24 @@
                         <div class="mainmenu">
                             <nav>
                                 <ul id="nav">
-                                    <li class="current"><a href="">@lang('layout_user.header.home')</a></li>
+                                    <li class="current"><a href="{{ route('user.home') }}">@lang('layout_user.header.home')</a></li>
                                     <li><a href="{{ route('user.about') }}">@lang('layout_user.header.about')</a></li>
                                     <li><a href="">@lang('layout_user.header.courses')</a>
                                         <ul class="sub-menu">
                                             <li><a href=""></a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="">@lang('layout_user.header.level')</a>
+                                    <li>
+                                        <a href=" {{ route('user.levels') }} ">@lang('layout_user.header.level')</a>
                                         <ul class="sub-menu">
-                                            <li><a href=""></a></li>
+                                            @foreach ($levels as $level)
+                                            <li>
+                                                <a href="{{ route('user.level.detail', $level->id) }}">{{ $level->level }}</a>
+                                            </li>
+                                            @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="">@lang('layout_user.header.contact')</a></li>
+                                    <li><a href="{{ route('user.contact') }}">@lang('layout_user.header.contact')</a></li>
                                 </ul>
                             </nav>
                         </div>
