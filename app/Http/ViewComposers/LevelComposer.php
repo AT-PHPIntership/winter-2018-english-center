@@ -8,9 +8,9 @@ use Illuminate\View\View;
 class LevelComposer
 {
     /**
-     * Where to receipt roles from RoleService.
+     * Where to receipt roles from LevelService.
      *
-     * @var $userService
+     * @var $levelsService
      */
     protected $levelsService;
 

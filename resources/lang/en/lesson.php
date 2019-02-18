@@ -33,8 +33,13 @@ return [
         'role' => 'Role',
         'level' => 'Level',
         'course' => 'Course',
+        'vocabulary' => 'Vocabularies',
         'image' => 'Image',
         'video' => 'Video',
+    ],
+    'edit_lesson' =>
+    [
+        'title' => 'Edit Lesson',
         'placeholder' => 'Enter url video',
     ]
 ];

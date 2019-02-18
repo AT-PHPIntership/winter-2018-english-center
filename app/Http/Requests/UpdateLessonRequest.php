@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LessonRequest extends FormRequest
+class UpdateLessonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,7 @@ class LessonRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:50',
-            'text' => 'required',
-            'role' => 'required',
-            'level_id' => 'required',
-            'course_id' => 'required',
-            'vocabularies_id' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,png|max:4096',
+            'vocabulary_id' => 'required',
             'video' => 'required|url',
         ];
     }
