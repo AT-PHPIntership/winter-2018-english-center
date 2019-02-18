@@ -33,7 +33,7 @@
               <h3>{{ $lessons->name }}</h3>
               <div class="single-item-comment-view">
                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $lessons->created_at }}</span>
-                <span><i class="zmdi zmdi-eye"></i>{{ $lessons->count_view }}</span>
+                <span><i class="zmdi zmdi-eye"></i>{{ $countView->count_view }}</span>
               </div>
               <strong>Vocabulary:</strong>
               <div class="single-item-comment-view">

@@ -22,8 +22,9 @@ class LessonController extends Controller
     {
         $lessons = app(LessonService::class)->getLesson($lesson);
         $recentLessons = app(LessonService::class)->recentLesson();
+        $countView = app(LessonService::class)->countViewLesson($lesson->id);
         $lesson = app(LessonService::class)->getPrevNextLesson($lesson);
-        return view('frontend.pages.detail_lesson', compact('lessons', 'recentLessons', 'lesson'));
+        return view('frontend.pages.detail_lesson', compact('lessons', 'recentLessons', 'lesson', 'countView'));
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Models\Course;
 use Config\define;
 use DB;
 use App\Models\Answer;
+use Event;
 
 class LessonService
 {
@@ -98,5 +99,19 @@ class LessonService
             ['id', '>', $lesson->id],
         ])->min('id');
         return [$previousLesson, $nextLesson];
+    }
+
+    /**
+     * Function index get recent lesson
+     *
+     * @param \Illuminate\Http\Request $id lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function countViewLesson($id)
+    {
+        $lesson = Lesson::find($id);
+        Event::fire('lessons.view', $lesson);
+        return $lesson;
     }
 }
