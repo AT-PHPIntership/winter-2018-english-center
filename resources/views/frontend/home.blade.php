@@ -7,9 +7,9 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="about-container">
-                        <h3>@lang('layout_user.about_us.title')</h3>
-                        <p>{{ $system->aboutus }}</p>
-                        <a class="button-default" href="#">@lang('layout_user.about_us.btn')</a>	      
+                        <h3>@lang('layout_user.why_us.title')</h3>
+                        <p>{{ $system->whyus }}</p>
+                        <a class="button-default" href="#">@lang('layout_user.why_us.btn')</a>	      
                     </div>
                 </div>
             </div>

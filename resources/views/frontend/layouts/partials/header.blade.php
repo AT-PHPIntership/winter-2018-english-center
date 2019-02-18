@@ -30,7 +30,7 @@
                             <nav>
                                 <ul id="nav">
                                     <li class="current"><a href="">@lang('layout_user.header.home')</a></li>
-                                    <li><a href="">@lang('layout_user.header.about')</a></li>
+                                    <li><a href="{{ route('user.about') }}">@lang('layout_user.header.about')</a></li>
                                     <li><a href="">@lang('layout_user.header.courses')</a>
                                         <ul class="sub-menu">
                                             <li><a href=""></a></li>

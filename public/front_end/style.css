@@ -2194,3 +2194,9 @@ span.c-text {display: inline-block;}
     z-index: 9999;
 }
 #scrollUp:hover {background-color: #2D3E50;}
+
+.single-teacher-item .single-teacher-image a img {
+    width: 270px;
+    height: 253px;
+    object-fit: cover;
+}

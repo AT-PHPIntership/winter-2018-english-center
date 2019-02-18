@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['namespace' => 'User'], function() {
-    Route::get('/', 'HomeController@index');
+Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/about', 'HomeController@showAboutUs')->name('about');
 });

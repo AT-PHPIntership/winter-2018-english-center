@@ -35,4 +35,14 @@ class HomeController extends Controller
         $newCourses = $this->courseService->getNewCourses();
         return view('frontend.home')->with(['sliders' => $sliders, 'popularCourses' => $popularCourses, 'newCourses' => $newCourses]);
     }
+
+    /**
+     * Display the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showAboutUs()
+    {
+        return view('frontend.about');
+    }
 }
