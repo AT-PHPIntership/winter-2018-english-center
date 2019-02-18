@@ -51,7 +51,8 @@ return [
         'title' => 'LEVEL',
         'date' => 'Date:',
         'btn' => 'Learn Now',
-        'intro' => 'There are many lessons of level'
+        'describe_1' => 'There are',
+        'describe_2' => 'lessons of level'
     ],
     'contact' => [
         'title' => 'CONTACT US',

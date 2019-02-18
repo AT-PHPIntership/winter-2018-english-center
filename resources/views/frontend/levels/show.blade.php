@@ -7,7 +7,7 @@
                     <div class="section-title-wrapper">
                         <div class="section-title">
                             <h3>{{ $level->level }} @lang('layout_user.levels.title')</h3>
-                            <p>@lang('layout_user.levels.intro')</p>
+                            <p>@lang('layout_user.levels.describe_1') {{ $level->lessons->count() }} @lang('layout_user.levels.describe_2')</p>
                         </div>
                     </div>
                 </div>
