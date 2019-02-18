@@ -48,12 +48,12 @@
                                        <span><i class="zmdi zmdi-comments"></i></span>
                                    </div>
                                    <div class="single-item-rating">
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star-half"></i>
-                                   </div>
+                                        <i class="zmdi {{ ($course->average -0.5)>0 ? 'zmdi-star': (($course->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -1.5)>0 ? 'zmdi-star': (($course->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -2.5)>0 ? 'zmdi-star': (($course->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -3.5)>0 ? 'zmdi-star': (($course->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -4.5)>0 ? 'zmdi-star': (($course->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                    </div>
                                 </div>   
                             </div>
                             <div class="button-bottom">
@@ -100,12 +100,12 @@
                                        <span><i class="zmdi zmdi-comments"></i></span>
                                    </div>
                                    <div class="single-item-rating">
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star-half"></i>
-                                   </div>
+                                        <i class="zmdi {{ ($course->average -0.5)>0 ? 'zmdi-star': (($course->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -1.5)>0 ? 'zmdi-star': (($course->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -2.5)>0 ? 'zmdi-star': (($course->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -3.5)>0 ? 'zmdi-star': (($course->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -4.5)>0 ? 'zmdi-star': (($course->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                    </div>
                                 </div>   
                             </div>
                             <div class="button-bottom">
