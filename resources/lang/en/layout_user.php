@@ -30,7 +30,7 @@ return [
     'slider' => [
         'btn' => 'View Courses',
     ],
-    'about_us' => [
+    'why_us' => [
         'title' => 'WHY EDUCAT ?',
         'btn' => 'Learn Now',
     ],
@@ -46,6 +46,35 @@ return [
         'date' => 'Date:',
         'btn' => 'Learn Now',
         'allcourses' => 'Browse All Courses '
+    ],
+    'aboutus' => [
+        'title' => 'ABOUT US',
+        'home' => 'Home',
+        'who' => 'Who we are',
+        'content' => 'There are many variations of passages',
+        'welcome' => 'Well come to Educat',
+        'span_1' => 'Creativity makes a difference',
+        'span_2' => 'Learners experience new, active and effective language learning methods through interactive activities, gaming, expressing their ego and sharing with the community.',
+        'span_3' => 'Teachers can create creative, lively lectures and free and sell lessons for learners',
+        'span_4' => 'Bringing hundreds of interactive language learning activities including theory and practice, helping learners step by step experience and grow up on language skills.',
+        'skill' => 'Skills and Experience',
+        'programming' => 'Programming',
+        'programming_%' => '80%',
+        'designing' => 'Designing',
+        'designing_%' => '75%',
+        'create' => 'Create Writing',
+        'create_%' => '85%',
+        'lessons' => 'English Lessons',
+        'lessons_%' => '70%',
+        'courses' => 'English Courses',
+        'courses_%' => '60%',
+        'levels' => 'English Levels',
+        'levels_%' => '50%',
+        'members' => 'OUR MEMBERS',
+        'member' => 'Member',
+        'name1' => 'Phan Thi Cam',
+        'name2' => 'Tran Xuan Phuong',
+        'position' => 'Developer Educat'
     ],
     'levels' => [
         'title' => 'LEVEL',

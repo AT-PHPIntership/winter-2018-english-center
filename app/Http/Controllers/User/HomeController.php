@@ -38,6 +38,16 @@ class HomeController extends Controller
     }
 
     /**
+     * Display the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showAboutUs()
+    {
+        return view('frontend.about');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @return \Illuminate\Http\Response
