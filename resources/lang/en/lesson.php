@@ -25,4 +25,21 @@ return [
             'updated_at' => 'Updated At',
         ]
     ],
+    'create_lesson' =>
+    [
+        'title' => 'Create Lesson',
+        'name' => 'Name',
+        'text' => 'Text',
+        'role' => 'Role',
+        'level' => 'Level',
+        'course' => 'Course',
+        'vocabulary' => 'Vocabularies',
+        'image' => 'Image',
+        'video' => 'Video',
+    ],
+    'edit_lesson' =>
+    [
+        'title' => 'Edit Lesson',
+        'placeholder' => 'Enter url video',
+    ]
 ];

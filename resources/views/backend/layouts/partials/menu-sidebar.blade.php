@@ -70,7 +70,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('admin.lessons.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_lesson')</a></li>
-            <li><a href="../examples/profile.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_lesson')</a></li>
+            <li><a href="{{ route('admin.lessons.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_lesson')</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -83,18 +83,6 @@
           <ul class="treeview-menu">
             <li><a href="{{ route('admin.vocabularies.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_vocabularies')</a></li>
             <li><a href="{{ route('admin.vocabularies.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_vocabularies')</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-file"></i> <span>@lang('layout_admin.sidebar.text_management')</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_text')</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_text')</a></li>
           </ul>
         </li>
         <li class="treeview">

@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Api for ADMIN
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function() {
+    Route::get('list-vocabularies', 'VocabularyController@getListVocabularies')->name('vocabularies.lists');
+});
