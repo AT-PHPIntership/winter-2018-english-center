@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\LessonService;
 use App\Request\UserAnswerRequest;
 use App\Models\Lesson;
+use App\Models\Course;
 
 class LessonController extends Controller
 {
@@ -21,7 +22,8 @@ class LessonController extends Controller
     {
         $lessons = app(LessonService::class)->getLesson($lesson);
         $recentLessons = app(LessonService::class)->recentLesson();
-        return view('frontend.pages.detail_lesson', compact('lessons', 'recentLessons'));
+        $lesson = app(LessonService::class)->getPrevNextLesson($lesson);
+        return view('frontend.pages.detail_lesson', compact('lessons', 'recentLessons', 'lesson'));
     }
 
     /**
