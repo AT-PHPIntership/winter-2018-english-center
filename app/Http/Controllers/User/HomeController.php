@@ -58,4 +58,14 @@ class HomeController extends Controller
     {
         return view('frontend.levels.show', compact('level'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showContact()
+    {
+        return view('frontend.contact');
+    }
 }
