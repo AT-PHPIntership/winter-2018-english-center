@@ -12,7 +12,7 @@
         
 		<!-- Fontawsome CSS
 		============================================ -->
-        <link rel="stylesheet" href="front_end/ss/font-awesome.min.css">
+        <link rel="stylesheet" href="front_end/css/font-awesome.min.css">
         
 		<!-- Owl Carousel CSS
 		============================================ -->
