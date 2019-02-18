@@ -122,3 +122,23 @@ $factory->define(App\Models\Comment::class, function(Faker $faker) {
         'commentable_id' => $commentable->id,
     ];
 });
+
+$factory->define(App\Models\Goal::class, function(Faker $faker) {
+    return [
+        'goal' => $faker->numberBetween(5, 10),
+    ];
+});
+
+$factory->define(App\Models\Goalable::class, function(Faker $faker) {
+    $commentable = [
+        App\Models\Lesson::class,
+        App\Models\Course::class
+    ]; 
+    $commentableType = $faker->randomElement($commentable);
+    $commentable = factory($commentableType)->create();
+    return [
+        'goal_id' => factory('App\Models\Goal')->create()->id,
+        'goalable_type' => $faker->randomElement(['lessons', 'courses']),
+        'goalable_id' => $commentable->id,
+    ];
+});
