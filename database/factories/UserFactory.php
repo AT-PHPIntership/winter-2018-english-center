@@ -25,7 +25,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
 
 $factory->define(App\Models\Course::class, function(Faker $faker) {
     return [
-        'title' => $faker->catchPhrase,
+        'name' => $faker->catchPhrase,
         'parent_id' => null,
         'count_view' => $faker->randomDigit,
         'total_rating' => $faker->numberBetween(1, 10),
@@ -111,7 +111,7 @@ $factory->define(App\Models\Comment::class, function(Faker $faker) {
     $commentable = [
         App\Models\Lesson::class,
         App\Models\Course::class
-    ]; 
+    ];
     $commentableType = $faker->randomElement($commentable);
     $commentable = factory($commentableType)->create();
     return [
@@ -133,7 +133,7 @@ $factory->define(App\Models\Goalable::class, function(Faker $faker) {
     $commentable = [
         App\Models\Lesson::class,
         App\Models\Course::class
-    ]; 
+    ];
     $commentableType = $faker->randomElement($commentable);
     $commentable = factory($commentableType)->create();
     return [
