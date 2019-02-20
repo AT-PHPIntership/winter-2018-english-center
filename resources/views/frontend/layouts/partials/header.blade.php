@@ -1,15 +1,25 @@
 <header>
-  <div class="header-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7 col-md-6 col-sm-5 hidden-xs">
-          <span>@lang('layout_user.header.title')</span>
-        </div>
-        <div class="col-lg-5 col-md-6 col-sm-7 col-xs-12">
-          <div class="header-top-right">
-            <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.login')</a>
-            </div>
-            <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.register')</a>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-5 hidden-xs">
+                    <span>@lang('layout_user.header.title')</span>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-7 col-xs-12">
+                    <div class="header-top-right">
+                        @if(!Auth::check())
+                            <div class="content"><a href="{{ route('user.login') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.login')</a>
+                            </div>
+                            <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>@lang('layout_user.header.register')</a>
+                            </div>
+                        @else
+                            <div class="content"><a href="#"><i class="zmdi zmdi-account"></i>{{ Auth::user()->userProfile->name }}</a>
+                            </div>
+                            <div class="content"><a href="{{ route('user.logout') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.logout')</a>
+                            </div>
+                        @endif
+                    </div>
+                </div>
             </div>
           </div>
         </div>

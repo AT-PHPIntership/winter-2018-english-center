@@ -19,4 +19,9 @@ class Goalable extends Model
     {
         return $this->morphTo();
     }
+
+    public function abc()
+    {
+        return $this->belongsTo('App\Models\Goal');
+    }
 }

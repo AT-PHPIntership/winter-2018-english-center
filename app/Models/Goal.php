@@ -14,4 +14,9 @@ class Goal extends Model
     protected $table = 'goals';
 
     protected $fillable = ['goal'];
+
+    public function goalables()
+    {
+        return $this->hasMany('App\Models\Goalable');
+    }
 }

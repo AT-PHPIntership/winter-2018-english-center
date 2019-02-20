@@ -7,6 +7,7 @@ use Config\define;
 use DB;
 use App\Models\Answer;
 use Event;
+use JavaScript;
 
 class LessonService
 {
@@ -42,6 +43,20 @@ class LessonService
     **/
     public function getLesson($lesson)
     {
+        $previousLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '<', $lesson->id],
+        ])->max('id');
+        $nextLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '>', $lesson->id],
+        ])->min('id');
+        JavaScript::put([
+            'navigate' => [
+               'previous' => $previousLesson,
+                'next' => $nextLesson,
+            ]
+        ]);
          return $lesson->load('exercises.questions');
     }
 
@@ -63,7 +78,7 @@ class LessonService
      *
      * @return App\Services\LessonService
     **/
-    public function resutlLesson($answer, $userId)
+    public function resutlLesson($answer, $userId, $lessonId)
     {
         $result = [];
         foreach ($answer as $value) {
@@ -76,29 +91,12 @@ class LessonService
                 $correct[] = $value;
             }
         }
+        $goalable_lesson = Lesson::find(intval($lessonId))->goals->pluck('goal_id')->first();
+        $goal_lesson = \DB::table('goals')->select('goal')->where('id', $goalable_lesson)->first()->goal;
         $result['correct'] = $correct;
         $result['total'] = $answer;
+        $result['goal'] = $goal_lesson;
         return $result;
-    }
-
-    /**
-     * Function index get recent lesson
-     *
-     * @param \Illuminate\Http\Request $lesson lesson
-     *
-     * @return App\Services\LessonService
-    **/
-    public function getPrevNextLesson($lesson)
-    {
-        $previousLesson = Lesson::where([
-            ['course_id', '=', $lesson->course_id],
-            ['id', '<', $lesson->id],
-        ])->max('id');
-        $nextLesson = Lesson::where([
-            ['course_id', '=', $lesson->course_id],
-            ['id', '>', $lesson->id],
-        ])->min('id');
-        return [$previousLesson, $nextLesson];
     }
 
     /**

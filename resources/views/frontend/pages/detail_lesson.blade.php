@@ -65,7 +65,7 @@
                   </iframe>
                 </div>
               </div>
-              <div class="exercises" data-question='{{$lessons->exercises->pluck('questions')->map(function ($item, $key) {
+              <div class="exercises" data-lesson= "{{$lessons->id}}" data-question='{{$lessons->exercises->pluck('questions')->map(function ($item, $key) {
                         return collect($item)->count();
                     })->sum()}}'>
                 <h3><i class="fa fa-edit"></i><strong>{{ __('layout_user.lessons.lesson_detail.exercise')}}</strong></h3>
@@ -110,16 +110,16 @@
             </div>
           </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 ">
                     <div class="pagination-content">
-                        <ul class="pagination">
+                        {{-- <ul class="pagination">
                             @if (isset($lesson[0]))
                             <li><a href="{{ URL::to('detail/lesson/'. $lesson[0]) }}"><i class="zmdi zmdi-chevron-left"></i></a></li>
                             @endif
                             @if (isset($lesson[1]))
                             <li><a href="{{ URL::to('detail/lesson/'. $lesson[1]) }}"><i class="zmdi zmdi-chevron-right"></i></a></li>
                             @endif
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>
