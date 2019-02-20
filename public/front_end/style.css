@@ -77,7 +77,6 @@ img {
     vertical-align:top;
 }
 .fix {overflow:hidden}
-p {}
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-family: 'montserratsemi_bold';
@@ -2296,4 +2295,14 @@ table td {
 
 .pagination li {
     display: inline-block;
+}
+
+input[type="submit"].btn-block {
+    background: #86bc42;
+}
+
+.cancelReply {
+    color: red;
+    font-family: "montserratregular";
+    font-size: 12px;
 }

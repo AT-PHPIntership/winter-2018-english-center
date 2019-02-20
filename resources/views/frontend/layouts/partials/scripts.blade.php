@@ -47,8 +47,12 @@
 ============================================ -->        
 <script src="front_end/js/main.js"></script>
 
+<!-- backend main JS
+============================================ -->   
+<script src="js/main.js"></script>
+
 <!-- Custom JS
-============================================ -->		
+============================================ -->        
 <script src="front_end/js/common.js"></script>
 
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet"> 

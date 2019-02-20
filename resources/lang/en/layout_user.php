@@ -66,6 +66,11 @@ return [
             'exercise' => 'Exercise',
             'complete_exercise' => 'After completing the exercise, click "',
             'complete_exercise_below' => '" below',
+            'comment' => [
+                'btn-comment' => 'Comment',
+                'reply' => 'Reply',
+                'enter_comment' => 'Enter your comment here...',
+            ],
         ],
     ],
 ];

@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Comment extends Model
 {
-    protected $fillable = [ 'parent_id', 'content' ];
+    use NodeTrait;
+    
+    protected $guarded = ['id'];
     
     protected $table = 'comments';
 
