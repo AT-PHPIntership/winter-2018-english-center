@@ -45,6 +45,7 @@ class AppServiceProvider extends ServiceProvider
         JavaScript::put([
             'define' => config('define'),
             'trans'  => __('js'),
+            'comment'  => __('js.comment'),
         ]);
     }
 }
