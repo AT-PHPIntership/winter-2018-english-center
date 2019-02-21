@@ -77,6 +77,16 @@ class Course extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\morphMany
      */
+    public function ratings()
+    {
+        return $this->morphMany('App\Models\Rating', 'ratingable');
+    }
+
+    /**
+     * MorphMany comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
     public function goals()
     {
         return $this->morphMany('App\Models\Goalable', 'goalable');

@@ -50,7 +50,7 @@
             <div class="col-md-12">
               <div class="section-title-wrapper">
                 <div class="section-title">
-                  <h3>{{ $course->title }}</h3>
+                  <h3>{{ $course->name }}</h3>
                   <span>{{ $course->children->count() }}</span>
                   <p>{{ __('layout_user.header.courses') }}</p>
                 </div>
