@@ -53,9 +53,10 @@ Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
 Route::group(['middleware' => ['filter', 'userLogin'],'namespace' => 'User', 'as' => 'user.'], function() {
     Route::get('/', 'HomeController@index');
     Route::get('course', 'CourseController@index')->name('course');
-    Route::get('/detail/{course}', 'CourseController@show')->name('detail');
+    Route::get('/detail/course/{course}', 'CourseController@show')->name('course.detail');
     Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail');
     Route::post('user/lesson', 'LessonController@resutlLesson');
-    Route::post('lesson/comment', 'LessonController@lessonComment');
-    Route::post('lesson/reply', 'LessonController@lessonReply');
+    // Route::post('lesson/reply', 'LessonController@lessonReply');
+    Route::post('comment/{element}', 'CourseController@elementComment');
+
 });

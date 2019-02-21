@@ -19,19 +19,20 @@ class CommentService
     /**
      * Function handle comment to lesson
      *
-     * @param LessonController $userId   user
-     * @param LessonController $lessonId lessonid
-     * @param LessonController $content  content lesson
+     * @param LessonController $userId    user
+     * @param LessonController $elementId lessonid courseId
+     * @param LessonController $content   content lesson
+     * @param LessonController $element   lessons courses
      *
      * @return App\Services\CommentService
     **/
-    public function comment($userId, $lessonId, $content)
+    public function comment($userId, $elementId, $content, $element)
     {
         $comment = Comment::create([
-            'user_id' => $userId,
-            'commentable_id' => $lessonId,
-            'content' => $content,
-            'commentable_type' => 'lessons',
+                'user_id' => $userId,
+                'commentable_id' => $elementId,
+                'content' => $content,
+                'commentable_type' => $element,
         ]);
         $comment['userName'] = $comment->user->userProfile->name;
         $comment['userImage'] = $comment->user->userProfile->url;

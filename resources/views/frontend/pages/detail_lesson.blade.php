@@ -122,7 +122,7 @@
                     <textarea class="form-control" id='comment-text' name="review" placeholder="{{ __('layout_user.lessons.lesson_detail.comment.enter_comment') }}"></textarea>
                 </div>
                 <div class="col-lg-2 pull-right">
-                    <input class="btn btn-block" id='comment-button' {{(Auth::user()) ? 'data-user=' .Auth::user()->id : ''}} data-lessons='{{ $lessons->id }}' data-token="{{ csrf_token() }}" value="{{ __('layout_user.lessons.lesson_detail.comment.btn-comment') }}" type="submit">
+                    <input class="btn btn-block" id='comment-button' {{(Auth::user()) ? 'data-user=' .Auth::user()->id : ''}} data-element='{{ $lessons->id }}' data-token="{{ csrf_token() }}" value="{{ __('layout_user.lessons.lesson_detail.comment.btn-comment') }}" type="submit">
                 </div>
             </div>
             @foreach ($lessons->comments as $comment)
@@ -134,7 +134,7 @@
                 <div class="author-info">
                   <h4><a href="#">{{ $comment->user->userProfile['name'] }}</a></h4>
                   <span class="reply"><a class="add-reply" id="{{ $comment->id }}">{{ __('layout_user.lessons.lesson_detail.comment.reply') }}</a></span>
-                  <span class="comment-time">{{ $comment->created_at }} /</span>
+                  <span class="comment-time"><span>{{ __('layout_user.courses.course_detail.comment.posted_on') }}</span>{{ $comment->created_at }} /</span>
                 </div>
                 <p>{{ $comment->content }}</p>
               </div>
@@ -154,7 +154,6 @@
             </div>
             @endforeach
             @endforeach
-            </ol>
           </div>
         </div>
       </div>

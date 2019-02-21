@@ -34,4 +34,18 @@ class CourseController extends Controller
         $lessons = app(LessonService::class)->index();
         return view('frontend.pages.detail_course', compact('course', 'lessons'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Request $request course lesson
+     * @param Request $element course lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function elementComment(Request $request, $element)
+    {
+        $response = app(CommentService::class)->comment($request->get('userId'), $request->get('elementId'), $request->get('content'), $element);
+        return response()->json($response);
+    }
 }

@@ -40,19 +40,6 @@ class LessonController extends Controller
     }
 
     /**
-     * Add comment to lesson d resource.
-     *
-     * @param Request $request lesson
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function lessonComment(Request $request)
-    {
-        $response = app(CommentService::class)->comment($request->get('userId'), $request->get('lessonId'), $request->get('content'));
-        return response()->json($response);
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param Request $request lesson

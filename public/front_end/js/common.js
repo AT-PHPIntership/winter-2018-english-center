@@ -73,18 +73,24 @@ $(document).ready(function(){
 //handle add comment to lesson 
  $('#comment-button').on('click', function() {
   var userId = $(this).data('user');
-  var lessonId = $(this).data('lessons');
+  var elementId = $(this).data('element');
   var content = $('#comment-text').val();
   var token = $(this).data('token');
+  var url = '';
+  if ( window.location.href.split("/").includes("lesson")){
+    var url = 'comment/lessons';
+  } else {
+    var url = 'comment/courses';
+  }
   if (userId != undefined) {
           if (content !== '') {
             $.ajax({
-              url: 'lesson/comment',
+              url: url,
               method: 'POST',
               dataType: 'JSON',
               data: {
                   userId: userId,
-                  lessonId: lessonId,
+                  elementId: elementId,
                   content: content,
                   _token: token
               },
@@ -99,18 +105,18 @@ $(document).ready(function(){
                   output += '<div class="author-info">';
                   output += '<h4><a href="">' + data.userName + '</a></h4>';
                   output += '<span class="reply"><a class="add-reply" id="' + data.id +'">' + comment('reply') + '</a></span>';
-                  output += '<span class="comment-time">' + data.created_at + '/</span>';
+                  output += '<span class="comment-time"><span>' + comment('posted_on') + '</span>' + data.created_at + '/</span>';
                   output += '</div>';
                   output += '<p>' + data.content +'</p>';
                   output += ' </div>';
                   output += ' </div>';
                   $('.comments').append(output);
-                  $("comment-text").val("");
+                  $('#comment-text').val("");
               }
             });
           }
         } else {
-            location.href = 'login';
+           location.href = 'login';
         }
  });
 });
@@ -191,5 +197,3 @@ $(document).on('click', '#reply-button', function() {
     location.href = 'login';
   }
 });
-
-
