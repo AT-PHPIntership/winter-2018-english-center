@@ -112,14 +112,6 @@
             <div class="row">
                 <div class="col-md-12 ">
                     <div class="pagination-content">
-                        {{-- <ul class="pagination">
-                            @if (isset($lesson[0]))
-                            <li><a href="{{ URL::to('detail/lesson/'. $lesson[0]) }}"><i class="zmdi zmdi-chevron-left"></i></a></li>
-                            @endif
-                            @if (isset($lesson[1]))
-                            <li><a href="{{ URL::to('detail/lesson/'. $lesson[1]) }}"><i class="zmdi zmdi-chevron-right"></i></a></li>
-                            @endif
-                        </ul> --}}
                     </div>
                 </div>
             </div>
