@@ -38,30 +38,4 @@ class LessonController extends Controller
         $response = app(LessonService::class)->resutlLesson($request->get('answers'), $request->get('userId'), $request->get('lessonId'));
         return response()->json($response);
     }
-
-    /**
-     * Add comment to lesson d resource.
-     *
-     * @param Request $request lesson
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function lessonComment(Request $request)
-    {
-        $response = app(CommentService::class)->comment($request->get('userId'), $request->get('lessonId'), $request->get('content'));
-        return response()->json($response);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Request $request lesson
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function lessonReply(Request $request)
-    {
-        $response = app(CommentService::class)->reply($request->get('userId'), $request->get('lessonId'), $request->get('content'), $request->get('parentComment'));
-        return response()->json($response);
-    }
 }
