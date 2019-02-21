@@ -2,9 +2,11 @@
 namespace App\Services;
 
 use App\Models\Lesson;
+use App\Models\Course;
 use Config\define;
 use DB;
 use App\Models\Answer;
+use Event;
 
 class LessonService
 {
@@ -77,5 +79,39 @@ class LessonService
         $result['correct'] = $correct;
         $result['total'] = $answer;
         return $result;
+    }
+
+    /**
+     * Function index get recent lesson
+     *
+     * @param \Illuminate\Http\Request $lesson lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function getPrevNextLesson($lesson)
+    {
+        $previousLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '<', $lesson->id],
+        ])->max('id');
+        $nextLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '>', $lesson->id],
+        ])->min('id');
+        return [$previousLesson, $nextLesson];
+    }
+
+    /**
+     * Function index get recent lesson
+     *
+     * @param \Illuminate\Http\Request $id lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function countViewLesson($id)
+    {
+        $lesson = Lesson::find($id);
+        Event::fire('lessons.view', $lesson);
+        return $lesson;
     }
 }

@@ -33,7 +33,7 @@
               <h3>{{ $lessons->name }}</h3>
               <div class="single-item-comment-view">
                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $lessons->created_at }}</span>
-                <span><i class="zmdi zmdi-eye"></i>{{ $lessons->count_view }}</span>
+                <span><i class="zmdi zmdi-eye"></i>{{ $countView->count_view }}</span>
               </div>
               <strong>Vocabulary:</strong>
               <div class="single-item-comment-view">
@@ -113,8 +113,12 @@
                 <div class="col-md-12">
                     <div class="pagination-content">
                         <ul class="pagination">
-                            <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
-                            <li class="current"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                            @if (isset($lesson[0]))
+                            <li><a href="{{ URL::to('detail/lesson/'. $lesson[0]) }}"><i class="zmdi zmdi-chevron-left"></i></a></li>
+                            @endif
+                            @if (isset($lesson[1]))
+                            <li><a href="{{ URL::to('detail/lesson/'. $lesson[1]) }}"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -122,44 +126,43 @@
           <div class="comments">
             <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             <div class="single-comment">
+                <div class="comment-text">
+                    <textarea class="form-control" id='comment-text' name="review" placeholder="{{ __('layout_user.lessons.lesson_detail.comment.enter_comment') }}"></textarea>
+                </div>
+                <div class="col-lg-2 pull-right">
+                    <input class="btn btn-block" id='comment-button' {{(Auth::user()) ? 'data-user=' .Auth::user()->id : ''}} data-lessons='{{ $lessons->id }}' data-token="{{ csrf_token() }}" value="{{ __('layout_user.lessons.lesson_detail.comment.btn-comment') }}" type="submit">
+                </div>
+            </div>
+            @foreach ($lessons->comments as $comment)
+            <div class="single-comment" data-id="{{ $comment->id }}">
+                  <div class="author-image">
+                    <img src="{{ $comment->user->userProfile['url'] }}" alt="">
+                  </div>
+              <div class="comment-text">
+                <div class="author-info">
+                  <h4><a href="#">{{ $comment->user->userProfile['name'] }}</a></h4>
+                  <span class="reply"><a class="add-reply" id="{{ $comment->id }}">{{ __('layout_user.lessons.lesson_detail.comment.reply') }}</a></span>
+                  <span class="comment-time">{{ $comment->created_at }} /</span>
+                </div>
+                <p>{{ $comment->content }}</p>
+              </div>
+            </div>
+            @foreach ($comment->children as $reply)
+            <div class="single-comment comment-reply" data-id="{{ $reply->id }}">
               <div class="author-image">
-                <img src="img/comment/1.jpg" alt="">
+                <img src="{{ $reply->user->userProfile['url'] }}" alt="">
               </div>
               <div class="comment-text">
                 <div class="author-info">
-                  <h4><a href="#"></a></h4>
-                  <span class="reply"><a href="#">Reply</a></span>
+                  <h4><a href="#">{{ $reply->user->userProfile['name'] }}</a></h4>
                   <span class="comment-time"></span>
                 </div>
-                <p></p>
+                <p>{{ $reply->content }}</p>
               </div>
             </div>
-            <div class="single-comment comment-reply">
-              <div class="author-image">
-                <img src="img/comment/2.jpg" alt="">
-              </div>
-              <div class="comment-text">
-                <div class="author-info">
-                  <h4><a href="#"></a></h4>
-                  <span class="reply"><a href="#">Reply</a></span>
-                  <span class="comment-time"></span>
-                </div>
-                <p></p>
-              </div>
-            </div>
-            <div class="single-comment">
-              <div class="author-image">
-                <img src="img/comment/3.jpg" alt="">
-              </div>
-              <div class="comment-text">
-                <div class="author-info">
-                  <h4><a href="#"></a></h4>
-                  <span class="reply"><a href="#">Reply</a></span>
-                  <span class="comment-time"></span>
-                </div>
-                <p></p>
-              </div>
-            </div>
+            @endforeach
+            @endforeach
+            </ol>
           </div>
         </div>
       </div>
