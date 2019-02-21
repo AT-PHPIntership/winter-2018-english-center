@@ -55,7 +55,7 @@ class AuthController extends Controller
     {
         try {
             app(SocialProviderService::class)->createOrGetUser($provider);
-            return redirect()->route('home');
+            return redirect()->route('user.home');
         } catch (\Exception $ex) {
             session()->flash('warning', $ex->getMessage());
             return redirect()->route('user.login');
@@ -73,7 +73,7 @@ class AuthController extends Controller
     {
         $this->guard()->logout();
         $request->session()->invalidate();
-        return $this->loggedOut($request) ?: redirect()->route('home');
+        return $this->loggedOut($request) ?: redirect()->route('user.home');
     }
 
     /**

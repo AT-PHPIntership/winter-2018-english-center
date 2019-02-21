@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CourseService;
 use App\Services\SliderService;
+use App\Models\Level;
 
 class HomeController extends Controller
 {
@@ -53,5 +54,47 @@ class HomeController extends Controller
             $search = $this->courseService->courseSearch($query);
             return view('frontend.search', compact('search'));
         }
+    }
+
+    /**
+     * Display the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showAboutUs()
+    {
+        return view('frontend.about');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listLevel()
+    {
+        return view('frontend.levels.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Level $level Level
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLevel(Level $level)
+    {
+        return view('frontend.levels.show', compact('level'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showContact()
+    {
+        return view('frontend.contact');
     }
 }

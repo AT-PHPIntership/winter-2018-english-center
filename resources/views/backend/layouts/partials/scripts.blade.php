@@ -21,3 +21,11 @@
 <script src="js/show.js"></script>
 <!-- plus questions -->
 <script src="js/question.js"></script>
+<script src="bower_components/select2/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function()
+    {
+        $(".select2").select2();
+    });
+</script>
+<script src="bower_components/ckeditor/ckeditor.js"></script>
