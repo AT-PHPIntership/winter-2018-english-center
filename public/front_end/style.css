@@ -802,7 +802,7 @@ body {
     padding: 0 35px;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 .single-item:hover {
     background: #ffffff none repeat scroll 0 0;

@@ -116,8 +116,8 @@ class CourseService
     public function ajaxCourseSearch($query)
     {
         return \DB::table('courses')
-            ->select('id', 'title')
-            ->where('title', 'LIKE', "%{$query}%")
+            ->select('id', 'name')
+            ->where('name', 'LIKE', "%{$query}%")
             ->limit(config('define.courses.page_site_course'))
             ->get();
     }
@@ -131,6 +131,6 @@ class CourseService
      */
     public function courseSearch($query)
     {
-        return Course::where('title', 'LIKE', "%{$query}%")->paginate(config('define.courses.page_site_course'))->appends(['search'=> $query]);
+        return Course::where('name', 'LIKE', "%{$query}%")->paginate(config('define.courses.page_site_course'))->appends(['search'=> $query]);
     }
 }

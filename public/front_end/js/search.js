@@ -26,7 +26,7 @@ $(document).ready(function () {
                     if (data.length > 0) {
                         var output = '<ul>';
                         $.each(data, function (key, val) {
-                            output += '<li><a href="course/detail/' + val.id + '">' + val.title + '</a></li>';
+                            output += '<li><a href="course/detail/' + val.id + '">' + val.name + '</a></li>';
                         });
                         output += '</ul>';
                         $('#courseList').html(output);

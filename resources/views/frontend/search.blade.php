@@ -20,7 +20,7 @@
                             <a href="#"><img src="{{ $course->image }}" alt=""></a>
                         </div>
                         <div class="single-item-text">
-                            <h4><a href="#">{{ $course->title }}</a></h4>
+                            <h4><a href="#">{{ $course->name }}</a></h4>
                             <div class="single-item-text-info">
                                 <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                             </div>
@@ -31,11 +31,11 @@
                                     <span><i class="zmdi zmdi-comments"></i></span>
                                 </div>
                                 <div class="single-item-rating">
-                                    <i class="zmdi zmdi-star"></i>
-                                    <i class="zmdi zmdi-star"></i>
-                                    <i class="zmdi zmdi-star"></i>
-                                    <i class="zmdi zmdi-star"></i>
-                                    <i class="zmdi zmdi-star-half"></i>
+                                    <i class="zmdi {{ ($course->average -0.5)>0 ? 'zmdi-star': (($course->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                    <i class="zmdi {{ ($course->average -1.5)>0 ? 'zmdi-star': (($course->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                    <i class="zmdi {{ ($course->average -2.5)>0 ? 'zmdi-star': (($course->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                    <i class="zmdi {{ ($course->average -3.5)>0 ? 'zmdi-star': (($course->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                    <i class="zmdi {{ ($course->average -4.5)>0 ? 'zmdi-star': (($course->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                                 </div>
                             </div>   
                         </div>
