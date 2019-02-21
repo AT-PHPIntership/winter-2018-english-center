@@ -48,4 +48,18 @@ class CourseController extends Controller
         $response = app(CommentService::class)->comment($request->get('userId'), $request->get('elementId'), $request->get('content'), $element);
         return response()->json($response);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Request $request course lesson
+     * @param Request $element course lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function elementReply(Request $request, $element)
+    {
+        $response = app(CommentService::class)->reply($request->get('userId'), $request->get('elementId'), $request->get('content'), $request->get('parentComment'), $element);
+        return response()->json($response);
+    }
 }

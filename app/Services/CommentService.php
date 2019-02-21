@@ -43,20 +43,21 @@ class CommentService
      * Function handle reply comment to lesson
      *
      * @param LessonController $userId        user
-     * @param LessonController $lessonId      lessonid
+     * @param LessonController $elementId     lessonid courseId
      * @param LessonController $content       content lesson
      * @param LessonController $parentComment parent id lesson
+     * @param LessonController $element       lessons courses
      *
      * @return App\Services\CommentService
     **/
-    public function reply($userId, $lessonId, $content, $parentComment)
+    public function reply($userId, $elementId, $content, $parentComment, $element)
     {
         $comment = Comment::create([
             'user_id' => $userId,
-            'commentable_id' => $lessonId,
+            'commentable_id' => $elementId,
             'content' => $content,
-            'commentable_type' => 'lessons',
-            'parent_id' => $parentComment
+            'commentable_type' => $element,
+            'parent_id' => $parentComment,
         ]);
         $comment['userName'] = $comment->user->userProfile->name;
         $comment['userImage'] = $comment->user->userProfile->url;

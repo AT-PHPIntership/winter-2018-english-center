@@ -56,7 +56,6 @@ Route::group(['middleware' => ['filter', 'userLogin'],'namespace' => 'User', 'as
     Route::get('/detail/course/{course}', 'CourseController@show')->name('course.detail');
     Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail');
     Route::post('user/lesson', 'LessonController@resutlLesson');
-    // Route::post('lesson/reply', 'LessonController@lessonReply');
     Route::post('comment/{element}', 'CourseController@elementComment');
-
+    Route::post('reply/{element}', 'CourseController@elementReply');
 });

@@ -30,7 +30,6 @@ $(document).ready(function(){
             dataType:"JSON",
             data: {answers:answers, userId:userId, lessonId:lessonId, _token:token},
             success: function(data){
-              console.log(data);
               var output = '<div class="correct">Correct: ' + data.correct.length + '<span>' + ' / ' +  data.total.length + '</span>' + '</div>';
               $('.result-lesson').html(output);
               if (data.correct.length >= data.goal) {
@@ -70,13 +69,12 @@ $(document).ready(function(){
     }
   });
 
-//handle add comment to lesson 
+//handle add comment to course and lesson 
  $('#comment-button').on('click', function() {
   var userId = $(this).data('user');
   var elementId = $(this).data('element');
   var content = $('#comment-text').val();
   var token = $(this).data('token');
-  var url = '';
   if ( window.location.href.split("/").includes("lesson")){
     var url = 'comment/lessons';
   } else {
@@ -89,29 +87,29 @@ $(document).ready(function(){
               method: 'POST',
               dataType: 'JSON',
               data: {
-                  userId: userId,
-                  elementId: elementId,
-                  content: content,
-                  _token: token
+                userId: userId,
+                elementId: elementId,
+                content: content,
+                _token: token
               },
               success: function(data) {
-                  console.log(data);
-                  var output = '';
-                  output += '<div class="single-comment" data-id="' + data.id + '">';
-                  output += '<div class="author-image">';
-                  output += '<img src="' + data.userImage +' " alt="">';
-                  output += '</div>';
-                  output += '<div class="comment-text">';
-                  output += '<div class="author-info">';
-                  output += '<h4><a href="">' + data.userName + '</a></h4>';
-                  output += '<span class="reply"><a class="add-reply" id="' + data.id +'">' + comment('reply') + '</a></span>';
-                  output += '<span class="comment-time"><span>' + comment('posted_on') + '</span>' + data.created_at + '/</span>';
-                  output += '</div>';
-                  output += '<p>' + data.content +'</p>';
-                  output += ' </div>';
-                  output += ' </div>';
-                  $('.comments').append(output);
-                  $('#comment-text').val("");
+                console.log(data);
+                var output = '';
+                output += '<div class="single-comment" data-id="' + data.id + '">';
+                output += '<div class="author-image">';
+                output += '<img src="' + data.userImage +' " alt="">';
+                output += '</div>';
+                output += '<div class="comment-text">';
+                output += '<div class="author-info">';
+                output += '<h4><a href="">' + data.userName + '</a></h4>';
+                output += '<span class="reply"><a class="add-reply" id="' + data.id +'">' + comment('reply') + '</a></span>';
+                output += '<span class="comment-time"><span>' + comment('posted_on') + '</span>' + data.created_at + '/</span>';
+                output += '</div>';
+                output += '<p>' + data.content +'</p>';
+                output += ' </div>';
+                output += ' </div>';
+                $('.comments').append(output);
+                $('#comment-text').val("");
               }
             });
           }
@@ -121,8 +119,7 @@ $(document).ready(function(){
  });
 });
 
-
-//handle form reply comment to lesson
+//handle form reply comment to lesson and course
 $(document).on('click', '.add-reply', function() {  
   if($('.add-reply').attr('disabled') !== 'disabled') {
     var replyId = $(this).attr('id');
@@ -145,32 +142,37 @@ $(document).on('click', '.add-reply', function() {
     }
   });
 
-//cancel reply comment to lesson
+//cancel reply comment to lesson and course
 $(document).on('click', '.cancelReply', function() {
   var cancelId = $('.comment-reply').attr('data-id');
   $('div .comment-reply[data-id=' + cancelId + ']').remove();
   $('.add-reply').removeAttr('disabled');
 });
 
-//handle reply comment to lesson
+//handle reply comment to lesson and course
 $(document).on('click', '#reply-button', function() {
   var commentId = $(this).data('comment');
   var userId = $('#comment-button').data('user');
-  var lessonId = $('#comment-button').data('lessons');
+  var elementId = $('#comment-button').data('element');
   var token = $('#comment-button').data('token');
-  var commentReply = $('#reply-text').val();
+  var contentReply = $('#reply-text').val();
+  if ( window.location.href.split("/").includes("lesson")){
+    var url = 'reply/lessons';
+  } else {
+    var url = 'reply/courses';
+  }
   if (userId != undefined) {
-    if (commentReply != '') {
+    if (contentReply != '') {
       $.ajax({
-        url: 'lesson/reply',
+        url: url,
         method: 'POST',
         dataType: 'JSON',
         data: {
-          userId:userId,
-          lessonId:lessonId,
-          content:commentReply,
-          _token:token,
-          parentComment:commentId
+          userId: userId,
+          elementId: elementId,
+          content: contentReply,
+          _token: token,
+          parentComment: commentId
         },
         success: function(data) {
           console.log(data.parent_id);
