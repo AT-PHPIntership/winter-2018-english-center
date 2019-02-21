@@ -1,5 +1,13 @@
 function comment(key) {
-    return window.js_variable.comment[key];
+  return window.js_variable.comment[key];
+}
+
+function navigate(key) {
+  return window.js_variable.navigate[key];
+}
+
+function exercise(key) {
+  return window.js_variable.exercise[key];
 }
 
 $(document).ready(function(){
@@ -7,7 +15,7 @@ $(document).ready(function(){
    $(this).find('audio').trigger('play');
  });
 
- $('.btn-success').on('click', function() {
+ $('.btn-success').one('click', function() {
     var answers = $('input[type="radio"]:checked').map(function() {
           return this.id;
       }).get();
@@ -15,14 +23,46 @@ $(document).ready(function(){
     if (answers.length === totalQuestion) {
       var userId = $('.details').data('user');
       var token = $('.details').data('token');
+      var lessonId = $(".exercises").data('lesson');
       $.ajax({
             url: 'user/lesson',
             method:"POST",
             dataType:"JSON",
-            data: {answers:answers, userId:userId, _token:token},
+            data: {answers:answers, userId:userId, lessonId:lessonId, _token:token},
             success: function(data){
+              console.log(data);
               var output = '<div class="correct">Correct: ' + data.correct.length + '<span>' + ' / ' +  data.total.length + '</span>' + '</div>';
               $('.result-lesson').html(output);
+              if (data.correct.length >= data.goal) {
+                  var navigation = '<ul class="pagination">';
+                  if (navigate('previous') != null) {
+                   navigation += `<li><a href="detail/lesson/${navigate('previous')}"><i class="zmdi zmdi-chevron-left"></i></a></li>`;
+                  }
+                  if (navigate('next') != null) {
+                    navigation += `<li><a href="detail/lesson/${navigate('next')}"><i class="zmdi zmdi-chevron-right"></i></a></li>`;
+                  } else {
+                    setTimeout( function() {
+                      swal.fire({
+                        title: exercise('congratulation'),
+                        text: exercise('notification_next_course'),
+                        type: 'success',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: exercise('next_course'),
+                      }).then(function() {
+                        location.assign("detail/" + data.courseId)
+                      });
+                    }, 3000);
+                  }
+                  navigation += '</ul>';
+                  $('.pagination-content').append(navigation);
+              } else {
+                var minimum = '<div class="correct">' + exercise('notification_correct') + data.goal + exercise('question') + '</div>';
+                var tryButton = `<button type="button" class="btn btn-success" onclick="return location.reload();"><i class="fa fa-edit"></i>` + exercise('again')+ `</button>`;
+                $('.result-lesson').append(minimum);
+                $('.box_bt_ctrl').append(tryButton);
+              }
             }
       });
     } else {
@@ -65,7 +105,7 @@ $(document).ready(function(){
                   output += ' </div>';
                   output += ' </div>';
                   $('.comments').append(output);
-                  document.getElementById("comment-text").value = "";
+                  $("comment-text").val("");
               }
             });
           }

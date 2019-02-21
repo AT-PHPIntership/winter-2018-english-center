@@ -7,6 +7,7 @@ use Config\define;
 use DB;
 use App\Models\Answer;
 use Event;
+use JavaScript;
 
 class LessonService
 {
@@ -42,6 +43,20 @@ class LessonService
     **/
     public function getLesson($lesson)
     {
+        $previousLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '<', $lesson->id],
+        ])->max('id');
+        $nextLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '>', $lesson->id],
+        ])->min('id');
+        JavaScript::put([
+            'navigate' => [
+                'previous' => $previousLesson,
+                'next' => $nextLesson,
+            ]
+        ]);
          return $lesson->load('exercises.questions');
     }
 
@@ -58,12 +73,13 @@ class LessonService
     /**
      * Function index get recent lesson
      *
-     * @param \Illuminate\Http\Request $answer answer
-     * @param \Illuminate\Http\Request $userId user
+     * @param \Illuminate\Http\Request $answer   answer
+     * @param \Illuminate\Http\Request $userId   user
+     * @param \Illuminate\Http\Request $lessonId lesson
      *
      * @return App\Services\LessonService
     **/
-    public function resutlLesson($answer, $userId)
+    public function resutlLesson($answer, $userId, $lessonId)
     {
         $result = [];
         foreach ($answer as $value) {
@@ -76,29 +92,15 @@ class LessonService
                 $correct[] = $value;
             }
         }
+        $goalableLesson = Lesson::find(intval($lessonId))->goals->pluck('goal_id')->first();
+        $goalLesson = \DB::table('goals')->select('goal')->where('id', $goalableLesson)->first()->goal;
+        $lesson = Lesson::with('course')->where('id', intval($lessonId))->get();
+        $totalLesson = $lesson->pluck('course')->pluck('id')->first();
         $result['correct'] = $correct;
         $result['total'] = $answer;
+        $result['goal'] = $goalLesson;
+        $result['courseId'] = $totalLesson + 1;
         return $result;
-    }
-
-    /**
-     * Function index get recent lesson
-     *
-     * @param \Illuminate\Http\Request $lesson lesson
-     *
-     * @return App\Services\LessonService
-    **/
-    public function getPrevNextLesson($lesson)
-    {
-        $previousLesson = Lesson::where([
-            ['course_id', '=', $lesson->course_id],
-            ['id', '<', $lesson->id],
-        ])->max('id');
-        $nextLesson = Lesson::where([
-            ['course_id', '=', $lesson->course_id],
-            ['id', '>', $lesson->id],
-        ])->min('id');
-        return [$previousLesson, $nextLesson];
     }
 
     /**

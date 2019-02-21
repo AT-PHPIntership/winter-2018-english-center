@@ -19,4 +19,14 @@ class Goalable extends Model
     {
         return $this->morphTo();
     }
+
+    /**
+     * BelongsTo goalable
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function abc()
+    {
+        return $this->belongsTo('App\Models\Goal');
+    }
 }

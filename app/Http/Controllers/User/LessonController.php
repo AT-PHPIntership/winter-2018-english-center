@@ -23,8 +23,7 @@ class LessonController extends Controller
         $lessons = app(LessonService::class)->getLesson($lesson);
         $recentLessons = app(LessonService::class)->recentLesson();
         $countView = app(LessonService::class)->countViewLesson($lesson->id);
-        $lesson = app(LessonService::class)->getPrevNextLesson($lesson);
-        return view('frontend.pages.detail_lesson', compact('lessons', 'recentLessons', 'lesson', 'countView'));
+        return view('frontend.pages.detail_lesson', compact('lessons', 'recentLessons', 'countView'));
     }
 
     /**
@@ -36,7 +35,7 @@ class LessonController extends Controller
      */
     public function resutlLesson(Request $request)
     {
-        $response = app(LessonService::class)->resutlLesson($request->get('answers'), $request->get('userId'));
+        $response = app(LessonService::class)->resutlLesson($request->get('answers'), $request->get('userId'), $request->get('lessonId'));
         return response()->json($response);
     }
 
