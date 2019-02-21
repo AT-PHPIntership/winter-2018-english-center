@@ -53,7 +53,7 @@ class LessonService
         ])->min('id');
         JavaScript::put([
             'navigate' => [
-               'previous' => $previousLesson,
+                'previous' => $previousLesson,
                 'next' => $nextLesson,
             ]
         ]);
@@ -73,8 +73,9 @@ class LessonService
     /**
      * Function index get recent lesson
      *
-     * @param \Illuminate\Http\Request $answer answer
-     * @param \Illuminate\Http\Request $userId user
+     * @param \Illuminate\Http\Request $answer   answer
+     * @param \Illuminate\Http\Request $userId   user
+     * @param \Illuminate\Http\Request $lessonId lesson
      *
      * @return App\Services\LessonService
     **/
@@ -91,11 +92,14 @@ class LessonService
                 $correct[] = $value;
             }
         }
-        $goalable_lesson = Lesson::find(intval($lessonId))->goals->pluck('goal_id')->first();
-        $goal_lesson = \DB::table('goals')->select('goal')->where('id', $goalable_lesson)->first()->goal;
+        $goalableLesson = Lesson::find(intval($lessonId))->goals->pluck('goal_id')->first();
+        $goalLesson = \DB::table('goals')->select('goal')->where('id', $goalableLesson)->first()->goal;
+        $lesson = Lesson::with('course')->where('id', intval($lessonId))->get();
+        $totalLesson = $lesson->pluck('course')->pluck('id')->first();
         $result['correct'] = $correct;
         $result['total'] = $answer;
-        $result['goal'] = $goal_lesson;
+        $result['goal'] = $goalLesson;
+        $result['courseId'] = $totalLesson + 1;
         return $result;
     }
 

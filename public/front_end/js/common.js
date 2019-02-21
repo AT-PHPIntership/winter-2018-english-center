@@ -1,10 +1,14 @@
 function comment(key) {
-    return window.js_variable.comment[key];
+  return window.js_variable.comment[key];
 }
+
 function navigate(key) {
-    return window.js_variable.navigate[key];
+  return window.js_variable.navigate[key];
 }
-// console.log(navigate('previous'));
+
+function exercise(key) {
+  return window.js_variable.exercise[key];
+}
 
 $(document).ready(function(){
  $('.uba_audioButton').on('click', function(){
@@ -26,21 +30,36 @@ $(document).ready(function(){
             dataType:"JSON",
             data: {answers:answers, userId:userId, lessonId:lessonId, _token:token},
             success: function(data){
-              // console.log(data);
+              console.log(data);
               var output = '<div class="correct">Correct: ' + data.correct.length + '<span>' + ' / ' +  data.total.length + '</span>' + '</div>';
               $('.result-lesson').html(output);
               if (data.correct.length >= data.goal) {
                   var navigation = '<ul class="pagination">';
                   if (navigate('previous') != null) {
                    navigation += `<li><a href="detail/lesson/${navigate('previous')}"><i class="zmdi zmdi-chevron-left"></i></a></li>`;
-                  } else if (navigate('next') != null) {
+                  }
+                  if (navigate('next') != null) {
                     navigation += `<li><a href="detail/lesson/${navigate('next')}"><i class="zmdi zmdi-chevron-right"></i></a></li>`;
+                  } else {
+                    setTimeout( function() {
+                      swal.fire({
+                        title: exercise('congratulation'),
+                        text: exercise('notification_next_course'),
+                        type: 'success',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: exercise('next_course'),
+                      }).then(function() {
+                        location.assign("detail/" + data.courseId)
+                      });
+                    }, 3000);
                   }
                   navigation += '</ul>';
                   $('.pagination-content').append(navigation);
               } else {
-                var minimum = '<div class="correct">Ban can tra loi dung it nhat: ' + data.goal + ' cau' + '</div>';
-                var tryButton = `<button type="button" class="btn btn-success" onclick="return location.reload();"><i class="fa fa-credit-card"></i> Lam lai</button>`;
+                var minimum = '<div class="correct">' + exercise('notification_correct') + data.goal + exercise('question') + '</div>';
+                var tryButton = `<button type="button" class="btn btn-success" onclick="return location.reload();"><i class="fa fa-edit"></i>` + exercise('again')+ `</button>`;
                 $('.result-lesson').append(minimum);
                 $('.box_bt_ctrl').append(tryButton);
               }

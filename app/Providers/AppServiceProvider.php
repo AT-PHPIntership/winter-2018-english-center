@@ -46,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
             'define' => config('define'),
             'trans'  => __('js'),
             'comment'  => __('js.comment'),
+            'exercise'  => __('js.exercise'),
         ]);
     }
 }
