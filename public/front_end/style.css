@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 a {-webkit-transition: all 0.3s ease 0s;transition: all 0.3s ease 0s;text-decoration:none; color: #000}
 a:hover {
-    color: #4c4c4c;
+    color: green;
     text-decoration: none;
 }
 a:active, a:hover, a:focus {outline: 0 none; text-decoration: none}
@@ -566,7 +566,10 @@ body {
     width: 290px;
     z-index: 9999;
 }
-.search.open {height: 50px}
+.search.open {
+    height: 50px;
+    overflow: visible;
+}
 .search-form {
     background-color: #ffffff;
     border-top: 1px solid #86bc42;
@@ -2305,4 +2308,9 @@ input[type="submit"].btn-block {
     color: red;
     font-family: "montserratregular";
     font-size: 12px;
+}
+
+#courseList {
+    padding-left: 10px;
+    width: 290px;
 }

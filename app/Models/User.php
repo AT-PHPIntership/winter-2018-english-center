@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'role_id', 'email', 'password',
+        'role_id', 'email', 'password', 'is_actived',
     ];
 
     /**
@@ -88,5 +88,15 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany('App\Models\Comment');
+    }
+    
+     /**
+     * The function display relationship between user and social provider
+     *
+     * @return \App\Models\SocialProvider
+     */
+    public function socialProviders()
+    {
+        return $this->hasMany('App\Models\SocialProvider');
     }
 }

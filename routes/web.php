@@ -39,7 +39,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'
     Route::get('/logout', 'LoginController@logout')->name('logout');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
+    Route::get('/', 'HomeController@index')->name('home');
+    
+    Route::group(['as' => 'user.'], function() {
+        Route::get('/login', 'AuthController@showLoginForm')->name('login');
+        Route::post('/login', 'AuthController@login')->name('login');
+        Route::get('/logout', 'AuthController@logout')->name('logout');
+        //Login by Social account
+        Route::get('auth/{provider}', 'AuthController@redirectToProvider')->name('social');
+        Route::get('auth/{provider}/callback', 'AuthController@handleProviderCallback');
+        //register
+        Route::get('/register', 'AuthController@showRegisterForm')->name('register');
+        Route::post('/register', 'AuthController@register')->name('register');
+        Route::get('activation/{token}', 'AuthController@activation')->name('activation');
+
+        Route::get('/profiles', 'ProfileController@show')->name('profiles.show');
+        Route::get('/profiles/edit', 'ProfileController@edit')->name('profiles.edit');
+        Route::put('/profiles', 'ProfileController@update')->name('profiles.update');
+
+        Route::get('search/courses', 'HomeController@getListCourses')->name('courses.search');
+    });
+});
 
 Route::group(['middleware' => 'filter','namespace' => 'User', 'as' => 'user.'], function() {
     Route::get('/', 'HomeController@index');
@@ -49,4 +70,7 @@ Route::group(['middleware' => 'filter','namespace' => 'User', 'as' => 'user.'], 
     Route::post('user/lesson', 'LessonController@resutlLesson');
     Route::post('lesson/comment', 'LessonController@lessonComment');
     Route::post('lesson/reply', 'LessonController@lessonReply');
+});
+
+Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin'], function() {
 });

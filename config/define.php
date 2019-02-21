@@ -8,6 +8,7 @@ return [
         'order_by_desc' =>'desc',
         'vip' => 'VIP',
         'trial' => 'TRIAL',
+        'page_site_course' => 6,
     ],
     'order_by_desc' =>'desc',
     'vip' => 'VIP',

@@ -62,11 +62,9 @@
                         @endforeach 
                     </tbody>
                     </table>
-                    <div class="box-footer clearfix">
-                    <ul class="pagination pagination-sm no-margin pull-right">
+                    <ul class="pagination pagination-sm no-margin pull-right text-center">
                         {{ $users->links() }}
                     </ul>
-                    </div>
                 </div>
             </div>
         </div>
