@@ -25,16 +25,8 @@ $(document).ready(function () {
         dataType: "JSON",
         data: { answers: answers, userId: userId, _token: token },
         success: function (data) {
-          var rating_link = '<div class="single-item-rating user-rating">' +
-            '<i class="zmdi zmdi-star"></i>' +
-            '<i class="zmdi zmdi-star"></i>' +
-            '<i class="zmdi zmdi-star"></i>' +
-            '<i class="zmdi zmdi-star"></i>' +
-            '<i class="zmdi zmdi-star"></i>' +
-            '</div > <a class="rating" onsubmit()>' + rating('link') + '</a>';
           var output = '<div class="correct">Correct: ' + data.correct.length + '<span>' + ' / ' + data.total.length + '</span>' + '</div>';
           $('.result-lesson').html(output);
-          $('.rating-link').html(rating_link);
         }
       });
     } else {
@@ -164,6 +156,29 @@ $(document).on('click', '#reply-button', function () {
   } else {
     location.href = 'login';
   }
+});
+
+//star rating
+var $star_rating = $('.star-rating .fa');
+
+var SetRatingStar = function () {
+  return $star_rating.each(function () {
+    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+      return $(this).removeClass('fa-star-o').addClass('fa-star');
+    } else {
+      return $(this).removeClass('fa-star').addClass('fa-star-o');
+    }
+  });
+};
+debugger;
+$star_rating.on('click', function () {
+  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+  return SetRatingStar();
+});
+
+SetRatingStar();
+$(document).ready(function () {
+
 });
 
 

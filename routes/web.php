@@ -50,6 +50,8 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.', 'middl
         Route::post('lesson', 'LessonController@resutlLesson');
         Route::post('lesson/comment', 'LessonController@lessonComment');
         Route::post('lesson/reply', 'LessonController@lessonReply');
+        Route::get('rating/{lesson}', 'LessonController@showRating')->name('rating');
+        Route::post('rating/{lesson}', 'LessonController@getRating')->name('rating');
     });
 });
 Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
@@ -76,5 +78,4 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
 Route::group(['middleware' => 'filter', 'namespace' => 'User', 'as' => 'user.'], function() {
     Route::get('course', 'CourseController@index')->name('course');
     Route::get('/detail/{course}', 'CourseController@show')->name('detail');
-    Route::get('user/rating', 'LessonController@showRating');
 });

@@ -3,10 +3,12 @@ namespace App\Services;
 
 use App\Models\Lesson;
 use App\Models\Course;
+use App\Models\Rating;
 use Config\define;
 use DB;
 use App\Models\Answer;
 use Event;
+use Auth;
 
 class LessonService
 {
@@ -169,5 +171,30 @@ class LessonService
         $lesson = Lesson::find($id);
         Event::fire('lessons.view', $lesson);
         return $lesson;
+    }
+
+    /**
+     * Store and Update a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $data   data
+     * @param \Illuminate\Http\Request $lesson lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function ratingStar($data, $lesson)
+    {
+        return Rating::updateOrInsert(
+            [
+                'user_id'=> Auth::user()->id,
+                'ratingable_type' => 'lessons',
+                'ratingable_id' => $lesson->id,
+            ],
+            [
+                'star' => $data['rating-star'],
+                'content' => $data['review'],
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now()
+            ]
+        );
     }
 }

@@ -71,6 +71,11 @@ return [
                 'reply' => 'Reply',
                 'enter_comment' => 'Enter your comment here...',
             ],
+            'rating' => [
+                'title' => 'Rating Lesson',
+                'detail' => 'Comment',
+                'btn' => 'Send',
+            ]
         ],
     ],
     'login' => [

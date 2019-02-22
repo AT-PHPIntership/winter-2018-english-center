@@ -118,6 +118,7 @@
                     </div>
                   </div>
                   @endif
+
                   @endforeach
                 </div>
                 @endforeach
@@ -149,8 +150,23 @@
                     </div>
                 </div>
             </div>
-            <div class="rating-link">
-            </div>
+            @foreach((Auth::user()->lessons) as $lesson_user)
+              @if($lesson_user->id === $lessons->id)
+              <div class="rating-link">
+                <div class="single-item-rating user-rating">
+                  <i class="zmdi zmdi-star"></i>
+                  <i class="zmdi zmdi-star"></i>
+                  <i class="zmdi zmdi-star"></i>
+                  <i class="zmdi zmdi-star"></i>
+                  <i class="zmdi zmdi-star"></i>
+                </div>
+                <a class="rating" href="{{ route('user.rating', $lessons->id )}}">@lang('layout_user.lessons.lesson_detail.rating.title')</a>
+              </div>
+              @else
+              <div class="rating-link">
+              </div>
+              @endif
+            @endforeach
           <div class="comments">
             <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             <div class="single-comment">

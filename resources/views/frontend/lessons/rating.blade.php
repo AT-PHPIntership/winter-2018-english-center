@@ -5,11 +5,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb-text">
-                        <h1 class="text-center">PRODUCT DETAILS</h1>
+                        <h1 class="text-center">@lang('layout_user.lessons.lesson_detail.rating.title')</h1>
                         <div class="breadcrumb-bar">
                             <ul class="breadcrumb text-center">
-                                <li><a href="index.html">Home</a></li>
-                                <li>PRODUCT DETAILS</li>
+                                <li><a href="{{ route('user.home') }}">{{ __('layout_user.header.home') }}</a></li>
+                                <li>@lang('layout_user.lessons.lesson_detail.rating.title')</li>
                             </ul>
                         </div>
                     </div>
@@ -17,42 +17,53 @@
             </div>
         </div>
     </div>
-    <div class="product-details-area section-top-padding">
+    <div class="product-details-area section-top-padding" style="
+    margin-bottom: 100px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="product-details-image">
-                        <img src="img/details/3.jpg" alt="">
+                        <img src="{{ $lesson->image }}" alt="">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="product-details-content">
-                        <form action="#" method="post">
-                            <h2>Title Product Here</h2>
-                            <div class="product-name-rating">
-                                <h5>Book</h5>
-                                <div class="single-item-rating">
-                                    <i class="zmdi zmdi-star"></i>
-                                    <i class="zmdi zmdi-star"></i>
-                                    <i class="zmdi zmdi-star"></i>
-                                    <i class="zmdi zmdi-star"></i>
-                                    <i class="zmdi zmdi-star-half"></i>
+                        <form action="{{ route('user.rating', $lesson->id) }}" method="post">
+                            @csrf
+                            <h2 style="margin-bottom: 20px;">{{ $lesson->name }}</h2>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="star-rating">
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        @if (Auth::user()->ratings->pluck('ratingable_id')->contains($lesson->id))
+                                            @foreach((Auth::user()->ratings) as $rate)
+                                                @if($rate->ratingable_id === $lesson->id)
+                                                <input type="hidden" name="rating-star" class="rating-value" value="{{ $rate->star }}">
+                                                @endif
+                                            @endforeach
+                                        @else 
+                                            <input type="hidden" name="rating-star" class="rating-value" value="0">
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                            <p>There are many variations of passages of Lorepsumavable, but the majority have suffered alteration in some form, by injected humour, </p>
-                            <div class="qty">
-                                <span>Qty</span>
-                                <input type="text" name="qty" id="qty" maxlength="12" value="2" class="input-text qty">
+                            <p>@lang('layout_user.lessons.lesson_detail.rating.detail')</p>
+                            <div class="comment-text">
+                                @if (Auth::user()->ratings->pluck('ratingable_id')->contains($lesson->id))
+                                    @foreach((Auth::user()->ratings) as $rate)
+                                        @if($rate->ratingable_id === $lesson->id)
+                                        <textarea class="form-control" id='comment-text' name="review">{{ $rate->content }}</textarea>
+                                        @endif
+                                    @endforeach
+                                @else 
+                                    <textarea class="form-control" id='comment-text' name="review"></textarea>
+                                @endif
                             </div>
-                            <h1 class="p-price">$60</h1>
-                            <button type="button" class="button-default">ADD TO CART</button>
-                            <span>Share this product</span>
-                            <div class="social-links">
-                                <a href="#"><i class="zmdi zmdi-facebook"></i></a>
-                                <a href="#"><i class="zmdi zmdi-twitter"></i></a>
-                                <a href="#"><i class="zmdi zmdi-google-old"></i></a>
-                                <a href="#"><i class="zmdi zmdi-instagram"></i></a>
-                            </div>
+                            <button type="submit" class="button-default">@lang('layout_user.lessons.lesson_detail.rating.btn')</button>
                         </form>
                     </div>
                 </div>

@@ -77,4 +77,18 @@ class LessonController extends Controller
     {
         return view('frontend.lessons.rating', compact('lesson'));
     }
+
+    /**
+     * Get the specified resource.
+     *
+     * @param Request $request Request
+     * @param Lesson  $lesson  lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getRating(Request $request, Lesson $lesson)
+    {
+        $rate = app(LessonService::class)->ratingStar($request->all(), $lesson);
+        return redirect()->route('user.lesson.detail', $lesson->id);
+    }
 }

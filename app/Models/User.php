@@ -89,6 +89,16 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Comment');
     }
+
+    /**
+     * HasMany comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ratings()
+    {
+        return $this->hasMany('App\Models\Rating');
+    }
     
      /**
      * The function display relationship between user and social provider
