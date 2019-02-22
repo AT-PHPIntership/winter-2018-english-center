@@ -29,7 +29,7 @@ class ActivationService
             ]);
             Mail::send('frontend.email.activation', ['user' => $user], function ($message) use ($user) {
                 $message->to($user['email']);
-                $message->subject(trans('public.email.subject'));
+                $message->subject(trans('layout_user.register.email.subject'));
             });
             session()->flash('message', __('layout_user.register.email.code'));
         } catch (Exception $ex) {

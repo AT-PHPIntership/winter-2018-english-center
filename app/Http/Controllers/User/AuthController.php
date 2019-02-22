@@ -10,6 +10,8 @@ use Socialite;
 use App\Services\SocialProviderService;
 use App\Http\Requests\RegisterUserRequest;
 use App\Services\ActivationService;
+use Session;
+use URL;
 
 class AuthController extends Controller
 {
@@ -20,7 +22,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/user/';
+    protected $redirectTo = '/';
 
     /**
     * Display login page for user..

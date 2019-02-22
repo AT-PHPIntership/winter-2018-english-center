@@ -10,4 +10,7 @@ return [
         'submit' => 'Comment',
         'cancel' => 'Cancel Reply',
     ],
+    'rating' => [
+        'link' => 'Rating Lesson',
+    ],
 ];

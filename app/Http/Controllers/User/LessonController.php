@@ -65,4 +65,16 @@ class LessonController extends Controller
         $response = app(CommentService::class)->reply($request->get('userId'), $request->get('lessonId'), $request->get('content'), $request->get('parentComment'));
         return response()->json($response);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Lesson $lesson lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRating(Lesson $lesson)
+    {
+        return view('frontend.lessons.rating', compact('lesson'));
+    }
 }

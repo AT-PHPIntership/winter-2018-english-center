@@ -2328,3 +2328,23 @@ input[type="submit"].btn-block {
 .margin-bottom {
     margin-bottom: 70px;
 }
+
+.rating-link {
+    margin-top: 30px;
+}
+
+.rating-link .rating {
+    color: #4c4c4c;
+    font-family: "montserratregular";
+    font-size: 24px;
+}
+
+.rating-link .rating:hover {
+    color:#86bc42;
+}
+
+.user-rating {
+    font-size: 28px;
+    float: none;
+    margin-right: 5px;
+}

@@ -9,7 +9,7 @@
           <h1 class="text-center">{{ __('layout_user.lessons.lesson_detail.lesson_detail') }}</h1>
           <div class="breadcrumb-bar">
             <ul class="breadcrumb text-center">
-              <li><a href="index.html">{{ __('layout_user.header.home') }}</a></li>
+              <li><a href="{{ route('user.home') }}">{{ __('layout_user.header.home') }}</a></li>
               <li>{{ __('layout_user.lessons.lesson_detail.lesson_detail') }}</li>
             </ul>
           </div>
@@ -34,6 +34,13 @@
               <div class="single-item-comment-view">
                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $lessons->created_at }}</span>
                 <span><i class="zmdi zmdi-eye"></i>{{ $countView->count_view }}</span>
+                <div class="single-item-rating">
+                    <i class="zmdi {{ ($lessons->average -0.5)>0 ? 'zmdi-star': (($lessons->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                    <i class="zmdi {{ ($lessons->average -1.5)>0 ? 'zmdi-star': (($lessons->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                    <i class="zmdi {{ ($lessons->average -2.5)>0 ? 'zmdi-star': (($lessons->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                    <i class="zmdi {{ ($lessons->average -3.5)>0 ? 'zmdi-star': (($lessons->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                    <i class="zmdi {{ ($lessons->average -4.5)>0 ? 'zmdi-star': (($lessons->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                </div>
               </div>
               <strong>Vocabulary:</strong>
               <div class="single-item-comment-view">
@@ -58,7 +65,7 @@
               </div>
               <div class="col-md-12 detail-text-video">
                 <div class="detail-text">
-                  <p>{{ $lessons->text }}></p>
+                  <p>{{ $lessons->text }}</p>
                 </div>
                 <div class="detail-video">
                   <iframe width="420" height="345" src="{{ $lessons->video }}">
@@ -76,6 +83,7 @@
                     <h4 class="exercises[{{ $key }}][title]">{{ $exercises->title }}</h4>
                   </div>
                   @foreach ($exercises->questions as $q => $questions)
+                  @if(Auth::check())
                   <div class="details" data-user='{{ Auth::user()->id }}' data-token='{{ csrf_token() }}'>
                     <div class="basic_ques">
                       <p class="basic_index">{{ $key + 1}}</p>
@@ -92,6 +100,24 @@
                       </div>
                     </div>
                   </div>
+                  @else
+                  <div class="details">
+                    <div class="basic_ques">
+                      <p class="basic_index">{{ $key + 1}}</p>
+                      <div class="basic_index" id="exercises[{{ $key }}][questions][{{ $q }}][content]">{{ $questions->content }}</div>
+                      <div class="form-group col-lg-12">
+                        @foreach ($questions->answers as $a => $answers)
+                        <div class="radio-exercise col-lg-3">
+                          <label>
+                          <input type="radio" name="exercises[{{ $key }}]questions[{{ $q }}][answers][]" id="{{ $answers->id }}" value="{{ $a }}">
+                          {{ $answers->answers }} 
+                          </label>
+                        </div>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                  @endif
                   @endforeach
                 </div>
                 @endforeach
@@ -123,6 +149,8 @@
                     </div>
                 </div>
             </div>
+            <div class="rating-link">
+            </div>
           <div class="comments">
             <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             <div class="single-comment">
@@ -136,7 +164,7 @@
             @foreach ($lessons->comments as $comment)
             <div class="single-comment" data-id="{{ $comment->id }}">
                   <div class="author-image">
-                    <img src="{{ $comment->user->userProfile['url'] }}" alt="">
+                    <img src="storage/avatar/{{ $comment->user->userProfile['url'] }}" alt="">
                   </div>
               <div class="comment-text">
                 <div class="author-info">
@@ -150,7 +178,7 @@
             @foreach ($comment->children as $reply)
             <div class="single-comment comment-reply" data-id="{{ $reply->id }}">
               <div class="author-image">
-                <img src="{{ $reply->user->userProfile['url'] }}" alt="">
+                <img src="storage/avatar/{{ $reply->user->userProfile['url'] }}" alt="">
               </div>
               <div class="comment-text">
                 <div class="author-info">

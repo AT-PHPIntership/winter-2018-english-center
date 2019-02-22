@@ -103,7 +103,8 @@ return [
             'code' => 'Your link verify has been send. Please, check your email!',
             'error' => 'Error! Please try again!',
             'active' => 'Your email is actived! Lets login!',
-            'invalid' => 'Your email is invalid!'
+            'invalid' => 'Your email is invalid!',
+            'subject' => 'Activate Your Email',
         ],
         'activation' => [
             'title' => 'Wellcome to EnglishCenter!',
