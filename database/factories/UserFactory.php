@@ -25,7 +25,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
 
 $factory->define(App\Models\Course::class, function(Faker $faker) {
     return [
-        'title' => $faker->catchPhrase,
+        'name' => $faker->catchPhrase,
         'parent_id' => null,
         'count_view' => $faker->randomDigit,
         'total_rating' => $faker->numberBetween(1, 10),
@@ -104,5 +104,41 @@ $factory->define(App\Models\Slider::class, function(Faker $faker) {
         'image' => $faker->imageUrl($width = 1920, $height = 800),
         'title' => $faker->catchPhrase,
         'content' => $faker->text,
+    ];
+});
+
+$factory->define(App\Models\Comment::class, function(Faker $faker) {
+    $commentable = [
+        App\Models\Lesson::class,
+        App\Models\Course::class
+    ];
+    $commentableType = $faker->randomElement($commentable);
+    $commentable = factory($commentableType)->create();
+    return [
+        'parent_id' => factory('App\Models\Comment')->create()->id,
+        'user_id' => factory('App\Models\User')->create()->id,
+        'content' => $faker->sentence,
+        'commentable_type' => $faker->randomElement(['lessons', 'courses']),
+        'commentable_id' => $commentable->id,
+    ];
+});
+
+$factory->define(App\Models\Goal::class, function(Faker $faker) {
+    return [
+        'goal' => $faker->numberBetween(5, 10),
+    ];
+});
+
+$factory->define(App\Models\Goalable::class, function(Faker $faker) {
+    $commentable = [
+        App\Models\Lesson::class,
+        App\Models\Course::class
+    ];
+    $commentableType = $faker->randomElement($commentable);
+    $commentable = factory($commentableType)->create();
+    return [
+        'goal_id' => factory('App\Models\Goal')->create()->id,
+        'goalable_type' => $faker->randomElement(['lessons', 'courses']),
+        'goalable_id' => $commentable->id,
     ];
 });

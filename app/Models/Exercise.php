@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exercise extends Model
 {
-    protected $fillable = [ 'title' ];
+    protected $fillable = [ 'title', 'lesson_id'];
 
     /**
      * The database table used by the model.
@@ -33,5 +33,15 @@ class Exercise extends Model
     public function questions()
     {
         return $this->hasMany('App\Models\Question');
+    }
+
+     /**
+     * HasMany questions
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function answers()
+    {
+        return $this->hasManyThrough('App\Models\Answer', 'App\Models\Question', 'exercise_id', 'question_id');
     }
 }

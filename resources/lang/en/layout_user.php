@@ -45,6 +45,27 @@ return [
         ],
         'date' => 'Date:',
         'btn' => 'Learn Now',
-        'allcourses' => 'Browse All Courses '
+        'see_all' => 'See All',
+        'allcourses' => 'Browse All Courses ',
+        'show_courses' => [
+            'our_courses' => 'Our Courses',
+        ],
+        'course_detail' =>[
+            'course_detail' => 'Course Detail',
+            'cmt' => 'Comments',
+            'related_courses' => 'Related Courses',
+            'date_time' => 'Date Time: ',
+            'lessons' => 'Lessons',
+            'open_time' => 'Open Time',
+        ],
+    ],
+    'lessons' => [
+        'lesson_detail' => [
+            'lesson_detail' => 'Lesson Details',
+            'recent_lesson' => 'Recent Lesson',
+            'exercise' => 'Exercise',
+            'complete_exercise' => 'After completing the exercise, click "',
+            'complete_exercise_below' => '" below',
+        ],
     ],
 ];

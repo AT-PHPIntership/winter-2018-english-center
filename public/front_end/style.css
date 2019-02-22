@@ -362,12 +362,12 @@ body {
 /*  2.2.2 Header Mainmenu
 /*----------------------------------------*/
 .mainmenu {display: inline-block;}
-.mainmenu-area {float: right; margin-top: 10px; -webkit-transition: all 0.3s ease 0s; transition: all 0.3s ease 0s;}
+.mainmenu-area {float: right; margin-right: 75px; margin-top: 10px; -webkit-transition: all 0.3s ease 0s; transition: all 0.3s ease 0s;}
 .header-logo-menu.stick .mainmenu-area .mainmenu ul#nav > li > a {line-height: 96px}
 .header-logo-menu.stick .mainmenu-area {padding: 0; margin: 0;}
 .mainmenu ul#nav li {
     display: inline-block;
-    margin-right: 24px;
+    margin-right: 30px;
     position: relative;
 }
 .mainmenu ul#nav > li > a {
@@ -415,7 +415,7 @@ body {
     position: absolute;
     text-align: left;
     top: 100%;
-    width: 190px;
+    width: 200px;
     z-index: -99;
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -440,6 +440,7 @@ body {
     font-weight: 300;
     line-height: 33px;
     text-transform: capitalize;
+    text-decoration: none;
 }
 .mainmenu li > .sub-menu i {
     float: right;
@@ -456,9 +457,9 @@ body {
     z-index: 9999;
 }
 .mainmenu ul.sub-menu ul.inside-menu {
-    left: 169px;
+    left: 178px;
     top: -2px;
-    width: 195px;
+    width: 210px;
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
     -webkit-transform-origin: 0 0 0;
@@ -1102,7 +1103,7 @@ body {
     font-size: 42px;
     text-align: center;
 }
-.single-event-text > h3 a, .single-event-text > h3 {color: #4c4c4c;}
+.single-event-text > h3 a, .single-event-text > h3 {color: #4c4c4c; text-transform: capitalize;text-decoration: none}
 .single-event-item:hover h3 a {color: #86bc42;}
 .single-event-text > h3 {font-family: "montserratregular"; margin-bottom: 5px;}
 .single-event-text {
@@ -1642,6 +1643,7 @@ body {
     font-size: 24px;
     margin-bottom: 2px;
     padding-top: 32px;
+    text-transform: capitalize;
 }
 .single-course-details .single-item-text-info {margin-bottom: 23px;}
 .course-text-content p:first-child {margin-bottom: 21px;}
@@ -1907,7 +1909,7 @@ span.comment-time {padding-right: 3px; position: relative;}
     border-bottom: 2px solid #86bc42;
     padding: 0 35px;
 }
-.single-event-image img {width: 100%;}
+.single-event-image img {width: 100%; height: 350px}
 .event-details-content .single-event-text h3 {font-size: 28px;}
 .event-details-content .single-event-text > p {color: #4e4e4e; line-height: 24px;}
 .event-details-content .single-event-text {border: 0 none; padding: 32px 0 40px;}
@@ -2194,3 +2196,104 @@ span.c-text {display: inline-block;}
     z-index: 9999;
 }
 #scrollUp:hover {background-color: #2D3E50;}
+
+.text a {
+    color: #4c4c4c;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 40px;
+}
+.text a:hover {
+    color: #86bc42;
+    text-decoration: none;
+}
+.text a:active, a:hover, a:focus {outline: 0 none; text-decoration: none}
+
+table {
+    width: 600px;
+    text-align: center; 
+    margin: 20px;
+}
+
+table td {
+    padding: 5px 20px;
+}
+
+.uba_audioButton {
+    background: url('/images/icons/audio_short.png') no-repeat;
+    background-position: 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    width: 26px;
+    height: 30px;
+}
+.uba_audioButton:hover {
+    background-position: 0 -85px;
+}
+
+.detail-video {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.detail-text p {
+    text-indent: 50px;
+}
+
+.basic_index {
+    font-weight: bold;
+    float: left;
+    padding: 0px 10px;
+    margin-right: 10px;
+    text-align: center;
+    border-radius: 4px;
+    background: antiquewhite;
+}
+
+.basic_alert_note {
+    text-align: center;
+    margin: 30px 0px 15px;
+    color: #3A110B;
+    float: left;
+    width: 100%;
+}
+
+.basic_q_title {
+    color: #005053;
+    text-align: justify;
+    float: left;
+    width: 90%;
+    min-height: 30px;
+}
+.radio, .checkbox {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.box_bt_ctrl {
+    margin: 10px 0px 10px;
+    width: 100%;
+    text-align: center;
+    float: left;
+}
+
+.result-lesson {
+    margin-top: 50px;
+}
+
+.result-lesson .correct {
+    color: red;
+}
+
+.pagination-content {
+    display: block;
+    line-height: 0;
+    text-align: center;
+}
+
+.pagination li {
+    display: inline-block;
+}

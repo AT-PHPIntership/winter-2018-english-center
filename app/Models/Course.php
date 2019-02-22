@@ -61,4 +61,34 @@ class Course extends Model
     {
         return $this->belongsToMany('App\Models\User');
     }
+
+    /**
+     * MorphMany comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable');
+    }
+
+    /**
+     * MorphMany comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function ratings()
+    {
+        return $this->morphMany('App\Models\Rating', 'ratingable');
+    }
+
+    /**
+     * MorphMany comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function goals()
+    {
+        return $this->morphMany('App\Models\Goalable', 'goalable');
+    }
 }

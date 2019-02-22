@@ -26,7 +26,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::post('vocabularies/import', 'VocabularyController@importFile')->name('vocabularies.import');
     Route::resource('vocabularies', 'VocabularyController');
 
+    Route::resource('exercises', 'ExerciseController');
+    
     Route::resource('lessons', 'LessonController');
+
+    Route::resource('comments', 'CommentController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
@@ -37,6 +41,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['namespace' => 'User'], function() {
+Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
     Route::get('/', 'HomeController@index');
+    Route::get('course', 'CourseController@index')->name('course');
+    Route::get('/detail/{course}', 'CourseController@show')->name('detail');
+    Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail');
+    Route::post('user/lesson', 'LessonController@resutlLesson');
 });

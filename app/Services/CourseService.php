@@ -24,8 +24,7 @@ class CourseService
     **/
     public function getCourse()
     {
-        $courses = Course::select('id', 'title')->where('parent_id', null)->get();
-        return $courses;
+        return Course::where('parent_id', null)->get();
     }
 
     /**
