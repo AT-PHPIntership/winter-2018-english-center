@@ -12,5 +12,14 @@ return [
     ],
     'rating' => [
         'link' => 'Rating Lesson',
+        'posted_on' => 'Posted on '
+    ],
+    'exercise' => [
+        'congratulation' => 'Congratulation!',
+        'notification_next_course' => 'Do you want to go to the next Course?',
+        'next_course' => 'Yes, send me there!',
+        'notification_correct' => 'You need to answer at least ',
+        'question' => ' question!',
+        'again' => ' Try Again',
     ],
 ];

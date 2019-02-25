@@ -10,6 +10,7 @@ use App\Http\ViewComposers\VocabularyComposer;
 use App\Http\ViewComposers\SystemComposer;
 use App\Http\ViewComposers\LessonComposer;
 use App\Http\ViewComposers\CommentComposer;
+use App\Http\ViewComposers\RateComposer;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,7 @@ class ViewServiceProvider extends ServiceProvider
         view()->composer(['frontend.layouts.partials.header', 'frontend.levels.index'], LevelComposer::class);
         view()->composer(['backend.lessons.create', 'backend.lessons.edit'], LevelComposer::class);
         view()->composer(['backend.lessons.create', 'backend.lessons.edit'], VocabularyComposer::class);
+        view()->composer(['frontend.pages.detail_lesson', 'frontend.pages.detail_course'], RateComposer::class);
     }
 
     /**

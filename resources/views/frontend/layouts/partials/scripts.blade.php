@@ -54,6 +54,9 @@
 <!-- Custom JS
 ============================================ -->        
 <script src="front_end/js/common.js"></script>
+<!-- Sweet Alert 2 JS
+============================================ -->        
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
@@ -63,8 +66,9 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
 <!-- Search JS
-============================================ -->		
+============================================ -->
 <script src="front_end/js/search.js"></script>
+
 
 
 

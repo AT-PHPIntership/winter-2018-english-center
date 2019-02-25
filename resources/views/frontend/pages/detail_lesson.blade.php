@@ -72,7 +72,7 @@
                   </iframe>
                 </div>
               </div>
-              <div class="exercises" data-question='{{$lessons->exercises->pluck('questions')->map(function ($item, $key) {
+              <div class="exercises" data-lesson= "{{$lessons->id}}" data-question='{{$lessons->exercises->pluck('questions')->map(function ($item, $key) {
                         return collect($item)->count();
                     })->sum()}}'>
                 <h3><i class="fa fa-edit"></i><strong>{{ __('layout_user.lessons.lesson_detail.exercise')}}</strong></h3>
@@ -137,16 +137,8 @@
             </div>
           </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 ">
                     <div class="pagination-content">
-                        <ul class="pagination">
-                            @if (isset($lesson[0]))
-                            <li><a href="{{ URL::to('detail/lesson/'. $lesson[0]) }}"><i class="zmdi zmdi-chevron-left"></i></a></li>
-                            @endif
-                            @if (isset($lesson[1]))
-                            <li><a href="{{ URL::to('detail/lesson/'. $lesson[1]) }}"><i class="zmdi zmdi-chevron-right"></i></a></li>
-                            @endif
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -160,7 +152,7 @@
                   <i class="zmdi zmdi-star"></i>
                   <i class="zmdi zmdi-star"></i>
                 </div>
-                <a class="rating" href="{{ route('user.rating', $lessons->id )}}">@lang('layout_user.lessons.lesson_detail.rating.title')</a>
+                <a class="rating" href="{{ route('user.rating', ['lessons', $lessons->id ])}}">@lang('layout_user.lessons.lesson_detail.rating.title')</a>
               </div>
               @else
               <div class="rating-link">
@@ -174,7 +166,7 @@
                     <textarea class="form-control" id='comment-text' name="review" placeholder="{{ __('layout_user.lessons.lesson_detail.comment.enter_comment') }}"></textarea>
                 </div>
                 <div class="col-lg-2 pull-right">
-                    <input class="btn btn-block" id='comment-button' {{(Auth::user()) ? 'data-user=' .Auth::user()->id : ''}} data-lessons='{{ $lessons->id }}' data-token="{{ csrf_token() }}" value="{{ __('layout_user.lessons.lesson_detail.comment.btn-comment') }}" type="submit">
+                    <input class="btn btn-block" id='comment-button' {{(Auth::user()) ? 'data-user=' .Auth::user()->id : ''}} data-element='{{ $lessons->id }}' data-token="{{ csrf_token() }}" value="{{ __('layout_user.lessons.lesson_detail.comment.btn-comment') }}" type="submit">
                 </div>
             </div>
             @foreach ($lessons->comments as $comment)
@@ -186,7 +178,7 @@
                 <div class="author-info">
                   <h4><a href="#">{{ $comment->user->userProfile['name'] }}</a></h4>
                   <span class="reply"><a class="add-reply" id="{{ $comment->id }}">{{ __('layout_user.lessons.lesson_detail.comment.reply') }}</a></span>
-                  <span class="comment-time">{{ $comment->created_at }} /</span>
+                  <span class="comment-time"><span>{{ __('layout_user.courses.course_detail.comment.posted_on') }}</span>{{ $comment->created_at }} /</span>
                 </div>
                 <p>{{ $comment->content }}</p>
               </div>
@@ -206,7 +198,31 @@
             </div>
             @endforeach
             @endforeach
-            </ol>
+            @foreach($rates as $rate)
+              @if($rate->ratingable_type === 'lessons')
+                @if($rate->ratingable_id === $lessons->id)
+                  <div class="single-comment" data-id="{{ $rate->id }}">
+                        <div class="author-image">
+                          <img src="storage/avatar/{{ $rate->user->userProfile['url'] }}" alt="">
+                        </div>
+                    <div class="comment-text">
+                      <div class="author-info">
+                        <h4><a href="#">{{ $rate->user->userProfile['name'] }}</a></h4>
+                        <span class="comment-time"><span>{{ __('layout_user.lessons.lesson_detail.rating.time') }}</span>{{ $rate->created_at }}</span>
+                      </div>
+                      <div class="single-item-rating" style="float: none;">
+                          <i class="zmdi {{ ($rate->star -0.5)>0 ? 'zmdi-star': (($rate->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                          <i class="zmdi {{ ($rate->star -1.5)>0 ? 'zmdi-star': (($rate->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                          <i class="zmdi {{ ($rate->star -2.5)>0 ? 'zmdi-star': (($rate->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                          <i class="zmdi {{ ($rate->star -3.5)>0 ? 'zmdi-star': (($rate->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                          <i class="zmdi {{ ($rate->star -4.5)>0 ? 'zmdi-star': (($rate->star -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                      </div>
+                      <p>{{ $rate->content }}</p>
+                    </div>
+                  </div>
+                  @endif
+                @endif
+            @endforeach
           </div>
         </div>
       </div>

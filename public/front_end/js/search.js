@@ -18,7 +18,7 @@ $(document).ready(function () {
         var query = $(this).val();
         if (query != '' && query.length >= 2) {
             $.ajax({
-                url: 'user/search/courses',
+                url: 'search/courses',
                 method: "GET",
                 data: { query: query },
                 dataType: "JSON",

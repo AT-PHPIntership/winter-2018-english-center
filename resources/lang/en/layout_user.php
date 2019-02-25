@@ -57,6 +57,9 @@ return [
             'date_time' => 'Date Time: ',
             'lessons' => 'Lessons',
             'open_time' => 'Open Time',
+            'comment' => [
+                'posted_on' => 'Posted on ',
+            ],
         ],
     ],
     'lessons' => [
@@ -75,6 +78,7 @@ return [
                 'title' => 'Rating Lesson',
                 'detail' => 'Comment',
                 'btn' => 'Send',
+                'time' => 'Time rating on '
             ]
         ],
     ],
