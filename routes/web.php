@@ -58,4 +58,6 @@ Route::group(['middleware' => ['filter', 'userLogin'],'namespace' => 'User', 'as
     Route::post('user/lesson', 'LessonController@resutlLesson');
     Route::post('comment/{element}', 'CourseController@elementComment');
     Route::post('reply/{element}', 'CourseController@elementReply');
+    Route::get('subscribe', 'LessonController@subscribeMember');
+    Route::delete('delete/comment', 'LessonController@deleteComment');
 });

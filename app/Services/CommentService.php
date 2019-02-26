@@ -63,4 +63,14 @@ class CommentService
         $comment['userImage'] = $comment->user->userProfile->url;
         return $comment;
     }
+
+    public function deleteComment($userId, $commentId)
+    {
+        $comment = Comment::find($commentId); 
+        if ($comment->user_id == $userId) {
+            $comment->delete();
+            return ['id' => $commentId];
+        }
+        return null;
+    }
 }

@@ -91,4 +91,7 @@ return [
         'warning' => 'You must Login!'
     ],
     'logout' => 'Log Out',
+    'subcribe' => [
+        'title' => 'Subscribe',
+    ],
 ];

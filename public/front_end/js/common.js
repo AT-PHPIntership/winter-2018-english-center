@@ -24,22 +24,30 @@ $(document).ready(function(){
       var userId = $('.details').data('user');
       var token = $('.details').data('token');
       var lessonId = $(".exercises").data('lesson');
+      var courseId = $(".exercises").data('course');
       $.ajax({
             url: 'user/lesson',
             method:"POST",
             dataType:"JSON",
-            data: {answers:answers, userId:userId, lessonId:lessonId, _token:token},
+            data: {
+              answers: answers, 
+              userId: userId, 
+              lessonId: lessonId,
+              courseId: courseId,
+              _token: token
+            },
             success: function(data){
               var output = '<div class="correct">Correct: ' + data.correct.length + '<span>' + ' / ' +  data.total.length + '</span>' + '</div>';
               $('.result-lesson').html(output);
               if (data.correct.length >= data.goal) {
                   var navigation = '<ul class="pagination">';
                   if (navigate('previous') != null) {
-                   navigation += `<li><a href="detail/lesson/${navigate('previous')}"><i class="zmdi zmdi-chevron-left"></i></a></li>`;
+                    navigation += `<li><a href="detail/lesson/${navigate('previous')}"><i class="zmdi zmdi-chevron-left"></i></a></li>`;
                   }
                   if (navigate('next') != null) {
-                    navigation += `<li><a href="detail/lesson/${navigate('next')}"><i class="zmdi zmdi-chevron-right"></i></a></li>`;
-                  } else {
+                    navigation += `<li><a class="next_lesson" href="detail/lesson/${navigate('next')}"><i class="zmdi zmdi-chevron-right"></i></a></li>`;
+                  }
+                  else {
                     setTimeout( function() {
                       swal.fire({
                         title: exercise('congratulation'),
@@ -49,13 +57,22 @@ $(document).ready(function(){
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: exercise('next_course'),
-                      }).then(function() {
-                        location.assign("detail/" + data.courseId)
+                      }).then( function(isConfirm) {
+                        if (isConfirm.dismiss != 'cancel') {
+                          location.assign("detail/course/" + data.courseId);
+                        }
+                        return false;
                       });
-                    }, 3000);
+                    }, 2000);
                   }
                   navigation += '</ul>';
                   $('.pagination-content').append(navigation);
+                  if ((data.role < data.nextLesson) && (data.role == data.flag)) {
+                    $('.next_lesson').removeAttr('href');
+                    $(document).on('click', '.next_lesson', function() {
+                      window.location.assign('subscribe');
+                    });
+                  }
               } else {
                 var minimum = '<div class="correct">' + exercise('notification_correct') + data.goal + exercise('question') + '</div>';
                 var tryButton = `<button type="button" class="btn btn-success" onclick="return location.reload();"><i class="fa fa-edit"></i>` + exercise('again')+ `</button>`;
@@ -93,38 +110,42 @@ $(document).ready(function(){
                 _token: token
               },
               success: function(data) {
-                console.log(data);
                 var output = '';
-                output += '<div class="single-comment" data-id="' + data.id + '">';
-                output += '<div class="author-image">';
-                output += '<img src="' + data.userImage +' " alt="">';
+                output += '<li class="comment-border" data-id=' + data.id + '>';
+                output += '<article id="' + data.id + '">';
+                output += '<img src="' + data.userImage + '" class="avatar avatar-60 photo"/>';
+                output += '<div class="comment-des">';
+                output += '<div class="comment-by">';
+                output += '<p class="author"><strong>' + data.userName + '</strong></p>';
+                output += '<p class="date"><a><time>' + data.created_at + '</time></a> - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="' + data.id + '">Delete</a>';
+                // output += '<span class="reply"><a class="detele-comment" id="' + data.id + '">Delete</a></span>';
+                output += '<span class="reply"><a class="add-reply" id=' + data.id + '>Reply</a></span>';
                 output += '</div>';
-                output += '<div class="comment-text">';
-                output += '<div class="author-info">';
-                output += '<h4><a href="">' + data.userName + '</a></h4>';
-                output += '<span class="reply"><a class="add-reply" id="' + data.id +'">' + comment('reply') + '</a></span>';
-                output += '<span class="comment-time"><span>' + comment('posted_on') + '</span>' + data.created_at + '/</span>';
+                output += '<section>';
+                output += '<p>' + data.content + '</p>';
+                output += '</section>';
                 output += '</div>';
-                output += '<p>' + data.content +'</p>';
-                output += ' </div>';
-                output += ' </div>';
-                $('.comments').append(output);
+                output += '</article>';
+                output += '</li>';
+                $('#commentList').append(output);
                 $('#comment-text').val("");
               }
             });
           }
         } else {
-           location.href = 'login';
+          location.href = 'login';
         }
  });
 });
 
 //handle form reply comment to lesson and course
-$(document).on('click', '.add-reply', function() {  
+$(document).on('click', '.add-reply', function() {
+  // console.log('ahaha');
   if($('.add-reply').attr('disabled') !== 'disabled') {
+    // console.log('dsada');
     var replyId = $(this).attr('id');
     var output = '';
-        output += '<div class="comment-reply" data-id=' + replyId + '>';
+        output += '<div class="single-comment comment-reply" data-id=' + replyId + '>';
         output += '<p class="discuss-lesson">' + comment('add') + ' <a class="cancelReply">' + comment('cancel') + '</a></p>';
         output += '<div class="single-comment">';
         output += '<div class="comment-text">';
@@ -135,7 +156,7 @@ $(document).on('click', '.add-reply', function() {
         output += '</div>';
         output += '</div>';
         output += '</div>';
-        $('div[data-id=' + replyId + ']').append(output);
+        $('article#' + replyId).append(output);
         $('.add-reply').attr('disabled', 'disabled');
     } else {
         return false;
@@ -175,26 +196,54 @@ $(document).on('click', '#reply-button', function() {
           parentComment: commentId
         },
         success: function(data) {
-          console.log(data.parent_id);
             var output = '';
-                output += '<div class="single-comment comment-reply">';
-                output += '<div class="author-image">';
-                output += '<img src="' + data.userImage + '" alt="">';
+                output += '<ol class="children">';
+                output += '<li class="children" id="commentChildren">';
+                output += '<article id="' + data.id + '" class="comment">';
+                output += '<img src="'+ data.userImage +'" class="avatar avatar-60 photo"/>';
+                output += '<div class="comment-des">';
+                output += '<div class="comment-by">';
+                output += '<p class="author"><strong>'+ data.userName +'</strong></p>';
+                output += '<p class="date"><a><time>'+ data.created_at +'</time></a> - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="' + data.id + '">Delete</a>';
                 output += '</div>';
-                output += '<div class="comment-text">';
-                output += '<div class="author-info">';
-                output += '<h4><a href="">' + data.userName + '</a></h4>';
-                output += '<span class="comment-time">' + data.created_at + '</span>';
+                output += '<section>';
+                output += '<p>'+ data.content +'</p>';
+                output += '</section>';
                 output += '</div>';
-                output += '<p>' + data.content +'</p>';
-                output += ' </div>';
-                output += ' </div>';
+                output += '</article>';
+                output += '</li>';
+                output += '</ol>';
                 $('.comment-reply[data-id=' + data.parent_id + ']').remove();
-                $('.single-comment[data-id=' + data.parent_id + ']').append(output);
+                $('.comment-border[data-id=' + data.parent_id + ']').append(output);
                 $('.add-reply').removeAttr('disabled');
         },
       });
     }
+  } else {
+    location.href = 'login';
+  }
+});
+
+//delete comment 
+$(document).on('click', '.delete-comment', function() {
+  var commentId = $(this).attr('id');
+  var userId = $('#comment-button').data('user');
+  var token = $('#comment-button').data('token');
+  if(userId != undefined) {
+      $.ajax({
+        url: 'delete/comment',
+        type: 'DELETE',
+        dataType: 'JSON',
+        data: {
+          userId: userId,
+          commentId: commentId,
+          _token: token, 
+        },
+        success: function(data) {
+          $('.comment-border[data-id=' + data.id +']').remove();
+          $('article[id='+ data.id +']').remove();
+        },
+      });
   } else {
     location.href = 'login';
   }

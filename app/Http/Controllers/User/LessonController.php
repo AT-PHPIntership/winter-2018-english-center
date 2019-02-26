@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\LessonService;
 use App\Request\UserAnswerRequest;
-use App\Models\Lesson;
 use App\Services\CommentService;
+use App\Models\Lesson;
+use App\Models\Course;
 
 class LessonController extends Controller
 {
@@ -18,7 +19,7 @@ class LessonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Lesson $lesson)
+    public function show(Lesson $lesson, Course $course)
     {
         $lessons = app(LessonService::class)->getLesson($lesson);
         $recentLessons = app(LessonService::class)->recentLesson();
@@ -35,7 +36,23 @@ class LessonController extends Controller
      */
     public function resutlLesson(Request $request)
     {
-        $response = app(LessonService::class)->resutlLesson($request->get('answers'), $request->get('userId'), $request->get('lessonId'));
+        $response = app(LessonService::class)->resutlLesson($request->get('answers'), $request->get('userId'), $request->get('lessonId'), $request->get('courseId'));
+        return response()->json($response);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function subscribeMember()
+    {
+        return view('frontend.pages.subscribe');
+    }
+
+    public function deleteComment(Request $request)
+    {
+        $response = app(CommentService::class)->deleteComment($request->get('userId'), $request->get('commentId'));
         return response()->json($response);
     }
 }

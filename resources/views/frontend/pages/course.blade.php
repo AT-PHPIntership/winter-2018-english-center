@@ -27,13 +27,13 @@
       <div class="col-md-4 col-sm-6">
         <div class="single-event-item">
           <div class="single-event-image">
-            <a href="#">
+            <a href="">
             <img src="{{ $course->image }}" alt="">
             <span><span>{{$course->children->count()}}</span>{{ __('layout_user.header.courses') }}</span>
             </a>
           </div>
           <div class="single-event-text">
-            <h3><a href="#">{{ $course->title }}</a></h3>
+            <h3>{{ $course->title }}</h3>
             <p>{{ $course->content }}</p>
             <a class="button-default" href="#">{{ __('layout_user.courses.btn') }}</a>
           </div>
@@ -73,11 +73,15 @@
                            <span><i class="zmdi zmdi-eye"></i>{{ $childrenCourse->count_view }}</span>
                        </div>
                        <div class="single-item-rating">
-                        <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $childrenCourse->average }}" data-size="ys" disabled="">
-                       </div>
+                            <i class="zmdi {{ ($course->average -0.5)>0 ? 'zmdi-star': (($course->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            <i class="zmdi {{ ($course->average -1.5)>0 ? 'zmdi-star': (($course->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            <i class="zmdi {{ ($course->average -2.5)>0 ? 'zmdi-star': (($course->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            <i class="zmdi {{ ($course->average -3.5)>0 ? 'zmdi-star': (($course->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            <i class="zmdi {{ ($course->average -4.5)>0 ? 'zmdi-star': (($course->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                        </div>
                     </div>
                     <p>{{ $childrenCourse->content }}</p>
-                    <a class="button-default" href="#">{{ __('layout_user.courses.btn') }}</a>
+                    <a class="button-default" href="{{ route('user.course.detail', $childrenCourse->id) }}">{{ __('layout_user.courses.btn') }}</a>
                   </div>
                 </div>
               </div>
