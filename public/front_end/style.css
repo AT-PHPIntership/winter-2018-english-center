@@ -163,7 +163,7 @@ body {
 }
 .container { width: 1200px}
 .section-margin {margin: 120px 0 140px 0}
-.section-padding {padding: 120px 0}
+.section-padding {padding: 50px 0 0 0}
 .section-bottom-padding {padding: 0 0 120px 0}
 .section-top-padding {padding: 120px 0 0 0}
 .section-title {
@@ -817,7 +817,7 @@ body {
     margin-right: 11px;
 }
 .single-item-text-info span span {color: #2d3e50;}
-.single-item-text > p {color: #222222; height: 120px;}
+.single-item-text > p {color: #222222; height: 90px;}
 .single-item-content {
     margin-bottom: 44px;
     overflow: hidden;
@@ -847,7 +847,7 @@ body {
     background: #86bc42 none repeat scroll 0 0;
     box-shadow: 0 2px 20px rgba(34, 30, 31, 0.2);
     font-size: 18px;
-    margin-top: 83px;
+    margin-bottom: 50px;
     padding: 12px 18px;
     text-transform: capitalize;
 }
@@ -2326,7 +2326,7 @@ input[type="submit"].btn-block {
 }
 
 .margin-bottom {
-    margin-bottom: 70px;
+    margin-bottom: 0px;
 }
 
 .rating-link {
