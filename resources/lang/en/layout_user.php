@@ -47,7 +47,7 @@ return [
         'btn' => 'Learn Now',
         'see_all' => 'See All',
         'allcourses' => 'Browse All Courses ',
-        'show_courses' => [ 
+        'show_courses' => [
             'our_courses' => 'Our Courses',
         ],
         'course_detail' =>[
@@ -163,6 +163,7 @@ return [
         'position' => 'Developer Educat'
     ],
     'levels' => [
+        'name' => 'Our Level',
         'title' => 'LEVEL',
         'date' => 'Date:',
         'btn' => 'Learn Now',
