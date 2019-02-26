@@ -47,7 +47,7 @@ return [
         'btn' => 'Learn Now',
         'see_all' => 'See All',
         'allcourses' => 'Browse All Courses ',
-        'show_courses' => [
+        'show_courses' => [ 
             'our_courses' => 'Our Courses',
         ],
         'course_detail' =>[
@@ -60,7 +60,14 @@ return [
             'comment' => [
                 'posted_on' => 'Posted on ',
             ],
+            'rating' => [
+                'title' => 'Rating Course',
+            ],
         ],
+        'courses_detail' => [
+            'title' => 'Courses Detail'
+        ],
+        'name' => 'courses'
     ],
     'lessons' => [
         'lesson_detail' => [
@@ -176,4 +183,7 @@ return [
         ],
         'submit' => 'SUBMIT'
     ],
+    'rating' => [
+        'title' => 'Rating'
+    ]
 ];

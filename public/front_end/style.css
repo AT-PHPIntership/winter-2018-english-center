@@ -2360,3 +2360,7 @@ input[type="submit"].btn-block {
 }
 
 .star-rating .fa-star{color: yellow;}
+
+.course-details-content .single-course-details .single-item-text h4 {
+    height: 90px;
+}

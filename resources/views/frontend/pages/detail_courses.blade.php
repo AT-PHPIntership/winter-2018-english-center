@@ -6,11 +6,11 @@
     <div class="row">
       <div class="col-md-12">
         <div class="breadcrumb-text">
-          <h1 class="text-center">{{ __('layout_user.courses.show_courses.our_courses') }}</h1>
+          <h1 class="text-center">{{ __('layout_user.courses.courses_detail.title') }}</h1>
           <div class="breadcrumb-bar">
             <ul class="breadcrumb text-center">
               <li><a href="index.html">{{ __('layout_user.header.home') }}</a></li>
-              <li>{{ __('layout_user.header.courses') }}</li>
+              <li>{{ __('layout_user.courses.courses_detail.title') }}</li>
             </ul>
           </div>
         </div>
@@ -19,8 +19,7 @@
   </div>
 </div>
 <!--End of Breadcrumb Banner Area-->
-<!--Event Area Start-->
-@foreach ($courses as $course)
+<!--Courses Details Area Start-->
 <div class="course-area section-padding">
     <div class="container">
         <div class="row">
@@ -68,7 +67,6 @@
             @endforeach
         </div>
     </div>
-</div>
-@endforeach
-<!--End of Event Area-->
+</div>>
+<!--Courses Details Area End-->
 @endsection

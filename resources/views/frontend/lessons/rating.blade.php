@@ -5,11 +5,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb-text">
-                        <h1 class="text-center">@lang('layout_user.lessons.lesson_detail.rating.title')</h1>
+                        <h1 class="text-center">@lang('layout_user.rating.title') {{$ele}}</h1>
                         <div class="breadcrumb-bar">
                             <ul class="breadcrumb text-center">
                                 <li><a href="{{ route('user.home') }}">{{ __('layout_user.header.home') }}</a></li>
-                                <li>@lang('layout_user.lessons.lesson_detail.rating.title')</li>
+                                <li>@lang('layout_user.rating.title') {{$ele}}</li>
                             </ul>
                         </div>
                     </div>
