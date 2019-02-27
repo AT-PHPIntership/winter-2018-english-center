@@ -185,6 +185,15 @@ return [
         'submit' => 'SUBMIT'
     ],
     'rating' => [
-        'title' => 'Rating'
+        'title' => 'Rating',
+        'btn' => 'See Now',
+        'course' => [
+            'title' => 'Latest Rating Courses',
+            'desc' => 'There are many rates of courses',
+        ],
+        'lesson' => [
+            'title' => 'Latest Rating Lessons',
+            'desc' => 'There are many rates of lessons',
+        ],
     ]
 ];
