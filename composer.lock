@@ -1186,11 +1186,7 @@
                 "framework",
                 "laravel"
             ],
-<<<<<<< HEAD
             "time": "2019-01-15T15:20:32+00:00"
-=======
-            "time": "2019-01-22T15:08:35+00:00"
->>>>>>> 1c04500cc3e67301b61c811aa3e878cb9a9c96bd
         },
         {
             "name": "laravel/nexmo-notification-channel",

@@ -29,7 +29,7 @@
         <div class="col-md-12">
           <div class="section-title-wrapper">
             <div class="section-title">
-              <h3>{{ $course->title }}</h3>
+              <h3>{{ $course->name }}</h3>
               <span>{{ $course->children->count() }}</span>
               <p>{{ __('layout_user.header.courses') }}</p>
             </div>
@@ -53,7 +53,7 @@
                       </div>
                       <div class="single-event-text">
                         <h3>
-                        <a href="{{ route('user.course.detail', $childrenCourse->id) }}">{{ $childrenCourse->title }}</a>
+                        <a href="{{ route('user.course.detail', $childrenCourse->id) }}">{{ $childrenCourse->name }}</a>
                         <div class="single-item-content">
                           <div class="single-item-comment-view pull-left">
                             <span><i class="zmdi zmdi-eye"></i>{{ $childrenCourse->count_view }}</span>

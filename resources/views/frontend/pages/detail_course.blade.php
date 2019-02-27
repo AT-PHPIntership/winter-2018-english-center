@@ -34,7 +34,7 @@
               </div>
               <div class="col-md-6">
                 <div class="single-item-text">
-                  <h4>{{ $course->title }}</h4>
+                  <h4>{{ $course->name }}</h4>
                   <div class="single-item-text-info">
                     <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $course->created_at}}</span></span>
                   </div>
@@ -79,6 +79,25 @@
               @endforeach
             </div>
           </div>
+          @if(Auth::check())
+          @foreach((Auth::user()->courses) as $course_user)
+            @if($course_user->id === $course->id)
+            <div class="rating-link">
+              <div class="single-item-rating user-rating">
+                <i class="zmdi zmdi-star"></i>
+                <i class="zmdi zmdi-star"></i>
+                <i class="zmdi zmdi-star"></i>
+                <i class="zmdi zmdi-star"></i>
+                <i class="zmdi zmdi-star"></i>
+              </div>
+              <a class="rating" href="{{ route('user.rating', ['courses', $course->id] )}}">@lang('layout_user.lessons.lesson_detail.rating.title')</a>
+            </div>
+            @else
+            <div class="rating-link">
+            </div>
+            @endif
+          @endforeach
+          @endif
           <div class="comments">
             <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             <div class="single-comment">
@@ -132,6 +151,35 @@
               </li>
               @endforeach
             </ol>
+
+            @foreach($rates as $rate)
+              @if($rate->ratingable_type === 'courses')
+                @if($rate->ratingable_id === $course->id)
+                  <li class="comment-border" data-id='{{ $rate->id }}'>
+                    <article id="{{$rate->id}}">
+                      <img alt='' src="{{ $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <div class="comment-des">
+                        <div class="comment-by">
+                              <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>
+                              <div class="single-item-rating" style="float: none;">
+                              <i class="zmdi {{ ($rate->star -0.5)>0 ? 'zmdi-star': (($rate->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -1.5)>0 ? 'zmdi-star': (($rate->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -2.5)>0 ? 'zmdi-star': (($rate->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -3.5)>0 ? 'zmdi-star': (($rate->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -4.5)>0 ? 'zmdi-star': (($rate->star -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                          </div>
+                          <p class="date"><a><time>{{$rate->created_at}}</time></a>
+                        </div>
+                        <section>
+                          <p>{{$rate->content}}</p>
+                        </section>
+                      </div>
+                    </article>
+                  </li>
+                  @endif
+                @endif
+            @endforeach
+            
           </div>
         </div>
       </div>
@@ -146,7 +194,7 @@
                 <a href="{{ route('user.course.detail', $parentCourse->id) }}"><img alt="" src="{{ $parentCourse->image }}"></a>
               </div>
               <div class="single-item-text">
-                <h4><a href="{{ route('user.course.detail', $parentCourse->id) }}">{{ $parentCourse->title }}</a></h4>
+                <h4><a href="{{ route('user.course.detail', $parentCourse->id) }}">{{ $parentCourse->name }}</a></h4>
                 <div class="single-item-text-info">
                   <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $parentCourse->created_at}}</span></span>
                 </div>

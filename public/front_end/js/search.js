@@ -16,6 +16,7 @@ $(document).ready(function () {
     $('#search').keyup(delay(function (e) {
         e.preventDefault();
         var query = $(this).val();
+        // console.log(query);
         if (query != '' && query.length >= 2) {
             $.ajax({
                 url: 'search/courses',

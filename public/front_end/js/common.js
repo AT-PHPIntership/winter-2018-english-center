@@ -210,7 +210,7 @@ $(document).on('click', '#reply-button', function() {
                 output += '<div class="comment-des">';
                 output += '<div class="comment-by">';
                 output += '<p class="author"><strong>'+ data.userName +'</strong></p>';
-                output += '<p class="date"><a><time>'+ data.created_at +'</time></a> - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="' + data.id + '">Delete</a>';
+                output += '<p class="date"><a><time>'+ data.created_at +'</time></a> - <a class="edit-comment" id="' + data.id + '">Edit</a> - <a class="delete-comment" id="' + data.id + '">Delete</a>';
                 output += '</div>';
                 output += '<section>';
                 output += '<p>'+ data.content +'</p>';
@@ -278,9 +278,9 @@ $(document).ready(function () {
 
 });
 
-// $(document).ready(function(){
-//   $('.subscribe').on('click', function(){
-//     // console.log('ahaha');
-    
-//   });
-// });
+$(document).on('click', '.edit-comment', function(){
+  var commentId = $(this).attr('id');
+  var userId = $('#comment-button').data('user');
+  var token = $('#comment-button').data('token');
+  // debugger;
+});

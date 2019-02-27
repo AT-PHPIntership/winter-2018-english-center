@@ -167,7 +167,7 @@
                       <p class="author"><strong>{{$comment->user->userProfile['name'] }}</strong></p>
                       <p class="date"><a><time>{{$comment->created_at}}</time></a>
                         @if(Auth::user()->id == $comment->user_id )
-                         - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
+                         - <a class="edit-comment" id="{{$comment->id}}">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
                         @endif
                         <span class="reply"><a class="add-reply" id='{{$comment->id}}'>Reply</a></span>
                     </div>
@@ -186,7 +186,7 @@
                           <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
                           <p class="date"><a><time>{{$reply->created_at}}</time></a>
                             @if(Auth::user()->id == $comment->user_id )
-                             - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
+                             - <a class="edit-comment" id="{{$comment->id}}">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
                             @endif
                         </div>
                         <section>
