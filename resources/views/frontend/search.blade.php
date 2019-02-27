@@ -17,10 +17,10 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="single-item">
                         <div class="single-item-image overlay-effect">
-                            <a href="#"><img src="{{ $course->image }}" alt=""></a>
+                            <a href="{{ (is_null($course->parent_id))? route('user.courses.detail', $course->id) : route('user.course.detail', $course->id) }}"><img src="{{ $course->image }}" alt=""></a>
                         </div>
                         <div class="single-item-text">
-                            <h4><a href="#">{{ $course->name }}</a></h4>
+                            <h4><a href="{{ (is_null($course->parent_id))? route('user.courses.detail', $course->id) : route('user.course.detail', $course->id) }}">{{ $course->name }}</a></h4>
                             <div class="single-item-text-info">
                                 <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                             </div>
@@ -40,7 +40,7 @@
                             </div>   
                         </div>
                         <div class="button-bottom">
-                            <a href="#" class="button-default">@lang('layout_user.courses.btn')</a>
+                            <a href="{{ (is_null($course->parent_id))? route('user.courses.detail', $course->id) : route('user.course.detail', $course->id) }}" class="button-default">@lang('layout_user.courses.btn')</a>
                         </div>
                     </div>
                 </div>

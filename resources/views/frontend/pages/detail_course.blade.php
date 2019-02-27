@@ -34,7 +34,7 @@
               </div>
               <div class="col-md-6">
                 <div class="single-item-text">
-                  <h4>{{ $course->title }}</h4>
+                  <h4>{{ $course->name }}</h4>
                   <div class="single-item-text-info">
                     <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $course->created_at}}</span></span>
                   </div>
@@ -83,7 +83,7 @@
                 <i class="zmdi zmdi-star"></i>
                 <i class="zmdi zmdi-star"></i>
               </div>
-              <a class="rating" href="{{ route('user.rating', ['courses', $course->id] )}}">@lang('layout_user.lessons.lesson_detail.rating.title')</a>
+              <a class="rating" href="{{ route('user.rating', ['courses', $course->id] )}}">@lang('layout_user.courses.course_detail.rating.title')</a>
             </div>
             @else
             <div class="rating-link">
@@ -171,26 +171,26 @@
                 <a href="{{ route('user.course.detail', $parentCourse->id) }}"><img alt="" src="{{ $parentCourse->image }}"></a>
               </div>
               <div class="single-item-text">
-                <h4><a href="{{ route('user.course.detail', $parentCourse->id) }}">{{ $parentCourse->title }}</a></h4>
+                <h4><a href="{{ route('user.course.detail', $parentCourse->id) }}">{{ $parentCourse->name }}</a></h4>
                 <div class="single-item-text-info">
                   <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $parentCourse->created_at}}</span></span>
                 </div>
-                <p></p>
+                <p>{{ $parentCourse->content }}</p>
                 <div class="single-item-content">
                   <div class="single-item-comment-view">
                     <span><i class="zmdi zmdi-eye"></i>{{ $parentCourse->count_view }}</span>
                   </div>
                   <div class="single-item-rating">
-                    <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star-half"></i>
-                  </div>
+                      <i class="zmdi {{ ($parentCourse->average -0.5)>0 ? 'zmdi-star': (($parentCourse->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                      <i class="zmdi {{ ($parentCourse->average -1.5)>0 ? 'zmdi-star': (($parentCourse->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                      <i class="zmdi {{ ($parentCourse->average -2.5)>0 ? 'zmdi-star': (($parentCourse->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                      <i class="zmdi {{ ($parentCourse->average -3.5)>0 ? 'zmdi-star': (($parentCourse->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                      <i class="zmdi {{ ($parentCourse->average -4.5)>0 ? 'zmdi-star': (($parentCourse->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                    </div>
                 </div>
               </div>
               <div class="button-bottom">
-                <a class="button-default" href="#">{{ __('layout_user.courses.btn') }}</a>
+                <a class="button-default" href="{{ route('user.course.detail', $parentCourse->id) }}">{{ __('layout_user.courses.btn') }}</a>
               </div>
             </div>
             @endif

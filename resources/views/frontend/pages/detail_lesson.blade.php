@@ -232,15 +232,33 @@
             <h4 class="title">{{ __('layout_user.lessons.lesson_detail.recent_lesson') }}</h4>
             <div class="recent-content">
               @foreach ($recentLessons as $items)
-              <div class="recent-content-item">
-                <a href="{{ route('user.lesson.detail', $items->id) }}"><img src="{{ $items->image }}" alt=""></a>
-                <div class="recent-text">
-                  <h4><a href="">{{ $items->name }}</a></h4>
-                  <div class="single-item-comment-view">
-                    <span><i class="zmdi zmdi-eye"></i>{{ $items->count_view }}</span>
+              <div class="single-item">
+                  <div class="single-item-image overlay-effect">
+                      <a href="{{ route('user.lesson.detail', $items->id) }}"><img src="{{ $items->image }}" alt=""></a>
                   </div>
-                  <p></p>
-                </div>
+                  <div class="single-item-text">
+                      <h4><a href="{{ route('user.lesson.detail', $items->id) }}">{{ $items->name }}</a></h4>
+                      <div class="single-item-text-info">
+                          <span>@lang('layout_user.levels.date') <span>{{ $items->updated_at }}</span></span>
+                      </div>
+                      <p>{{ $items->text }}</p>
+                      <div class="single-item-content">
+                          <div class="single-item-comment-view">
+                              <span><i class="zmdi zmdi-eye"></i>{{ $items->count_view }}</span>
+                              <span><i class="zmdi zmdi-comments"></i></span>
+                          </div>
+                          <div class="single-item-rating">
+                              <i class="zmdi {{ ($items->average -0.5)>0 ? 'zmdi-star': (($items->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($items->average -1.5)>0 ? 'zmdi-star': (($items->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($items->average -2.5)>0 ? 'zmdi-star': (($items->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($items->average -3.5)>0 ? 'zmdi-star': (($items->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($items->average -4.5)>0 ? 'zmdi-star': (($items->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                          </div>
+                      </div>   
+                  </div>
+                  <div class="button-bottom">
+                      <a href="{{ route('user.lesson.detail', $items->id) }}" class="button-default">@lang('layout_user.levels.btn')</a>
+                  </div>
               </div>
               @endforeach
             </div>

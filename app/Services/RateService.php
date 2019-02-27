@@ -74,4 +74,32 @@ class RateService
             ]);
             return $course;
     }
+
+    /**
+     * Function get new courses
+     *
+     * @return App\Services\RateService
+    **/
+    public function getNewRatingLessons()
+    {
+        return Rating::select('ratings.*')
+                        ->where('ratingable_type', '=', 'lessons')
+                        ->orderBy('updated_at', 'desc')
+                        ->limit(config('define.lessons.page_site'))
+                        ->get();
+    }
+
+    /**
+     * Function get new courses
+     *
+     * @return App\Services\RateService
+    **/
+    public function getNewRatingCourses()
+    {
+        return Rating::select('ratings.*')
+                        ->where('ratingable_type', '=', 'courses')
+                        ->orderBy('updated_at', 'desc')
+                        ->limit(config('define.lessons.page_site'))
+                        ->get();
+    }
 }

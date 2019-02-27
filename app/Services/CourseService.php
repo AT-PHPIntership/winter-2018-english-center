@@ -86,6 +86,7 @@ class CourseService
         return \DB::table('courses')
                     ->join('course_user', 'course_user.course_id', '=', 'courses.id')
                     ->select('courses.*', \DB::raw('count(*) as total'))
+                    ->where('parent_id', '!=', 'NULL')
                     ->groupBy('courses.id')
                     ->orderBy('total', 'desc')
                     ->limit(config('define.courses.limit_courses'))
@@ -101,7 +102,8 @@ class CourseService
     {
         return \DB::table('courses')
                     ->select('courses.*')
-                    ->orderBy('created_at', 'desc')
+                    ->where('parent_id', '!=', 'NULL')
+                    ->orderBy('updated_at', 'desc')
                     ->limit(config('define.courses.limit_courses'))
                     ->get();
     }

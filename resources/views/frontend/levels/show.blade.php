@@ -1,5 +1,24 @@
 @extends('frontend.layouts.master')
 @section('content')
+    <!--Breadcrumb Banner Area Start-->
+    <div class="breadcrumb-banner-area">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="breadcrumb-text">
+            <h1 class="text-center">{{ __('layout_user.levels.name') }}</h1>
+            <div class="breadcrumb-bar">
+                <ul class="breadcrumb text-center">
+                <li><a href="index.html">{{ __('layout_user.header.home') }}</a></li>
+                <li>{{ __('layout_user.levels.title') }}</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <!--End of Breadcrumb Banner Area-->
     <div class="course-area section-padding">
         <div class="container">
             <div class="row">
@@ -17,10 +36,10 @@
                 <div class="col-md-4 col-sm-6 margin-bottom">
                     <div class="single-item">
                         <div class="single-item-image overlay-effect">
-                            <a href="#"><img src="{{ $lesson->image }}" alt=""></a>
+                            <a href="{{ route('user.lesson.detail', $lesson->id) }}"><img src="{{ $lesson->image }}" alt=""></a>
                         </div>
                         <div class="single-item-text">
-                            <h4><a href="#">{{ $lesson->name }}</a></h4>
+                            <h4><a href="{{ route('user.lesson.detail', $lesson->id) }}">{{ $lesson->name }}</a></h4>
                             <div class="single-item-text-info">
                                 <span>@lang('layout_user.levels.date') <span>{{ $lesson->updated_at }}</span></span>
                             </div>
@@ -40,7 +59,7 @@
                             </div>   
                         </div>
                         <div class="button-bottom">
-                            <a href="#" class="button-default">@lang('layout_user.levels.btn')</a>
+                            <a href="{{ route('user.lesson.detail', $lesson->id) }}" class="button-default">@lang('layout_user.levels.btn')</a>
                         </div>
                     </div>
                 </div>
