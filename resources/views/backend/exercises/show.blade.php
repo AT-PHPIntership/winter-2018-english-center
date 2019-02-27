@@ -2,14 +2,14 @@
 @section('title', 'HOME')
 @section('content')
 <section class="content-header">
-  <h1>@lang('exercise.title')</h1>
+  <h1>@lang('question.title')</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
       <i class="fas fa-tachometer-alt"></i>@lang('layout_admin.home')
       </a>
     </li>
-    <li class="active">@lang('exercise.title')</li>
+    <li class="active">@lang('question.title')</li>
   </ol>
 </section>
 <section class="content">
@@ -24,33 +24,43 @@
     </div>
   </div>
   @endif
-  <div class="col-xs-12">
+  <div class="col-xs-10 col-xs-offset-1">
     <div class="box">
       <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>@lang('exercise.list_exercise.id')</th>
-              <th>@lang('exercise.list_exercise.exercises')</th>
-              <th>@lang('exercise.list_exercise.lessons')</th>
-              <th>@lang('exercise.list_exercise.action')</th>
+              <th>@lang('question.list_question.id')</th>
+              <th>@lang('question.list_question.question')</th>
+              <th>@lang('question.list_question.answer')</th>
+              <th>@lang('question.list_question.action')</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($exercises as $exercise)
+            @foreach ($exercise->questions as $question)
             <tr>
-              <td>{{ $exercise->id }}</td>
+              <td>{{ $question->id }}</td>
+              <td>{{ $question->content }}</a></td>
               <td>
-                <a href="{{ route('admin.exercises.show', $exercise->id) }} ">
-                  {{ $exercise->title }}
-                </a>
-              </td>
-              <td>
-                @if(!$exercise['lesson_id'])
-                {{ 'none' }}
-                @else
-                {{ $exercise->lesson->name }}
-                @endif
+                <div class="form-group">
+                  @foreach ($question->answers as $key => $answer)
+                    @if($answer->status == 1)
+                      <div>
+                        <label name="{{ $key }}" value="{{ $answer->id }}">
+                            {{ $answer->answers }}
+                            <img src="images/icons/active.gif">
+                        </label>
+                      </div>
+                    @else
+                    <div>
+                        <label name="{{ $key }}" value="{{ $answer->id }}">
+                            {{ $answer->answers }}
+                        </label>
+                      </div>
+                    @endif
+                  @endforeach
+                </div>
               </td>
               <td>
                 <a href="#" class="btn btn-warning">@lang('course.list_course.edit')</a>
@@ -62,6 +72,7 @@
                 </form>
               </td>
             </tr>
+            @endforeach
             @endforeach
           </tbody>
         </table>

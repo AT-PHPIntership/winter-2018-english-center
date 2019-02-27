@@ -19,3 +19,5 @@
 <script src="js/common.js"></script>
 <!-- Show alert when create, update, delete -->
 <script src="js/show.js"></script>
+<!-- plus questions -->
+<script src="js/question.js"></script>
