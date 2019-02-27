@@ -44,12 +44,12 @@
             @foreach ($courses as $key => $course)
             <tr>
               <td>{{ $course->id }}</td>
-              <td>{{ $course->title }}</td>
+              <td>{{ $course->name }}</td>
               <td>
                 @if(!$course['parent_id'])
                 {{ 'none' }}
                 @else
-                {{ $course->parent->title }}
+                {{ $course->parent->name }}
                 @endif
               </td>
               <td>{{ $course->count_view }}</td>

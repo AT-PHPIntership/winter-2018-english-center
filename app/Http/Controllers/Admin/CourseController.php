@@ -78,9 +78,9 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy($id)
     {
-        app(CourseService::class)->destroy($course);
+        app(CourseService::class)->destroy($id);
         return redirect()->route('admin.courses.index')->with('success', __('common.success'));
     }
 }

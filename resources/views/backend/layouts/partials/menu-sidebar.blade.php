@@ -26,8 +26,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">@lang('layout_admin.sidebar.main_navigation')</li>
-        <li class="treeview">
-          <a href="#">
+        <li class="#">
+          <a href="{{ route('admin.dashboard') }}">
             <i class="fa fa-dashboard"></i> <span>@lang('layout_admin.dashboard')</span>
           </a>
         </li>
@@ -56,7 +56,7 @@
             <li><a href="{{ route('admin.courses.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_course')</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treevie">
           <a href="{{ route('admin.levels.index') }}">
             <i class="fa fa-table"></i> <span>@lang('layout_admin.sidebar.level_management')</span>
           </a>

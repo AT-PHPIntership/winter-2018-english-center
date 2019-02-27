@@ -23,9 +23,9 @@
         <div class="box-body">
           <div class="form-group">
             <label>@lang('course.list_course.name')</label>
-            <input name="title" type="text" class="form-control" placeholder="Add name course ...">
-            @if ($errors->has('title'))
-              <span class="text-red help is-danger">* {{ $errors->first('title') }}</span>
+            <input name="name" type="text" class="form-control" placeholder="Add name course ...">
+            @if ($errors->has('name'))
+              <span class="text-red help is-danger">* {{ $errors->first('name') }}</span>
             @endif
           </div>
           <div class="form-group">
@@ -33,7 +33,7 @@
             <select name="parent_id" class="form-control select2">
               <option value="">@lang('course.create_course.select')</option>
               @foreach ($courses as $course)
-              <option value="{{ $course->id }}">{{ $course->title }}</option>
+              <option value="{{ $course->id }}">{{ $course->name }}</option>
               @endforeach
             </select>
             @if ($errors->has('parent_id'))

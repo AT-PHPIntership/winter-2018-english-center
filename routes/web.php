@@ -31,6 +31,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::resource('lessons', 'LessonController');
 
     Route::resource('comments', 'CommentController');
+
+    Route::resource('questions', 'QuestionController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {

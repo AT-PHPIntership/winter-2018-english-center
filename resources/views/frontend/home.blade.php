@@ -37,7 +37,7 @@
                                 <a href="#"><img src="{{ $course->image }}" alt=""></a>
                             </div>
                             <div class="single-item-text">
-                                <h4><a href="#">{{ $course->title }}</a></h4>
+                                <h4><a href="#">{{ $course->name }}</a></h4>
                                 <div class="single-item-text-info">
                                     <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                                 </div>
@@ -89,7 +89,7 @@
                                 <a href="#"><img src="{{ $course->image }}" alt=""></a>
                             </div>
                             <div class="single-item-text">
-                                <h4><a href="#">{{ $course->title }}</a></h4>
+                                <h4><a href="#">{{ $course->name }}</a></h4>
                                 <div class="single-item-text-info">
                                     <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                                 </div>

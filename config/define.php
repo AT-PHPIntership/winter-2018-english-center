@@ -5,7 +5,7 @@ return [
     'page_site_vocabulary' => 10,
     'courses' => [
         'limit_courses' => 3,
-        'limit_rows' => 10,
+        'limit_rows' => 20,
         'order_by_desc' =>'desc',
         'vip' => 'VIP',
         'trial' => 'TRIAL',
