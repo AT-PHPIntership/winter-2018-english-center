@@ -24,50 +24,25 @@
     <div class="container">
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h4><i class="icon fa fa-ban"></i> Thong bao!</h4>
-            <p>Ban phai dang ky thanh vien la VIP de tiep tuc!</p>
+            <h4><i class="icon fa fa-ban"></i> {{ __('layout_user.subcribe.notification') }}</h4>
+            <p>{{ __('layout_user.subcribe.notification1') }}</p>
         </div>
         <div class="row">
             <!--Shop Grid Area Start-->
-            <div class="col-md-4 col-sm-3">
+            <div class="col-md-6 col-xs-offset-3">
                 <div class="single-product-item">
                     <div class="single-product-image">
-                        {{-- <a href="#"><img src="https://lorempixel.com/200/200/?61623" alt=""></a> --}}
-                        <h1>PACKAGE 1</h1>
+                        <a href="#"><img src="https://lorempixel.com/200/200/?61623" alt=""></a>
+                        <h1>REQUEST</h1>
                     </div>
                     <div class="single-product-text">
                         <h4><a href="#">Subscribe Member VIP</a></h4>
-                        <div class="product-buttons">
-                            <button type="button" class="btn btn-block btn-success">Subscribe</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-3">
-                <div class="single-product-item">
-                    <div class="single-product-image">
-                        {{-- <a href="#"><img src="https://lorempixel.com/200/200/?61623" alt=""></a> --}}
-                        <h1>PACKAGE 3</h1>
-                    </div>
-                    <div class="single-product-text">
-                        <h4><a href="#">Subscribe Member VIP</a></h4>
-                        <div class="product-buttons">
-                            <button type="button" class="btn btn-block btn-success">Subscribe</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-3">
-                <div class="single-product-item">
-                    <div class="single-product-image">
-                        {{-- <a href="#"><img src="https://lorempixel.com/200/200/?61623" alt=""></a> --}}
-                        <h1>ALL PACKAGE</h1>
-                    </div>
-                    <div class="single-product-text">
-                        <h4><a href="#">Subscribe Member VIP</a></h4>
-                        <div class="product-buttons">
-                            <button type="button" class="btn btn-block btn-success cart-btn">Subscribe</button>
-                        </div>
+                        <form method="POST" action="{{ route('user.upgradeVip') }}" class="inline">
+                          @csrf
+                          @method('PUT')
+                          <input type="hidden" name="lesson_id" value="{{ explode("/",url()->previous())[5] }}">
+                          <button type="submit" class="btn btn-block subscribe">Subscribe</button>
+                        </form>
                     </div>
                 </div>
             </div>

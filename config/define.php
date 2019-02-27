@@ -2,12 +2,14 @@
 
 return [
     'page_site' => 20,
+    'page_site_vocabulary' => 10,
     'courses' => [
         'limit_courses' => 3,
         'limit_rows' => 10,
         'order_by_desc' =>'desc',
         'vip' => 'VIP',
         'trial' => 'TRIAL',
+        'page_site_course' => 6,
     ],
     'order_by_desc' =>'desc',
     'vip' => 'VIP',

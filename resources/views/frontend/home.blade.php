@@ -7,9 +7,9 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="about-container">
-                        <h3>@lang('layout_user.about_us.title')</h3>
-                        <p>{{ $system->aboutus }}</p>
-                        <a class="button-default" href="#">@lang('layout_user.about_us.btn')</a>	      
+                        <h3>@lang('layout_user.why_us.title')</h3>
+                        <p>{{ $system->whyus }}</p>
+                        <a class="button-default" href="#">@lang('layout_user.why_us.btn')</a>	      
                     </div>
                 </div>
             </div>
@@ -48,12 +48,12 @@
                                        <span><i class="zmdi zmdi-comments"></i></span>
                                    </div>
                                    <div class="single-item-rating">
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star-half"></i>
-                                   </div>
+                                        <i class="zmdi {{ ($course->average -0.5)>0 ? 'zmdi-star': (($course->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -1.5)>0 ? 'zmdi-star': (($course->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -2.5)>0 ? 'zmdi-star': (($course->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -3.5)>0 ? 'zmdi-star': (($course->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -4.5)>0 ? 'zmdi-star': (($course->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                    </div>
                                 </div>   
                             </div>
                             <div class="button-bottom">
@@ -100,12 +100,12 @@
                                        <span><i class="zmdi zmdi-comments"></i></span>
                                    </div>
                                    <div class="single-item-rating">
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star"></i>
-                                       <i class="zmdi zmdi-star-half"></i>
-                                   </div>
+                                        <i class="zmdi {{ ($course->average -0.5)>0 ? 'zmdi-star': (($course->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -1.5)>0 ? 'zmdi-star': (($course->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -2.5)>0 ? 'zmdi-star': (($course->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -3.5)>0 ? 'zmdi-star': (($course->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                        <i class="zmdi {{ ($course->average -4.5)>0 ? 'zmdi-star': (($course->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                    </div>
                                 </div>   
                             </div>
                             <div class="button-bottom">

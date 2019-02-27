@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 a {-webkit-transition: all 0.3s ease 0s;transition: all 0.3s ease 0s;text-decoration:none; color: #000}
 a:hover {
-    color: #4c4c4c;
+    color: green;
     text-decoration: none;
 }
 a:active, a:hover, a:focus {outline: 0 none; text-decoration: none}
@@ -458,7 +458,7 @@ body {
 .mainmenu ul.sub-menu ul.inside-menu {
     left: 178px;
     top: -2px;
-    width: 210px;
+    width: 220px;
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
     -webkit-transform-origin: 0 0 0;
@@ -566,7 +566,10 @@ body {
     width: 290px;
     z-index: 9999;
 }
-.search.open {height: 50px}
+.search.open {
+    height: 50px;
+    overflow: visible;
+}
 .search-form {
     background-color: #ffffff;
     border-top: 1px solid #86bc42;
@@ -774,6 +777,10 @@ body {
     text-align: center;
     top: -35px;
 }
+.single-item-image img {
+    width: 300px;
+    height: 211px;
+}
 .overlay-effect a {position: relative}
 .overlay-effect a:before {
   background: rgba(45, 62, 80, 0.2) none repeat scroll 0 0;
@@ -795,14 +802,14 @@ body {
     padding: 0 35px;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 .single-item:hover {
     background: #ffffff none repeat scroll 0 0;
     box-shadow: 0 2px 20px rgba(34, 30, 31, 0.4);
 }
 .single-item-text h4 {font-size: 20px; padding-top: 7px;}
-.single-item-text h4 a, .single-item-text h4 {color: #2d3e50;}
+.single-item-text h4 a, .single-item-text h4 {color: #2d3e50; height: 55px;}
 .single-item-text h4 a:hover {color: #86bc42;}
 .single-item-text-info span {
     color: #696969;
@@ -810,7 +817,7 @@ body {
     margin-right: 11px;
 }
 .single-item-text-info span span {color: #2d3e50;}
-.single-item-text > p {color: #222222;}
+.single-item-text > p {color: #222222; height: 120px;}
 .single-item-content {
     margin-bottom: 44px;
     overflow: hidden;
@@ -2387,4 +2394,54 @@ ol.commentlist li ol.children li {
 
 #replyForm h3 span {
     margin-left: 10px;
+}
+#courseList {
+    padding-left: 10px;
+    width: 290px;
+}
+
+.single-teacher-item .single-teacher-image a img {
+    width: 270px;
+    height: 253px;
+    object-fit: cover;
+}
+
+.margin-bottom {
+    margin-bottom: 70px;
+}
+
+.rating-link {
+    margin-top: 30px;
+}
+
+.rating-link .rating {
+    color: #4c4c4c;
+    font-family: "montserratregular";
+    font-size: 24px;
+}
+
+.rating-link .rating:hover {
+    color:#86bc42;
+}
+
+.user-rating {
+    font-size: 22px;
+    float: none;
+    margin-right: 5px;
+}
+
+.product-details-area .section-top-padding {
+    margin-bottom: 100px;
+}
+
+.star-rating {
+  line-height: 32px;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.star-rating .fa-star{color: yellow;}
+
+p {
+    font-size: medium;
 }

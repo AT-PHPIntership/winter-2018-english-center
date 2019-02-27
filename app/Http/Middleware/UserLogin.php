@@ -17,10 +17,10 @@ class UserLogin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()) {
+        if (Auth::check() && Auth::user()->is_actived == 1) {
             return $next($request);
         } else {
-            return redirect('user/login')->with('warning', __('layout_user.login.warning'));
+            return redirect('login')->with('warning', __('layout_user.login.warning'));
         }
     }
 }

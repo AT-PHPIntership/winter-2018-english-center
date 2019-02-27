@@ -150,7 +150,7 @@
                 <div class="single-item-text-info">
                   <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $parentCourse->created_at}}</span></span>
                 </div>
-                <p></p>
+                {{-- <p></p> --}}
                 <div class="single-item-content">
                   <div class="single-item-comment-view">
                     <span><i class="zmdi zmdi-eye"></i>{{ $parentCourse->count_view }}</span>

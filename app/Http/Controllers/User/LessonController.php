@@ -55,4 +55,36 @@ class LessonController extends Controller
         $response = app(CommentService::class)->deleteComment($request->get('userId'), $request->get('commentId'));
         return response()->json($response);
     }
+
+    public function upgradeVip(Request $request)
+    {
+        // dd($request);
+        $next = app(LessonService::class)->upgradeVip($request->all());
+        return redirect()->route('user.lesson.detail', $next);
+    }
+    // /**
+    //  * Add comment to lesson d resource.
+    //  *
+    //  * @param Request $request lesson
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function lessonComment(Request $request)
+    // {
+    //     $response = app(CommentService::class)->comment($request->get('userId'), $request->get('lessonId'), $request->get('content'));
+    //     return response()->json($response);
+    // }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param Request $request lesson
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function lessonReply(Request $request)
+    // {
+    //     $response = app(CommentService::class)->reply($request->get('userId'), $request->get('lessonId'), $request->get('content'), $request->get('parentComment'));
+    //     return response()->json($response);
+    // }
 }

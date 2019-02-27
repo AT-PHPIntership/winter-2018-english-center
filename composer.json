@@ -15,6 +15,7 @@
         "kalnoy/nestedset": "^4.1",
         "laracasts/utilities": "^3.0",
         "laravel/framework": "5.7.*",
+        "laravel/socialite": "^4.0",
         "laravel/tinker": "^1.0",
         "maatwebsite/excel": "~2.1.0",
         "phpoffice/phpspreadsheet": "^1.6"

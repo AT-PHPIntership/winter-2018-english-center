@@ -39,25 +39,46 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'
     Route::get('/logout', 'LoginController@logout')->name('logout');
 });
 
-Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
-    Route::get('/', 'HomeController@index')->name('home');
-    
-    Route::group(['as' => 'user.'], function() {
-        Route::get('/login', 'AuthController@showLoginForm')->name('login');
-        Route::post('/login', 'AuthController@login')->name('login');
-        Route::get('/logout', 'AuthController@logout')->name('logout');
+
+Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin'], function() {
+    Route::get('/profiles', 'ProfileController@show')->name('profiles.show');
+    Route::get('/profiles/edit', 'ProfileController@edit')->name('profiles.edit');
+    Route::put('/profiles', 'ProfileController@update')->name('profiles.update');
+
+    Route::group(['middleware' => 'filter'], function() {
+        Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail');
+        Route::post('lesson', 'LessonController@resutlLesson');
+        Route::post('comment/{element}', 'CourseController@elementComment');
+        Route::post('reply/{element}', 'CourseController@elementReply');
+        Route::get('rating/{ele}/{id}', 'RatingController@showRating')->name('rating');
+        Route::post('rating/{ele}/{id}', 'RatingController@getRating')->name('rating');
+        Route::get('subscribe', 'LessonController@subscribeMember');
+        Route::delete('delete/comment', 'LessonController@deleteComment');
+        Route::put('user/vip', 'LessonController@upgradeVip')->name('upgradeVip');
     });
-    ;
+});
+Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
+
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('search/courses', 'HomeController@getListCourses')->name('courses.search');
+    Route::get('/about', 'HomeController@showAboutUs')->name('about');
+    Route::get('/levels', 'HomeController@listLevel')->name('levels');
+    Route::get('/levels/{level}/detail', 'HomeController@showLevel')->name('level.detail');
+    Route::get('/contact', 'HomeController@showContact')->name('contact');
+    //Login
+    Route::get('/login', 'AuthController@showLoginForm')->name('login');
+    Route::post('/login', 'AuthController@login')->name('login');
+    Route::get('/logout', 'AuthController@logout')->name('logout');
+    //Login by Social account
+    Route::get('auth/{provider}', 'AuthController@redirectToProvider')->name('social');
+    Route::get('auth/{provider}/callback', 'AuthController@handleProviderCallback');
+    //register
+    Route::get('/register', 'AuthController@showRegisterForm')->name('register');
+    Route::post('/register', 'AuthController@register')->name('register');
+    Route::get('activation/{token}', 'AuthController@activation')->name('activation');
 });
 
-Route::group(['middleware' => ['filter', 'userLogin'],'namespace' => 'User', 'as' => 'user.'], function() {
-    Route::get('/', 'HomeController@index');
+Route::group(['middleware' => 'filter', 'namespace' => 'User', 'as' => 'user.'], function() {
     Route::get('course', 'CourseController@index')->name('course');
     Route::get('/detail/course/{course}', 'CourseController@show')->name('course.detail');
-    Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail');
-    Route::post('user/lesson', 'LessonController@resutlLesson');
-    Route::post('comment/{element}', 'CourseController@elementComment');
-    Route::post('reply/{element}', 'CourseController@elementReply');
-    Route::get('subscribe', 'LessonController@subscribeMember');
-    Route::delete('delete/comment', 'LessonController@deleteComment');
 });

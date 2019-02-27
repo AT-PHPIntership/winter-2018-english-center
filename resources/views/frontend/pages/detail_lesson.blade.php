@@ -67,13 +67,13 @@
               </div>
               <div>
                 <ul class="sidebar-menu" data-widget="tree">
-                  <li class="active treeview">
-                    <a href="">
+                  <li class="treeview">
+                    <a>
                       <span>
                         <h3><i class="fa fa-edit"></i><strong>{{ __('layout_user.lessons.lesson_detail.exercise')}}</strong></h3>
                       </span>
                     </a>
-                    <ul class="treeview-menu">
+                    <ul class="treeview-menu" style="display: none;">
                       <div class="exercises" data-course='{{ $lessons->course->id }}' data-lesson= "{{$lessons->id}}" data-question='{{$lessons->exercises->pluck('questions')->
                         map(function ($item, $key) {
                         return collect($item)->count();
@@ -130,6 +130,23 @@
               </div>
             </div>
           </div>
+          @foreach((Auth::user()->lessons) as $lesson_user)
+              @if($lesson_user->id === $lessons->id)
+              <div class="rating-link">
+                <div class="single-item-rating user-rating">
+                  <i class="zmdi zmdi-star"></i>
+                  <i class="zmdi zmdi-star"></i>
+                  <i class="zmdi zmdi-star"></i>
+                  <i class="zmdi zmdi-star"></i>
+                  <i class="zmdi zmdi-star"></i>
+                </div>
+                <a class="rating" href="{{ route('user.rating', ['lessons', $lessons->id ])}}">@lang('layout_user.lessons.lesson_detail.rating.title')</a>
+              </div>
+              @else
+              <div class="rating-link">
+              </div>
+              @endif
+          @endforeach
           <div class="comments">
             <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             <div class="single-comment">
@@ -183,6 +200,33 @@
               </li>
               @endforeach
             </ol>
+            @foreach($rates as $rate)
+              @if($rate->ratingable_type === 'lessons')
+                @if($rate->ratingable_id === $lessons->id)
+                  <li class="comment-border" data-id='{{ $rate->id }}'>
+                    <article id="{{$rate->id}}">
+                      <img alt='' src="{{ $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <div class="comment-des">
+                        <div class="comment-by">
+                              <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>
+                              <div class="single-item-rating" style="float: none;">
+                              <i class="zmdi {{ ($rate->star -0.5)>0 ? 'zmdi-star': (($rate->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -1.5)>0 ? 'zmdi-star': (($rate->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -2.5)>0 ? 'zmdi-star': (($rate->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -3.5)>0 ? 'zmdi-star': (($rate->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -4.5)>0 ? 'zmdi-star': (($rate->star -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                          </div>
+                          <p class="date"><a><time>{{$rate->created_at}}</time></a>
+                        </div>
+                        <section>
+                          <p>{{$rate->content}}</p>
+                        </section>
+                      </div>
+                    </article>
+                  </li>
+                  @endif
+                @endif
+            @endforeach
           </div>
         </div>
       </div>

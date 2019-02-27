@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\User;
 use App\Models\UserProfile;
 use Config\define;
+use League\Flysystem\Exception;
 
 class UserService
 {
@@ -56,5 +57,24 @@ class UserService
     public function destroy($user)
     {
         $user->delete();
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param array $data data
+     *
+     * @return \App\User
+     */
+    public function createUser(array $data)
+    {
+        try {
+            $user = User::create($data);
+            $user->userProfile()->create($data);
+            return $user;
+        } catch (Exception $ex) {
+            session()->flash('warning', __('master.content.message.error', ['attribute' => $ex->getMessage()]));
+            return redirect()->back();
+        }
     }
 }

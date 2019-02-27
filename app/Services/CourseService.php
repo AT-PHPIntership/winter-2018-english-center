@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Course;
+use Event;
 
 class CourseService
 {
@@ -104,5 +105,47 @@ class CourseService
                     ->orderBy('created_at', 'desc')
                     ->limit(config('define.courses.limit_courses'))
                     ->get();
+    }
+
+    /**
+     * Get courses based on query
+     *
+     * @param object $query [query get product]
+     *
+     * @return collection
+     */
+    public function ajaxCourseSearch($query)
+    {
+        return \DB::table('courses')
+            ->select('id', 'name')
+            ->where('name', 'LIKE', "%{$query}%")
+            ->limit(config('define.courses.page_site_course'))
+            ->get();
+    }
+
+    /**
+     * Get courses based on query
+     *
+     * @param object $query [query get product]
+     *
+     * @return collection
+     */
+    public function courseSearch($query)
+    {
+        return Course::where('name', 'LIKE', "%{$query}%")->paginate(config('define.courses.page_site_course'))->appends(['search'=> $query]);
+    }
+
+    /**
+     * Function index get recent course
+     *
+     * @param \Illuminate\Http\Request $id course
+     *
+     * @return App\Services\LessonService
+    **/
+    public function countViewCourse($id)
+    {
+        $course = Course::find($id);
+        Event::fire('courses.view', $course);
+        return $course;
     }
 }

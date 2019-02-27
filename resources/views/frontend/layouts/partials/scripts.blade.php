@@ -1,5 +1,5 @@
 <!-- jquery
-============================================ -->		
+============================================ -->
 <script src="front_end/js/vendor/jquery-1.12.4.min.js"></script>
 
 <!-- bootstrap JS
@@ -57,3 +57,7 @@
 <!-- Sweet Alert 2 JS
 ============================================ -->        
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+<!-- Search JS
+============================================ -->
+<script src="front_end/js/search.js"></script>

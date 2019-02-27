@@ -27,7 +27,18 @@
 				@csrf
 				@if (session('warning'))
                     <div class="alert alert-warning">
+						<button type="button" class="close" data-dismiss="alert">
+							<i class="ace-icon fa fa-times"></i>
+						</button>
                         {{ session('warning') }}
+                    </div>
+				@endif
+				@if (session('message'))
+                    <div class="alert alert-warning">
+						<button type="button" class="close" data-dismiss="alert">
+							<i class="ace-icon fa fa-times"></i>
+						</button>
+                        {{ session('message') }}
                     </div>
                 @endif
 					<span class="login100-form-title p-b-55">
@@ -79,12 +90,12 @@
 						</span>
 					</div>
 
-					<a href="#" class="btn-face m-b-10">
+					<a href="{{route('user.social', ['provider'=>'facebook'])}}" class="btn-face m-b-10">
 						<i class="fa fa-facebook-official"></i>
 						@lang('layout_user.login.facebook')
 					</a>
 
-					<a href="#" class="btn-google m-b-10">
+					<a href="{{route('user.social', ['provider'=>'google'])}}" class="btn-google m-b-10">
 						<img src="images/icons/icon-google.png" alt="GOOGLE">
 						@lang('layout_user.login.google')
 					</a>
@@ -94,7 +105,7 @@
 							@lang('layout_user.login.not_member')
 						</span>
 
-						<a class="txt1 bo1 hov1" href="#">
+						<a class="txt1 bo1 hov1" href="{{ route('user.register') }}">
 							@lang('layout_user.login.sign_up')						
 						</a>
 					</div>

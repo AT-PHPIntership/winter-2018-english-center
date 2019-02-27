@@ -4,10 +4,13 @@ namespace App\Services;
 use App\Models\Lesson;
 use App\Models\Course;
 use App\Models\User;
+use App\Models\Rating;
+use App\Models\Role;
 use Config\define;
 use DB;
 use App\Models\Answer;
 use Event;
+use Auth;
 use JavaScript;
 use Carbon;
 
@@ -24,6 +27,62 @@ class LessonService
         return $lessons;
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $data data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store($data)
+    {
+        $lesson = Lesson::create($data);
+        $lesson->vocabularies()->attach($data['vocabularies_id']);
+        return $lesson;
+    }
+
+    /**
+     * Edit resource in storage.
+     *
+     * @param \Illuminate\Http\Request $data data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($data)
+    {
+        return $data->load(['vocabularies']);
+    }
+
+    /**
+    * Handle update user to database
+    *
+    * @param \Illuminate\Http\Request $data   data
+    * @param Lesson                   $lesson lesson
+    *
+    * @return void
+    */
+    public function update($data, $lesson)
+    {
+        $lesson->update($data);
+        if (isset($data['vocabulary_id'])) {
+            $lesson->vocabularies()->sync($data['vocabulary_id']);
+        }
+    }
+
+    /**
+     * Function destroy lesson
+     *
+     * @param Lesson $lesson lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function destroy($lesson)
+    {
+        $lesson->vocabularies()->detach();
+        $lesson->delete();
+    }
+
+    
     /**
      * Show resource in storage.
      *
@@ -85,6 +144,7 @@ class LessonService
     **/
     public function resutlLesson($answer, $userId, $lessonId, $courseId)
     {
+        // dd($answer);
         $result = [];
         DB::table('course_user')->updateOrInsert(
             [ 
@@ -108,7 +168,7 @@ class LessonService
             $val = Answer::where('id', $value)->first()["status"];
             if ($val == 1) {
                 $correct[] = $value;
-            }
+            } 
         }
         $role  = User::find($userId)->role->id;
         $flag = Lesson::with('users')->where('id', $lessonId)->pluck('role')->first();
@@ -122,7 +182,11 @@ class LessonService
             ['order', '>', $order],
         ])->min('order');
         $nextLesson = Lesson::where('order', $nextOrder)->pluck('id')->first();
-        $result['correct'] = $correct;
+        if (!isset($correct)) {
+            $result['correct'] = 0;
+        } else {
+            $result['correct'] = $correct;
+        }
         $result['total'] = $answer;
         $result['goal'] = $goalLesson;
         $result['courseId'] = $totalLesson + 1;
@@ -130,6 +194,26 @@ class LessonService
         $result['flag'] = $flag;
         $result['nextLesson'] = $nextLesson;
         return $result;
+    }
+
+    /**
+     * Function index get recent lesson
+     *
+     * @param \Illuminate\Http\Request $lesson lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function getPrevNextLesson($lesson)
+    {
+        $previousLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '<', $lesson->id],
+        ])->max('id');
+        $nextLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '>', $lesson->id],
+        ])->min('id');
+        return [$previousLesson, $nextLesson];
     }
 
     /**
@@ -144,5 +228,15 @@ class LessonService
         $lesson = Lesson::find($id);
         Event::fire('lessons.view', $lesson);
         return $lesson;
+    }
+
+    public function upgradeVip($lesson)
+    {
+       
+        Auth::user()->update([
+            'role_id' => Role::select('id')->where('name', Role::ROLE_VIP)->pluck('id')->first(),
+        ]);
+        $previous = Lesson::where('id', $lesson['lesson_id'])->pluck('order')->first();
+        return Lesson::where('order', $previous + 1)->pluck('id')->first();
     }
 }

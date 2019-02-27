@@ -11,6 +11,10 @@ return [
         'cancel' => 'Cancel Reply',
         'posted_on' => ' Posted on '
     ],
+    'rating' => [
+        'link' => 'Rating Lesson',
+        'posted_on' => 'Posted on '
+    ],
     'exercise' => [
         'congratulation' => 'Congratulation!',
         'notification_next_course' => 'Do you want to go to the next Course?',

@@ -25,8 +25,9 @@ $(document).ready(function(){
       var token = $('.details').data('token');
       var lessonId = $(".exercises").data('lesson');
       var courseId = $(".exercises").data('course');
+      // debugger;
       $.ajax({
-            url: 'user/lesson',
+            url: 'lesson',
             method:"POST",
             dataType:"JSON",
             data: {
@@ -37,8 +38,13 @@ $(document).ready(function(){
               _token: token
             },
             success: function(data){
-              var output = '<div class="correct">Correct: ' + data.correct.length + '<span>' + ' / ' +  data.total.length + '</span>' + '</div>';
-              $('.result-lesson').html(output);
+              if (data.correct == 0 ){
+                var output = '<div class="correct">Correct: 0 <span>' + ' / ' +  data.total.length + '</span>' + '</div>';
+                $('.result-lesson').html(output);
+              } else {
+                var output = '<div class="correct">Correct: ' + data.correct.length + '<span>' + ' / ' +  data.total.length + '</span>' + '</div>';
+                $('.result-lesson').html(output);
+              }
               if (data.correct.length >= data.goal) {
                   var navigation = '<ul class="pagination">';
                   if (navigate('previous') != null) {
@@ -248,3 +254,33 @@ $(document).on('click', '.delete-comment', function() {
     location.href = 'login';
   }
 });
+
+//star rating
+var $star_rating = $('.star-rating .fa');
+
+var SetRatingStar = function () {
+  return $star_rating.each(function () {
+    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+      return $(this).removeClass('fa-star-o').addClass('fa-star');
+    } else {
+      return $(this).removeClass('fa-star').addClass('fa-star-o');
+    }
+  });
+};
+// debugger;
+$star_rating.on('click', function () {
+  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+  return SetRatingStar();
+});
+
+SetRatingStar();
+$(document).ready(function () {
+
+});
+
+// $(document).ready(function(){
+//   $('.subscribe').on('click', function(){
+//     // console.log('ahaha');
+    
+//   });
+// });
