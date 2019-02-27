@@ -21,7 +21,8 @@ class CourseViewCount
     /**
      * Handle the event.
      *
-     * @param  Course  $event
+     * @param Course $event course
+     *
      * @return void
      */
     public function handle(Course $event)

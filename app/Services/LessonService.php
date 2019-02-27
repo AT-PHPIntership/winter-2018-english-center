@@ -139,6 +139,7 @@ class LessonService
      * @param \Illuminate\Http\Request $answer   answer
      * @param \Illuminate\Http\Request $userId   user
      * @param \Illuminate\Http\Request $lessonId lesson
+     * @param \Illuminate\Http\Request $courseId lesson
      *
      * @return App\Services\LessonService
     **/
@@ -147,7 +148,7 @@ class LessonService
         // dd($answer);
         $result = [];
         DB::table('course_user')->updateOrInsert(
-            [ 
+            [
                 'user_id' => $userId,
                 'course_id'=> $courseId
             ],
@@ -168,7 +169,7 @@ class LessonService
             $val = Answer::where('id', $value)->first()["status"];
             if ($val == 1) {
                 $correct[] = $value;
-            } 
+            }
         }
         $role  = User::find($userId)->role->id;
         $flag = Lesson::with('users')->where('id', $lessonId)->pluck('role')->first();
@@ -176,7 +177,7 @@ class LessonService
         $goalLesson = \DB::table('goals')->select('goal')->where('id', $goalableLesson)->first()->goal;
         $lesson = Lesson::with('course')->where('id', intval($lessonId))->get();
         $totalLesson = $lesson->pluck('course')->pluck('id')->first();
-        $order = Lesson::where('id', $lessonId)->pluck('order')->first(); 
+        $order = Lesson::where('id', $lessonId)->pluck('order')->first();
         $nextOrder = Lesson::where([
             ['course_id', '=', $courseId],
             ['order', '>', $order],
@@ -230,6 +231,13 @@ class LessonService
         return $lesson;
     }
 
+    /**
+     * Function index get recent lesson
+     *
+     * @param \Illuminate\Http\Request $lesson lesson
+     *
+     * @return App\Services\LessonService
+    **/
     public function upgradeVip($lesson)
     {
        

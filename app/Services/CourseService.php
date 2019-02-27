@@ -69,7 +69,7 @@ class CourseService
     /**
      * Function destroy course
      *
-     * @param Course $course comment
+     * @param Course $id comment
      *
      * @return App\Services\CourseService
     **/

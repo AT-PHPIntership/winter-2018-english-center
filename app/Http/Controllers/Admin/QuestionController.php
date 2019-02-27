@@ -11,7 +11,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Vocabulary $vocabulary vocabulary
+     * @param Question $id question
      *
      * @return \Illuminate\Http\Response
      */

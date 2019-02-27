@@ -19,7 +19,7 @@ class LessonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Lesson $lesson, Course $course)
+    public function show(Lesson $lesson)
     {
         $lessons = app(LessonService::class)->getLesson($lesson);
         $recentLessons = app(LessonService::class)->recentLesson();
@@ -50,15 +50,28 @@ class LessonController extends Controller
         return view('frontend.pages.subscribe');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param Request $request lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function deleteComment(Request $request)
     {
         $response = app(CommentService::class)->deleteComment($request->get('userId'), $request->get('commentId'));
         return response()->json($response);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param Request $request lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function upgradeVip(Request $request)
     {
-        // dd($request);
         $next = app(LessonService::class)->upgradeVip($request->all());
         return redirect()->route('user.lesson.detail', $next);
     }

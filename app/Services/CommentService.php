@@ -64,9 +64,17 @@ class CommentService
         return $comment;
     }
 
+    /**
+     * Function destroy comment
+     *
+     * @param Comment $userId    user
+     * @param Comment $commentId comment
+     *
+     * @return App\Services\CommentService
+    **/
     public function deleteComment($userId, $commentId)
     {
-        $comment = Comment::find($commentId); 
+        $comment = Comment::find($commentId);
         if ($comment->user_id == $userId) {
             $comment->delete();
             return ['id' => $commentId];
@@ -74,7 +82,8 @@ class CommentService
         return null;
     }
 
-    /** Function destroy comment
+    /**
+     * Function destroy comment
      *
      * @param Comment $id comment
      *

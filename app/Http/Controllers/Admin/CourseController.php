@@ -74,7 +74,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Course $course comment
+     * @param Course $id comment
      *
      * @return \Illuminate\Http\Response
      */
