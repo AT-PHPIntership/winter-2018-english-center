@@ -42,7 +42,7 @@
                                         @if (Auth::user()->ratings->pluck('ratingable_type')->contains($ele))
                                             @if (Auth::user()->ratings->pluck('ratingable_id')->contains($common->id))
                                                 @foreach((Auth::user()->ratings) as $rate)
-                                                    @if($rate->ratingable_id === $common->id)
+                                                    @if($rate->ratingable_type === $ele)
                                                     <input type="hidden" name="rating-star" class="rating-value" value="{{ $rate->star }}">
                                                     @endif
                                                 @endforeach
@@ -60,7 +60,7 @@
                                 @if (Auth::user()->ratings->pluck('ratingable_type')->contains($ele))
                                     @if (Auth::user()->ratings->pluck('ratingable_id')->contains($common->id))
                                         @foreach((Auth::user()->ratings) as $rate)
-                                            @if($rate->ratingable_id === $common->id)
+                                            @if($rate->ratingable_type === $ele)
                                             <textarea class="form-control" id='comment-text' name="review">{{ $rate->content }}</textarea>
                                             @endif
                                         @endforeach

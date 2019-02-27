@@ -156,6 +156,7 @@ return [
         'position' => 'Developer Educat'
     ],
     'levels' => [
+        'name' => 'Our Levels',
         'title' => 'LEVEL',
         'date' => 'Date:',
         'btn' => 'Learn Now',
