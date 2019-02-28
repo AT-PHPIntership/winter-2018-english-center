@@ -2451,15 +2451,15 @@ ol.commentlist li ol.children li {
     height: 236px;
     object-fit: cover;
 }
-.single-latest-item .single-latest-text {
+.single-latest-item .single-latest-style {
     height: 236px;
 }
 
-.single-latest-item .single-latest-text h4 {
+.single-latest-item .single-latest-style h4 {
     height: 30px;
 }
 
-.single-latest-item .single-latest-text p {
+.single-latest-item .single-latest-style p {
     height: 35px;
 }
 

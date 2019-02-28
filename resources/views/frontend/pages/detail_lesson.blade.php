@@ -35,6 +35,13 @@
                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $lessons->created_at }}</span>
                 <span><i class="zmdi zmdi-eye"></i>{{ $countView->count_view }}</span>
               </div>
+              <div class="single-item-rating">
+                  <i class="zmdi {{ ($lessons->average -0.5)>0 ? 'zmdi-star': (($lessons->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                  <i class="zmdi {{ ($lessons->average -1.5)>0 ? 'zmdi-star': (($lessons->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                  <i class="zmdi {{ ($lessons->average -2.5)>0 ? 'zmdi-star': (($lessons->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                  <i class="zmdi {{ ($lessons->average -3.5)>0 ? 'zmdi-star': (($lessons->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                  <i class="zmdi {{ ($lessons->average -4.5)>0 ? 'zmdi-star': (($lessons->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+              </div>
               <strong>Vocabulary:</strong>
               <div class="single-item-comment-view">
                 <table border="2" cellspacing="10" cellpadding="10" id='{{count($lessons->vocabularies)}}'>
@@ -58,7 +65,7 @@
               </div>
               <div class="col-md-12 detail-text-video">
                 <div class="detail-text">
-                  <p>{{ $lessons->text }}></p>
+                  <p>{{ $lessons->text }}</p>
                 </div>
                 <div class="detail-video">
                   <iframe width="420" height="345" src="{{ $lessons->video }}">
@@ -245,7 +252,7 @@
                       <div class="single-item-text-info">
                           <span>@lang('layout_user.levels.date') <span>{{ $items->updated_at }}</span></span>
                       </div>
-                      <p>{{ $items->text }}</p>
+                      <p>{{ str_limit($items->text, 80) }}</p>
                       <div class="single-item-content">
                           <div class="single-item-comment-view">
                               <span><i class="zmdi zmdi-eye"></i>{{ $items->count_view }}</span>

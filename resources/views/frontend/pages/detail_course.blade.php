@@ -117,9 +117,11 @@
                     <div class="comment-by">
                       <p class="author"><strong>{{$comment->user->userProfile['name'] }}</strong></p>
                       <p class="date"><a><time>{{$comment->created_at}}</time></a>
+                      @if(Auth::check())
                         @if(Auth::user()->id == $comment->user_id )
                          - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
                         @endif
+                      @endif
                         <span class="reply"><a class="add-reply" id='{{$comment->id}}'>Reply</a></span>
                     </div>
                     <section>
@@ -136,9 +138,11 @@
                         <div class="comment-by">
                           <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
                           <p class="date"><a><time>{{$reply->created_at}}</time></a>
+                          @if(Auth::check())
                             @if(Auth::user()->id == $comment->user_id )
                              - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
                             @endif
+                          @endif
                         </div>
                         <section>
                           <p>{{$reply->content}}</p>
@@ -198,7 +202,7 @@
                 <div class="single-item-text-info">
                   <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $parentCourse->created_at}}</span></span>
                 </div>
-                <p>{{ $parentCourse->content }}</p>
+                <p>{{ str_limit($parentCourse->content, 78) }}</p>
                 <div class="single-item-content">
                   <div class="single-item-comment-view">
                     <span><i class="zmdi zmdi-eye"></i>{{ $parentCourse->count_view }}</span>

@@ -41,7 +41,7 @@
                                 <div class="single-item-text-info">
                                     <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                                 </div>
-                                <p>{{ $course->content }}</p>
+                                <p>{{ str_limit($course->content, 123) }}</p>
                                 <div class="single-item-content">
                                    <div class="single-item-comment-view">
                                        <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
@@ -93,7 +93,7 @@
                                 <div class="single-item-text-info">
                                     <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                                 </div>
-                                <p>{{ $course->content }}</p>
+                                <p>{{ str_limit($course->content, 123) }}</p>
                                 <div class="single-item-content">
                                    <div class="single-item-comment-view">
                                        <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
@@ -141,7 +141,7 @@
                         <div class="single-latest-image">
                             <img src="{{ !(substr($newRatingCourse->user->userProfile->url,0,4) == 'http') ? 'storage/avatar/' .$newRatingCourse->user->userProfile->url : $newRatingCourse->user->userProfile->url }}" alt="">
                         </div>
-                        <div class="single-latest-text">
+                        <div class="single-latest-text single-latest-style">
                             <h3>{{ $newRatingCourse->user->userProfile->name }}</h3>
                             <h4><a href="{{ route('user.course.detail', $newRatingCourse->ratingable_id) }}">{{ $newRatingCourse->ratingable->name }}</a></h4>
                             <div class="single-item-rating" style="float: none;">
@@ -154,7 +154,7 @@
                             <div class="single-item-comment-view">
                                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $newRatingCourse->updated_at }}</span>
                             </div>
-                            <p>{{ $newRatingCourse->content }}</p>
+                            <p>{{ str_limit( $newRatingCourse->content, 100) }}</p>
                             <a href="{{ route('user.course.detail', $newRatingCourse->ratingable_id) }}" class="button-default">@lang('layout_user.rating.btn')</a>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
                         <div class="single-latest-image">
                             <img src="{{ !(substr($newRatingLesson->user->userProfile->url,0,4) == 'http') ? 'storage/avatar/' .$newRatingLesson->user->userProfile->url : $newRatingLesson->user->userProfile->url }}" alt="">
                         </div>
-                        <div class="single-latest-text">
+                        <div class="single-latest-text single-latest-style">
                             <h3>{{ $newRatingLesson->user->userProfile->name }}</h3>
                             <h4><a href="{{ route('user.lesson.detail', $newRatingLesson->ratingable_id) }}">{{ $newRatingLesson->ratingable->name }}</a></h4>
                             <div class="single-item-rating" style="float: none;">
@@ -197,7 +197,7 @@
                             <div class="single-item-comment-view">
                                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $newRatingLesson->updated_at }}</span>
                             </div>
-                            <p>{{ $newRatingLesson->content }}</p>
+                            <p>{{ str_limit( $newRatingLesson->content, 120) }}</p>
                             <a href="{{ route('user.lesson.detail', $newRatingLesson->ratingable_id) }}" class="button-default">@lang('layout_user.rating.btn')</a>
                         </div>
                     </div>

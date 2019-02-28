@@ -28,5 +28,6 @@ return [
     'recent_lessons' => 5,
     'lessons' => [
         'page_site' => 4,
-    ]
+    ],
+    'length_course' => 123,
 ];
