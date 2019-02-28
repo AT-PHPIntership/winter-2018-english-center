@@ -23,6 +23,18 @@ class CourseController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @param Course $course course
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showCourses(Course $course)
+    {
+        return view('frontend.pages.detail_courses', compact('course'));
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param Course $course course

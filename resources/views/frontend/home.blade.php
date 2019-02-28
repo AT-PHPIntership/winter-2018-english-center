@@ -9,7 +9,7 @@
                     <div class="about-container">
                         <h3>@lang('layout_user.why_us.title')</h3>
                         <p>{{ $system->whyus }}</p>
-                        <a class="button-default" href="#">@lang('layout_user.why_us.btn')</a>	      
+                        <a class="button-default" href="{{ route('user.courses') }}">@lang('layout_user.why_us.btn')</a>	      
                     </div>
                 </div>
             </div>
@@ -34,14 +34,14 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-item">
                             <div class="single-item-image overlay-effect">
-                                <a href="#"><img src="{{ $course->image }}" alt=""></a>
+                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="{{ $course->image }}" alt=""></a>
                             </div>
                             <div class="single-item-text">
-                                <h4><a href="#">{{ $course->name }}</a></h4>
+                                <h4><a href="{{ route('user.course.detail', $course->id) }}">{{ $course->name }}</a></h4>
                                 <div class="single-item-text-info">
                                     <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                                 </div>
-                                <p>{{ $course->content }}</p>
+                                <p>{{ str_limit($course->content, 123) }}</p>
                                 <div class="single-item-content">
                                    <div class="single-item-comment-view">
                                        <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
@@ -57,13 +57,13 @@
                                 </div>   
                             </div>
                             <div class="button-bottom">
-                                <a href="#" class="button-default">@lang('layout_user.courses.btn')</a>
+                                <a href="{{ route('user.course.detail', $course->id) }}" class="button-default">@lang('layout_user.courses.btn')</a>
                             </div>
                         </div>
                     </div>
                     @endforeach
                     <div class="col-md-12 col-sm-12 text-center">
-                        <a href="#" class="button-default button-large">@lang('layout_user.courses.allcourses')<i class="zmdi zmdi-chevron-right"></i></a>
+                        <a href="{{ route('user.courses') }}" class="button-default button-large">@lang('layout_user.courses.allcourses')<i class="zmdi zmdi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -86,14 +86,14 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-item">
                             <div class="single-item-image overlay-effect">
-                                <a href="#"><img src="{{ $course->image }}" alt=""></a>
+                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="{{ $course->image }}" alt=""></a>
                             </div>
                             <div class="single-item-text">
-                                <h4><a href="#">{{ $course->name }}</a></h4>
+                                <h4><a href="{{ route('user.course.detail', $course->id) }}">{{ $course->name }}</a></h4>
                                 <div class="single-item-text-info">
                                     <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                                 </div>
-                                <p>{{ $course->content }}</p>
+                                <p>{{ str_limit($course->content, 123) }}</p>
                                 <div class="single-item-content">
                                    <div class="single-item-comment-view">
                                        <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
@@ -109,16 +109,102 @@
                                 </div>   
                             </div>
                             <div class="button-bottom">
-                                <a href="#" class="button-default">@lang('layout_user.courses.btn')</a>
+                                <a href="{{ route('user.course.detail', $course->id) }}" class="button-default">@lang('layout_user.courses.btn')</a>
                             </div>
                         </div>
                     </div>
                     @endforeach
                     <div class="col-md-12 col-sm-12 text-center">
-                        <a href="#" class="button-default button-large">@lang('layout_user.courses.allcourses')<i class="zmdi zmdi-chevron-right"></i></a>
+                        <a href="{{ route('user.courses') }}" class="button-default button-large">@lang('layout_user.courses.allcourses')<i class="zmdi zmdi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     <!--End of Course Area-->
+    <!--Latest rating courses Area Start--> 
+    <div class="latest-area section-padding bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title-wrapper">
+                        <div class="section-title">
+                            <h3>@lang('layout_user.rating.course.title')</h3>
+                            <p>@lang('layout_user.rating.lesson.desc')</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach($newRatingCourses as $newRatingCourse)
+                <div class="col-md-6">
+                    <div class="single-latest-item">
+                        <div class="single-latest-image">
+                            <img src="{{ !(substr($newRatingCourse->user->userProfile->url,0,4) == 'http') ? 'storage/avatar/' .$newRatingCourse->user->userProfile->url : $newRatingCourse->user->userProfile->url }}" alt="">
+                        </div>
+                        <div class="single-latest-text single-latest-style">
+                            <h3>{{ $newRatingCourse->user->userProfile->name }}</h3>
+                            <h4><a href="{{ route('user.course.detail', $newRatingCourse->ratingable_id) }}">{{ $newRatingCourse->ratingable->name }}</a></h4>
+                            <div class="single-item-rating" style="float: none;">
+                                <i class="zmdi {{ ($newRatingCourse->star -0.5)>0 ? 'zmdi-star': (($newRatingCourse->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($newRatingCourse->star -1.5)>0 ? 'zmdi-star': (($newRatingCourse->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($newRatingCourse->star -2.5)>0 ? 'zmdi-star': (($newRatingCourse->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($newRatingCourse->star -3.5)>0 ? 'zmdi-star': (($newRatingCourse->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($newRatingCourse->star -4.5)>0 ? 'zmdi-star': (($newRatingCourse->stare -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            </div>
+                            <div class="single-item-comment-view">
+                                <span><i class="zmdi zmdi-calendar-check"></i>{{ $newRatingCourse->updated_at }}</span>
+                            </div>
+                            <p>{{ str_limit( $newRatingCourse->content, 100) }}</p>
+                            <a href="{{ route('user.course.detail', $newRatingCourse->ratingable_id) }}" class="button-default">@lang('layout_user.rating.btn')</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!--End of Latest rating courses Area-->
+    <!--Latest rating lessons Area Start--> 
+    <div class="latest-area section-padding bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title-wrapper">
+                        <div class="section-title">
+                            <h3>@lang('layout_user.rating.lesson.title')</h3>
+                            <p>@lang('layout_user.rating.lesson.desc')</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach($newRatingLessons as $newRatingLesson)
+                <div class="col-md-6">
+                    <div class="single-latest-item">
+                        <div class="single-latest-image">
+                            <img src="{{ !(substr($newRatingLesson->user->userProfile->url,0,4) == 'http') ? 'storage/avatar/' .$newRatingLesson->user->userProfile->url : $newRatingLesson->user->userProfile->url }}" alt="">
+                        </div>
+                        <div class="single-latest-text single-latest-style">
+                            <h3>{{ $newRatingLesson->user->userProfile->name }}</h3>
+                            <h4><a href="{{ route('user.lesson.detail', $newRatingLesson->ratingable_id) }}">{{ $newRatingLesson->ratingable->name }}</a></h4>
+                            <div class="single-item-rating" style="float: none;">
+                                <i class="zmdi {{ ($newRatingLesson->star -0.5)>0 ? 'zmdi-star': (($newRatingLesson->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($newRatingLesson->star -1.5)>0 ? 'zmdi-star': (($newRatingLesson->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($newRatingLesson->star -2.5)>0 ? 'zmdi-star': (($newRatingLesson->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($newRatingLesson->star -3.5)>0 ? 'zmdi-star': (($newRatingLesson->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($newRatingLesson->star -4.5)>0 ? 'zmdi-star': (($newRatingLesson->stare -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            </div>
+                            <div class="single-item-comment-view">
+                                <span><i class="zmdi zmdi-calendar-check"></i>{{ $newRatingLesson->updated_at }}</span>
+                            </div>
+                            <p>{{ str_limit( $newRatingLesson->content, 120) }}</p>
+                            <a href="{{ route('user.lesson.detail', $newRatingLesson->ratingable_id) }}" class="button-default">@lang('layout_user.rating.btn')</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!--End of Latest rating lessons Area-->
 @endsection

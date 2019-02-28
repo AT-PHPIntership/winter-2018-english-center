@@ -48,7 +48,7 @@
                                 <b class="col-lg-6">@lang('user.show_list_user.show_user.course_learned')</b>
                                 <span class="col-lg-6">
                                     @foreach($user->courses as $course)
-                                    <a>{{ $course->title }}</a>&emsp;
+                                    <a>{{ $course->name }}</a>&emsp;
                                     @endforeach
                                 </span>
                             </div>

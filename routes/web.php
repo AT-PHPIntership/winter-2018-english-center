@@ -82,6 +82,7 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
 });
 
 Route::group(['middleware' => 'filter', 'namespace' => 'User', 'as' => 'user.'], function() {
-    Route::get('course', 'CourseController@index')->name('course');
+    Route::get('course', 'CourseController@index')->name('courses');
+    Route::get('/detail/courses/{course}', 'CourseController@showCourses')->name('courses.detail');
     Route::get('/detail/course/{course}', 'CourseController@show')->name('course.detail');
 });

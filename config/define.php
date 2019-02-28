@@ -10,6 +10,7 @@ return [
         'vip' => 'VIP',
         'trial' => 'TRIAL',
         'page_site_course' => 6,
+        'page_site' => 4,
     ],
     'order_by_desc' =>'desc',
     'vip' => 'VIP',
@@ -25,4 +26,8 @@ return [
         'file_error' => 'Vocabulary is wrong',
     ],
     'recent_lessons' => 5,
+    'lessons' => [
+        'page_site' => 4,
+    ],
+    'length_course' => 123,
 ];

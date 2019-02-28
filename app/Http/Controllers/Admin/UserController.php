@@ -74,7 +74,7 @@ class UserController extends Controller
         if ($request->hasFile('url')) {
             $data['url'] = $this->imageService->uploadImage($data['url']);
         }
-        $this->userService->store($request->all());
+        $this->userService->store($data);
         return redirect()->route('admin.users.index')->with('success', __('common.success'));
     }
     

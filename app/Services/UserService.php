@@ -16,7 +16,7 @@ class UserService
      */
     public function index()
     {
-        $users = User::with(['userProfile', 'role'])->paginate(config('define.page_site'));
+        $users = User::with(['userProfile', 'role'])->latest()->paginate(config('define.page_site'));
         return $users;
     }
 
