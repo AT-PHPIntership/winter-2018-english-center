@@ -12,7 +12,7 @@ class CommentService
     **/
     public function index()
     {
-        $comments = Comment::with('user')->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
+        $comments = Comment::where('parent_id', null)->with('user')->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
         return $comments;
     }
 
@@ -62,5 +62,40 @@ class CommentService
         $comment['userName'] = $comment->user->userProfile->name;
         $comment['userImage'] = $comment->user->userProfile->url;
         return $comment;
+    }
+
+    /**
+     * Function destroy comment
+     *
+     * @param Comment $userId    user
+     * @param Comment $commentId comment
+     *
+     * @return App\Services\CommentService
+    **/
+    public function deleteComment($userId, $commentId)
+    {
+        $comment = Comment::find($commentId);
+        if ($comment->user_id == $userId) {
+            $comment->delete();
+            return ['id' => $commentId];
+        }
+        return null;
+    }
+
+    /**
+     * Function destroy comment
+     *
+     * @param Comment $id comment
+     *
+     * @return App\Services\CommentService
+    **/
+    public function destroy($id)
+    {
+        $comment = Comment::find($id);
+        if ($comment->parent === null) {
+            Comment::where('id', $id)->orWhere('parent_id', $id)->delete();
+        } else {
+            Comment::where('id', $id)->delete();
+        }
     }
 }

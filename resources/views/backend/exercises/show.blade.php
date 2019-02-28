@@ -64,7 +64,7 @@
               </td>
               <td>
                 <a href="{{ route('admin.exercises.edit', $exercise->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
-                <form method="POST" action="#}" class="inline" onsubmit="return confirmedDelete()">
+                <form method="POST" action="{{ route('admin.questions.destroy', $question->id) }}" class="inline" onsubmit="return confirmedDelete()">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete Course">@lang('course.list_course.delete')

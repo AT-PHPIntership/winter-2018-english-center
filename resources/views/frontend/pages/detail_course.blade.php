@@ -46,11 +46,11 @@
                       <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
                     </div>
                     <div class="single-item-rating">
-                      <i class="zmdi {{ ($course->average -0.5)>0 ? 'zmdi-star': (($course->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                      <i class="zmdi {{ ($course->average -1.5)>0 ? 'zmdi-star': (($course->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                      <i class="zmdi {{ ($course->average -2.5)>0 ? 'zmdi-star': (($course->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                      <i class="zmdi {{ ($course->average -3.5)>0 ? 'zmdi-star': (($course->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                      <i class="zmdi {{ ($course->average -4.5)>0 ? 'zmdi-star': (($course->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                        <i class="zmdi {{ ($course->average -0.5)>0 ? 'zmdi-star': (($course->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                        <i class="zmdi {{ ($course->average -1.5)>0 ? 'zmdi-star': (($course->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                        <i class="zmdi {{ ($course->average -2.5)>0 ? 'zmdi-star': (($course->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                        <i class="zmdi {{ ($course->average -3.5)>0 ? 'zmdi-star': (($course->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                        <i class="zmdi {{ ($course->average -4.5)>0 ? 'zmdi-star': (($course->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                     </div>
                   </div>
                 </div>
@@ -62,13 +62,20 @@
               <div class="text"><span>{{ __('layout_user.courses.course_detail.lessons') }}</span> <span class="text-right">{{ __('layout_user.courses.course_detail.open_time') }}</span></div>
             </div>
             <div class="duration-text">
-              @foreach ($lessons as $lesson)
-              @if($lesson->course_id === $course->id)
-              <div class="text">
-                <a href="{{ route('user.lesson.detail', $lesson->id) }}">{{ $lesson->name }}</a>
-                <span class="text-right">{{ $lesson->created_at }}</span>
-              </div>
-              @endif
+              @foreach ($lessons as $key => $lesson)
+                  @if($lesson->course_id === $course->id)
+                  @if ($key == 0)
+                  <div class="text">
+                    <a id="first_lesson" href="{{ route('user.lesson.detail', $lesson->id) }}">{{ $lesson->name }}</a>
+                    <span class="text-right">{{ $lesson->created_at }}</span>
+                  </div>
+                  @else
+                    <div class="text">
+                    <a href="{{ route('user.course.detail', $course->id) }}">{{ $lesson->name }}</a>
+                    <span class="text-right">{{ $lesson->created_at }}</span>
+                  </div>
+                  @endif
+                  @endif
               @endforeach
             </div>
           </div>
@@ -101,62 +108,78 @@
                     <input class="btn btn-block" id='comment-button' {{(Auth::user()) ? 'data-user=' .Auth::user()->id : ''}} data-element='{{ $course->id }}' data-token="{{ csrf_token() }}" value="{{ __('layout_user.lessons.lesson_detail.comment.btn-comment') }}" type="submit">
                 </div>
             </div>
-            @foreach ($course->comments as $comment)
-            <div class="single-comment" data-id="{{ $comment->id }}">
-                  <div class="author-image">
-                    <img src="{{ $comment->user->userProfile['url'] }}" alt="">
+            <ol class="comment-list" id="commentList">
+              @foreach ($course->comments as $comment)
+              <li class="comment-border" data-id='{{$comment->id}}'>
+                <article id="{{$comment->id}}">
+                  <img alt='' src="{{ $comment->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                  <div class="comment-des">
+                    <div class="comment-by">
+                      <p class="author"><strong>{{$comment->user->userProfile['name'] }}</strong></p>
+                      <p class="date"><a><time>{{$comment->created_at}}</time></a>
+                        @if(Auth::user()->id == $comment->user_id )
+                         - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
+                        @endif
+                        <span class="reply"><a class="add-reply" id='{{$comment->id}}'>Reply</a></span>
+                    </div>
+                    <section>
+                      <p>{{$comment->content}}</p>
+                    </section>
                   </div>
-              <div class="comment-text">
-                <div class="author-info">
-                  <h4><a href="#">{{ $comment->user->userProfile['name'] }}</a></h4>
-                  <span class="reply"><a class="add-reply" id="{{ $comment->id }}">{{ __('layout_user.lessons.lesson_detail.comment.reply') }}</a></span>
-                  <span class="comment-time"><span>{{ __('layout_user.courses.course_detail.comment.posted_on') }}</span>{{ $comment->created_at }} /</span>
-                </div>
-                <p>{{ $comment->content }}</p>
-              </div>
-            </div>
-            @foreach ($comment->children as $reply)
-            <div class="single-comment comment-reply" data-id="{{ $reply->id }}">
-              <div class="author-image">
-                <img src="{{ $reply->user->userProfile['url'] }}" alt="">
-              </div>
-              <div class="comment-text">
-                <div class="author-info">
-                  <h4><a href="#">{{ $reply->user->userProfile['name'] }}</a></h4>
-                  <span class="comment-time"></span>
-                </div>
-                <p>{{ $reply->content }}</p>
-              </div>
-            </div>
-            @endforeach
-            @endforeach
+                </article>
+                @foreach ($comment->children as $reply)
+                <ol class="children">
+                  <li class="children" id="commentChildren">
+                    <article id="{{$reply->id}}" class="comment">
+                      <img alt='' src="{{ $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <div class="comment-des">
+                        <div class="comment-by">
+                          <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
+                          <p class="date"><a><time>{{$reply->created_at}}</time></a>
+                            @if(Auth::user()->id == $comment->user_id )
+                             - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
+                            @endif
+                        </div>
+                        <section>
+                          <p>{{$reply->content}}</p>
+                        </section>
+                      </div>
+                    </article>
+                  </li>
+                </ol>
+                @endforeach
+              </li>
+              @endforeach
+            </ol>
 
             @foreach($rates as $rate)
               @if($rate->ratingable_type === 'courses')
                 @if($rate->ratingable_id === $course->id)
-                  <div class="single-comment" data-id="{{ $rate->id }}">
-                        <div class="author-image">
-                          <img src="storage/avatar/{{ $rate->user->userProfile['url'] }}" alt="">
+                  <li class="comment-border" data-id='{{ $rate->id }}'>
+                    <article id="{{$rate->id}}">
+                      <img alt='' src="{{ $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <div class="comment-des">
+                        <div class="comment-by">
+                              <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>
+                              <div class="single-item-rating" style="float: none;">
+                              <i class="zmdi {{ ($rate->star -0.5)>0 ? 'zmdi-star': (($rate->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -1.5)>0 ? 'zmdi-star': (($rate->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -2.5)>0 ? 'zmdi-star': (($rate->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -3.5)>0 ? 'zmdi-star': (($rate->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -4.5)>0 ? 'zmdi-star': (($rate->star -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                          </div>
+                          <p class="date"><a><time>{{$rate->created_at}}</time></a>
                         </div>
-                    <div class="comment-text">
-                      <div class="author-info">
-                        <h4><a href="#">{{ $rate->user->userProfile['name'] }}</a></h4>
-                        <span class="comment-time"><span>{{ __('layout_user.lessons.lesson_detail.rating.time') }}</span>{{ $rate->created_at }}</span>
+                        <section>
+                          <p>{{$rate->content}}</p>
+                        </section>
                       </div>
-                      <div class="single-item-rating" style="float: none;">
-                          <i class="zmdi {{ ($rate->star -0.5)>0 ? 'zmdi-star': (($rate->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                          <i class="zmdi {{ ($rate->star -1.5)>0 ? 'zmdi-star': (($rate->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                          <i class="zmdi {{ ($rate->star -2.5)>0 ? 'zmdi-star': (($rate->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                          <i class="zmdi {{ ($rate->star -3.5)>0 ? 'zmdi-star': (($rate->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                          <i class="zmdi {{ ($rate->star -4.5)>0 ? 'zmdi-star': (($rate->star -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                      </div>
-                      <p>{{ $rate->content }}</p>
-                    </div>
-                  </div>
+                    </article>
+                  </li>
                   @endif
                 @endif
             @endforeach
-
+            
           </div>
         </div>
       </div>

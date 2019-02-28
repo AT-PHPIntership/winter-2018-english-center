@@ -32,6 +32,7 @@ class ViewServiceProvider extends ServiceProvider
         view()->composer(['backend.lessons.create', 'backend.lessons.edit'], LevelComposer::class);
         view()->composer(['backend.lessons.create', 'backend.lessons.edit'], VocabularyComposer::class);
         view()->composer(['frontend.pages.detail_lesson', 'frontend.pages.detail_course'], RateComposer::class);
+        view()->composer(['backend.exercises.create', 'backend.exercises.edit'], LessonComposer::class);
     }
 
     /**

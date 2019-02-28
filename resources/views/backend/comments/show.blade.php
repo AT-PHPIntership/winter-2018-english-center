@@ -32,21 +32,18 @@
             <tr>
               <th>@lang('course.list_course.id')</th>
               <th>@lang('comment.user_name')</th>
-              <th>@lang('comment.course_name')</th>
               <th>@lang('comment.content')</th>
               <th>@lang('course.list_course.action')</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($comments as $key => $comment)
+            @foreach ($comment->children as $item)
             <tr>
-              <td>{{ $comment->id }}</td>
-              <td>{{ $comment->user->userProfile->name }}</td>
-              <td>{{ $comment->commentable->name }}</td>
-              <td>{{ $comment->content }}</td>
+              <td>{{ $item->id }}</td>
+              <td>{{ $item->user->userProfile->name }}</td>
+              <td>{{ $item->content }}</td>
               <td>
-                <a href="{{ route('admin.comments.show', $comment->id) }}" class="btn btn-warning">@lang('comment.detail')</a>
-                <form method="POST" action="{{ route('admin.comments.destroy', $comment->id) }}" class="inline" onsubmit="return confirmedDelete()">
+                <form method="POST" action="{{ route('admin.comments.destroy', $item->id) }}" class="inline" onsubmit="return confirmedDelete()">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete Course">@lang('course.list_course.delete')
@@ -57,11 +54,6 @@
             @endforeach
           </tbody>
         </table>
-        <div class="box-footer clearfix">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            {{ $comments->links() }}
-          </ul>
-        </div>
       </div>
     </div>
   </div>

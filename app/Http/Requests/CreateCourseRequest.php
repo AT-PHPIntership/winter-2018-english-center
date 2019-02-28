@@ -24,7 +24,7 @@ class CreateCourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
+            'name' => 'required|string',
             'parent_id' => 'nullable|exists:courses,id',
             'flag' => 'required|boolean',
         ];

@@ -31,6 +31,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::resource('lessons', 'LessonController');
 
     Route::resource('comments', 'CommentController');
+
+    Route::resource('questions', 'QuestionController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
@@ -40,7 +42,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'
 });
 
 
-Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin'], function() {
+Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin'], function() {
     Route::get('/profiles', 'ProfileController@show')->name('profiles.show');
     Route::get('/profiles/edit', 'ProfileController@edit')->name('profiles.edit');
     Route::put('/profiles', 'ProfileController@update')->name('profiles.update');
@@ -52,6 +54,9 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.', 'middl
         Route::post('reply/{element}', 'CourseController@elementReply');
         Route::get('rating/{ele}/{id}', 'RatingController@showRating')->name('rating');
         Route::post('rating/{ele}/{id}', 'RatingController@getRating')->name('rating');
+        Route::get('subscribe', 'LessonController@subscribeMember');
+        Route::delete('delete/comment', 'LessonController@deleteComment');
+        Route::put('user/vip', 'LessonController@upgradeVip')->name('upgradeVip');
     });
 });
 Route::group(['namespace' => 'User', 'as' => 'user.'], function() {

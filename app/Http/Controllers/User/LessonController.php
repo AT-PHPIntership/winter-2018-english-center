@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\LessonService;
 use App\Request\UserAnswerRequest;
-use App\Models\Lesson;
 use App\Services\CommentService;
+use App\Models\Lesson;
+use App\Models\Course;
 
 class LessonController extends Controller
 {
@@ -35,20 +36,30 @@ class LessonController extends Controller
      */
     public function resutlLesson(Request $request)
     {
-        $response = app(LessonService::class)->resutlLesson($request->get('answers'), $request->get('userId'), $request->get('lessonId'));
+        $response = app(LessonService::class)->resutlLesson($request->get('answers'), $request->get('userId'), $request->get('lessonId'), $request->get('courseId'));
         return response()->json($response);
     }
 
     /**
-     * Add comment to lesson d resource.
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function subscribeMember()
+    {
+        return view('frontend.pages.subscribe');
+    }
+
+    /**
+     * Display the specified resource.
      *
      * @param Request $request lesson
      *
      * @return \Illuminate\Http\Response
      */
-    public function lessonComment(Request $request)
+    public function deleteComment(Request $request)
     {
-        $response = app(CommentService::class)->comment($request->get('userId'), $request->get('lessonId'), $request->get('content'));
+        $response = app(CommentService::class)->deleteComment($request->get('userId'), $request->get('commentId'));
         return response()->json($response);
     }
 
@@ -59,9 +70,34 @@ class LessonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function lessonReply(Request $request)
+    public function upgradeVip(Request $request)
     {
-        $response = app(CommentService::class)->reply($request->get('userId'), $request->get('lessonId'), $request->get('content'), $request->get('parentComment'));
-        return response()->json($response);
+        $next = app(LessonService::class)->upgradeVip($request->all());
+        return redirect()->route('user.lesson.detail', $next);
     }
+    // /**
+    //  * Add comment to lesson d resource.
+    //  *
+    //  * @param Request $request lesson
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function lessonComment(Request $request)
+    // {
+    //     $response = app(CommentService::class)->comment($request->get('userId'), $request->get('lessonId'), $request->get('content'));
+    //     return response()->json($response);
+    // }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param Request $request lesson
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function lessonReply(Request $request)
+    // {
+    //     $response = app(CommentService::class)->reply($request->get('userId'), $request->get('lessonId'), $request->get('content'), $request->get('parentComment'));
+    //     return response()->json($response);
+    // }
 }

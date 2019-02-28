@@ -9,6 +9,7 @@ return [
         'write' => 'Enter your comment here...',
         'submit' => 'Comment',
         'cancel' => 'Cancel Reply',
+        'posted_on' => ' Posted on '
     ],
     'rating' => [
         'link' => 'Rating Lesson',

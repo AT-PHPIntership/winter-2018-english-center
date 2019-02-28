@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Course;
+use Event;
 
 class CourseService
 {
@@ -36,7 +37,7 @@ class CourseService
     **/
     public function store($request)
     {
-        return Course::create($request->only(['title', 'parent_id', 'flag']));
+        return Course::create($request->only(['name', 'parent_id', 'flag']));
     }
 
     /**
@@ -48,6 +49,7 @@ class CourseService
     **/
     public function edit($id)
     {
+        // dd($id);
         return Course::findOrFail($id);
     }
 
@@ -67,13 +69,18 @@ class CourseService
     /**
      * Function destroy course
      *
-     * @param Course $course comment
+     * @param Course $id comment
      *
      * @return App\Services\CourseService
     **/
-    public function destroy($course)
+    public function destroy($id)
     {
-        return $course->delete();
+        $course = Course::find($id);
+        if ($course->parent ===  null) {
+            Course::where('id', $id)->orWhere('parent_id', $id)->delete();
+        } else {
+            Course::where('id', $id)->delete();
+        }
     }
 
     /**
@@ -134,5 +141,19 @@ class CourseService
     public function courseSearch($query)
     {
         return Course::where('name', 'LIKE', "%{$query}%")->paginate(config('define.courses.page_site_course'))->appends(['search'=> $query]);
+    }
+
+    /**
+     * Function index get recent course
+     *
+     * @param \Illuminate\Http\Request $id course
+     *
+     * @return App\Services\LessonService
+    **/
+    public function countViewCourse($id)
+    {
+        $course = Course::find($id);
+        Event::fire('courses.view', $course);
+        return $course;
     }
 }
