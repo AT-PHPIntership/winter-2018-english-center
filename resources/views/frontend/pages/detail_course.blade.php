@@ -39,7 +39,7 @@
                     <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $course->created_at}}</span></span>
                   </div>
                   <div class="course-text-content">
-                    <p>{{ $course->content }}</p>
+                    <p class="content-course">{{ $course->content }}</p>
                   </div>
                   <div class="single-item-content">
                     <div class="single-item-comment-view">
@@ -64,17 +64,10 @@
             <div class="duration-text">
               @foreach ($lessons as $key => $lesson)
                   @if($lesson->course_id === $course->id)
-                  @if ($key == 0)
-                  <div class="text">
-                    <a id="first_lesson" href="{{ route('user.lesson.detail', $lesson->id) }}">{{ $lesson->name }}</a>
-                    <span class="text-right">{{ $lesson->created_at }}</span>
-                  </div>
-                  @else
-                    <div class="text">
-                    <a href="{{ route('user.course.detail', $course->id) }}">{{ $lesson->name }}</a>
-                    <span class="text-right">{{ $lesson->created_at }}</span>
-                  </div>
-                  @endif
+                      <div class="text">
+                        <a class="lesson" data-order-learn="{{ $orderLearn }}" data-order="{{ $lesson->order }}" id="first_lesson" href="{{ route('user.lesson.detail', $lesson->id) }}">{{ $lesson->name }}</a>
+                        <span class="text-right">{{ $lesson->created_at }}</span>
+                      </div>
                   @endif
               @endforeach
             </div>
@@ -150,7 +143,7 @@
                 @endforeach
               </li>
               @endforeach
-            </ol>
+            {{-- </ol> --}}
 
             @foreach($rates as $rate)
               @if($rate->ratingable_type === 'courses')
@@ -179,7 +172,7 @@
                   @endif
                 @endif
             @endforeach
-            
+            </ol>
           </div>
         </div>
       </div>

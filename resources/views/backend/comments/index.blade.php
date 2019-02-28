@@ -43,7 +43,7 @@
               <td>{{ $comment->id }}</td>
               <td>{{ $comment->user->userProfile->name }}</td>
               <td>{{ $comment->commentable->name }}</td>
-              <td>{{ $comment->content }}</td>
+              <td width="300px">{{ $comment->content }}</td>
               <td>
                 <a href="{{ route('admin.comments.show', $comment->id) }}" class="btn btn-warning">@lang('comment.detail')</a>
                 <form method="POST" action="{{ route('admin.comments.destroy', $comment->id) }}" class="inline" onsubmit="return confirmedDelete()">

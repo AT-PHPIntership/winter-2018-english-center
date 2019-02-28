@@ -98,4 +98,22 @@ class CommentService
             Comment::where('id', $id)->delete();
         }
     }
+
+    /**
+     * Function destroy comment
+     *
+     * @param Comment $userId    user
+     * @param Comment $commentId comment
+     *
+     * @return App\Services\CommentService
+    **/
+    public function editComment($userId, $commentId)
+    {
+        $comment = Comment::find($commentId);
+        if ($comment->user_id == $userId) {
+            $comment->delete();
+            return ['id' => $commentId];
+        }
+        return null;
+    }
 }

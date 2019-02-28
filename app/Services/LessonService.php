@@ -172,7 +172,7 @@ class LessonService
             }
         }
         $role  = User::find($userId)->role->id;
-        $flag = Lesson::with('users')->where('id', $lessonId)->pluck('role')->first();
+        // $flag = Lesson::with('users')->where('id', $lessonId)->pluck('role')->first();
         $goalableLesson = Lesson::find(intval($lessonId))->goals->pluck('goal_id')->first();
         $goalLesson = \DB::table('goals')->select('goal')->where('id', $goalableLesson)->first()->goal;
         $lesson = Lesson::with('course')->where('id', intval($lessonId))->get();
@@ -182,7 +182,8 @@ class LessonService
             ['course_id', '=', $courseId],
             ['order', '>', $order],
         ])->min('order');
-        $nextLesson = Lesson::where('order', $nextOrder)->pluck('id')->first();
+        $nextLesson = Lesson::where('order', $nextOrder)->pluck('role')->first();
+        // dd($nextLesson);
         if (!isset($correct)) {
             $result['correct'] = 0;
         } else {
@@ -192,7 +193,7 @@ class LessonService
         $result['goal'] = $goalLesson;
         $result['courseId'] = $totalLesson + 1;
         $result['role'] = $role;
-        $result['flag'] = $flag;
+        // $result['flag'] = $flag;
         $result['nextLesson'] = $nextLesson;
         return $result;
     }
@@ -247,4 +248,5 @@ class LessonService
         $previous = Lesson::where('id', $lesson['lesson_id'])->pluck('order')->first();
         return Lesson::where('order', $previous + 1)->pluck('id')->first();
     }
+
 }

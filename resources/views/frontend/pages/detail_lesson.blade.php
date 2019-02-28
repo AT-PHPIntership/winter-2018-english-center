@@ -58,7 +58,7 @@
               </div>
               <div class="col-md-12 detail-text-video">
                 <div class="detail-text">
-                  <p>{{ $lessons->text }}></p>
+                  <p>{{ $lessons->text }}</p>
                 </div>
                 <div class="detail-video">
                   <iframe width="420" height="345" src="{{ $lessons->video }}">
@@ -199,7 +199,7 @@
                 @endforeach
               </li>
               @endforeach
-            </ol>
+            {{-- </ol> --}}
             @foreach($rates as $rate)
               @if($rate->ratingable_type === 'lessons')
                 @if($rate->ratingable_id === $lessons->id)
@@ -227,6 +227,7 @@
                   @endif
                 @endif
             @endforeach
+            </ol>
           </div>
         </div>
       </div>

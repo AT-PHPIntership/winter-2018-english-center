@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Course;
 use Event;
+use Auth;
 
 class CourseService
 {
@@ -16,6 +17,16 @@ class CourseService
     {
         $courses = Course::with('parent')->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
         return $courses;
+    }
+
+    /**
+     * Function index get all course
+     *
+     * @return App\Services\CourseService
+    **/
+    public function getChildren()
+    {
+        return Course::where('parent_id', '!=', null)->get();
     }
 
     /**
@@ -37,7 +48,7 @@ class CourseService
     **/
     public function store($request)
     {
-        return Course::create($request->only(['name', 'parent_id', 'flag']));
+        return Course::create($request->only(['name', 'parent_id','content']));
     }
 
     /**
@@ -154,4 +165,23 @@ class CourseService
         Event::fire('courses.view', $course);
         return $course;
     }
+
+
+    public function historyLesson($course, $lessons)
+    {
+        // dd($lessons);
+        $lessonBasedCourseId = $lessons->filter(function($val) use($course) {
+            return $val->course_id == $course->id;
+        });
+        // dd($lessonBasedCourseId);
+        $lessonCompare = $lessonBasedCourseId->pluck('id');
+        $lessonUser = Auth::user()->lessons->pluck('id');
+        $compareDiff = $lessonCompare->diff($lessonUser); 
+        $results = $lessonBasedCourseId->whereIn('id', $compareDiff);
+        // dd($compareDiff != null);
+        if (count($compareDiff) == 0) {
+            return $lessonBasedCourseId->pluck('order')->max(); 
+        }
+        return $results->pluck('order')->min();
+    } 
 }

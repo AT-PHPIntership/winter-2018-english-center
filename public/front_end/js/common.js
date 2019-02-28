@@ -73,12 +73,13 @@ $(document).ready(function(){
                   }
                   navigation += '</ul>';
                   $('.pagination-content').append(navigation);
-                  if ((data.role < data.nextLesson) && (data.role == data.flag)) {
+                  if (data.role != data.nextLesson) {
                     $('.next_lesson').removeAttr('href');
                     $(document).on('click', '.next_lesson', function() {
                       window.location.assign('subscribe');
                     });
                   }
+                  // debugger;
               } else {
                 var minimum = '<div class="correct">' + exercise('notification_correct') + data.goal + exercise('question') + '</div>';
                 var tryButton = `<button type="button" class="btn btn-success" onclick="return location.reload();"><i class="fa fa-edit"></i>` + exercise('again')+ `</button>`;
@@ -278,9 +279,13 @@ $(document).ready(function () {
 
 });
 
-$(document).on('click', '.edit-comment', function(){
-  var commentId = $(this).attr('id');
-  var userId = $('#comment-button').data('user');
-  var token = $('#comment-button').data('token');
+$(document).on('click', '.lesson', function(){
+  // console.log('ahaha');
+  var order = $(this).data('order');
+  var orderLearn = $(this).data('order-learn');
   // debugger;
+  if (order > orderLearn) {
+     $(this).removeAttr('href');
+     alert('Please complete the lesson ' + orderLearn);
+  } 
 });

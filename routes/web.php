@@ -57,6 +57,7 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin
         Route::get('subscribe', 'LessonController@subscribeMember');
         Route::delete('delete/comment', 'LessonController@deleteComment');
         Route::put('user/vip', 'LessonController@upgradeVip')->name('upgradeVip');
+        Route::post('edit/comment', 'LessonController@editComment');
     });
 });
 Route::group(['namespace' => 'User', 'as' => 'user.'], function() {

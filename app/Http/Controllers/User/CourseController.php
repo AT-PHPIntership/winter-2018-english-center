@@ -33,7 +33,8 @@ class CourseController extends Controller
     {
         $lessons = app(LessonService::class)->index();
         $countView = app(CourseService::class)->countViewCourse($course->id);
-        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView'));
+        $orderLearn = app(CourseService::class)->historyLesson($course, $lessons);
+        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn'));
     }
 
     /**
