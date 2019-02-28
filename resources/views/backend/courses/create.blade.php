@@ -23,17 +23,17 @@
         <div class="box-body">
           <div class="form-group">
             <label>@lang('course.list_course.name')</label>
-            <input name="title" type="text" class="form-control" placeholder="Add name course ...">
-            @if ($errors->has('title'))
-              <span class="text-red help is-danger">* {{ $errors->first('title') }}</span>
+            <input name="name" type="text" class="form-control" placeholder="Add name course ..." value="{{old('name')}}">
+            @if ($errors->has('name'))
+              <span class="text-red help is-danger">* {{ $errors->first('name') }}</span>
             @endif
           </div>
           <div class="form-group">
             <label>@lang('course.list_course.parent')</label>
-            <select name="parent_id" class="form-control select2">
+            <select name="parent_id" class="form-control">
               <option value="">@lang('course.create_course.select')</option>
               @foreach ($courses as $course)
-              <option value="{{ $course->id }}">{{ $course->title }}</option>
+              <option value="{{ $course->id }}">{{ $course->name }}</option>
               @endforeach
             </select>
             @if ($errors->has('parent_id'))
@@ -41,15 +41,22 @@
             @endif
           </div>
           <div class="form-group">
+            <label>@lang('course.list_course.content')</label>
+            <textarea name="content" type="text" class="form-control" placeholder="Add content course ..."></textarea>
+            @if ($errors->has('content'))
+              <span class="text-red help is-danger">* {{ $errors->first('content') }}</span>
+            @endif
+          </div>
+          {{-- <div class="form-group">
             <label>@lang('course.list_course.flag')</label>
-            <select name="flag" class="form-control select2">
+            <select name="flag" class="form-control">
               <option value="{{ \App\Models\Course::VIP }}">{{ config('define.courses.vip') }}</option>
               <option value="{{ \App\Models\Course::TRIAL }}">{{ config('define.courses.trial') }}</option>
             </select>
             @if ($errors->has('flag'))
               <span class="text-red help is-danger">* {{ $errors->first('flag') }}</span>
             @endif
-          </div>
+          </div> --}}
         </div>
         <div class="box-footer">
           <a href="{{ route('admin.courses.index')}}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>

@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\Course;
+use Event;
+use Auth;
 
 class CourseService
 {
@@ -18,14 +20,23 @@ class CourseService
     }
 
     /**
+     * Function index get all course
+     *
+     * @return App\Services\CourseService
+    **/
+    public function getChildren()
+    {
+        return Course::where('parent_id', '!=', null)->get();
+    }
+
+    /**
      * Function getCourse get all course
      *
      * @return App\Services\CourseService
     **/
     public function getCourse()
     {
-        $courses = Course::select('id', 'title')->where('parent_id', null)->get();
-        return $courses;
+        return Course::where('parent_id', null)->get();
     }
 
     /**
@@ -37,7 +48,7 @@ class CourseService
     **/
     public function store($request)
     {
-        return Course::create($request->only(['title', 'parent_id', 'flag']));
+        return Course::create($request->only(['name', 'parent_id','content']));
     }
 
     /**
@@ -49,6 +60,7 @@ class CourseService
     **/
     public function edit($id)
     {
+        // dd($id);
         return Course::findOrFail($id);
     }
 
@@ -68,13 +80,18 @@ class CourseService
     /**
      * Function destroy course
      *
-     * @param Course $course comment
+     * @param Course $id comment
      *
      * @return App\Services\CourseService
     **/
-    public function destroy($course)
+    public function destroy($id)
     {
-        return $course->delete();
+        $course = Course::find($id);
+        if ($course->parent ===  null) {
+            Course::where('id', $id)->orWhere('parent_id', $id)->delete();
+        } else {
+            Course::where('id', $id)->delete();
+        }
     }
 
     /**
@@ -106,4 +123,65 @@ class CourseService
                     ->limit(config('define.courses.limit_courses'))
                     ->get();
     }
+
+    /**
+     * Get courses based on query
+     *
+     * @param object $query [query get product]
+     *
+     * @return collection
+     */
+    public function ajaxCourseSearch($query)
+    {
+        return \DB::table('courses')
+            ->select('id', 'name')
+            ->where('name', 'LIKE', "%{$query}%")
+            ->limit(config('define.courses.page_site_course'))
+            ->get();
+    }
+
+    /**
+     * Get courses based on query
+     *
+     * @param object $query [query get product]
+     *
+     * @return collection
+     */
+    public function courseSearch($query)
+    {
+        return Course::where('name', 'LIKE', "%{$query}%")->paginate(config('define.courses.page_site_course'))->appends(['search'=> $query]);
+    }
+
+    /**
+     * Function index get recent course
+     *
+     * @param \Illuminate\Http\Request $id course
+     *
+     * @return App\Services\LessonService
+    **/
+    public function countViewCourse($id)
+    {
+        $course = Course::find($id);
+        Event::fire('courses.view', $course);
+        return $course;
+    }
+
+
+    public function historyLesson($course, $lessons)
+    {
+        // dd($lessons);
+        $lessonBasedCourseId = $lessons->filter(function($val) use($course) {
+            return $val->course_id == $course->id;
+        });
+        // dd($lessonBasedCourseId);
+        $lessonCompare = $lessonBasedCourseId->pluck('id');
+        $lessonUser = Auth::user()->lessons->pluck('id');
+        $compareDiff = $lessonCompare->diff($lessonUser); 
+        $results = $lessonBasedCourseId->whereIn('id', $compareDiff);
+        // dd($compareDiff != null);
+        if (count($compareDiff) == 0) {
+            return $lessonBasedCourseId->pluck('order')->max(); 
+        }
+        return $results->pluck('order')->min();
+    } 
 }

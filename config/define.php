@@ -5,10 +5,11 @@ return [
     'page_site_vocabulary' => 10,
     'courses' => [
         'limit_courses' => 3,
-        'limit_rows' => 10,
+        'limit_rows' => 20,
         'order_by_desc' =>'desc',
         'vip' => 'VIP',
         'trial' => 'TRIAL',
+        'page_site_course' => 6,
     ],
     'order_by_desc' =>'desc',
     'vip' => 'VIP',
@@ -23,4 +24,5 @@ return [
         'line_error' => 2,
         'file_error' => 'Vocabulary is wrong',
     ],
+    'recent_lessons' => 5,
 ];

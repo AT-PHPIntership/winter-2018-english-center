@@ -13,7 +13,7 @@ class Course extends Model
     const VIP = 1;
     const TRIAL = 0;
     
-    protected $fillable = [ 'title', 'parent_id', 'count_view', 'total_rating', 'average', 'flag', 'content', 'image'];
+    protected $fillable = [ 'name', 'parent_id', 'count_view', 'total_rating', 'average', 'flag', 'content', 'image'];
 
     /**
      * The database table used by the model.
@@ -60,5 +60,35 @@ class Course extends Model
     public function users()
     {
         return $this->belongsToMany('App\Models\User');
+    }
+
+    /**
+     * MorphMany comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable')->whereNull('parent_id');
+    }
+
+    /**
+     * MorphMany comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function ratings()
+    {
+        return $this->morphMany('App\Models\Rating', 'ratingable');
+    }
+
+    /**
+     * MorphMany comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function goals()
+    {
+        return $this->morphMany('App\Models\Goalable', 'goalable');
     }
 }

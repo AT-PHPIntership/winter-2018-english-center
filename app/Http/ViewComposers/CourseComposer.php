@@ -30,5 +30,6 @@ class CourseComposer
     public function compose(View $view)
     {
         $view->with(['courses' => $this->coursesService->getCourse()]);
+        $view->with(['courseChildren' => $this->coursesService->getChildren()]);
     }
 }

@@ -44,7 +44,7 @@
                       </a>
                     </h4>
                   </div>
-                  <div id="collapseOne" class="panel-collapse collapse">
+                  <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="box-body">
                       <form class="form-horizontal" method="POST" action="{{ route('admin.vocabularies.import') }}" enctype="multipart/form-data">
                         @csrf
@@ -52,10 +52,10 @@
                           <label for="csv_file" class="col-md-4 control-label">{{ __('vocabulary.import_voca.import_file') }}</label>
                           <div class="col-md-6">
                             <input id="csv_file" type="file" class="form-control" name="import_file" required>
+                              @if ($errors->has('import_file'))
+                                <span class="text-red help is-danger">* {{ $errors->first('import_file') }}</span>
+                              @endif
                           </div>
-                          @if ($errors->has('import_file'))
-                            <span class="text-red help is-danger">* {{ $errors->first('import_file') }}</span>
-                          @endif
                         </div>
                         <div class="form-group">
                           <div class="col-md-8 col-md-offset-4">
@@ -83,14 +83,14 @@
                         <div class="box-body">
                           <div class="form-group">
                             <label>@lang('vocabulary.list_vocabulary.vocabulary')</label>
-                            <input name="vocabulary" type="text" class="form-control" placeholder="Add name vocabulary ...">
+                            <input name="vocabulary" type="text" class="form-control" placeholder="Add name vocabulary ..." required value="{{ old('vocabulary') }}">
                             @if ($errors->has('vocabulary'))
                               <span class="text-red help is-danger">* {{ $errors->first('vocabulary') }}</span>
                             @endif
                           </div>
                           <div class="form-group">
                             <label>@lang('vocabulary.list_vocabulary.means')</label>
-                            <input name="means" type="text" class="form-control" placeholder="Means ...">
+                            <input name="means" type="text" class="form-control" placeholder="Means ..." required value="{{ old('means') }}">
                             @if ($errors->has('means'))
                               <span class="text-red help is-danger">* {{ $errors->first('means') }}</span>
                             @endif

@@ -73,4 +73,34 @@ class Lesson extends Model
     {
         return $this->hasMany('App\Models\Exercise');
     }
+
+    /**
+     * MorphMany lesson
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable')->whereNull('parent_id');
+    }
+
+    /**
+     * MorphMany lesson
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function ratings()
+    {
+        return $this->morphMany('App\Models\Rating', 'ratingable');
+    }
+
+    /**
+     * MorphMany lesson
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\morphMany
+     */
+    public function goals()
+    {
+        return $this->morphMany('App\Models\Goalable', 'goalable');
+    }
 }

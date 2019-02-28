@@ -45,7 +45,91 @@ return [
         ],
         'date' => 'Date:',
         'btn' => 'Learn Now',
-        'allcourses' => 'Browse All Courses '
+        'see_all' => 'See All',
+        'allcourses' => 'Browse All Courses ',
+        'show_courses' => [
+            'our_courses' => 'Our Courses',
+        ],
+        'course_detail' =>[
+            'course_detail' => 'Course Detail',
+            'cmt' => 'Comments',
+            'related_courses' => 'Related Courses',
+            'date_time' => 'Date Time: ',
+            'lessons' => 'Lessons',
+            'open_time' => 'Open Time',
+            'comment' => [
+                'posted_on' => 'Posted on ',
+            ],
+        ],
+    ],
+    'lessons' => [
+        'lesson_detail' => [
+            'lesson_detail' => 'Lesson Details',
+            'recent_lesson' => 'Recent Lesson',
+            'exercise' => 'Exercise',
+            'complete_exercise' => 'After completing the exercise, click "',
+            'complete_exercise_below' => '" below',
+            'comment' => [
+                'btn-comment' => 'Comment',
+                'reply' => 'Reply',
+                'enter_comment' => 'Enter your comment here...',
+            ],
+            'rating' => [
+                'title' => 'Rating Lesson',
+                'detail' => 'Comment',
+                'btn' => 'Send',
+                'time' => 'Time rating on '
+            ]
+        ],
+    ],
+    'login' => [
+        'title' => 'Login',
+        'email_validate' => 'Valid email is required: ex@abc.xyz',
+        'pass_validate' => 'Password is required',
+        'email_placeholder' => 'Email',
+        'pass_placeholder' => 'Password',
+        'remember_me' => 'Remember me',
+        'login_with' => 'Or login with',
+        'facebook' => 'Facebook',
+        'google' => 'Google',
+        'not_member' => 'Not a member?',
+        'sign_up' => 'Sign up now',
+        'warning' => 'You must Login!'
+    ],
+    'register' => [
+        'title' => 'Register',
+        'name_validate' => 'User Name is required',
+        'email_validate' => 'Valid email is required: ex@abc.xyz',
+        'confirmpass_validate' => 'Confirm Password is required',
+        'pass_validate' => 'Password is required',
+        'email_placeholder' => 'Email',
+        'pass_placeholder' => 'Password',
+        'passconfirm_placeholder' => 'Confirm Password',
+        'username_placeholder' => 'User Name',
+        'warning' => 'You must Login!',
+        'btn' => 'Sign Up',
+        'email' => [
+            'code' => 'Your link verify has been send. Please, check your email!',
+            'error' => 'Error! Please try again!',
+            'active' => 'Your email is actived! Lets login!',
+            'invalid' => 'Your email is invalid!',
+            'subject' => 'Activate Your Email',
+        ],
+        'activation' => [
+            'title' => 'Wellcome to EnglishCenter!',
+            'link' => 'Please, click link:',
+            'btn' => 'confirm',
+        ],
+    ],
+    'logout' => 'Log Out',
+    'subcribe' => [
+        'title' => 'Subscribe',
+        'notification' => 'Notification!',
+        'notification1' => 'You must register as a VIP member to continue!',
+    ],
+    'search' => [
+        'find' => 'Find ',
+        'result' => ' results'
     ],
     'aboutus' => [
         'title' => 'ABOUT US',
@@ -95,6 +179,6 @@ return [
             'email' => 'Email',
             'message' => 'Message',
         ],
-        'submit' => 'SUBMIT'
+        'submit' => 'SUBMIT',
     ],
 ];

@@ -5,14 +5,14 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="bower_components/admin-lte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="storage/avatar/4.jpeg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      <!-- search form -->
+     {{--  <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -22,12 +22,12 @@
           </span>
         </div>
       </form>
-      <!-- /.search form -->
+      <!-- /.search form --> --}}
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">@lang('layout_admin.sidebar.main_navigation')</li>
-        <li class="treeview">
-          <a href="#">
+        <li class="#">
+          <a href="{{ route('admin.dashboard') }}">
             <i class="fa fa-dashboard"></i> <span>@lang('layout_admin.dashboard')</span>
           </a>
         </li>
@@ -56,7 +56,7 @@
             <li><a href="{{ route('admin.courses.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_course')</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treevie">
           <a href="{{ route('admin.levels.index') }}">
             <i class="fa fa-table"></i> <span>@lang('layout_admin.sidebar.level_management')</span>
           </a>
@@ -85,6 +85,11 @@
             <li><a href="{{ route('admin.vocabularies.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_vocabularies')</a></li>
           </ul>
         </li>
+        <li class="#">
+          <a href="{{ route('admin.comments.index') }}">
+            <i class="fa fa-file"></i> <span>@lang('layout_admin.sidebar.comment_management')</span>
+          </a>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>@lang('layout_admin.sidebar.exercise_management')</span>
@@ -93,8 +98,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_exercise')</a></li>
-            <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_exercise')</a></li>
+            <li><a href="{{ route('admin.exercises.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_exercise')</a></li>
+            <li><a href="{{ route('admin.exercises.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_exercise')</a></li>
           </ul>
         </li>
       </ul>

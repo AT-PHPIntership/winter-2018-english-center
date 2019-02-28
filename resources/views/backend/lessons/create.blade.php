@@ -82,8 +82,8 @@
                             <label for="course">{{ __('lesson.create_lesson.course') }}</label>
                             <select class="form-control" name="course_id">
                                 <option value="">Select Course</option>
-                                @foreach ($courses as $course)
-                                    <option value="{{ $course->id }}">{{ $course->title }}</option>
+                                @foreach ($courseChildren as $course)
+                                    <option value="{{ $course->id }}">{{ $course->name }}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('course_id'))

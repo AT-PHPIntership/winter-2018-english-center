@@ -24,37 +24,44 @@
         <div class="box-body">
           <div class="form-group">
             <label>@lang('course.list_course.name')</label>
-            <input name="title" type="text" class="form-control" value="{{ $course->title }}">
-            @if ($errors->has('title'))
-              <span class="text-red help is-danger">* {{ $errors->first('title') }}</span>
+            <input name="name" type="text" class="form-control" value="{{ $course->name }}">
+            @if ($errors->has('name'))
+              <span class="text-red help is-danger">* {{ $errors->first('name') }}</span>
             @endif
           </div>
           <div class="form-group">
             <label>@lang('course.list_course.parent')</label>
-            <select name="parent_id" class="form-control select2">
+            <select name="parent_id" class="form-control">
                 @if($course->parent_id == null)
                  <option value="" selected disabled hidden>@lang('course.create_course.select')</option>
                  @foreach ($courses as $courseparent)
-                    <option value="{{ $courseparent->id }}">{{ $courseparent->title }}</option>
+                    <option value="{{ $courseparent->id }}">{{ $courseparent->name }}</option>
                  @endforeach
                  @else
                  <option value=""></option>
                  @foreach ($courses as $courseparent)
-                  <option value="{{ $courseparent->id }}" {{ $course->parent_id == $courseparent->id ? "selected": "" }}>{{ $courseparent->title }}</option>
+                  <option value="{{ $courseparent->id }}" {{ $course->parent_id == $courseparent->id ? "selected": "" }}>{{ $courseparent->name }}</option>
                  @endforeach
                 @endif
             </select>
           </div>
           <div class="form-group">
+            <label>@lang('course.list_course.content')</label>
+            <textarea name="content" type="text" class="form-control">{{ $course->content }}</textarea>
+            @if ($errors->has('content'))
+              <span class="text-red help is-danger">* {{ $errors->first('content') }}</span>
+            @endif
+          </div>
+          {{-- <div class="form-group">
             <label>@lang('course.list_course.flag')</label>
-            <select name="flag" class="form-control select2">
+            <select name="flag" class="form-control">
               <option value="{{ \App\Models\Course::VIP }}" {{ $course->flag ? 'selected' : ''}}>{{ config('define.courses.vip') }}</option>
               <option value="{{ \App\Models\Course::TRIAL }}" {{ $course->flag ? '' : 'selected'}}>{{ config('define.courses.trial') }}</option>
             </select>
             @if ($errors->has('flag'))
               <span class="text-red help is-danger">* {{ $errors->first('flag') }}</span>
             @endif
-          </div>
+          </div> --}}
         </div>
         <div class="box-footer">
           <a href="{{ route('admin.courses.index')}}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>

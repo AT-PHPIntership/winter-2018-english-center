@@ -34,9 +34,9 @@
               <th>@lang('course.list_course.name')</th>
               <th>@lang('course.list_course.parent')</th>
               <th>@lang('course.list_course.count_view')</th>
-              <th>@lang('course.list_course.total_rating')</th>
+              {{-- <th>@lang('course.list_course.total_rating')</th> --}}
               <th>@lang('course.list_course.average')</th>
-              <th>@lang('course.list_course.flag')</th>
+              <th>@lang('course.list_course.content')</th>
               <th>@lang('course.list_course.action')</th>
             </tr>
           </thead>
@@ -44,18 +44,25 @@
             @foreach ($courses as $key => $course)
             <tr>
               <td>{{ $course->id }}</td>
-              <td>{{ $course->title }}</td>
+              <td>{{ $course->name }}</td>
               <td>
                 @if(!$course['parent_id'])
                 {{ 'none' }}
                 @else
-                {{ $course->parent->title }}
+                {{ $course->parent->name }}
                 @endif
               </td>
               <td>{{ $course->count_view }}</td>
-              <td>{{ $course->total_rating }}</td>
+              {{-- <td>{{ $course->total_rating }}</td> --}}
               <td>{{ $course->average }}</td>
-              <td>{{ $course->flag }}</td>
+              {{-- <td>{{ $course->flag }}</td> --}}
+              <td width="300px">
+                @if(!$course['parent_id'])
+                {{ 'none' }}
+                @else
+                {{ $course->content }}
+                @endif
+              </td>
               <td>
                 <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
                 <form method="POST" action="{{ route('admin.courses.destroy', $course->id) }}" class="inline" onsubmit="return confirmedDelete()">
