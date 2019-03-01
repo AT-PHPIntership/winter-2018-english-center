@@ -8,7 +8,7 @@
                 <div class="col-md-8">
                     <div class="about-container">
                         <h3>@lang('layout_user.why_us.title')</h3>
-                        <p>{{ $system->whyus }}</p>
+                        <p>{!! $system->whyus !!}</p>
                         <a class="button-default" href="{{ route('user.courses') }}">@lang('layout_user.why_us.btn')</a>	      
                     </div>
                 </div>

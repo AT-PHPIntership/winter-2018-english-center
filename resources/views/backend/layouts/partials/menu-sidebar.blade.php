@@ -102,6 +102,11 @@
             <li><a href="{{ route('admin.exercises.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_exercise')</a></li>
           </ul>
         </li>
+         <li>
+          <a href="{{ route('admin.systems.index') }}">
+            <i class="fa fa-file"></i> <span>@lang('layout_admin.sidebar.system_management')</span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
