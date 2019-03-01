@@ -9,7 +9,7 @@
       </a>
     </li>
     <li>
-      <a href="{{ route('admin.systems.index') }}">@lang('layout_admin.system.show_sytem.title')</a>
+      <a href="{{ route('admin.systems.index') }}">@lang('layout_admin.system.show.title')</a>
     </li>
     <li class="active">@lang('layout_admin.system.edit.title')</li>
   </ol>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\SystemService;
-use App\Services\ImageService;
 use App\Models\System;
 use App\Http\Requests\UpdateSystemRequest;
 
@@ -19,24 +18,15 @@ class SystemController extends Controller
     private $systemService;
 
     /**
-     * Where to receipt system from ImageService.
-     *
-     * @var $imageService
-     */
-    private $imageService;
-
-    /**
      * Create a new controller instance.
      *
      * @param SytemService $systemService SystemService
-     * @param ImageService $imageService  ImageService
      *
      * @return void
      */
-    public function __construct(SystemService $systemService, ImageService $imageService)
+    public function __construct(SystemService $systemService)
     {
         $this->systemService = $systemService;
-        $this->imageService = $imageService;
     }
 
     /**

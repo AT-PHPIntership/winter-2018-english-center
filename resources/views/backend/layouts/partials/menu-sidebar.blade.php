@@ -107,6 +107,18 @@
             <i class="fa fa-file"></i> <span>@lang('layout_admin.sidebar.system_management')</span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>@lang('layout_admin.sidebar.slider_management')</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('admin.sliders.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_slider')</a></li>
+            <li><a href="{{ route('admin.sliders.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_slider')</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

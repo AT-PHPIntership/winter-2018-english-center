@@ -35,6 +35,9 @@ return [
         'show_exercise' => 'List Exercise',
         'add_exercise' => 'Add Exercise',
         'system_management' => 'Systems Management',
+        'slider_management' => 'Sliders Management',
+        'show_slider' => 'List Sliders',
+        'add_slider' => 'Add Slider',
     ],
     'footer' => [
         'version' => 'Version',
@@ -43,7 +46,7 @@ return [
         'all_rights' => 'All rights reserved.',
     ],
     'system' => [
-        'show_sytem' => [
+        'show' => [
             'title' => 'System Detail',
             'id' => 'ID',
             'whyus' => 'Why Us',
@@ -62,6 +65,33 @@ return [
             'email' => 'Email',
             'web' => 'Link Web',
             'address' => 'Address',
+        ]
+    ],
+    'slider' => [
+        'show' => [
+            'title' => 'List Sliders',
+            'id' => 'ID',
+            'image' => 'Image',
+            'name' => 'Title',
+            'content' => 'Content',
+            'show' => 'Show',
+            'action' => 'Action',
+        ],
+        'edit' => [
+            'title' => 'Edit Slider',
+            'image' => 'Image',
+            'name' => 'Title',
+            'content' => 'Content',
+            'show' => 'Show',
+            'action' => 'Action',
+        ],
+        'create' => [
+            'title' => 'Create Slider',
+            'image' => 'Image',
+            'name' => 'Title',
+            'content' => 'Content',
+            'show' => 'Show',
+            'action' => 'Action',
         ]
     ],
 ];

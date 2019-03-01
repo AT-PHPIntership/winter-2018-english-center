@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @section('content')
 <section class="content-header">
-  <h1>@lang('layout_admin.system.show_sytem.title')</h1>
+  <h1>@lang('layout_admin.system.show.title')</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
@@ -9,7 +9,7 @@
       </a>
     </li>
 
-    <li class="active">@lang('layout_admin.system.show_sytem.title')</li>
+    <li class="active">@lang('layout_admin.system.show.title')</li>
   </ol>
 </section>
 <section class="content">
@@ -30,14 +30,14 @@
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr class="row">
-                            <th>{{ __('layout_admin.system.show_sytem.id') }}</th>
-                            <th>{{ __('layout_admin.system.show_sytem.whyus') }}</th>
-                            <th>{{ __('layout_admin.system.show_sytem.aboutus') }}</th>
-                            <th>{{ __('layout_admin.system.show_sytem.phone') }}</th>
-                            <th>{{ __('layout_admin.system.show_sytem.email') }}</th>
-                            <th>{{ __('layout_admin.system.show_sytem.web') }}</th>
-                            <th>{{ __('layout_admin.system.show_sytem.address') }}</th>
-                            <th>{{ __('layout_admin.system.show_sytem.action') }}</th>
+                            <th>{{ __('layout_admin.system.show.id') }}</th>
+                            <th>{{ __('layout_admin.system.show.whyus') }}</th>
+                            <th>{{ __('layout_admin.system.show.aboutus') }}</th>
+                            <th>{{ __('layout_admin.system.show.phone') }}</th>
+                            <th>{{ __('layout_admin.system.show.email') }}</th>
+                            <th>{{ __('layout_admin.system.show.web') }}</th>
+                            <th>{{ __('layout_admin.system.show.address') }}</th>
+                            <th>{{ __('layout_admin.system.show.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>

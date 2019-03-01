@@ -32,7 +32,6 @@
                         <tr class="row">
                             <th>{{ __('user.show_list_user.id') }}</th>
                             <th>{{ __('user.show_list_user.email') }}</th>
-                            {{-- <th class="col-lg-4">{{ __('user.show_list_user.password') }}</th> --}}
                             <th>{{ __('user.show_list_user.role') }}</th>
                             <th>{{ __('user.show_list_user.show') }}</th>
                             <th>{{ __('user.show_list_user.action') }}</th>
