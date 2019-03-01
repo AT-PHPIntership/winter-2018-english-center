@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\ImageService;
 use App\Http\Requests\UpdateAuthUserRequest;
+use App\Http\Requests\UpdateAuthUserPassRequest;
 use Auth;
 
 class ProfileController extends Controller
@@ -51,6 +52,16 @@ class ProfileController extends Controller
     }
 
     /**
+     * Show the form for changePass the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function changePass()
+    {
+        return view('frontend.profile.changePass');
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request request
@@ -65,6 +76,20 @@ class ProfileController extends Controller
         }
         Auth::user()->userProfile->update($data);
         Auth::user()->update($data);
-        return redirect()->route('user.profiles.show');
+        return redirect()->route('user.profiles.show')->with('success', __('common.success'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePass(UpdateAuthUserPassRequest $request)
+    {
+        $data = $request->except(['_token','_method']);
+        Auth::user()->update($data);
+        return redirect()->route('user.profiles.show')->with('success', __('common.success'));
     }
 }

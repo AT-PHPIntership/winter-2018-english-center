@@ -7,6 +7,14 @@
 @section('content')
     <section class="content">
         <div class="box box-primary">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button>
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="box-body box-profile">
                 <img class="profile-user-img img-responsive img-circle" src="{{ !(substr(Auth::user()->userProfile->url,0,4) == 'http') ? 'storage/avatar/' .Auth::user()->userProfile->url : Auth::user()->userProfile->url }}" alt="">
 
@@ -60,7 +68,12 @@
                         </div>
                     </li>
                 </ul>
-                <a href="{{ route('user.profiles.edit') }}" class="btn btn-warning">@lang('common.edit')</a>
+                <div class="box-footer">
+                    <a href="{{ route('user.profiles.edit') }}" class="btn btn-warning">@lang('common.edit')</a>
+                    @if(Auth::user()->password != null)
+                    <a href="{{ route('user.profiles.changePass') }}" class="btn btn-warning btn-changePass">@lang('common.changePass')</a>
+                    @endif
+                </div>
             </div>
         </div>
     </section>

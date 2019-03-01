@@ -2474,3 +2474,8 @@ p {
 .comment-border {
     margin-top: 20px;
 }
+
+.box-footer .btn-changePass {
+    margin-left: 44%;
+    margin-top: 10px;
+}
