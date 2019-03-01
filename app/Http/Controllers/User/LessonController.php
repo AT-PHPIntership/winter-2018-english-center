@@ -88,5 +88,4 @@ class LessonController extends Controller
         $response = app(CommentService::class)->editComment($request->get('userId'), $request->get('commentId'));
         return response()->json($response);
     }
-   
 }

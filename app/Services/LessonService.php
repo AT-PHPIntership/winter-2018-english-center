@@ -248,5 +248,4 @@ class LessonService
         $previous = Lesson::where('id', $lesson['lesson_id'])->pluck('order')->first();
         return Lesson::where('order', $previous + 1)->pluck('id')->first();
     }
-
 }

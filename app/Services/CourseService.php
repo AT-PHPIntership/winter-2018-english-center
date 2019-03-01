@@ -168,22 +168,29 @@ class CourseService
         return $course;
     }
 
-
+    /**
+     * Function index get recent course
+     *
+     * @param \Illuminate\Http\Request $course  course
+     * @param \Illuminate\Http\Request $lessons lesson
+     *
+     * @return App\Services\LessonService
+    **/
     public function historyLesson($course, $lessons)
     {
         // dd($lessons);
-        $lessonBasedCourseId = $lessons->filter(function($val) use($course) {
+        $lessonBasedCourseId = $lessons->filter(function ($val) use ($course) {
             return $val->course_id == $course->id;
         });
         // dd($lessonBasedCourseId);
         $lessonCompare = $lessonBasedCourseId->pluck('id');
         $lessonUser = Auth::user()->lessons->pluck('id');
-        $compareDiff = $lessonCompare->diff($lessonUser); 
+        $compareDiff = $lessonCompare->diff($lessonUser);
         $results = $lessonBasedCourseId->whereIn('id', $compareDiff);
         // dd($compareDiff != null);
         if (count($compareDiff) == 0) {
-            return $lessonBasedCourseId->pluck('order')->max(); 
+            return $lessonBasedCourseId->pluck('order')->max();
         }
         return $results->pluck('order')->min();
-    } 
+    }
 }
