@@ -29,5 +29,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
         Event::listen('lessons.view', 'App\Listeners\LessonViewCount');
+        Event::listen('courses.view', 'App\Listeners\CourseViewCount');
     }
 }

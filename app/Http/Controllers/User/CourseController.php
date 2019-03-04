@@ -44,7 +44,9 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         $lessons = app(LessonService::class)->index();
-        return view('frontend.pages.detail_course', compact('course', 'lessons'));
+        $countView = app(CourseService::class)->countViewCourse($course->id);
+        $orderLearn = app(CourseService::class)->historyLesson($course, $lessons);
+        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn'));
     }
 
     /**

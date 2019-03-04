@@ -129,6 +129,11 @@ return [
         ],
     ],
     'logout' => 'Log Out',
+    'subcribe' => [
+        'title' => 'Subscribe',
+        'notification' => 'Notification!',
+        'notification1' => 'You must register as a VIP member to continue!',
+    ],
     'search' => [
         'find' => 'Find ',
         'result' => ' results'
@@ -182,7 +187,7 @@ return [
             'email' => 'Email',
             'message' => 'Message',
         ],
-        'submit' => 'SUBMIT'
+        'submit' => 'SUBMIT',
     ],
     'rating' => [
         'title' => 'Rating',

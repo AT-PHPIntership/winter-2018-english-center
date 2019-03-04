@@ -42,15 +42,11 @@
             <tr>
               <td>{{ $comment->id }}</td>
               <td>{{ $comment->user->userProfile->name }}</td>
+              <td>{{ $comment->commentable->name }}</td>
+              <td width="300px">{{ $comment->content }}</td>
               <td>
-                {{ $comment->commentable->name }}
-              </td>
-              <td>{{ $comment->content }}</td>
-              <td>
-                <a href="#" class="btn btn-warning">
-                  @lang('comment.detail')
-                </a>
-                <form method="POST" action="#" class="inline" onsubmit="return confirmedDelete()">
+                <a href="{{ route('admin.comments.show', $comment->id) }}" class="btn btn-warning">@lang('comment.detail')</a>
+                <form method="POST" action="{{ route('admin.comments.destroy', $comment->id) }}" class="inline" onsubmit="return confirmedDelete()">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete Course">@lang('course.list_course.delete')

@@ -37,10 +37,10 @@
                 <option value="{{ $lesson->id }}">{{ $lesson->name }}</option>
                 @endforeach
               </select>
+            </div>
               @if ($errors->has('lesson_id'))
               <span class="text-red help is-danger">* {{ $errors->first('lesson_id') }}</span>
               @endif
-            </div>
             <div class="form-group">
               <button type='button' id="add-questions" class="btn btn-default">+</button>
               <button type='button' id="remove-questions" class="btn btn-default">x</button>

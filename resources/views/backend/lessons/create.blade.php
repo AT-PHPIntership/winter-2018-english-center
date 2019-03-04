@@ -82,8 +82,8 @@
                             <label for="course">{{ __('lesson.create_lesson.course') }}</label>
                             <select class="form-control" name="course_id">
                                 <option value="">Select Course</option>
-                                @foreach ($courses as $course)
-                                    <option value="{{ $course->id }}">{{ $course->title }}</option>
+                                @foreach ($courseChildren as $course)
+                                    <option value="{{ $course->id }}">{{ $course->name }}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('course_id'))
@@ -103,6 +103,16 @@
                             @endif
                         </div>
                         <div class="form-group">
+                            <label for="exercise">{{ __('lesson.create_lesson.exercise') }}</label>
+                            <select id="list-exercises" class="form-control" multiple style="width: 100%;" name="exercises_id[]">
+                            </select>
+                            @if ($errors->has('exercises_id'))
+                                <span class="help-block col-sm-12">
+                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('exercises_id') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label for="img">{{ __('lesson.create_lesson.image') }}</label>
                             <input type="file" name="image" value="{{ old('image') }}">
                             @if ($errors->has('image'))
@@ -113,7 +123,7 @@
                         </div>
                         <div class="form-group">
                             <label for="video">{{ __('lesson.create_lesson.video') }}</label>
-                            <input type="url" class="form-control" name="video" placeholder="@lang('lesson.create_lesson.placeholder')" value="{{ old('video') }}">
+                            <input type="url" class="form-control" name="video" placeholder="{{ __('lesson.edit_lesson.placeholder') }}" value="{{ old('video') }}">
                             @if ($errors->has('video'))
                                 <span class="help-block col-sm-12">
                                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('video') }}</strong>
@@ -136,4 +146,5 @@
 @endsection
 @section('script')
     <script type="text/javascript" src="{!! asset('js/vocalbularies.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('js/exercises.js') !!}"></script>
 @endsection

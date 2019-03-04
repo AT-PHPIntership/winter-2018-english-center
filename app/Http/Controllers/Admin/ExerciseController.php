@@ -95,4 +95,25 @@ class ExerciseController extends Controller
         app(ExerciseService::class)->destroy($exercise);
         return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
     }
+
+    /**
+     * Get List Vocabularies
+     *
+     * @param Request $request Request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getListExercises(Request $request)
+    {
+        if ($request->ajax()) {
+            $exercises = Exercise::select(['id', 'title as text'])->where('title', 'LIKE', '%' . $request["term"] . '%')->paginate(config('define.page_site_exercise'));
+            $results = [
+                "results" => $exercises->items(),
+                "pagination" => [
+                    "more" => $exercises->hasMorePages()
+                ]
+            ];
+            return response()->json($results);
+        }
+    }
 }

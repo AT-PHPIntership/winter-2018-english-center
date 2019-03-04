@@ -43,7 +43,7 @@
                         <tr class="row">
                             <td>{{ $lesson->id }}</td>
                             <td>{{ $lesson->name }}</td>
-                            <td>{{ $lesson->course->title }}</td>
+                            <td>{{ $lesson->course->name }}</td>
                             <td>{{ $lesson->level->level }}</td>
                             <td>{{ $lesson->role_name }}</td>
                             <td>

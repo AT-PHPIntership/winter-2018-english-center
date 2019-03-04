@@ -12,3 +12,4 @@ npm-debug.log
 yarn-error.log
 bower_components
 /public/images/icons
+/public/front_end/img

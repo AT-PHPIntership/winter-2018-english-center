@@ -31,11 +31,10 @@
                     <thead>
                         <tr class="row">
                             <th class="col-lg-1">{{ __('user.show_list_user.id') }}</th>
-                            <th class="col-lg-2">{{ __('user.show_list_user.email') }}</th>
-                            <th class="col-lg-4">{{ __('user.show_list_user.password') }}</th>
-                            <th class="col-lg-1">{{ __('user.show_list_user.role') }}</th>
-                            <th class="col-lg-1">{{ __('user.show_list_user.show') }}</th>
-                            <th class="col-lg-3">{{ __('user.show_list_user.action') }}</th>
+                            <th class="col-lg-4">{{ __('user.show_list_user.email') }}</th>
+                            <th class="col-lg-3">{{ __('user.show_list_user.role') }}</th>
+                            <th class="col-lg-2">{{ __('user.show_list_user.show') }}</th>
+                            <th class="col-lg-2">{{ __('user.show_list_user.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +42,7 @@
                         <tr class="row">
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->password }}</td>
+                            {{-- <td>{{ $user->password }}</td> --}}
                             <td>{{ $user->role->name }}</td>
                             <td>
                                 <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-warning">@lang('common.detail')</a>

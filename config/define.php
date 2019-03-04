@@ -3,9 +3,10 @@
 return [
     'page_site' => 20,
     'page_site_vocabulary' => 10,
+    'page_site_exercise' => 6,
     'courses' => [
         'limit_courses' => 3,
-        'limit_rows' => 10,
+        'limit_rows' => 20,
         'order_by_desc' =>'desc',
         'vip' => 'VIP',
         'trial' => 'TRIAL',
@@ -28,5 +29,6 @@ return [
     'recent_lessons' => 5,
     'lessons' => [
         'page_site' => 4,
-    ]
+    ],
+    'length_course' => 123,
 ];

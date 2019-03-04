@@ -1,6 +1,6 @@
 //Search product
 
-// Delay a time before seach
+//Delay a time before seach
 function delay(callback, ms) {
     var timer = 0;
     return function () {
@@ -16,6 +16,7 @@ $(document).ready(function () {
     $('#search').keyup(delay(function (e) {
         e.preventDefault();
         var query = $(this).val();
+        // console.log(query);
         if (query != '' && query.length >= 2) {
             $.ajax({
                 url: 'search/courses',
@@ -26,7 +27,11 @@ $(document).ready(function () {
                     if (data.length > 0) {
                         var output = '<ul>';
                         $.each(data, function (key, val) {
-                            output += '<li><a href="course/detail/' + val.id + '">' + val.name + '</a></li>';
+                            if (val.parent_id === null) {
+                                output += '<li><a href="/detail/courses/' + val.id + '">' + val.name + '</a></li>';
+                            } else {
+                                output += '<li><a href="/detail/course/' + val.id + '">' + val.name + '</a></li>';
+                            }
                         });
                         output += '</ul>';
                         $('#courseList').html(output);

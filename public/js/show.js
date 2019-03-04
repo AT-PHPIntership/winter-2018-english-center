@@ -1,6 +1,6 @@
-$(document).ready(function (){
+$(document).ready(function () {
     /**
      * Show alert when create, update, delete
      */
-    $('div.alert').delay(3000).slideUp();
+    $('div.alert').delay(2000).slideUp();
 });

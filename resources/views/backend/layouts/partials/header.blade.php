@@ -26,14 +26,14 @@
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="bower_components/admin-lte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <img src="storage/avatar/{{ Auth::user()->userProfile->url }}" class="img-circle" alt="User Image">
               <p>
                 {{ Auth::user()->userProfile->name }}
                 <small>{{ Auth::user()->userProfile->age }} years old</small>
               </p>
             </li>
             <!-- Menu Body -->
-            <li class="user-body">
+            {{-- <li class="user-body">
               <div class="row">
                 <div class="col-xs-4 text-center">
                   <a href="#">@lang('layout_admin.header.followers')</a>
@@ -46,12 +46,12 @@
                 </div>
               </div>
               <!-- /.row -->
-            </li>
+            </li> --}}
             <!-- Menu Footer-->
             <li class="user-footer">
-              <div class="pull-left">
+              {{-- <div class="pull-left">
                 <a href="#" class="btn btn-default btn-flat">@lang('layout_admin.header.profile')</a>
-              </div>
+              </div> --}}
               <div class="pull-right">
                 <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">@lang('layout_admin.header.sign_out')</a>
               </div>
