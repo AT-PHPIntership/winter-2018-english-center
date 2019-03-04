@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\LessonService;
 use App\Request\UserAnswerRequest;
 use App\Models\Lesson;
+use App\Services\CommentService;
 
 class LessonController extends Controller
 {
@@ -21,7 +22,8 @@ class LessonController extends Controller
     {
         $lessons = app(LessonService::class)->getLesson($lesson);
         $recentLessons = app(LessonService::class)->recentLesson();
-        return view('frontend.pages.detail_lesson', compact('lessons', 'recentLessons'));
+        $countView = app(LessonService::class)->countViewLesson($lesson->id);
+        return view('frontend.pages.detail_lesson', compact('lessons', 'recentLessons', 'countView'));
     }
 
     /**
@@ -33,7 +35,33 @@ class LessonController extends Controller
      */
     public function resutlLesson(Request $request)
     {
-        $response = app(LessonService::class)->resutlLesson($request->get('answers'), $request->get('userId'));
+        $response = app(LessonService::class)->resutlLesson($request->get('answers'), $request->get('userId'), $request->get('lessonId'));
+        return response()->json($response);
+    }
+
+    /**
+     * Add comment to lesson d resource.
+     *
+     * @param Request $request lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function lessonComment(Request $request)
+    {
+        $response = app(CommentService::class)->comment($request->get('userId'), $request->get('lessonId'), $request->get('content'));
+        return response()->json($response);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Request $request lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function lessonReply(Request $request)
+    {
+        $response = app(CommentService::class)->reply($request->get('userId'), $request->get('lessonId'), $request->get('content'), $request->get('parentComment'));
         return response()->json($response);
     }
 }

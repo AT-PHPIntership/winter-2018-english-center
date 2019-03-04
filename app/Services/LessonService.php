@@ -2,9 +2,14 @@
 namespace App\Services;
 
 use App\Models\Lesson;
+use App\Models\Course;
+use App\Models\Rating;
 use Config\define;
 use DB;
 use App\Models\Answer;
+use Event;
+use Auth;
+use JavaScript;
 
 class LessonService
 {
@@ -19,6 +24,62 @@ class LessonService
         return $lessons;
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $data data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store($data)
+    {
+        $lesson = Lesson::create($data);
+        $lesson->vocabularies()->attach($data['vocabularies_id']);
+        return $lesson;
+    }
+
+    /**
+     * Edit resource in storage.
+     *
+     * @param \Illuminate\Http\Request $data data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($data)
+    {
+        return $data->load(['vocabularies']);
+    }
+
+    /**
+    * Handle update user to database
+    *
+    * @param \Illuminate\Http\Request $data   data
+    * @param Lesson                   $lesson lesson
+    *
+    * @return void
+    */
+    public function update($data, $lesson)
+    {
+        $lesson->update($data);
+        if (isset($data['vocabulary_id'])) {
+            $lesson->vocabularies()->sync($data['vocabulary_id']);
+        }
+    }
+
+    /**
+     * Function destroy lesson
+     *
+     * @param Lesson $lesson lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function destroy($lesson)
+    {
+        $lesson->vocabularies()->detach();
+        $lesson->delete();
+    }
+
+    
     /**
      * Show resource in storage.
      *
@@ -40,6 +101,20 @@ class LessonService
     **/
     public function getLesson($lesson)
     {
+        $previousLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '<', $lesson->id],
+        ])->max('id');
+        $nextLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '>', $lesson->id],
+        ])->min('id');
+        JavaScript::put([
+            'navigate' => [
+                'previous' => $previousLesson,
+                'next' => $nextLesson,
+            ]
+        ]);
          return $lesson->load('exercises.questions');
     }
 
@@ -56,12 +131,13 @@ class LessonService
     /**
      * Function index get recent lesson
      *
-     * @param \Illuminate\Http\Request $answer answer
-     * @param \Illuminate\Http\Request $userId user
+     * @param \Illuminate\Http\Request $answer   answer
+     * @param \Illuminate\Http\Request $userId   user
+     * @param \Illuminate\Http\Request $lessonId lesson
      *
      * @return App\Services\LessonService
     **/
-    public function resutlLesson($answer, $userId)
+    public function resutlLesson($answer, $userId, $lessonId)
     {
         $result = [];
         foreach ($answer as $value) {
@@ -74,8 +150,48 @@ class LessonService
                 $correct[] = $value;
             }
         }
+        $goalableLesson = Lesson::find(intval($lessonId))->goals->pluck('goal_id')->first();
+        $goalLesson = \DB::table('goals')->select('goal')->where('id', $goalableLesson)->first()->goal;
+        $lesson = Lesson::with('course')->where('id', intval($lessonId))->get();
+        $totalLesson = $lesson->pluck('course')->pluck('id')->first();
         $result['correct'] = $correct;
         $result['total'] = $answer;
+        $result['goal'] = $goalLesson;
+        $result['courseId'] = $totalLesson + 1;
         return $result;
+    }
+
+    /**
+     * Function index get recent lesson
+     *
+     * @param \Illuminate\Http\Request $lesson lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function getPrevNextLesson($lesson)
+    {
+        $previousLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '<', $lesson->id],
+        ])->max('id');
+        $nextLesson = Lesson::where([
+            ['course_id', '=', $lesson->course_id],
+            ['id', '>', $lesson->id],
+        ])->min('id');
+        return [$previousLesson, $nextLesson];
+    }
+
+    /**
+     * Function index get recent lesson
+     *
+     * @param \Illuminate\Http\Request $id lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function countViewLesson($id)
+    {
+        $lesson = Lesson::find($id);
+        Event::fire('lessons.view', $lesson);
+        return $lesson;
     }
 }

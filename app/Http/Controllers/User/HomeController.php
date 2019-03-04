@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CourseService;
 use App\Services\SliderService;
+use App\Models\Level;
 
 class HomeController extends Controller
 {
@@ -34,5 +35,66 @@ class HomeController extends Controller
         $popularCourses = $this->courseService->getPopularCourses();
         $newCourses = $this->courseService->getNewCourses();
         return view('frontend.home')->with(['sliders' => $sliders, 'popularCourses' => $popularCourses, 'newCourses' => $newCourses]);
+    }
+
+    /**
+     * Get product from keyword in search field
+     *
+     *@param request $request [request to get product]
+     *
+     * @return compare view
+     */
+    public function getListCourses(Request $request)
+    {
+        if ($request->ajax()) {
+            $response = $this->courseService->ajaxCourseSearch($request->get('query'));
+            return response()->json($response);
+        } else {
+            $query = $request->get('search');
+            $search = $this->courseService->courseSearch($query);
+            return view('frontend.search', compact('search'));
+        }
+    }
+
+    /**
+     * Display the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showAboutUs()
+    {
+        return view('frontend.about');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listLevel()
+    {
+        return view('frontend.levels.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Level $level Level
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLevel(Level $level)
+    {
+        return view('frontend.levels.show', compact('level'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showContact()
+    {
+        return view('frontend.contact');
     }
 }

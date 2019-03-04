@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    protected $fillable = ['name', 'image', 'video', 'count_view', 'total_rating', 'average', 'role', 'text'];
+    protected $fillable = ['name', 'image', 'video', 'count_view', 'total_rating', 'average', 'role', 'text', 'level_id', 'course_id'];
 
     protected $table = 'lessons';
 
@@ -81,7 +81,7 @@ class Lesson extends Model
      */
     public function comments()
     {
-        return $this->morphMany('App\Models\Comment', 'commentable');
+        return $this->morphMany('App\Models\Comment', 'commentable')->whereNull('parent_id');
     }
 
     /**

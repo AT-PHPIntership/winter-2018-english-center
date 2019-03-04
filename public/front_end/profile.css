@@ -1,0 +1,15 @@
+.content-wrapper {
+    background-color: #f7da0e38;
+    margin-bottom: 20px;
+}
+.profile-user-img {
+    margin-left: 44%;
+    width: 150px;
+    height: 150px;
+}
+.btn-warning {
+    margin-left: 48%;
+}
+.box-primary {
+    margin: 100px;
+}

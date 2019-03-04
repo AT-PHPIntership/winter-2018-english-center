@@ -1,5 +1,5 @@
 <!-- jquery
-============================================ -->		
+============================================ -->
 <script src="front_end/js/vendor/jquery-1.12.4.min.js"></script>
 
 <!-- bootstrap JS
@@ -47,9 +47,16 @@
 ============================================ -->        
 <script src="front_end/js/main.js"></script>
 
+<!-- backend main JS
+============================================ -->   
+<script src="js/main.js"></script>
+
 <!-- Custom JS
-============================================ -->		
+============================================ -->        
 <script src="front_end/js/common.js"></script>
+<!-- Sweet Alert 2 JS
+============================================ -->        
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
@@ -57,3 +64,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+<!-- Search JS
+============================================ -->
+<script src="front_end/js/search.js"></script>
+
+
+
+
+
