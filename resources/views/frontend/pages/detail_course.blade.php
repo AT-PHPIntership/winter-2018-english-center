@@ -39,7 +39,7 @@
                     <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $course->created_at}}</span></span>
                   </div>
                   <div class="course-text-content">
-                    <p class="content-course">{{ $course->content }}</p>
+                    <p class="content-course">{!! $course->content !!}</p>
                   </div>
                   <div class="single-item-content">
                     <div class="single-item-comment-view">
@@ -105,7 +105,7 @@
               @foreach ($course->comments as $comment)
               <li class="comment-border" data-id='{{$comment->id}}'>
                 <article id="{{$comment->id}}">
-                  <img alt='' src="{{ $comment->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                  <img alt='' src="storage/avatar/{{ $comment->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                   <div class="comment-des">
                     <div class="comment-by">
                       <p class="author"><strong>{{$comment->user->userProfile['name'] }}</strong></p>
@@ -126,7 +126,7 @@
                 <ol class="children">
                   <li class="children" id="commentChildren">
                     <article id="{{$reply->id}}" class="comment">
-                      <img alt='' src="{{ $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <img alt='' src="storage/avatar/{{ $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                       <div class="comment-des">
                         <div class="comment-by">
                           <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
@@ -154,7 +154,7 @@
                 @if($rate->ratingable_id === $course->id)
                   <li class="comment-border" data-id='{{ $rate->id }}'>
                     <article id="{{$rate->id}}">
-                      <img alt='' src="{{ $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <img alt='' src="storage/avatar/{{ $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                       <div class="comment-des">
                         <div class="comment-by">
                               <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>
@@ -195,7 +195,7 @@
                 <div class="single-item-text-info">
                   <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $parentCourse->created_at}}</span></span>
                 </div>
-                <p>{{ str_limit($parentCourse->content, 78) }}</p>
+                <p>{!! str_limit($parentCourse->content, 78) !!}</p>
                 <div class="single-item-content">
                   <div class="single-item-comment-view">
                     <span><i class="zmdi zmdi-eye"></i>{{ $parentCourse->count_view }}</span>

@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'adminLogin'], function() {
     Route::get('/', 'HomeController@index')->name('dashboard');
+
     Route::resource('users', 'UserController');
 
     Route::resource('courses', 'CourseController');
@@ -25,8 +26,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
 
     Route::post('vocabularies/import', 'VocabularyController@importFile')->name('vocabularies.import');
     Route::resource('vocabularies', 'VocabularyController');
+    
+    Route::post('exercises/store', 'ExerciseController@store');
+    // Route::post('exercises/update', 'ExerciseController@store');
 
-    Route::resource('exercises', 'ExerciseController');
+    Route::resource('exercises', 'ExerciseController')->only(['index', 'show', 'create', 'edit', 'update', 'destroy']);
     
     Route::resource('lessons', 'LessonController');
 

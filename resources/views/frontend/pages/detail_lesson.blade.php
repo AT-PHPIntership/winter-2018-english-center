@@ -49,6 +49,7 @@
                     @foreach ($lessons->vocabularies as $key => $items)
                     <tr>
                       <td>{{ $items->vocabulary }}</td>
+                      <td>{{ $items->phonetic_spelling }}</td>
                       <td>{{ $items->word_type }}</td>
                       <td style="cursor:pointer;">
                         <a type="button" class="uba_audioButton" >
@@ -65,7 +66,7 @@
               </div>
               <div class="col-md-12 detail-text-video">
                 <div class="detail-text">
-                  <p>{{ $lessons->text }}</p>
+                  <p>{!! $lessons->text !!}</p>
                 </div>
                 <div class="detail-video">
                   <iframe width="420" height="345" src="{{ $lessons->video }}">
@@ -168,7 +169,7 @@
               @foreach ($lessons->comments as $comment)
               <li class="comment-border" data-id='{{$comment->id}}'>
                 <article id="{{$comment->id}}">
-                  <img alt='' src="{{ $comment->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                  <img alt='' src="storage/avatar/{{ $comment->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                   <div class="comment-des">
                     <div class="comment-by">
                       <p class="author"><strong>{{$comment->user->userProfile['name'] }}</strong></p>
@@ -187,7 +188,7 @@
                 <ol class="children">
                   <li class="children" id="commentChildren">
                     <article id="{{$reply->id}}" class="comment">
-                      <img alt='' src="{{ $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <img alt='' src="storage/avatar/{{ $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                       <div class="comment-des">
                         <div class="comment-by">
                           <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
@@ -212,7 +213,7 @@
                 @if($rate->ratingable_id === $lessons->id)
                   <li class="comment-border" data-id='{{ $rate->id }}'>
                     <article id="{{$rate->id}}">
-                      <img alt='' src="{{ $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <img alt='' src="storage/avatar/{{ $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                       <div class="comment-des">
                         <div class="comment-by">
                               <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>
@@ -253,7 +254,7 @@
                       <div class="single-item-text-info">
                           <span>@lang('layout_user.levels.date') <span>{{ $items->updated_at }}</span></span>
                       </div>
-                      <p>{{ str_limit($items->text, 80) }}</p>
+                      <p>{!! str_limit($items->text, 80) !!}</p>
                       <div class="single-item-content">
                           <div class="single-item-comment-view">
                               <span><i class="zmdi zmdi-eye"></i>{{ $items->count_view }}</span>

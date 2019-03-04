@@ -55,19 +55,26 @@ class VocabularyService
     **/
     public function importFile($request)
     {
+        // dd($request);
         try {
             $path = $request->file('import_file')->getRealPath();
             $data = Excel::load($path)->get();
+            // dd($data);
             $lineError = config('define.import_file.line_defaul');
             $vocabularies = $this->filterVoca($data);
+            // dd($vocabularies);
             $arr = [];
             foreach ($vocabularies as $key => $value) {
-                $arr[$key] = ['vocabulary' => $value->vocabulary, 'means' => $value->means];
+                // dd($value);
+                $arr[$key] = ['vocabulary' => $value->vocabulary, 'phonetic_spelling' => $value->phonetic_spelling, 'means' => $value->means];
                 $lineError = $key + config('define.import_file.line_error');
                 $vocabularyContent = $this->getVocabularyContent($value->vocabulary);
+                // dd($vocabularyContent);
                 $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
                 $arr[$key]['word_type'] = $parseVocabulary['word_type'];
                 $arr[$key]['sound'] = $parseVocabulary['sound'];
+                $arr[$key]['phonetic_spelling'] = $parseVocabulary['phonetic_spelling'];
+                // dd($arr[$key]['phonetic_spelling']);
             }
             Vocabulary::insert($arr);
             session()->flash('success', __('common.success'));
@@ -84,7 +91,7 @@ class VocabularyService
      *
      * @return App\Services\VocabularyService
     **/
-    protected function getVocabularyContent(string $vocabulary)
+    public function getVocabularyContent(string $vocabulary)
     {
         $response = $this->client->request('GET', sprintf(config('define.oxford.get_api').$vocabulary), [
 
@@ -112,8 +119,9 @@ class VocabularyService
     protected function parseVocabularyContent($vocabularyContent)
     {
         return [
-            'word_type' => collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory'),
-            'sound'     => collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile,
+            'phonetic_spelling' => collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->phoneticSpelling,
+            'word_type'  => collect($vocabularyContent->results[0]->lexicalEntries[0])->get('lexicalCategory'),
+            'sound'      => collect($vocabularyContent->results[0]->lexicalEntries)->pluck('pronunciations')->filter()->first()[0]->audioFile,
         ];
     }
 
@@ -128,6 +136,7 @@ class VocabularyService
     {
         $vocabularyContent = $this->getVocabularyContent($data['vocabulary']);
         $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
+        $data['phonetic_spelling'] = $parseVocabulary['phonetic_spelling'];
         $data['word_type'] = $parseVocabulary['word_type'];
         $data['sound'] = $parseVocabulary['sound'];
         Vocabulary::create($data);
@@ -147,6 +156,7 @@ class VocabularyService
         $parseVocabulary = $this->parseVocabularyContent($vocabularyContent);
         $data['word_type'] = $parseVocabulary['word_type'];
         $data['sound'] = $parseVocabulary['sound'];
+        $data['phonetic_spelling'] = $parseVocabulary['phonetic_spelling'];
         $vocabulary->update($data);
     }
 

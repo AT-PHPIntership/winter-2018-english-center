@@ -16,6 +16,7 @@
   </ol>
 </section>
 <section class="content">
+  <div class="row">
   <div class="col-md-12">
     <div class="box box-primary">
       <form action="{{ route('admin.courses.store') }}" method="POST">
@@ -33,7 +34,7 @@
             <select name="parent_id" class="form-control">
               <option value="">@lang('course.create_course.select')</option>
               @foreach ($courses as $course)
-              <option value="{{ $course->id }}">{{ $course->name }}</option>
+              <option value="{{$course->id}}">{{ $course->name }}</option>
               @endforeach
             </select>
             @if ($errors->has('parent_id'))
@@ -42,21 +43,14 @@
           </div>
           <div class="form-group">
             <label>@lang('course.list_course.content')</label>
-            <textarea name="content" type="text" class="form-control" placeholder="Add content course ..."></textarea>
-            @if ($errors->has('content'))
+                <div class="box-body pad">
+                    <textarea class="ckeditor" name="content" rows="10" cols="80">
+                    </textarea>
+                </div>
+             @if ($errors->has('content'))
               <span class="text-red help is-danger">* {{ $errors->first('content') }}</span>
             @endif
           </div>
-          {{-- <div class="form-group">
-            <label>@lang('course.list_course.flag')</label>
-            <select name="flag" class="form-control">
-              <option value="{{ \App\Models\Course::VIP }}">{{ config('define.courses.vip') }}</option>
-              <option value="{{ \App\Models\Course::TRIAL }}">{{ config('define.courses.trial') }}</option>
-            </select>
-            @if ($errors->has('flag'))
-              <span class="text-red help is-danger">* {{ $errors->first('flag') }}</span>
-            @endif
-          </div> --}}
         </div>
         <div class="box-footer">
           <a href="{{ route('admin.courses.index')}}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
@@ -66,5 +60,6 @@
       </form>
     </div>
   </div>
+</div>
 </section>
 @endsection

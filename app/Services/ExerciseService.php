@@ -39,8 +39,25 @@ class ExerciseService
      *
      * @return App\Services\ExerciseService
     **/
-    public function store($data)
+    public function store($exercises, $lessonId, $questions, $totalAnswer, $status)
     {
+        $data = [];
+        $data['lesson_id'] = $lessonId;
+        $data['title'] = $exercises;
+        for ($i = 0; $i < count($questions); $i++) {
+            foreach ($questions as $key => $value) {
+                if ($i == $key) {
+                    $data['questions'][] = [
+                        [
+                        'content' => $value,
+                        'answers' => $totalAnswer[$i],
+                        'status' => $status[$i],
+                        ]
+                    ][0];
+                }
+            }
+        }
+        
         $exercise = Exercise::create($data);
         foreach ($data['questions'] as $value) {
             $question = $exercise->questions()->create($value);
@@ -51,6 +68,7 @@ class ExerciseService
             });
         }
         Answer::insert($answers);
+        return ['success', 'Success!'];
     }
 
     /**

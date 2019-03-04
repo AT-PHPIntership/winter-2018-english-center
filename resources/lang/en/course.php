@@ -8,7 +8,7 @@
             'count_view' => 'View',
             'total_rating' => 'Total Rating',
             'average' => 'Average',
-            'content' => 'Content',
+            'content' => 'Introduce Course',
             'action' => 'Action',
             'edit' => 'Edit',
             'delete' => 'Delete',

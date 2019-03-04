@@ -62,11 +62,13 @@
                 <div class="row">
                     <b class="col-lg-2">{{ __('vocabulary.list_vocabulary.sound') }}</b>
                     <span class="col-lg-10">
-                      <div id="player">
-                          <audio controls>
-                              <source src="{{ $vocabulary->sound }}" type="audio/mpeg">
+                      <td style="cursor:pointer;text-align: center;">
+                        <a type="button" class="uba_audioButton" >
+                          <audio>
+                            <source src="{{$vocabulary->sound}}" type="audio/mpeg">
                           </audio>
-                      </div>
+                        </a>
+                      </td>
                     </span>
                 </div>
             </li>

@@ -51,10 +51,12 @@ class ExerciseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateExerciseRequest $request)
+    public function store(Request $request)
     {
-        app(ExerciseService::class)->store($request->all());
-        return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
+
+        // dd($request->get('exercises'));
+        $response = app(ExerciseService::class)->store($request->get('exercises'), $request->get('lessonId'), $request->get('questions'), $request->get('totalAnswer'), $request->get('status'));
+        return response()->json($response);
     }
 
     /**

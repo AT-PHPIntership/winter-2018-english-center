@@ -130,7 +130,7 @@ class LessonService
     **/
     public function recentLesson()
     {
-        return Lesson::orderBy('created_at', config('define.order_by_desc'))->limit(config('define.recent_lessons'))->get();
+        return Lesson::orderBy('created_at', config('define.order_by_desc'))->limit(3)->get();
     }
 
     /**

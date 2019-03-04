@@ -35,7 +35,7 @@
     
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-pricetag-outline"></i></span>
+        <span class="info-box-icon bg-aqua"><i class="fa fa-calendar"></i></span>
 
         <div class="info-box-content">
           <span class="info-box-text">{{ __('dashboard.total_course') }}</span>
@@ -60,23 +60,21 @@
     </div>
     
     <!-- /.col -->
-
     <!-- fix for small devices only -->
     {{-- <div class="clearfix visible-sm-block"></div> --}}
 
-
-        {{-- <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">{{ __('dashboard.like') }}</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-number">{{ $statisticals['avgRating']}}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
-        </div> --}}
+        </div>
     <!-- /.col -->
   </div>
   <!-- /.row -->
@@ -162,12 +160,6 @@
     var month3 = {!! json_encode($statisticals['monthCourseUser'][3]->total_user) !!};
     var month4 = {!! json_encode($statisticals['monthCourseUser'][4]->total_user) !!};
     var month5 = {!! json_encode($statisticals['monthCourseUser'][5]->total_user) !!};
-    var month6 = {!! json_encode($statisticals['monthCourseUser'][6]->total_user) !!};
-    var month7 = {!! json_encode($statisticals['monthCourseUser'][7]->total_user) !!};
-    var month8 = {!! json_encode($statisticals['monthCourseUser'][8]->total_user) !!};
-    var month9 = {!! json_encode($statisticals['monthCourseUser'][9]->total_user) !!};
-    var month10 = {!! json_encode($statisticals['monthCourseUser'][10]->total_user) !!};
-    var month11 = {!! json_encode($statisticals['monthCourseUser'][11]->total_user) !!};
-    console.log(lesson1, lesson2, lesson3, lesson4, lesson5, month0, month2, month3, month4, month5, month6, month7, month8, month9, month10, month11);
+    console.log(lesson1, lesson2, lesson3, lesson4, lesson5, month0, month1, month2, month3, month4, month5);
 </script>
 @endsection

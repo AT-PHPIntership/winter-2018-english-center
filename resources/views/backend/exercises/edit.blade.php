@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
               <label>@lang('exercise.list_exercise.lessons')</label>
-              <select name="lesson_id" class="form-control select2">
+              <select name="lesson_id" class="form-control">
                 @if( $exercise->lesson_id == null)
                 <option value="">@lang('course.create_course.select')</option>
                 @foreach ($lessons as $lesson)
@@ -51,18 +51,18 @@
             </div>
             <div class="form-group">
               <button type='button' id="add-questions" class="btn btn-default">+</button>
-              <button type='button' id="remove-questions" class="btn btn-default">x</button>
+              {{-- <button type='button' id="remove-questions" class="btn btn-default">x</button> --}}
             </div>
             <div class="form-group">
               @if($exercise->questions != null)
               @foreach ($exercise->questions as $a => $question)
-              <div id="questions" class="col-md-10 col-xs-offset-1">
+              <div id="question" class="col-md-10 col-xs-offset-1">
                 <div class="box box-info">
                   <div class="box-body">
                     <div class="form-group">
                       <label>{{ __('exercise.update_exercise.question') }}</label>
-                      <input type="hidden" name="questions[{{ $a }}][id]" class="form-control" value="{{ $question->id }}">
-                      <input name="questions[{{ $a }}][content]" class="form-control" value="{{ $question->content }}">
+                      <input type="hidden" name="questions-{{ $a }}" class="form-control" value="{{ $question->id }}">
+                      <input name="questions-{{ $a }}" class="form-control questions" value="{{ $question->content }}">
                     </div>
                     @foreach ($question->answers as $key => $answers)
                     <div class="form-group">

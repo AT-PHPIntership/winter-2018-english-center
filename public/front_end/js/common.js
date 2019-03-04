@@ -120,7 +120,7 @@ $(document).ready(function(){
                 var output = '';
                 output += '<li class="comment-border" data-id=' + data.id + '>';
                 output += '<article id="' + data.id + '">';
-                output += '<img src="' + data.userImage + '" class="avatar avatar-60 photo"/>';
+                output += '<img src="storage/avatar/' + data.userImage + '" class="avatar avatar-60 photo"/>';
                 output += '<div class="comment-des">';
                 output += '<div class="comment-by">';
                 output += '<p class="author"><strong>' + data.userName + '</strong></p>';
@@ -207,7 +207,7 @@ $(document).on('click', '#reply-button', function() {
                 output += '<ol class="children">';
                 output += '<li class="children" id="commentChildren">';
                 output += '<article id="' + data.id + '" class="comment">';
-                output += '<img src="'+ data.userImage +'" class="avatar avatar-60 photo"/>';
+                output += '<img src="storage/avatar/'+ data.userImage +'" class="avatar avatar-60 photo"/>';
                 output += '<div class="comment-des">';
                 output += '<div class="comment-by">';
                 output += '<p class="author"><strong>'+ data.userName +'</strong></p>';

@@ -41,7 +41,7 @@
                                 <div class="single-item-text-info">
                                     <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                                 </div>
-                                <p>{{ str_limit($course->content, 123) }}</p>
+                                <p>{!! str_limit($course->content, 123) !!}</p>
                                 <div class="single-item-content">
                                    <div class="single-item-comment-view">
                                        <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
@@ -93,7 +93,7 @@
                                 <div class="single-item-text-info">
                                     <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                                 </div>
-                                <p>{{ str_limit($course->content, 123) }}</p>
+                                <p>{!! str_limit($course->content, 123) !!}</p>
                                 <div class="single-item-content">
                                    <div class="single-item-comment-view">
                                        <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
@@ -154,7 +154,7 @@
                             <div class="single-item-comment-view">
                                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $newRatingCourse->updated_at }}</span>
                             </div>
-                            <p>{{ str_limit( $newRatingCourse->content, 100) }}</p>
+                            <p>{!! str_limit( $newRatingCourse->content, 100) !!}</p>
                             <a href="{{ route('user.course.detail', $newRatingCourse->ratingable_id) }}" class="button-default">@lang('layout_user.rating.btn')</a>
                         </div>
                     </div>
@@ -197,7 +197,7 @@
                             <div class="single-item-comment-view">
                                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $newRatingLesson->updated_at }}</span>
                             </div>
-                            <p>{{ str_limit( $newRatingLesson->content, 120) }}</p>
+                            <p>{!! str_limit( $newRatingLesson->content, 120) !!}</p>
                             <a href="{{ route('user.lesson.detail', $newRatingLesson->ratingable_id) }}" class="button-default">@lang('layout_user.rating.btn')</a>
                         </div>
                     </div>
