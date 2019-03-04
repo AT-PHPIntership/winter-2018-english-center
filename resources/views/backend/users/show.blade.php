@@ -18,7 +18,7 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="storage/avatar/{{ $user->userProfile->url }}" alt="">
+                    <img class="profile-user-img img-responsive img-circle" src="{{ !(substr($user->userProfile->url,0,4) == 'http') ? 'storage/avatar/' .$user->userProfile->url : $user->userProfile->url }}" alt="">
 
                     <h3 class="profile-username text-center">{{ $user->userProfile->name }}</h3>
 

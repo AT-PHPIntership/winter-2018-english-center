@@ -27,7 +27,7 @@
         <div class="news-details-content">
           <div class="single-latest-item">
             <div class="single-event-image">
-              <img src="{{ $lessons->image }}" alt="">
+              <img src="storage/lesson/{{ $lessons->image }}" alt="">
             </div>
             <div class="single-latest-text">
               <h3>{{ $lessons->name }}</h3>
@@ -65,7 +65,7 @@
               </div>
               <div class="col-md-12 detail-text-video">
                 <div class="detail-text">
-                  <p>{{ $lessons->text }}</p>
+                  <p>{!! $lessons->text !!}</p>
                 </div>
                 <div class="detail-video">
                   <iframe width="420" height="345" src="{{ $lessons->video }}">

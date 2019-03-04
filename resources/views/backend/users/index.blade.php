@@ -30,11 +30,11 @@
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr class="row">
-                            <th>{{ __('user.show_list_user.id') }}</th>
-                            <th>{{ __('user.show_list_user.email') }}</th>
-                            <th>{{ __('user.show_list_user.role') }}</th>
-                            <th>{{ __('user.show_list_user.show') }}</th>
-                            <th>{{ __('user.show_list_user.action') }}</th>
+                            <th class="col-lg-1">{{ __('user.show_list_user.id') }}</th>
+                            <th class="col-lg-4">{{ __('user.show_list_user.email') }}</th>
+                            <th class="col-lg-3">{{ __('user.show_list_user.role') }}</th>
+                            <th class="col-lg-2">{{ __('user.show_list_user.show') }}</th>
+                            <th class="col-lg-2">{{ __('user.show_list_user.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>

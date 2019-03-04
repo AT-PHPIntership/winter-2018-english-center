@@ -103,6 +103,16 @@
                             @endif
                         </div>
                         <div class="form-group">
+                            <label for="exercise">{{ __('lesson.create_lesson.exercise') }}</label>
+                            <select id="list-exercises" class="form-control" multiple style="width: 100%;" name="exercises_id[]">
+                            </select>
+                            @if ($errors->has('exercises_id'))
+                                <span class="help-block col-sm-12">
+                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('exercises_id') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label for="img">{{ __('lesson.create_lesson.image') }}</label>
                             <input type="file" name="image" value="{{ old('image') }}">
                             @if ($errors->has('image'))
@@ -136,4 +146,5 @@
 @endsection
 @section('script')
     <script type="text/javascript" src="{!! asset('js/vocalbularies.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('js/exercises.js') !!}"></script>
 @endsection

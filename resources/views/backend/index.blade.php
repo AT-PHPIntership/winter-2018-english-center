@@ -162,12 +162,6 @@
     var month3 = {!! json_encode($statisticals['monthCourseUser'][3]->total_user) !!};
     var month4 = {!! json_encode($statisticals['monthCourseUser'][4]->total_user) !!};
     var month5 = {!! json_encode($statisticals['monthCourseUser'][5]->total_user) !!};
-    var month6 = {!! json_encode($statisticals['monthCourseUser'][6]->total_user) !!};
-    var month7 = {!! json_encode($statisticals['monthCourseUser'][7]->total_user) !!};
-    var month8 = {!! json_encode($statisticals['monthCourseUser'][8]->total_user) !!};
-    var month9 = {!! json_encode($statisticals['monthCourseUser'][9]->total_user) !!};
-    var month10 = {!! json_encode($statisticals['monthCourseUser'][10]->total_user) !!};
-    var month11 = {!! json_encode($statisticals['monthCourseUser'][11]->total_user) !!};
-    console.log(lesson1, lesson2, lesson3, lesson4, lesson5, month0, month2, month3, month4, month5, month6, month7, month8, month9, month10, month11);
+    console.log(lesson1, lesson2, lesson3, lesson4, lesson5, month0, month1, month2, month3, month4, month5);
 </script>
 @endsection

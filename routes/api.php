@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Api for ADMIN
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function() {
     Route::get('list-vocabularies', 'VocabularyController@getListVocabularies')->name('vocabularies.lists');
+    Route::get('list-exercises', 'ExerciseController@getListExercises')->name('exercises.lists');
 });

@@ -38,6 +38,8 @@ class LessonService
     {
         $lesson = Lesson::create($data);
         $lesson->vocabularies()->attach($data['vocabularies_id']);
+        // dd($data['exercises_id']);
+        // $lesson->exercises()->create($data);
         return $lesson;
     }
 

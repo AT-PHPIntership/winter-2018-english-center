@@ -53,7 +53,7 @@ class SocialProviderService
                     //create a new user and provider
                     $user = User::firstOrCreate([
                         'email' => $socialUser->getEmail(),
-                        'role_id' => 2
+                        'role_id' => 0
                     ]);
                     $user->userProfile()->create([
                         'url' => $socialUser->getAvatar(),
