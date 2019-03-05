@@ -100,8 +100,8 @@
                                 @foreach ($questions->answers as $a => $answers)
                                 <div class="radio-exercise col-lg-3">
                                   <label>
-                                  <input type="radio" name="exercises[{{ $key }}]questions[{{ $q }}][answers][]" id="{{ $answers->id }}" value="{{ $a }}">
-                                  {{ $answers->answers }} 
+                                    <input type="radio" name="exercises[{{ $key }}]questions[{{ $q }}][answers][]" id="{{ $answers->id }}" value="{{ $a }}">
+                                    {{ $answers->answers }} 
                                   </label>
                                 </div>
                                 @endforeach
@@ -168,7 +168,7 @@
               @foreach ($lessons->comments as $comment)
               <li class="comment-border" data-id='{{$comment->id}}'>
                 <article id="{{$comment->id}}">
-                  <img alt='' src="{{ $comment->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                  <img alt='' src="{{ !(substr($comment->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$comment->user->userProfile['url'] : $comment->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                   <div class="comment-des">
                     <div class="comment-by">
                       <p class="author"><strong>{{$comment->user->userProfile['name'] }}</strong></p>
@@ -187,7 +187,7 @@
                 <ol class="children">
                   <li class="children" id="commentChildren">
                     <article id="{{$reply->id}}" class="comment">
-                      <img alt='' src="{{ $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <img alt='' src="{{ !(substr($reply->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$reply->user->userProfile['url'] : $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                       <div class="comment-des">
                         <div class="comment-by">
                           <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
@@ -212,7 +212,7 @@
                 @if($rate->ratingable_id === $lessons->id)
                   <li class="comment-border" data-id='{{ $rate->id }}'>
                     <article id="{{$rate->id}}">
-                      <img alt='' src="{{ $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <img alt='' src="{{ !(substr($rate->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$rate->user->userProfile['url'] : $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                       <div class="comment-des">
                         <div class="comment-by">
                               <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>
@@ -246,14 +246,14 @@
               @foreach ($recentLessons as $items)
               <div class="single-item">
                   <div class="single-item-image overlay-effect">
-                      <a href="{{ route('user.lesson.detail', $items->id) }}"><img src="{{ $items->image }}" alt=""></a>
+                      <a href="{{ route('user.lesson.detail', $items->id) }}"><img src="storage/lesson/{{ $items->image }}" alt=""></a>
                   </div>
                   <div class="single-item-text">
                       <h4><a href="{{ route('user.lesson.detail', $items->id) }}">{{ $items->name }}</a></h4>
                       <div class="single-item-text-info">
                           <span>@lang('layout_user.levels.date') <span>{{ $items->updated_at }}</span></span>
                       </div>
-                      <p>{{ str_limit($items->text, 80) }}</p>
+                      {!! str_limit($items->text, 80) !!}
                       <div class="single-item-content">
                           <div class="single-item-comment-view">
                               <span><i class="zmdi zmdi-eye"></i>{{ $items->count_view }}</span>
