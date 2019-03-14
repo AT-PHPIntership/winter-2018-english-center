@@ -29,9 +29,9 @@ class UpdateUserRequest extends FormRequest
             'email' => 'required|email|unique:users,email,'. $this->user->id,
             // 'password' => 'min:6',
             // 'confirm_password' => 'same:password',
-            'age' => 'required|numeric|min:5|max:100',
+            // 'age' => 'required|numeric|min:5|max:100',
             'birthday' => 'required|date|before:today',
-            'phone' => 'required|min:10',
+            'phone' => 'required|numeric|digits:10',
         ];
     }
 

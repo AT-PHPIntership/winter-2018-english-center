@@ -1,6 +1,6 @@
 <header class="main-header">
   <!-- Logo -->
-  <a href="index.html" class="logo">
+  <a href="/admin" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>A</b>LT</span>
     <!-- logo for regular state and mobile devices -->
@@ -29,7 +29,7 @@
               <img src="storage/avatar/{{ Auth::user()->userProfile->url }}" class="img-circle" alt="User Image">
               <p>
                 {{ Auth::user()->userProfile->name }}
-                <small>{{ Auth::user()->userProfile->age }} years old</small>
+                <small>{{ Auth::user()->userProfile->birthday }}</small>
               </p>
             </li>
             <!-- Menu Body -->

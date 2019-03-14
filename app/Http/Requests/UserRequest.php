@@ -28,9 +28,9 @@ class UserRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             'confirm_password' => 'required|same:password',
-            'age' => 'required|numeric|min:5|max:100',
+            // 'age' => 'required|numeric|min:5|max:100',
             'birthday' => 'required|date|before:5 years ago',
-            'phone' => 'required|min:10',
+            'phone' => 'required|numeric|digits:10',
             'role_id' => 'required',
         ];
     }

@@ -184,13 +184,15 @@ class CourseService
         });
         // dd($lessonBasedCourseId);
         $lessonCompare = $lessonBasedCourseId->pluck('id');
-        $lessonUser = Auth::user()->lessons->pluck('id');
-        $compareDiff = $lessonCompare->diff($lessonUser);
-        $results = $lessonBasedCourseId->whereIn('id', $compareDiff);
-        // dd($compareDiff != null);
-        if (count($compareDiff) == 0) {
-            return $lessonBasedCourseId->pluck('order')->max();
+        if(Auth::check()) {
+            $lessonUser = Auth::user()->lessons->pluck('id');
+            $compareDiff = $lessonCompare->diff($lessonUser);
+            $results = $lessonBasedCourseId->whereIn('id', $compareDiff);
+            // dd($compareDiff != null);
+            if (count($compareDiff) == 0) {
+                return $lessonBasedCourseId->pluck('order')->max();
+            }
+            return $results->pluck('order')->min();
         }
-        return $results->pluck('order')->min();
     }
 }

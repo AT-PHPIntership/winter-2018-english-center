@@ -25,12 +25,12 @@
                     <p class="text-muted text-center">{{ $user->email }}</p>
 
                     <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item text-center">
+                        <!-- <li class="list-group-item text-center">
                             <div class="row">
                                 <b class="col-lg-6">@lang('user.show_list_user.show_user.age')</b>
                                 <span class="col-lg-6">{{ $user->userProfile->age }}</span>
                             </div>
-                        </li>
+                        </li> -->
                         <li class="list-group-item text-center">
                             <div class="row">
                                 <b class="col-lg-6">@lang('user.show_list_user.show_user.birthday')</b>
