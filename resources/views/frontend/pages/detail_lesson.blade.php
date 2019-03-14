@@ -27,7 +27,7 @@
         <div class="news-details-content">
           <div class="single-latest-item">
             <div class="single-event-image">
-              <img src="{{ $lessons->image }}" alt="">
+              <img src="storage/lesson/{{ $lessons->image }}" alt="">
             </div>
             <div class="single-latest-text">
               <h3>{{ $lessons->name }}</h3>
@@ -116,7 +116,7 @@
                       <div class="row">
                         <div class="basic_alert_note">{{ __('layout_user.lessons.lesson_detail.complete_exercise')}}<strong> {{ __('common.btn') }}</strong> {{ __('layout_user.lessons.lesson_detail.complete_exercise_below')}}</div>
                         <div class="box_bt_ctrl">
-                          <button type="button" class="btn btn-success">
+                          <button type="button" class="btn btn-success submit-answer">
                           <i class="fa fa-credit-card"></i> {{ __('common.btn') }}
                           </button>
                         </div>
@@ -138,6 +138,7 @@
               </div>
             </div>
           </div>
+
           @foreach((Auth::user()->lessons) as $lesson_user)
               @if($lesson_user->id === $lessons->id)
               <div class="rating-link">
@@ -247,7 +248,7 @@
               @foreach ($recentLessons as $items)
               <div class="single-item">
                   <div class="single-item-image overlay-effect">
-                      <a href="{{ route('user.lesson.detail', $items->id) }}"><img src="{{ $items->image }}" alt=""></a>
+                      <a href="{{ route('user.lesson.detail', $items->id) }}"><img src="storage/lesson/{{ $items->image }}" alt=""></a>
                   </div>
                   <div class="single-item-text">
                       <h4><a href="{{ route('user.lesson.detail', $items->id) }}">{{ $items->name }}</a></h4>

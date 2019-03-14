@@ -36,6 +36,7 @@ class LessonController extends Controller
      */
     public function resutlLesson(Request $request)
     {
+        // dd($request->all());
         $response = app(LessonService::class)->resutlLesson($request->get('answers'), $request->get('userId'), $request->get('lessonId'), $request->get('courseId'));
         return response()->json($response);
     }
@@ -88,5 +89,4 @@ class LessonController extends Controller
         $response = app(CommentService::class)->editComment($request->get('userId'), $request->get('commentId'));
         return response()->json($response);
     }
-   
 }

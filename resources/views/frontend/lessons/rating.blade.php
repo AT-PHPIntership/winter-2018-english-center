@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="product-details-image">
-                        <img src="{{ $common->image }}" alt="">
+                        <img src="storage/lesson/{{ $common->image }}" alt="">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">

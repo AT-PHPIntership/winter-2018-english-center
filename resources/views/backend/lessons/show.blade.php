@@ -62,13 +62,13 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.show_lesson.text') }}</b>
-                                <span class="col-lg-10">{{ $lesson->text }}</span>
+                                <span class="col-lg-10">{!! $lesson->text !!}</span>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.course') }}</b>
-                                <span class="col-lg-10">{{ $lesson->course->title }}</span>
+                                <span class="col-lg-10">{{ $lesson->course->name }}</span>
                             </div>
                         </li>
                         <li class="list-group-item">

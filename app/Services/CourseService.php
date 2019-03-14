@@ -15,8 +15,7 @@ class CourseService
     **/
     public function index()
     {
-        $courses = Course::with('parent')->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
-        return $courses;
+        return $courses = Course::with('parent')->latest()->paginate(config('define.courses.limit_rows'));
     }
 
     /**
@@ -40,7 +39,7 @@ class CourseService
     }
 
     /**
-     * Function store insert course
+     * Function store create course new
      *
      * @param ValidationCourse $request comment
      *
@@ -60,7 +59,6 @@ class CourseService
     **/
     public function edit($id)
     {
-        // dd($id);
         return Course::findOrFail($id);
     }
 
@@ -168,22 +166,31 @@ class CourseService
         return $course;
     }
 
-
+    /**
+     * Function index get recent course
+     *
+     * @param \Illuminate\Http\Request $course  course
+     * @param \Illuminate\Http\Request $lessons lesson
+     *
+     * @return App\Services\LessonService
+    **/
     public function historyLesson($course, $lessons)
     {
         // dd($lessons);
-        $lessonBasedCourseId = $lessons->filter(function($val) use($course) {
+        $lessonBasedCourseId = $lessons->filter(function ($val) use ($course) {
             return $val->course_id == $course->id;
         });
         // dd($lessonBasedCourseId);
         $lessonCompare = $lessonBasedCourseId->pluck('id');
-        $lessonUser = Auth::user()->lessons->pluck('id');
-        $compareDiff = $lessonCompare->diff($lessonUser); 
-        $results = $lessonBasedCourseId->whereIn('id', $compareDiff);
-        // dd($compareDiff != null);
-        if (count($compareDiff) == 0) {
-            return $lessonBasedCourseId->pluck('order')->max(); 
+        if(Auth::check()){
+            $lessonUser = Auth::user()->lessons->pluck('id');
+            $compareDiff = $lessonCompare->diff($lessonUser);
+            $results = $lessonBasedCourseId->whereIn('id', $compareDiff);
+            // dd($compareDiff != null);
+            if (count($compareDiff) == 0) {
+                return $lessonBasedCourseId->pluck('order')->max();
+            }
+            return $results->pluck('order')->min();
         }
-        return $results->pluck('order')->min();
-    } 
+    }
 }

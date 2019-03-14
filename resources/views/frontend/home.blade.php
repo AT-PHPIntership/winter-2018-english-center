@@ -8,7 +8,7 @@
                 <div class="col-md-8">
                     <div class="about-container">
                         <h3>@lang('layout_user.why_us.title')</h3>
-                        <p>{{ $system->whyus }}</p>
+                        <p>{!! $system->whyus !!}</p>
                         <a class="button-default" href="{{ route('user.courses') }}">@lang('layout_user.why_us.btn')</a>	      
                     </div>
                 </div>
@@ -34,14 +34,14 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-item">
                             <div class="single-item-image overlay-effect">
-                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="{{ $course->image }}" alt=""></a>
+                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="front_end/img/event/{{ $course->image }}" alt=""></a>
                             </div>
                             <div class="single-item-text">
                                 <h4><a href="{{ route('user.course.detail', $course->id) }}">{{ $course->name }}</a></h4>
                                 <div class="single-item-text-info">
                                     <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                                 </div>
-                                <p>{!! str_limit($course->content, 123) !!}</p>
+                                {!! str_limit($course->content, 123) !!}
                                 <div class="single-item-content">
                                    <div class="single-item-comment-view">
                                        <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>
@@ -86,7 +86,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-item">
                             <div class="single-item-image overlay-effect">
-                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="{{ $course->image }}" alt=""></a>
+                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="front_end/img/event/{{ $course->image }}" alt=""></a>
                             </div>
                             <div class="single-item-text">
                                 <h4><a href="{{ route('user.course.detail', $course->id) }}">{{ $course->name }}</a></h4>
@@ -129,7 +129,7 @@
                     <div class="section-title-wrapper">
                         <div class="section-title">
                             <h3>@lang('layout_user.rating.course.title')</h3>
-                            <p>@lang('layout_user.rating.lesson.desc')</p>
+                            <p>@lang('layout_user.rating.course.desc')</p>
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
                             <div class="single-item-comment-view">
                                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $newRatingCourse->updated_at }}</span>
                             </div>
-                            <p>{!! str_limit( $newRatingCourse->content, 100) !!}</p>
+                            <p>{{ str_limit( $newRatingCourse->content, 70) }}</p>
                             <a href="{{ route('user.course.detail', $newRatingCourse->ratingable_id) }}" class="button-default">@lang('layout_user.rating.btn')</a>
                         </div>
                     </div>
@@ -197,7 +197,7 @@
                             <div class="single-item-comment-view">
                                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $newRatingLesson->updated_at }}</span>
                             </div>
-                            <p>{!! str_limit( $newRatingLesson->content, 120) !!}</p>
+                            <p>{{ str_limit( $newRatingLesson->content, 70) }}</p>
                             <a href="{{ route('user.lesson.detail', $newRatingLesson->ratingable_id) }}" class="button-default">@lang('layout_user.rating.btn')</a>
                         </div>
                     </div>

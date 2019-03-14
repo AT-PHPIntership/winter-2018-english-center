@@ -54,19 +54,19 @@ class CreateVocabularyRequest extends FormRequest
      */
     public function withValidator($validator)
     {       
+        // dd($validator);
         $response = app(Client::class)->request('GET', sprintf(config('define.oxford.get_api').$this->all()['vocabulary']), [
-
             'headers' => [
                 'app_id'  => config('define.oxford.app_id'),
                 'app_key' => config('define.oxford.app_key')
             ],
             'http_errors' => false
         ]);
-    $validator->after(function ($validator) use($response) {
-        if($response->getStatusCode() == Response::HTTP_NOT_FOUND) {
-            $validator->errors()->add('vocabulary', 'Sai roi nha');
-        }
-    });
+        $validator->after(function ($validator) use($response) {
+            if($response->getStatusCode() == Response::HTTP_NOT_FOUND) {
+                $validator->errors()->add('vocabulary', 'Vocabulary is wrong');
+            }
+        });
         return;
     }
 }

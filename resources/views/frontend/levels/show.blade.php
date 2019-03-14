@@ -36,7 +36,7 @@
                 <div class="col-md-4 col-sm-6 margin-bottom">
                     <div class="single-item">
                         <div class="single-item-image overlay-effect">
-                            <a href="{{ route('user.lesson.detail', $lesson->id) }}"><img src="{{ $lesson->image }}" alt=""></a>
+                            <a href="{{ route('user.lesson.detail', $lesson->id) }}"><img src="storage/lesson/{{ $lesson->image }}" alt=""></a>
                         </div>
                         <div class="single-item-text">
                             <h4><a href="{{ route('user.lesson.detail', $lesson->id) }}">{{ $lesson->name }}</a></h4>

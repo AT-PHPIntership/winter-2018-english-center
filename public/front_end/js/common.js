@@ -15,7 +15,7 @@ $(document).ready(function(){
    $(this).find('audio').trigger('play');
  });
 
- $('.btn-success').one('click', function() {
+ $('.submit-answer').one('click', function() {
     var answers = $('input[type="radio"]:checked').map(function() {
           return this.id;
       }).get();
@@ -45,6 +45,7 @@ $(document).ready(function(){
                 var output = '<div class="correct">Correct: ' + data.correct.length + '<span>' + ' / ' +  data.total.length + '</span>' + '</div>';
                 $('.result-lesson').html(output);
               }
+              // debugger
               if (data.correct.length >= data.goal) {
                   var navigation = '<ul class="pagination">';
                   if (navigate('previous') != null) {
@@ -99,11 +100,13 @@ $(document).ready(function(){
   var elementId = $(this).data('element');
   var content = $('#comment-text').val();
   var token = $(this).data('token');
+  // console.log(window.location.href.split("/").includes("course"));
   if ( window.location.href.split("/").includes("lesson")){
     var url = 'comment/lessons';
   } else {
     var url = 'comment/courses';
   }
+  // debugger;
   if (userId != undefined) {
           if (content !== '') {
             $.ajax({
@@ -117,6 +120,7 @@ $(document).ready(function(){
                 _token: token
               },
               success: function(data) {
+                console.log(data);
                 var output = '';
                 output += '<li class="comment-border" data-id=' + data.id + '>';
                 output += '<article id="' + data.id + '">';
@@ -139,6 +143,7 @@ $(document).ready(function(){
               }
             });
           }
+          // debugger
         } else {
           location.href = 'login';
         }
@@ -158,7 +163,7 @@ $(document).on('click', '.add-reply', function() {
         output += '<div class="comment-text">';
         output += '<textarea class="form-control" id="reply-text" name="review" placeholder="' + comment('write') + '"></textarea>';
         output += '</div>';
-        output += '<div class="col-lg-2 pull-right">';
+        output += '<div class="pull-right">';
         output += '<input class="btn btn-block" id="reply-button" value="' + comment('submit') + '" data-comment=' + replyId + ' type="submit">';
         output += '</div>';
         output += '</div>';

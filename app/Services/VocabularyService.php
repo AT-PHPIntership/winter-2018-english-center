@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Models\Vocabulary;
 use Excel;
 use GuzzleHttp\Client;
+// use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\HttpFoundation\Response;
 
 class VocabularyService
@@ -97,11 +98,11 @@ class VocabularyService
 
             'headers' => [
                 'app_id'  => config('define.oxford.app_id'),
-                'app_key' => config('define.oxford.app_key')
-            ],
+                'app_key' => config('define.oxford.app_key'),
+            ], 
             'http_errors' => false
         ]);
-
+        // dd($response);
         if ($response->getStatusCode() == Response::HTTP_NOT_FOUND) {
             throw new \InvalidArgumentException(config('define.import_file.file_error'));
         }

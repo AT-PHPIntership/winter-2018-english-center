@@ -51,7 +51,6 @@
             </div>
             <div class="form-group">
               <button type='button' id="add-questions" class="btn btn-default">+</button>
-              {{-- <button type='button' id="remove-questions" class="btn btn-default">x</button> --}}
             </div>
             <div class="form-group">
               @if($exercise->questions != null)
@@ -61,8 +60,8 @@
                   <div class="box-body">
                     <div class="form-group">
                       <label>{{ __('exercise.update_exercise.question') }}</label>
-                      <input type="hidden" name="questions-{{ $a }}" class="form-control" value="{{ $question->id }}">
-                      <input name="questions-{{ $a }}" class="form-control questions" value="{{ $question->content }}">
+                      <input type="hidden" name="questions[{{$a}}][id]" class="form-control" value="{{ $question->id }}">
+                      <input name="questions[{{$a}}][content]" class="form-control" value="{{ $question->content }}">
                     </div>
                     @foreach ($question->answers as $key => $answers)
                     <div class="form-group">

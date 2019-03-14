@@ -4,8 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
-class UpdateUserRequest extends FormRequest
+class UpdateAuthUserPassRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +26,8 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:50',
-            'email' => 'required|email|unique:users,email,'. $this->user->id,
             'password' => 'min:6',
             'confirm_password' => 'same:password',
-            'age' => 'required|numeric|min:5|max:100',
-            'birthday' => 'required|date|before:today',
-            'phone' => 'required|min:10',
         ];
     }
 
@@ -47,7 +43,7 @@ class UpdateUserRequest extends FormRequest
         // checks user old password
         // before making changes
         $validator->after(function ($validator) {
-            if (!empty($this->old_password) && !Hash::check($this->old_password, $this->user->password)) {
+            if (!empty($this->old_password) && !Hash::check($this->old_password, Auth::user()->password)) {
                 $validator->errors()->add('old_password', __('user.edit_user.message'));
             }
         });

@@ -23,8 +23,7 @@ class LessonService
     **/
     public function index()
     {
-        $lessons = Lesson::with(['course', 'level'])->orderBy('created_at', config('define.order_by_desc'))->paginate(config('define.page_site'));
-        return $lessons;
+        return $lessons = Lesson::with(['course', 'level'])->latest()->paginate(config('define.page_site'));
     }
 
     /**
@@ -161,6 +160,7 @@ class LessonService
             ],
             [ 'learn_time' => Carbon\Carbon::now() ]
         );
+        // dd($answer); 
         foreach ($answer as $value) {
             DB::table('user_answers')->insert([
                 'user_id' => $userId,
@@ -198,25 +198,25 @@ class LessonService
         return $result;
     }
 
-    /**
-     * Function index get recent lesson
-     *
-     * @param \Illuminate\Http\Request $lesson lesson
-     *
-     * @return App\Services\LessonService
-    **/
-    public function getPrevNextLesson($lesson)
-    {
-        $previousLesson = Lesson::where([
-            ['course_id', '=', $lesson->course_id],
-            ['id', '<', $lesson->id],
-        ])->max('id');
-        $nextLesson = Lesson::where([
-            ['course_id', '=', $lesson->course_id],
-            ['id', '>', $lesson->id],
-        ])->min('id');
-        return [$previousLesson, $nextLesson];
-    }
+    // /**
+    //  * Function index get recent lesson
+    //  *
+    //  * @param \Illuminate\Http\Request $lesson lesson
+    //  *
+    //  * @return App\Services\LessonService
+    // **/
+    // public function getPrevNextLesson($lesson)
+    // {
+    //     $previousLesson = Lesson::where([
+    //         ['course_id', '=', $lesson->course_id],
+    //         ['id', '<', $lesson->id],
+    //     ])->max('id');
+    //     $nextLesson = Lesson::where([
+    //         ['course_id', '=', $lesson->course_id],
+    //         ['id', '>', $lesson->id],
+    //     ])->min('id');
+    //     return [$previousLesson, $nextLesson];
+    // }
 
     /**
      * Function index get recent lesson
@@ -248,5 +248,4 @@ class LessonService
         $previous = Lesson::where('id', $lesson['lesson_id'])->pluck('order')->first();
         return Lesson::where('order', $previous + 1)->pluck('id')->first();
     }
-
 }

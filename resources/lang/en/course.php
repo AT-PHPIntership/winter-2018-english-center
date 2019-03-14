@@ -7,7 +7,7 @@
             'parent' => 'Course Parent',
             'count_view' => 'View',
             'total_rating' => 'Total Rating',
-            'average' => 'Average',
+            'average' => 'Rating',
             'content' => 'Introduce Course',
             'action' => 'Action',
             'edit' => 'Edit',

@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'adminLogin'], function() {
     Route::get('/', 'HomeController@index')->name('dashboard');
 
@@ -37,6 +38,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::resource('comments', 'CommentController');
 
     Route::resource('questions', 'QuestionController');
+
+    Route::resource('systems', 'SystemController');
+
+    Route::resource('sliders', 'SliderController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
@@ -45,11 +50,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'
     Route::get('/logout', 'LoginController@logout')->name('logout');
 });
 
-
+//Route User
 Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin'], function() {
     Route::get('/profiles', 'ProfileController@show')->name('profiles.show');
     Route::get('/profiles/edit', 'ProfileController@edit')->name('profiles.edit');
+    Route::get('/profiles/changePassword', 'ProfileController@changePass')->name('profiles.changePass');
     Route::put('/profiles', 'ProfileController@update')->name('profiles.update');
+    Route::put('/profiles/changePass', 'ProfileController@updatePass')->name('profiles.update.pass');
 
     Route::group(['middleware' => 'filter'], function() {
         Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail');

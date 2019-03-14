@@ -42,42 +42,6 @@
                         @endif
                         </div>
                         <div class="form-group">
-                            <label for="password">{{ __('user.create_user.old_password') }}</label>
-                            <input type="password" class="form-control" name="old_password" placeholder="Enter password">
-                            @if ($errors->has('old_password'))
-                            <span class="help-block col-sm-12">
-                                <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('old_password') }}</strong>
-                            </span>
-                        @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="password">{{ __('user.create_user.new_password') }}</label>
-                            <input type="password" class="form-control" name="password" placeholder="Enter password">
-                            @if ($errors->has('password'))
-                            <span class="help-block col-sm-12">
-                                <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('password') }}</strong>
-                            </span>
-                        @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm_password">{{ __('user.create_user.confirm_pass') }}</label>
-                            <input type="password" class="form-control" name="confirm_password" placeholder="Enter confirm password">
-                            @if ($errors->has('confirm_password'))
-                            <span class="help-block col-sm-12">
-                                <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('confirm_password') }}</strong>
-                            </span>
-                        @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="age">{{ __('user.create_user.age') }}</label>
-                            <input type="text" class="form-control" name="age" placeholder="Enter age" value="{{ $user->userProfile->age }}">
-                            @if ($errors->has('age'))
-                            <span class="help-block col-sm-12">
-                                <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('age') }}</strong>
-                            </span>
-                        @endif
-                        </div>
-                        <div class="form-group">
                             <label for="birthday">{{ __('user.create_user.birthday') }}</label>
                             <input type="date" class="form-control" name="birthday" value="{{ $user->userProfile->birthday }}">
                             @if ($errors->has('birthday'))
@@ -110,7 +74,7 @@
                         </div>
                         <div class="form-group">
                             <label for="url">{{ __('user.create_user.url') }}</label>
-                            <img class="profile-user-img img-responsive img-circle" src="storage/avatar/{{ $user->userProfile->url }}" alt="">
+                            <img class="profile-user-img img-responsive img-circle" src="{{ !(substr($user->userProfile->url,0,4) == 'http') ? 'storage/avatar/' .$user->userProfile->url : $user->userProfile->url }}" alt="">
                             <input type="file" name="url" value="{{ $user->userProfile->url }}">
                             @if ($errors->has('url'))
                             <span class="help-block col-sm-12">

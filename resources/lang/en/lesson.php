@@ -36,6 +36,7 @@ return [
         'vocabulary' => 'Vocabularies',
         'image' => 'Image',
         'video' => 'Video',
+        'exercise' => 'Exercises'
     ],
     'edit_lesson' =>
     [

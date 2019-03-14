@@ -33,4 +33,4 @@
     });
 </script>
 <script src="bower_components/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="front_end/js/common.js"></script>
+{{-- <script type="text/javascript" src="front_end/js/common.js"></script> --}}

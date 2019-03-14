@@ -2032,7 +2032,7 @@ span.comment-time {padding-right: 3px; position: relative;}
 /*----------------------------------------*/
 /*  23. Contact Page
 /*----------------------------------------*/
-.contact-form-area {color: #4c4c4c;}
+.contact-form-area {color: #4c4c4c; margin-bottom: 50px;}
 h4.contact-title {
     color: #4c4c4c;
     font-family: "montserratbold";
@@ -2461,4 +2461,13 @@ p {
 
 .comment-border {
     margin-top: 20px;
+}
+
+.box-footer .btn-changePass {
+    margin-left: 44%;
+    margin-top: 10px;
+}
+
+.section-title-wrapper .style {
+    margin-top: 100px;
 }

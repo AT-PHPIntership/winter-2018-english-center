@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Auth;
 
-class UpdateAuthUserRequest extends FormRequest
+class SliderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +24,9 @@ class UpdateAuthUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:50',
-            'email' => 'required|email|unique:users,email,'. Auth::user()->id,
-            'age' => 'numeric|min:5|max:100',
-            'birthday' => 'date|before:5 years ago',
-            'phone' => 'min:10',
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png',
         ];
     }
 }

@@ -3,6 +3,7 @@
 return [
     'page_site' => 20,
     'page_site_vocabulary' => 10,
+    'page_site_exercise' => 6,
     'courses' => [
         'limit_courses' => 3,
         'limit_rows' => 20,

@@ -37,7 +37,6 @@
             </div>
             <div class="form-group">
               <button type='button' id="add-questions" class="btn btn-default">+</button>
-              {{-- <button type='button' id="remove-questions" class="btn btn-default">x</button> --}}
             </div>
             <div id="question" class="col-md-10 col-xs-offset-1">
             </div>

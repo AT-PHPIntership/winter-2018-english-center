@@ -14,30 +14,8 @@ $(document).ready(function(){
     $(this).parent().remove();
   });
 
-  // $("#question").on("blur", ".questions", function(event){
-  //   $(this).parent().find('.errors').remove();
-  //   var questions = $('.questions');
-  //   var error = $("<p class='errors' style='color: red;'></p>");
-  //   var value = $(this).val();
-  //   if(value === ""){
-  //     $(error).html("Please input question name");
-  //     $(this).parent().append(error);
-  //   }
-  //   for(var i = 0; i < questions.length - 1; i++){
-  //     if($(this).is($(questions[i]))){
-  //       continue;
-  //     }
-  //     if(value != "" && value === $(questions[i]).val()){
-  //       $(error).html("Name has been existed");
-  //       $(this).parent().append(error);
-  //     }
-  //   }
-  // });
   validateField('.questions', '.form-group', "* Please enter question name");
   validateField('.answer', '.col-lg-6', "* Please enter answer name");
-
-  // $(this).parent().parent().parent().parent().find('input[type="radio"]').length
-
 });
 function validateField(elementClass, parentClass, messageError) {
   $('#question').on("blur", elementClass, function(event){
@@ -112,7 +90,7 @@ $(document).ready(function() {
     var status = $('input[type="radio"]:checked').map(function() {
       return this.value;
     }).get();
-    // debugger;
+    
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -147,12 +125,3 @@ $(document).ready(function() {
     }
   });
 });
-
-// cau hoi:
-// -ko trung cau hoi
-// -khong de trong
-// cau tra loi:
-// -ko trong
-// -ko trung trong 1 cau hoi
-// common:
-// it nhat phai co 1 cau tl co status

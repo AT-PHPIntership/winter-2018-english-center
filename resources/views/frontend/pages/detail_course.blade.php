@@ -29,7 +29,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="overlay-effect">
-                  <a href=""><img alt="" src="{{ $course->image}}"></a>
+                  <a href=""><img src="front_end/img/event/{{ $course->image}}"></a>
                 </div>
               </div>
               <div class="col-md-6">
@@ -72,7 +72,7 @@
               @endforeach
             </div>
           </div>
-          @if(Auth::check())
+          @if(Auth::check()) 
           @foreach((Auth::user()->courses) as $course_user)
             @if($course_user->id === $course->id)
             <div class="rating-link">
@@ -188,7 +188,7 @@
             @if ($parentCourse->id != $course->id)
             <div class="single-item">
               <div class="single-item-image overlay-effect">
-                <a href="{{ route('user.course.detail', $parentCourse->id) }}"><img alt="" src="{{ $parentCourse->image }}"></a>
+                <a href="{{ route('user.course.detail', $parentCourse->id) }}"><img src="front_end/img/event/{{ $parentCourse->image }}"></a>
               </div>
               <div class="single-item-text">
                 <h4><a href="{{ route('user.course.detail', $parentCourse->id) }}">{{ $parentCourse->name }}</a></h4>

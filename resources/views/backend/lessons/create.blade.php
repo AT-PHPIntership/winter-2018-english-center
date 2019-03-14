@@ -136,4 +136,5 @@
 @endsection
 @section('script')
     <script type="text/javascript" src="{!! asset('js/vocalbularies.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('js/exercises.js') !!}"></script>
 @endsection
