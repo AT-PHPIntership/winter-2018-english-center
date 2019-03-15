@@ -25,12 +25,6 @@
                 <ul class="list-group list-group-unbordered">
                     <li class="list-group-item text-center">
                         <div class="row">
-                            <b class="col-lg-6">@lang('user.show_list_user.show_user.age')</b>
-                            <span class="col-lg-6">{{ Auth::user()->userProfile->age }}</span>
-                        </div>
-                    </li>
-                    <li class="list-group-item text-center">
-                        <div class="row">
                             <b class="col-lg-6">@lang('user.show_list_user.show_user.birthday')</b>
                             <span class="col-lg-6">{{ Auth::user()->userProfile->birthday }}</span>
                         </div>

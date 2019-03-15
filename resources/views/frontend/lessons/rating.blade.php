@@ -23,7 +23,11 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="product-details-image">
+                        @if($ele == 'lessons')
                         <img src="storage/lesson/{{ $common->image }}" alt="">
+                        @else
+                        <img src="{{ $common->image }}" alt="">
+                        @endif    
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
