@@ -76,25 +76,56 @@
               @endforeach
             </div>
           </div>
-          @if(Auth::check())
-          @foreach((Auth::user()->courses) as $course_user)
-            @if($course_user->id === $course->id)
-            <div class="rating-link">
-              <div class="single-item-rating user-rating">
-                <i class="zmdi zmdi-star"></i>
-                <i class="zmdi zmdi-star"></i>
-                <i class="zmdi zmdi-star"></i>
-                <i class="zmdi zmdi-star"></i>
-                <i class="zmdi zmdi-star"></i>
-              </div>
-              <a class="rating" href="{{ route('user.rating', ['courses', $course->id] )}}">@lang('layout_user.courses.course_detail.rating.title')</a>
-            </div>
-            @else
-            <div class="rating-link">
-            </div>
+          
+          <div class="comments">
+            <h4 class="title">Ratings</h4>
+            @if(Auth::check())
+                @if($hasLearnLatestLesson == 'true')
+                <div class="rating-link">
+                  <div class="single-item-rating user-rating">
+                    <i class="zmdi zmdi-star"></i>
+                    <i class="zmdi zmdi-star"></i>
+                    <i class="zmdi zmdi-star"></i>
+                    <i class="zmdi zmdi-star"></i>
+                    <i class="zmdi zmdi-star"></i>
+                  </div>
+                  <a class="rating" href="{{ route('user.rating', $course->id )}}">Rating Link</a>
+                </div>
+                @endif
             @endif
-          @endforeach
-          @endif
+            <ol class="comment-list" id="commentList">
+            @foreach($rates as $rate)
+                @if($rate->course_id === $course->id)
+                  <li class="comment-border" data-id='{{ $rate->id }}'>
+                    <article id="{{$rate->id}}">
+                      <img alt='' src="{{ !(substr($rate->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$rate->user->userProfile['url'] : $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <div class="comment-des">
+                        <div class="comment-by">
+                              <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>
+                              <div class="single-item-rating" style="float: none;">
+                              <i class="zmdi {{ ($rate->star -0.5)>0 ? 'zmdi-star': (($rate->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -1.5)>0 ? 'zmdi-star': (($rate->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -2.5)>0 ? 'zmdi-star': (($rate->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -3.5)>0 ? 'zmdi-star': (($rate->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                              <i class="zmdi {{ ($rate->star -4.5)>0 ? 'zmdi-star': (($rate->star -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                          </div>
+                          <p class="date"><a><time>{{$rate->created_at}}</time></a>
+                        </div>
+                        <section>
+                          <p>{{$rate->content}}</p>
+                        </section>
+                      </div>
+                    </article>
+                  </li>
+                  @endif
+            @endforeach
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    {{ $rates->links() }}
+                </ul>
+            </div>
+            </ol>
+          </div>
           <div class="comments">
             <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             <div class="single-comment">
@@ -151,35 +182,6 @@
                 @endforeach
               </li>
               @endforeach
-            {{-- </ol> --}}
-
-            @foreach($rates as $rate)
-              @if($rate->ratingable_type === 'courses')
-                @if($rate->ratingable_id === $course->id)
-                  <li class="comment-border" data-id='{{ $rate->id }}'>
-                    <article id="{{$rate->id}}">
-                      <img alt='' src="{{ !(substr($rate->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$rate->user->userProfile['url'] : $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
-                      <div class="comment-des">
-                        <div class="comment-by">
-                              <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>
-                              <div class="single-item-rating" style="float: none;">
-                              <i class="zmdi {{ ($rate->star -0.5)>0 ? 'zmdi-star': (($rate->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                              <i class="zmdi {{ ($rate->star -1.5)>0 ? 'zmdi-star': (($rate->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                              <i class="zmdi {{ ($rate->star -2.5)>0 ? 'zmdi-star': (($rate->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                              <i class="zmdi {{ ($rate->star -3.5)>0 ? 'zmdi-star': (($rate->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                              <i class="zmdi {{ ($rate->star -4.5)>0 ? 'zmdi-star': (($rate->star -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                          </div>
-                          <p class="date"><a><time>{{$rate->created_at}}</time></a>
-                        </div>
-                        <section>
-                          <p>{{$rate->content}}</p>
-                        </section>
-                      </div>
-                    </article>
-                  </li>
-                  @endif
-                @endif
-            @endforeach
             </ol>
           </div>
         </div>

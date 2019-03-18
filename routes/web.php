@@ -58,8 +58,8 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin
         Route::post('lesson', 'LessonController@resutlLesson');
         Route::post('comment/{element}', 'CourseController@elementComment');
         Route::post('reply/{element}', 'CourseController@elementReply');
-        Route::get('rating/{ele}/{id}', 'RatingController@showRating')->name('rating');
-        Route::post('rating/{ele}/{id}', 'RatingController@getRating')->name('rating');
+        Route::get('rating/{course}', 'RatingController@showRating')->name('rating');
+        Route::post('rating/{id}', 'RatingController@getRating')->name('rating');
         Route::get('subscribe', 'LessonController@subscribeMember');
         Route::delete('delete/comment', 'LessonController@deleteComment');
         Route::put('user/vip', 'LessonController@upgradeVip')->name('upgradeVip');

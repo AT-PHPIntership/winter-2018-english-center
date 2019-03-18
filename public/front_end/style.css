@@ -2411,7 +2411,8 @@ ol.commentlist li ol.children li {
 }
 
 .rating-link {
-    margin-top: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .rating-link .rating {
@@ -2425,9 +2426,9 @@ ol.commentlist li ol.children li {
 }
 
 .user-rating {
-    font-size: 22px;
+    font-size: 30px;
     float: none;
-    margin-right: 5px;
+    margin-right: 20px;
 }
 
 .product-details-area .section-top-padding {

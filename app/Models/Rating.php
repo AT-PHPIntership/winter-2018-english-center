@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    protected $fillable = ['star', 'content','user_id', 'ratingable_type', 'ratingable_id'];
+    protected $fillable = ['star', 'content','user_id'];
     
     protected $table = 'ratings';
 
@@ -15,10 +15,10 @@ class Rating extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\morphTo
      */
-    public function ratingable()
-    {
-        return $this->morphTo();
-    }
+    // public function ratingable()
+    // {
+    //     return $this->morphTo();
+    // }
 
     /**
      * BelongsTo user
@@ -28,5 +28,15 @@ class Rating extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    /**
+     * BelongsTo course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function course()
+    {
+        return $this->belongsTo('App\Models\Course');
     }
 }

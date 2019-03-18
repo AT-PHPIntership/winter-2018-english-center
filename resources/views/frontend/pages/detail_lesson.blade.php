@@ -35,13 +35,13 @@
                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $lessons->created_at }}</span>
                 <span><i class="zmdi zmdi-eye"></i>{{ $countView->count_view }}</span>
               </div>
-              <div class="single-item-rating">
+              <!-- <div class="single-item-rating">
                   <i class="zmdi {{ ($lessons->average -0.5)>0 ? 'zmdi-star': (($lessons->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                   <i class="zmdi {{ ($lessons->average -1.5)>0 ? 'zmdi-star': (($lessons->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                   <i class="zmdi {{ ($lessons->average -2.5)>0 ? 'zmdi-star': (($lessons->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                   <i class="zmdi {{ ($lessons->average -3.5)>0 ? 'zmdi-star': (($lessons->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                   <i class="zmdi {{ ($lessons->average -4.5)>0 ? 'zmdi-star': (($lessons->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-              </div>
+              </div> -->
               <strong>Vocabulary:</strong>
               <div class="single-item-comment-view">
                 <table border="2" cellspacing="10" cellpadding="10" id='{{count($lessons->vocabularies)}}'>
@@ -137,7 +137,7 @@
               </div>
             </div>
           </div>
-          @foreach((Auth::user()->lessons) as $lesson_user)
+          <!-- @foreach((Auth::user()->lessons) as $lesson_user)
               @if($lesson_user->id === $lessons->id)
               <div class="rating-link">
                 <div class="single-item-rating user-rating">
@@ -153,7 +153,7 @@
               <div class="rating-link">
               </div>
               @endif
-          @endforeach
+          @endforeach -->
           <div class="comments">
             <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             <div class="single-comment">
@@ -206,8 +206,7 @@
                 @endforeach
               </li>
               @endforeach
-            {{-- </ol> --}}
-            @foreach($rates as $rate)
+            <!-- @foreach($rates as $rate)
               @if($rate->ratingable_type === 'lessons')
                 @if($rate->ratingable_id === $lessons->id)
                   <li class="comment-border" data-id='{{ $rate->id }}'>
@@ -233,7 +232,7 @@
                   </li>
                   @endif
                 @endif
-            @endforeach
+            @endforeach -->
             </ol>
           </div>
         </div>
@@ -259,13 +258,13 @@
                               <span><i class="zmdi zmdi-eye"></i>{{ $items->count_view }}</span>
                               <span><i class="zmdi zmdi-comments"></i></span>
                           </div>
-                          <div class="single-item-rating">
+                          <!-- <div class="single-item-rating">
                               <i class="zmdi {{ ($items->average -0.5)>0 ? 'zmdi-star': (($items->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                               <i class="zmdi {{ ($items->average -1.5)>0 ? 'zmdi-star': (($items->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                               <i class="zmdi {{ ($items->average -2.5)>0 ? 'zmdi-star': (($items->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                               <i class="zmdi {{ ($items->average -3.5)>0 ? 'zmdi-star': (($items->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                               <i class="zmdi {{ ($items->average -4.5)>0 ? 'zmdi-star': (($items->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                          </div>
+                          </div> -->
                       </div>   
                   </div>
                   <div class="button-bottom">
