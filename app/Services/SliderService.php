@@ -34,11 +34,11 @@ class SliderService
      *
      * @param \Illuminate\Http\Request $data data
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function store($data)
     {
-        $slider = Slider::create($data);
+        Slider::create($data);
     }
 
     /**
@@ -46,7 +46,7 @@ class SliderService
      *
      * @param Slider $slider slider
      *
-     * @return App\Services\SliderService
+     * @return void
     **/
     public function destroy($slider)
     {
