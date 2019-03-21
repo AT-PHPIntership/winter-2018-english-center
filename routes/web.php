@@ -27,9 +27,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
 
     Route::post('vocabularies/import', 'VocabularyController@importFile')->name('vocabularies.import');
     Route::resource('vocabularies', 'VocabularyController');
-    
+
     Route::post('exercises/store', 'ExerciseController@store');
-    // Route::post('exercises/update', 'ExerciseController@store');
 
     Route::resource('exercises', 'ExerciseController')->only(['index', 'show', 'create', 'edit', 'update', 'destroy']);
     
@@ -59,16 +58,22 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin
     Route::put('/profiles/changePass', 'ProfileController@updatePass')->name('profiles.update.pass');
 
     Route::group(['middleware' => 'filter'], function() {
-        Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail');
+        Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail')->middleware('DetailLesson');
         Route::post('lesson', 'LessonController@resutlLesson');
+        Route::post('checkaccount', 'CourseController@checkAccount');
         Route::post('comment/{element}', 'CourseController@elementComment');
         Route::post('reply/{element}', 'CourseController@elementReply');
         Route::get('rating/{ele}/{id}', 'RatingController@showRating')->name('rating');
         Route::post('rating/{ele}/{id}', 'RatingController@getRating')->name('rating');
         Route::get('subscribe', 'LessonController@subscribeMember');
+        Route::get('unfinished', 'CourseController@unfinished');
         Route::delete('delete/comment', 'LessonController@deleteComment');
         Route::put('user/vip', 'LessonController@upgradeVip')->name('upgradeVip');
         Route::post('edit/comment', 'LessonController@editComment');
+
+        //changeAccount
+        // Route::get('account/email', 'CourseController@showEmailForm');
+        // Route::post('account/email', 'CourseController@sendEmail');
     });
 });
 Route::group(['namespace' => 'User', 'as' => 'user.'], function() {

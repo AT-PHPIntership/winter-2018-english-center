@@ -61,11 +61,16 @@
             <div class="duration-title">
               <div class="text"><span>{{ __('layout_user.courses.course_detail.lessons') }}</span> <span class="text-right">{{ __('layout_user.courses.course_detail.open_time') }}</span></div>
             </div>
+        
             <div class="duration-text">
               @foreach ($lessons as $key => $lesson)
                   @if($lesson->course_id === $course->id)
                       <div class="text">
+                        @if(Auth::check())
+                        <a class="lesson" data-user="{{ Auth::user()->id }}"  data-order-learn="{{ $orderLearn }}" data-order="{{ $lesson->order }}" id="first_lesson" data-href="javascript:void(0)" data-token='{{ csrf_token() }}' data-lesson="{{$lesson->id}}">{{ $lesson->name }}</a>
+                        @else
                         <a class="lesson" data-order-learn="{{ $orderLearn }}" data-order="{{ $lesson->order }}" id="first_lesson" href="{{ route('user.lesson.detail', $lesson->id) }}">{{ $lesson->name }}</a>
+                        @endif
                         <span class="text-right">{{ $lesson->created_at }}</span>
                       </div>
                   @endif
@@ -105,7 +110,7 @@
               @foreach ($course->comments as $comment)
               <li class="comment-border" data-id='{{$comment->id}}'>
                 <article id="{{$comment->id}}">
-                  <img alt='' src="storage/avatar/{{ $comment->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                  <img alt='' src="{{ !(substr($comment->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$comment->user->userProfile['url'] : $comment->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                   <div class="comment-des">
                     <div class="comment-by">
                       <p class="author"><strong>{{$comment->user->userProfile['name'] }}</strong></p>
@@ -126,7 +131,7 @@
                 <ol class="children">
                   <li class="children" id="commentChildren">
                     <article id="{{$reply->id}}" class="comment">
-                      <img alt='' src="storage/avatar/{{ $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <img alt='' src="{{ !(substr($reply->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$reply->user->userProfile['url'] : $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                       <div class="comment-des">
                         <div class="comment-by">
                           <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
@@ -154,7 +159,7 @@
                 @if($rate->ratingable_id === $course->id)
                   <li class="comment-border" data-id='{{ $rate->id }}'>
                     <article id="{{$rate->id}}">
-                      <img alt='' src="storage/avatar/{{ $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                      <img alt='' src="{{ !(substr($rate->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$rate->user->userProfile['url'] : $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
                       <div class="comment-des">
                         <div class="comment-by">
                               <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>

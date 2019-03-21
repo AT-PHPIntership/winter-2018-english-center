@@ -56,7 +56,7 @@
 
                         <div class="form-group">
                             <label for="image">@lang('layout_admin.slider.create.image')</label>
-                            <img class="profile-user-img img-responsive img-circle" src="" alt="">
+                            <!-- <img class="profile-user-img img-responsive img-circle" src="" alt=""> -->
                             <input type="file" name="image" value="">
                             @if ($errors->has('image'))
                                 <span class="help-block col-sm-12">

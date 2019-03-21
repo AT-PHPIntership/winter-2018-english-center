@@ -3,9 +3,11 @@
 namespace App\Services;
 
 use App\Models\Course;
+use App\Models\Lesson;
+use App\Models\User;
 use Event;
 use Auth;
-
+use DB;
 class CourseService
 {
     /**
@@ -176,21 +178,51 @@ class CourseService
     **/
     public function historyLesson($course, $lessons)
     {
-        // dd($lessons);
+        //All lessons in course collection
         $lessonBasedCourseId = $lessons->filter(function ($val) use ($course) {
             return $val->course_id == $course->id;
         });
-        // dd($lessonBasedCourseId);
-        $lessonCompare = $lessonBasedCourseId->pluck('id');
-        if(Auth::check()){
+        //id of each lesson
+        $lessonId = $lessonBasedCourseId->pluck('id');
+        if(Auth::check()) {
+            //lessons => user learned
             $lessonUser = Auth::user()->lessons->pluck('id');
-            $compareDiff = $lessonCompare->diff($lessonUser);
+            //$compareDiff lessons => user no yet learned
+            $compareDiff = $lessonId->diff($lessonUser);
             $results = $lessonBasedCourseId->whereIn('id', $compareDiff);
-            // dd($compareDiff != null);
             if (count($compareDiff) == 0) {
                 return $lessonBasedCourseId->pluck('order')->max();
             }
             return $results->pluck('order')->min();
         }
+    }
+
+    /**
+     * Function check account of user
+     *
+     * @param \Illuminate\Http\Request $userId  user
+     * @param \Illuminate\Http\Request $lessonId lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function checkAccount($userId, $lessonId)
+    {
+        $result = [];
+        //total course learned
+        $totalCourse = DB::table('course_user')->where('user_id', $userId)->select(DB::raw('count(*) as totalCourse'))->groupBy('course_user.user_id')->pluck('totalCourse')->first();
+        //score course learned
+        $score = DB::table('schedules')->where('user_id', $userId)->select(DB::raw('sum(score) as score'))->groupBy('schedules.user_id')->first()->score;
+        //compare currentCourse with learnedCourse
+        $currentCourse = Lesson::find($lessonId)->course->id;
+        $learnedCourse = DB::table('course_user')->where('user_id', $userId)->select('course_user.*')->pluck('course_id');
+
+        $role = Auth::user()->role->name;
+        // dd($role);
+        $result['totalCourse'] = $totalCourse;
+        $result['score'] = $score;
+        $result['currentCourse'] = $currentCourse;
+        $result['learnedCourse'] = $learnedCourse;
+        $result['role'] = $role;
+        return $result;
     }
 }

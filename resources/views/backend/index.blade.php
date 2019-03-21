@@ -146,11 +146,11 @@
 </section>
 <!-- /.content -->
 <div class="control-sidebar-bg"></div>
-<!-- ./wrapper -->
-<script type="text/javascript">
-
-   
-    {{-- var month5 = {!! json_encode($statisticals['monthCourseUser'][5]->total_user) !!}; --}}
-    // console.log(lesson1, lesson2, lesson3, lesson4, lesson5);
-</script>
+{{-- <script type="text/javascript">
+    var lesson1 = {!! json_encode($statisticals['maxLessonUser'][0]) !!};
+    var lesson2 = {!! json_encode($statisticals['maxLessonUser'][1]) !!};
+    var lesson3 = {!! json_encode($statisticals['maxLessonUser'][2]) !!};
+    var lesson4 = {!! json_encode($statisticals['maxLessonUser'][3]) !!};
+    var lesson5 = {!! json_encode($statisticals['maxLessonUser'][4]) !!};
+</script> --}}
 @endsection

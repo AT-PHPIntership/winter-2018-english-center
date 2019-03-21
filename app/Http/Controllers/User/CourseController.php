@@ -43,7 +43,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        $lessons = app(LessonService::class)->index();
+        $lessons = app(LessonService::class)->allLesson();
         $countView = app(CourseService::class)->countViewCourse($course->id);
         $orderLearn = app(CourseService::class)->historyLesson($course, $lessons);
         return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn'));
@@ -76,5 +76,27 @@ class CourseController extends Controller
     {
         $response = app(CommentService::class)->reply($request->get('userId'), $request->get('elementId'), $request->get('content'), $request->get('parentComment'), $element);
         return response()->json($response);
+    }
+
+    /**
+     * Check condition user
+     *
+     * @param Request $request course lesson
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkAccount(Request $request) {
+        $response = app(CourseService::class)->checkAccount($request->get('userId'), $request->get('lessonId'));
+        return response()->json($response);
+    }
+
+    /**
+     * Unfinished goal to Vip
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function unfinished()
+    {
+        return view('frontend.pages.unfinished');
     }
 }
