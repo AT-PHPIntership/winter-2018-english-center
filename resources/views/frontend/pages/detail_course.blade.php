@@ -93,7 +93,7 @@
                 </div>
                 @endif
             @endif
-            <ol class="comment-list" id="commentList">
+            <ol class="comment-list">
             @foreach($rates as $rate)
                 @if($rate->course_id === $course->id)
                   <li class="comment-border" data-id='{{ $rate->id }}'>
