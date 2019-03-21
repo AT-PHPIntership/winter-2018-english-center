@@ -35,7 +35,11 @@ class ExerciseService
     /**
      * Function store insert exercise question
      *
-     * @param Validation $data get all()
+     * @param Exercise $exercises   Exercises
+     * @param Lesson   $lessonId    Lesson
+     * @param Question $questions   Question
+     * @param Answer   $totalAnswer Answer
+     * @param Answer   $status      Answer
      *
      * @return App\Services\ExerciseService
     **/

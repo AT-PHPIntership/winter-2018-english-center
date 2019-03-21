@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
@@ -13,37 +12,26 @@ class RatingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param String   $ele lesson course
-     * @param Interger $id  lesson course
+     * @param Interger $course course
      *
      * @return \Illuminate\Http\Response
      */
-    public function showRating($ele, $id)
+    public function showRating(Course $course)
     {
-        if ($ele == 'lessons') {
-            $common = Lesson::find($id);
-            return view('frontend.lessons.rating', compact(['common', 'ele']));
-        }
-            $common = Course::find($id);
-            return view('frontend.lessons.rating', compact(['common', 'ele']));
+            return view('frontend.lessons.rating', compact('course'));
     }
-
     /**
      * Get the specified resource.
      *
      * @param Request  $request Request
-     * @param String   $ele     lesson course
-     * @param Interger $id      lesson course
+     * @param Interger $id      course
      *
      * @return \Illuminate\Http\Response
      */
-    public function getRating(Request $request, $ele, $id)
+    public function getRating(Request $request, $id)
     {
-        app(RateService::class)->ratingStar($request->all(), $ele, $id);
-        app(RateService::class)->calAvg($ele, $id);
-        if ($ele == 'lessons') {
-            return redirect()->route('user.lesson.detail', $id);
-        }
-            return redirect()->route('user.course.detail', $id);
+        app(RateService::class)->ratingStar($request->all(), $id);
+        app(RateService::class)->calAvg($id);
+        return redirect()->route('user.course.detail', $id);
     }
 }

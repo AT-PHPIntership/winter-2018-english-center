@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Services;
 
 use App\Models\Rating;
@@ -16,25 +15,22 @@ class RateService
     **/
     public function getAll()
     {
-        return Rating::all();
+        return Rating::latest()->paginate(3);
     }
-
     /**
      * Store and Update a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $data data
-     * @param \Illuminate\Http\Request $ele  ele
      * @param \Illuminate\Http\Request $id   id
      *
      * @return \Illuminate\Http\Response
      */
-    public function ratingStar($data, $ele, $id)
+    public function ratingStar($data, $id)
     {
         return  Rating::updateOrInsert(
             [
                 'user_id'=> Auth::user()->id,
-                'ratingable_type' => $ele,
-                'ratingable_id' => $id,
+                'course_id' => $id,
             ],
             [
                 'star' => $data['rating-star'],
@@ -44,27 +40,15 @@ class RateService
             ]
         );
     }
-
     /**
      * Calculate average star
      *
-     * @param String   $ele lesson course
-     * @param Interger $id  lesson course
+     * @param Interger $id course
      *
      * @return null
     **/
-    public function calAvg($ele, $id)
+    public function calAvg($id)
     {
-        if ($ele == 'lessons') {
-            $lesson = Lesson::find($id);
-            $count = $lesson->ratings->count();
-            $avg = $lesson->ratings->pluck('star')->avg();
-            $lesson->update([
-                'total_rating' => $count,
-                'average' => $avg,
-            ]);
-            return $lesson;
-        }
             $course = Course::find($id);
             $count = $course->ratings->count();
             $avg = $course->ratings->pluck('star')->avg();
@@ -74,7 +58,6 @@ class RateService
             ]);
             return $course;
     }
-
     /**
      * Function get new courses
      *
@@ -83,12 +66,10 @@ class RateService
     public function getNewRatingLessons()
     {
         return Rating::select('ratings.*')
-                        ->where('ratingable_type', '=', 'lessons')
                         ->orderBy('updated_at', 'desc')
                         ->limit(config('define.lessons.page_site'))
                         ->get();
     }
-
     /**
      * Function get new courses
      *
@@ -97,7 +78,6 @@ class RateService
     public function getNewRatingCourses()
     {
         return Rating::select('ratings.*')
-                        ->where('ratingable_type', '=', 'courses')
                         ->orderBy('updated_at', 'desc')
                         ->limit(config('define.lessons.page_site'))
                         ->get();

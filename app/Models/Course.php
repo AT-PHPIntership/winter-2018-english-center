@@ -79,7 +79,7 @@ class Course extends Model
      */
     public function ratings()
     {
-        return $this->morphMany('App\Models\Rating', 'ratingable');
+        return $this->hasMany('App\Models\Rating');
     }
 
     /**

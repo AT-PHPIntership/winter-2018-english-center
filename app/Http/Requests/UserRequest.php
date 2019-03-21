@@ -23,14 +23,11 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method()) {
+        switch ($this->method()) {
             case 'GET':
             case 'DELETE':
-            {
                 return [];
-            }
             case 'POST':
-            {
                 return [
                     'name' => 'required|min:3|max:50',
                     'email' => 'required|email|unique:users,email',
@@ -40,18 +37,16 @@ class UserRequest extends FormRequest
                     'phone' => 'required|numeric|digits:10',
                     'role_id' => 'required',
                 ];
-            }
             case 'PUT':
             case 'PATCH':
-            {
                 return [
                     'name' => 'required|min:3|max:50',
                     'email' => 'required|email|unique:users,email,'. $this->user->id,
                     'birthday' => 'required|date|before:today',
                     'phone' => 'required|numeric|digits:10',
                 ];
-            }
-            default:break;
+            default:
+                break;
         }
     }
 }

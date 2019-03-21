@@ -46,7 +46,8 @@ class CourseController extends Controller
         $lessons = app(LessonService::class)->allLesson();
         $countView = app(CourseService::class)->countViewCourse($course->id);
         $orderLearn = app(CourseService::class)->historyLesson($course, $lessons);
-        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn'));
+        $hasLearnLatestLesson = app(LessonService::class)->hasLearnLatestLesson($course->id);
+        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn', 'hasLearnLatestLesson'));
     }
 
     /**
@@ -85,7 +86,8 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function checkAccount(Request $request) {
+    public function checkAccount(Request $request)
+    {
         $response = app(CourseService::class)->checkAccount($request->get('userId'), $request->get('lessonId'));
         return response()->json($response);
     }

@@ -58,13 +58,13 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin
     Route::put('/profiles/changePass', 'ProfileController@updatePass')->name('profiles.update.pass');
 
     Route::group(['middleware' => 'filter'], function() {
-        Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail')->middleware('DetailLesson');
+        Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail')->middleware('lessonDetail');
         Route::post('lesson', 'LessonController@resutlLesson');
         Route::post('checkaccount', 'CourseController@checkAccount');
         Route::post('comment/{element}', 'CourseController@elementComment');
         Route::post('reply/{element}', 'CourseController@elementReply');
-        Route::get('rating/{ele}/{id}', 'RatingController@showRating')->name('rating');
-        Route::post('rating/{ele}/{id}', 'RatingController@getRating')->name('rating');
+        Route::get('rating/{course}', 'RatingController@showRating')->name('rating');
+        Route::post('rating/{id}', 'RatingController@getRating')->name('rating');
         Route::get('subscribe', 'LessonController@subscribeMember');
         Route::get('unfinished', 'CourseController@unfinished');
         Route::delete('delete/comment', 'LessonController@deleteComment');

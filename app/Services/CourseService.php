@@ -8,6 +8,7 @@ use App\Models\User;
 use Event;
 use Auth;
 use DB;
+
 class CourseService
 {
     /**
@@ -17,7 +18,7 @@ class CourseService
     **/
     public function index()
     {
-        return $courses = Course::with('parent')->latest()->paginate(config('define.courses.limit_rows'));
+        return Course::with('parent')->latest()->paginate(config('define.courses.limit_rows'));
     }
 
     /**
@@ -184,7 +185,7 @@ class CourseService
         });
         //id of each lesson
         $lessonId = $lessonBasedCourseId->pluck('id');
-        if(Auth::check()) {
+        if (Auth::check()) {
             //lessons => user learned
             $lessonUser = Auth::user()->lessons->pluck('id');
             //$compareDiff lessons => user no yet learned
@@ -200,7 +201,7 @@ class CourseService
     /**
      * Function check account of user
      *
-     * @param \Illuminate\Http\Request $userId  user
+     * @param \Illuminate\Http\Request $userId   user
      * @param \Illuminate\Http\Request $lessonId lesson
      *
      * @return App\Services\LessonService
@@ -224,5 +225,20 @@ class CourseService
         $result['learnedCourse'] = $learnedCourse;
         $result['role'] = $role;
         return $result;
+    }
+
+    /**
+     * Function get new courses
+     *
+     * @return App\Services\CourseService
+    **/
+    public function getHighestRatinCourses()
+    {
+        return \DB::table('courses')
+                    ->select('courses.*')
+                    ->where('parent_id', '!=', 'NULL')
+                    ->orderBy('average', 'desc')
+                    ->limit(config('define.courses.limit_courses'))
+                    ->get();
     }
 }

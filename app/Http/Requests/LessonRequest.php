@@ -30,7 +30,7 @@ class LessonRequest extends FormRequest
             'level_id' => 'required',
             'course_id' => 'required',
             'vocabularies_id' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,png',   
+            'image' => 'required|mimes:jpg,jpeg,png',
             'video' => 'required|url',
         ];
     }

@@ -99,7 +99,7 @@ class VocabularyService
             'headers' => [
                 'app_id'  => config('define.oxford.app_id'),
                 'app_key' => config('define.oxford.app_key'),
-            ], 
+            ],
             'http_errors' => false
         ]);
         // dd($response);

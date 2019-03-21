@@ -155,7 +155,7 @@ $(document).on('click', '.add-reply', function () {
     output += '<div class="comment-text">';
     output += '<textarea class="form-control" id="reply-text" name="review" placeholder="' + comment('write') + '"></textarea>';
     output += '</div>';
-    output += '<div class="col-lg-2 pull-right">';
+    output += '<div class="col-lg pull-right">';
     output += '<input class="btn btn-block" id="reply-button" value="' + comment('submit') + '" data-comment=' + replyId + ' type="submit">';
     output += '</div>';
     output += '</div>';

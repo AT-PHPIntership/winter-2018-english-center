@@ -53,7 +53,7 @@ class CreateVocabularyRequest extends FormRequest
      * @return void
      */
     public function withValidator($validator)
-    {       
+    {
         // dd($validator);
         $response = app(Client::class)->request('GET', sprintf(config('define.oxford.get_api').$this->all()['vocabulary']), [
             'headers' => [
@@ -62,8 +62,8 @@ class CreateVocabularyRequest extends FormRequest
             ],
             'http_errors' => false
         ]);
-        $validator->after(function ($validator) use($response) {
-            if($response->getStatusCode() == Response::HTTP_NOT_FOUND) {
+        $validator->after(function ($validator) use ($response) {
+            if ($response->getStatusCode() == Response::HTTP_NOT_FOUND) {
                 $validator->errors()->add('vocabulary', 'Vocabulary is wrong');
             }
         });

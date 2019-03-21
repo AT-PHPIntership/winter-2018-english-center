@@ -63,7 +63,7 @@ class Kernel extends HttpKernel
         'adminLogin' => \App\Http\Middleware\AdminLogin::class,
         'filter' => \App\Http\Middleware\Filter::class,
         'userLogin' => \App\Http\Middleware\UserLogin::class,
-        'DetailLesson' => \App\Http\Middleware\DetailLesson::class,
+        'lessonDetail' => \App\Http\Middleware\LessonDetail::class,
     ];
 
     /**

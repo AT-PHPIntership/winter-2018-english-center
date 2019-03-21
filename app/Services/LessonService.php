@@ -23,7 +23,7 @@ class LessonService
     **/
     public function index()
     {
-        return $lessons = Lesson::with(['course', 'level'])->latest()->paginate(config('define.page_site'));
+        return Lesson::with(['course', 'level'])->latest()->paginate(config('define.page_site'));
     }
 
     /**
@@ -33,7 +33,7 @@ class LessonService
     **/
     public function allLesson()
     {
-        return $lessons = Lesson::with(['course', 'level'])->get();
+        return Lesson::with(['course', 'level'])->get();
     }
 
     /**
@@ -213,7 +213,6 @@ class LessonService
             [
                 'score' => count($correct)
             ]
-
         );
         $score = DB::table('schedules')->select(DB::raw('sum(score) as score'))->groupBy('schedules.user_id', 'schedules.course_id')->first()->score;
         
@@ -246,17 +245,33 @@ class LessonService
     /**
      * Function index get recent lesson
      *
-     * @param \Illuminate\Http\Request $lesson lesson
-     *
      * @return App\Services\LessonService
     **/
-    public function upgradeVip($lesson)
+    public function upgradeVip()
     {
         $role = Auth::user()->role->name;
-        if($role == 'Trial') {
+        if ($role == 'Trial') {
             Auth::user()->update([
                 'role_id' => Role::select('id')->where('name', Role::ROLE_VIP)->pluck('id')->first(),
             ]);
+        }
+    }
+
+    /**
+     * Function index get recent lesson
+     *
+     * @param \Illuminate\Http\Request $id lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function hasLearnLatestLesson($id)
+    {
+        if (Auth::check()) {
+            $lesson = Lesson::select('id', 'order')->where('course_id', $id)->get();
+            if ($lesson->max('order') === Auth::user()->lessons->where('course_id', $id)->max('order')) {
+                return true;
+            }
+            return false;
         }
     }
 }

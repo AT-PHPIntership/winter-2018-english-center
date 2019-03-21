@@ -38,7 +38,7 @@ class SliderService
      */
     public function store($data)
     {
-        $slider = Slider::create($data);
+        Slider::create($data);
     }
 
     /**
