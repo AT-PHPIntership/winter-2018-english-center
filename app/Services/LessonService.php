@@ -250,4 +250,22 @@ class LessonService
         $previous = Lesson::where('id', $lesson['lesson_id'])->pluck('order')->first();
         return Lesson::where('order', $previous + 1)->pluck('id')->first();
     }
+
+    /**
+     * Function index get recent lesson
+     *
+     * @param \Illuminate\Http\Request $id lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function hasLearnLatestLesson($id)
+    {
+        if(Auth::check()) {
+            $lesson = Lesson::select('id', 'order')->where('course_id',$id)->get();
+            if($lesson->max('order') === Auth::user()->lessons->where('course_id',$id)->max('order')) {
+                return true;
+            }
+            return false;
+        }
+    }
 }

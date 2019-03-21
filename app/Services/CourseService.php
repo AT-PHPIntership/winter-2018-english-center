@@ -127,6 +127,21 @@ class CourseService
     }
 
     /**
+     * Function get new courses
+     *
+     * @return App\Services\CourseService
+    **/
+    public function getHighestRatinCourses()
+    {
+        return \DB::table('courses')
+                    ->select('courses.*')
+                    ->where('parent_id', '!=', 'NULL')
+                    ->orderBy('average', 'desc')
+                    ->limit(config('define.courses.limit_courses'))
+                    ->get();
+    }
+
+    /**
      * Get courses based on query
      *
      * @param object $query [query get product]
