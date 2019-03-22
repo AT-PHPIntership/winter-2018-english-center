@@ -13,34 +13,22 @@ $(function () {
   var pieChart       = new Chart(pieChartCanvas);
   var PieData        = [
     {
-      value    : lesson1['total'],
+      value    : course1['total'],
       color    : '#f56954',
       highlight: '#f56954',
-      label    : lesson1['name'],
+      label    : course1['name'],
     },
     {
-      value    : lesson2['total'],
+      value    : course2['total'],
       color    : '#00a65a',
       highlight: '#00a65a',
-      label    : lesson2['name']
+      label    : course2['name']
     },
     {
-      value    : lesson3['total'],
+      value    : course3['total'],
       color    : '#f39c12',
       highlight: '#f39c12',
-      label    : lesson3['name']
-    },
-    {
-      value    : lesson4['total'],
-      color    : '#00c0ef',
-      highlight: '#00c0ef',
-      label    : lesson4['name']
-    },
-    {
-      value    : lesson5['total'],
-      color    : '#3c8dbc',
-      highlight: '#3c8dbc',
-      label    : lesson5['name']
+      label    : course3['name']
     },
   ];
   var pieOptions     = {

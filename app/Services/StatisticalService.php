@@ -19,25 +19,19 @@ class StastiticalService
         $totalLessons = Lesson::all()->count();
         $totalUsers = User::all()->count();
         $avgRating = Rating::avg('star');
-        $maxLessonUser = \DB::table('lessons')
-                        ->join('lesson_user', 'lessons.id', '=', 'lesson_user.lesson_id')
-                        ->select('lessons.name', \DB::raw('count(*) as total'))
-                        ->groupBy('lessons.id')
+        $maxCourseUser = \DB::table('courses')
+                        ->join('course_user', 'courses.id', '=', 'course_user.course_id')
+                        ->select('courses.name', \DB::raw('count(*) as total'))
+                        ->groupBy('courses.id')
                         ->orderBy('total', 'desc')
                         ->limit(5)
                         ->get();
-
-        $monthCourseUser = \DB::table('courses')
-                        ->join('course_user', 'courses.id', '=', 'course_user.course_id')
-                        ->select(\DB::raw('month(learn_time) as month'), \DB::raw('count(*) as total_user'))
-                        ->groupBy('month')
-                        ->get();
+        // dd($maxCourseUser);
         $statistical = [
             'totalCourses' => $totalCourses,
             'totalLessons' => $totalLessons,
             'totalUsers' => $totalUsers,
-            'maxLessonUser' => $maxLessonUser,
-            'monthCourseUser' => $monthCourseUser,
+            'maxCourseUser' => $maxCourseUser,
             'avgRating' => $avgRating,
         ];
         return $statistical;
