@@ -260,9 +260,9 @@ class LessonService
     **/
     public function hasLearnLatestLesson($id)
     {
-        if(Auth::check()) {
-            $lesson = Lesson::select('id', 'order')->where('course_id',$id)->get();
-            if($lesson->max('order') === Auth::user()->lessons->where('course_id',$id)->max('order')) {
+        if (Auth::check()) {
+            $lesson = Lesson::select('id', 'order')->where('course_id', $id)->get();
+            if ($lesson->max('order') === Auth::user()->lessons->where('course_id', $id)->max('order')) {
                 return true;
             }
             return false;

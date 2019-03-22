@@ -199,7 +199,7 @@ class CourseService
         });
         // dd($lessonBasedCourseId);
         $lessonCompare = $lessonBasedCourseId->pluck('id');
-        if(Auth::check()) {
+        if (Auth::check()) {
             $lessonUser = Auth::user()->lessons->pluck('id');
             $compareDiff = $lessonCompare->diff($lessonUser);
             $results = $lessonBasedCourseId->whereIn('id', $compareDiff);

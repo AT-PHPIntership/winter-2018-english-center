@@ -54,7 +54,7 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin
     Route::put('/profiles/changePass', 'ProfileController@updatePass')->name('profiles.update.pass');
 
     Route::group(['middleware' => 'filter'], function() {
-        Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail');
+        Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail')->middleware('lessonDetail');
         Route::post('lesson', 'LessonController@resutlLesson');
         Route::post('comment/{element}', 'CourseController@elementComment');
         Route::post('reply/{element}', 'CourseController@elementReply');

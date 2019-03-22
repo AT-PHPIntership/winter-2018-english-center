@@ -13,14 +13,13 @@ class RatingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Interger $id course
+     * @param Course $course Course
      *
      * @return \Illuminate\Http\Response
      */
     public function showRating(Course $course)
     {
             return view('frontend.lessons.rating', compact('course'));
-            
     }
 
     /**

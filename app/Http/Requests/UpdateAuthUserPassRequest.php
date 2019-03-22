@@ -48,6 +48,5 @@ class UpdateAuthUserPassRequest extends FormRequest
                 $validator->errors()->add('old_password', __('user.edit_user.message'));
             }
         });
-        return;
     }
 }
