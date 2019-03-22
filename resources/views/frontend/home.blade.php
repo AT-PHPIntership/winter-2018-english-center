@@ -34,7 +34,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-item">
                             <div class="single-item-image overlay-effect">
-                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="{{ $course->image }}" alt=""></a>
+                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="front_end/img/event/{{ $course->image }}" alt=""></a>
                             </div>
                             <div class="single-item-text">
                                 <h4><a href="{{ route('user.course.detail', $course->id) }}">{{ $course->name }}</a></h4>
@@ -86,7 +86,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-item">
                             <div class="single-item-image overlay-effect">
-                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="{{ $course->image }}" alt=""></a>
+                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="front_end/img/event/{{ $course->image }}" alt=""></a>
                             </div>
                             <div class="single-item-text">
                                 <h4><a href="{{ route('user.course.detail', $course->id) }}">{{ $course->name }}</a></h4>
@@ -138,7 +138,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-item">
                             <div class="single-item-image overlay-effect">
-                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="{{ $course->image }}" alt=""></a>
+                                <a href="{{ route('user.course.detail', $course->id) }}"><img src="front_end/img/event/{{ $course->image }}" alt=""></a>
                             </div>
                             <div class="single-item-text">
                                 <h4><a href="{{ route('user.course.detail', $course->id) }}">{{ $course->name }}</a></h4>

@@ -43,6 +43,10 @@ return [
             'title' => 'POPULAR COURSES',
             'intro' => 'There are many popular courses of center',
         ],
+        'highestRating' => [
+            'title' => 'HIGHEST RATING COURSES',
+            'intro' => 'There are many highest rating courses of center',
+        ],
         'date' => 'Date:',
         'btn' => 'Learn Now',
         'see_all' => 'See All',

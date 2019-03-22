@@ -198,22 +198,33 @@ class LessonService
             ['order', '>', $order],
         ])->min('order');
         $nextLesson = Lesson::where('order', $nextOrder)->pluck('role')->first();
+
         if (!isset($correct)) {
+            DB::table('schedules')->updateOrInsert(
+                [
+                    'user_id' => $userId,
+                    'lesson_id' => $lessonId,
+                    'course_id' => $courseId,
+                ],
+                [
+                    'score' => 0,
+                ]
+            );
             $result['correct'] = 0;
         } else {
+            DB::table('schedules')->updateOrInsert(
+                [
+                    'user_id' => $userId,
+                    'lesson_id' => $lessonId,
+                    'course_id' => $courseId,
+                ],
+                [
+                    'score' => count($correct),
+                ]
+            );
             $result['correct'] = $correct;
         }
-
-        DB::table('schedules')->updateOrInsert(
-            [
-                'user_id' => $userId,
-                'lesson_id' => $lessonId,
-                'course_id' => $courseId,
-            ],
-            [
-                'score' => count($correct)
-            ]
-        );
+        
         $score = DB::table('schedules')->select(DB::raw('sum(score) as score'))->groupBy('schedules.user_id', 'schedules.course_id')->first()->score;
         
         $role  = User::find($userId)->role->name;

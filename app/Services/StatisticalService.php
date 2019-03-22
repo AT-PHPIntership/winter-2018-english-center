@@ -18,7 +18,7 @@ class StastiticalService
         $totalCourses = Course::all()->count();
         $totalLessons = Lesson::all()->count();
         $totalUsers = User::all()->count();
-        $avgRating = Rating::where('ratingable_type', 'lessons')->avg('star');
+        $avgRating = Rating::avg('star');
         $maxLessonUser = \DB::table('lessons')
                         ->join('lesson_user', 'lessons.id', '=', 'lesson_user.lesson_id')
                         ->select('lessons.name', \DB::raw('count(*) as total'))

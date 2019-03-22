@@ -289,6 +289,7 @@ $(document).on('click', '.lesson', function () {
   var orderLearn = $(this).data('order-learn');
   var href = $(this).data('href');
   var token = $(this).data('token');
+  // debugger
   if (userId != undefined) {
     $.ajax({
         url: 'checkaccount',
@@ -300,18 +301,36 @@ $(document).on('click', '.lesson', function () {
           _token: token
         },
         success: function (data) {
-          if (data.role == "Trial") {
-            if ((data.totalCourse < 2) || (data.totalCourse == 2 && data.score < 40)) {
-              if(data.learnedCourse.includes(data.currentCourse)) {
-                window.location.assign('unfinished');
+          // console.log(data.score);
+          if (data.score != null) { 
+            if (data.role == "Trial") {
+              if (data.totalCourse < 2) {
                 if (order > orderLearn) {
                   alert('Please complete the previous lesson.');            
                 } else {
                   location.assign("detail/lesson/" + lessonId);
                 }
               }
-            } else if(data.totalCourse == 2 && data.score >= 40){
-              window.location.assign('subscribe');
+              if ((data.totalCourse == 2 && data.score < 40)) {
+                if(data.learnedCourse.includes(data.currentCourse)) {
+                  if (order > orderLearn) {
+                    alert('Please complete the previous lesson.');            
+                  } else {
+                    location.assign("detail/lesson/" + lessonId);
+                  }
+                } else {
+                  window.location.assign('unfinished');
+                }
+              } else if (data.totalCourse == 2 && data.score >= 40){
+                window.location.assign('subscribe');
+              }
+            } 
+            if (data.role == "VIP"){
+              if (order > orderLearn) {
+                alert('Please complete the previous lesson.');            
+              } else {
+                location.assign("detail/lesson/" + lessonId);
+              }
             }
           } else {
             if (order > orderLearn) {
@@ -319,6 +338,9 @@ $(document).on('click', '.lesson', function () {
             } else {
               location.assign("detail/lesson/" + lessonId);
             }
+          }
+          if(data.role == "Admin") {
+            location.assign("detail/lesson/" + lessonId);
           }
         }
       });

@@ -218,7 +218,7 @@ class CourseService
         $learnedCourse = DB::table('course_user')->where('user_id', $userId)->select('course_user.*')->pluck('course_id');
 
         $role = Auth::user()->role->name;
-        // dd($role);
+
         $result['totalCourse'] = $totalCourse;
         $result['score'] = $score;
         $result['currentCourse'] = $currentCourse;
