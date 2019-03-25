@@ -52,7 +52,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show thEduCat is an online English teaching website with a wide range of English language learners.e form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -70,7 +70,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $data = $request->except(['_token','_method']);
+        $data = $request->all();
         if ($request->hasFile('url')) {
             $data['url'] = $this->imageService->uploadImage($data['url']);
         }
@@ -110,7 +110,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         $data = $request->except(['_token','_method']);
         if ($request->hasFile('url')) {

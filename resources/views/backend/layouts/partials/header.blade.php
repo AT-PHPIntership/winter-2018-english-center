@@ -49,7 +49,7 @@
             </li> --}}
             <!-- Menu Footer-->
             <li class="user-footer">
-              {{-- <div class="pull-left">
+            {{--   <div class="pull-left">
                 <a href="#" class="btn btn-default btn-flat">@lang('layout_admin.header.profile')</a>
               </div> --}}
               <div class="pull-right">

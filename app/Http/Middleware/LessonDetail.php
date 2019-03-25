@@ -17,15 +17,15 @@ class LessonDetail
      */
     public function handle($request, Closure $next)
     {
-        $url = explode('/', url()->current());
-        $lessonId = (int) end($url);
-        $maxLessonCourse5 = Auth::user()->lessons->where('course_id', 5)->max('order');
-        $maxLessonCourse6 = Auth::user()->lessons->where('course_id', 6)->max('order');
-        if ($lessonId <= ($maxLessonCourse5+1)) {
+        // $url = explode('/', url()->current());
+        // $lessonId = (int) end($url);
+        // $maxLessonCourse5 = Auth::user()->lessons->where('course_id', 5)->max('order');
+        // $maxLessonCourse6 = Auth::user()->lessons->where('course_id', 6)->max('order');
+        // if ($lessonId <= ($maxLessonCourse5+1)) {
             return $next($request);
-        } elseif (($lessonId >5) && ($lessonId-5) <= ($maxLessonCourse6+1)) {
-            return $next($request);
-        }
-        return abort(404);
+        // } elseif (($lessonId >5) && ($lessonId-5) <= ($maxLessonCourse6+1)) {
+        //     return $next($request);
+        // }
+        // return abort(404);
     }
 }

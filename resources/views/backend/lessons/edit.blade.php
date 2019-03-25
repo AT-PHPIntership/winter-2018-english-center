@@ -82,7 +82,7 @@
                         <div class="form-group">
                             <label for="course">{{ __('lesson.create_lesson.course') }}</label>
                             <select class="form-control" name="course_id">
-                                @foreach ($courses as $course)
+                                @foreach ($courseChildren as $course)
                                     <option value="{{ $course->id }}" <?php echo ($course->name == $lesson->course->name) ? "selected" : " " ?>>{{ $course->name }}</option>
                                 @endforeach
                             </select>

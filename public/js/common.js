@@ -78,7 +78,7 @@ $(function () {
   // 
   //-------------
   var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      labels  : ['January', 'February', 'March', 'April', 'May', 'June'],
       datasets: [
         {
           label               : 'Electronics',
@@ -88,7 +88,7 @@ $(function () {
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [month0, month1, month2, month3, month4, month5, month6, month7, month8, month9, month10, month11]
+          data                : [month0, month1, month2, month3, month4, month5]
         }
         // {
         //   label               : 'Digital Goods',

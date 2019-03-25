@@ -14,7 +14,6 @@ $(document).ready(function () {
   $('.uba_audioButton').on('click', function () {
     $(this).find('audio').trigger('play');
   });
-
   $('.btn-success').one('click', function () {
     var answers = $('input[type="radio"]:checked').map(function () {
       return this.id;
@@ -73,13 +72,6 @@ $(document).ready(function () {
             }
             navigation += '</ul>';
             $('.pagination-content').append(navigation);
-            if (data.role != data.nextLesson) {
-              $('.next_lesson').removeAttr('href');
-              $(document).on('click', '.next_lesson', function () {
-                window.location.assign('subscribe');
-              });
-            }
-            // debugger;
           } else {
             var minimum = '<div class="correct">' + exercise('notification_correct') + data.goal + exercise('question') + '</div>';
             var tryButton = `<button type="button" class="btn btn-success" onclick="return location.reload();"><i class="fa fa-edit"></i>` + exercise('again') + `</button>`;
@@ -163,7 +155,7 @@ $(document).on('click', '.add-reply', function () {
     output += '<div class="comment-text">';
     output += '<textarea class="form-control" id="reply-text" name="review" placeholder="' + comment('write') + '"></textarea>';
     output += '</div>';
-    output += '<div class="col-lg-2 pull-right">';
+    output += '<div class="col-lg pull-right">';
     output += '<input class="btn btn-block" id="reply-button" value="' + comment('submit') + '" data-comment=' + replyId + ' type="submit">';
     output += '</div>';
     output += '</div>';
@@ -246,6 +238,7 @@ $(document).on('click', '.delete-comment', function () {
   var commentId = $(this).attr('id');
   var userId = $('#comment-button').data('user');
   var token = $('#comment-button').data('token');
+  // var less
   if (userId != undefined) {
     $.ajax({
       url: 'delete/comment',
@@ -290,18 +283,68 @@ $(document).ready(function () {
 });
 
 $(document).on('click', '.lesson', function () {
-  // console.log('ahaha');
   var userId = $(this).data('user');
+  var lessonId = $(this).data('lesson');
   var order = $(this).data('order');
   var orderLearn = $(this).data('order-learn');
-  debugger;
+  var href = $(this).data('href');
+  var token = $(this).data('token');
+  // debugger
   if (userId != undefined) {
-    if (order > orderLearn) {
-      $(this).removeAttr('href');
-      alert('Please complete the lesson ' + orderLearn);
-    }
-  }
-  else {
+    $.ajax({
+      url: 'checkaccount',
+      method: "POST",
+      dataType: "JSON",
+      data: {
+        userId: userId,
+        lessonId: lessonId,
+        _token: token
+      },
+      success: function (data) {
+        // console.log(data.score);
+        if (data.score != null) {
+          if (data.role == "Trial") {
+            if (data.totalCourse < 2) {
+              if (order > orderLearn) {
+                alert('Please complete the previous lesson.');
+              } else {
+                location.assign("detail/lesson/" + lessonId);
+              }
+            }
+            if ((data.totalCourse == 2 && data.score < 40)) {
+              if (data.learnedCourse.includes(data.currentCourse)) {
+                if (order > orderLearn) {
+                  alert('Please complete the previous lesson.');
+                } else {
+                  location.assign("detail/lesson/" + lessonId);
+                }
+              } else {
+                window.location.assign('unfinished');
+              }
+            } else if (data.totalCourse == 2 && data.score >= 40) {
+              window.location.assign('subscribe');
+            }
+          }
+          if (data.role == "VIP") {
+            if (order > orderLearn) {
+              alert('Please complete the previous lesson.');
+            } else {
+              location.assign("detail/lesson/" + lessonId);
+            }
+          }
+        } else {
+          if (order > orderLearn) {
+            alert('Please complete the previous lesson.');
+          } else {
+            location.assign("detail/lesson/" + lessonId);
+          }
+        }
+        if (data.role == "Admin") {
+          location.assign("detail/lesson/" + lessonId);
+        }
+      }
+    });
+  } else {
     window.location.href = '/login';
   }
 });

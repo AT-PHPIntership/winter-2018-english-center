@@ -30,40 +30,37 @@
         <table id="example1" class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>@lang('course.list_course.id')</th>
-              <th>@lang('course.list_course.name')</th>
-              <th>@lang('course.list_course.parent')</th>
-              <th>@lang('course.list_course.count_view')</th>
-              {{-- <th>@lang('course.list_course.total_rating')</th> --}}
-              <th>@lang('course.list_course.average')</th>
-              <th>@lang('course.list_course.content')</th>
-              <th>@lang('course.list_course.action')</th>
+              <th style="text-align: center;">@lang('course.list_course.id')</th>
+              <th style="text-align: center;">@lang('course.list_course.name')</th>
+              <th style="text-align: center;">@lang('course.list_course.parent')</th>
+              <th style="text-align: center;">@lang('course.list_course.count_view')</th>
+              <th style="text-align: center;">@lang('course.list_course.average')</th>
+              <th style="text-align: center;">@lang('course.list_course.content')</th>
+              <th style="text-align: center;">@lang('course.list_course.action')</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($courses as $key => $course)
             <tr>
-              <td>{{ $course->id }}</td>
-              <td>{{ $course->name }}</td>
-              <td>
+              <td style="text-align: center;">{{ $course->id }}</td>
+              <td style="text-align: center;">{{ $course->name }}</td>
+              <td style="text-align: center;">
                 @if(!$course['parent_id'])
                 {{ 'none' }}
                 @else
                 {{ $course->parent->name }}
                 @endif
-              </td>
-              <td>{{ $course->count_view }}</td>
-              {{-- <td>{{ $course->total_rating }}</td> --}}
-              <td>{{ $course->average }}</td>
-              {{-- <td>{{ $course->flag }}</td> --}}
-              <td width="300px">
+              </td style="text-align: center;">
+              <td style="text-align: center;">{{ $course->count_view }}</td>
+              <td style="text-align: center;">{{ $course->average }}</td>
+              <td width="300px"  style="text-align: center;">
                 @if(!$course['parent_id'])
                 {{ 'none' }}
                 @else
-                {{ $course->content }}
+                {!! str_limit($course->content, 160) !!}
                 @endif
               </td>
-              <td>
+              <td style="text-align: center;">
                 <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
                 <form method="POST" action="{{ route('admin.courses.destroy', $course->id) }}" class="inline" onsubmit="return confirmedDelete()">
                     @csrf

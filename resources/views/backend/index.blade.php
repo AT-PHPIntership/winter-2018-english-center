@@ -35,7 +35,7 @@
     
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-pricetag-outline"></i></span>
+        <span class="info-box-icon bg-aqua"><i class="fa fa-calendar"></i></span>
 
         <div class="info-box-content">
           <span class="info-box-text">{{ __('dashboard.total_course') }}</span>
@@ -60,23 +60,20 @@
     </div>
     
     <!-- /.col -->
-
     <!-- fix for small devices only -->
     {{-- <div class="clearfix visible-sm-block"></div> --}}
 
-
-        {{-- <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">{{ __('dashboard.like') }}</span>
-              <span class="info-box-number">41,410</span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
-        </div> --}}
+        </div>
     <!-- /.col -->
   </div>
   <!-- /.row -->
@@ -129,11 +126,11 @@
             <div class="col-md-5">
               <ul class="chart-legend clearfix">
                
-                <li><i class="fa fa-circle-o text-red"></i> {{ $statisticals['maxLessonUser'][0]->name }}</li>
+                {{-- <li><i class="fa fa-circle-o text-red"></i> {{ $statisticals['maxLessonUser'][0]->name }}</li>
                 <li><i class="fa fa-circle-o text-green"></i> {{ $statisticals['maxLessonUser'][1]->name }}</li>
                 <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxLessonUser'][2]->name }}</li>
                 <li><i class="fa fa-circle-o text-aqua"></i> {{ $statisticals['maxLessonUser'][3]->name }}</li>
-                <li><i class="fa fa-circle-o text-light-blue"></i> {{ $statisticals['maxLessonUser'][4]->name }}</li>
+                <li><i class="fa fa-circle-o text-light-blue"></i> {{ $statisticals['maxLessonUser'][4]->name }}</li> --}}
               </ul>
             </div>
             <!-- /.col -->
@@ -148,12 +145,11 @@
 </section>
 <!-- /.content -->
 <div class="control-sidebar-bg"></div>
-<!-- ./wrapper -->
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     var lesson1 = {!! json_encode($statisticals['maxLessonUser'][0]) !!};
     var lesson2 = {!! json_encode($statisticals['maxLessonUser'][1]) !!};
     var lesson3 = {!! json_encode($statisticals['maxLessonUser'][2]) !!};
     var lesson4 = {!! json_encode($statisticals['maxLessonUser'][3]) !!};
     var lesson5 = {!! json_encode($statisticals['maxLessonUser'][4]) !!};
-</script>
+</script> --}}
 @endsection

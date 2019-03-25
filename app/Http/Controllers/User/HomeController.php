@@ -38,9 +38,7 @@ class HomeController extends Controller
         $popularCourses = $this->courseService->getPopularCourses();
         $newCourses = $this->courseService->getNewCourses();
         $highestRatingCourses = $this->courseService->getHighestRatinCourses();
-        $newRatingLessons = $this->rateService->getNewRatingLessons();
-        $newRatingCourses = $this->rateService->getNewRatingCourses();
-        return view('frontend.home')->with(['sliders' => $sliders, 'popularCourses' => $popularCourses, 'newCourses' => $newCourses, 'newRatingLessons' => $newRatingLessons, 'newRatingCourses' => $newRatingCourses, 'highestRatingCourses' =>$highestRatingCourses]);
+        return view('frontend.home')->with(['sliders' => $sliders, 'popularCourses' => $popularCourses, 'newCourses' => $newCourses, 'highestRatingCourses' =>$highestRatingCourses]);
     }
 
     /**

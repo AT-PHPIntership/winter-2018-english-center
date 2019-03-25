@@ -24,21 +24,14 @@
         <div class="box-body">
           <div class="form-group">
             <label>@lang('vocabulary.list_vocabulary.vocabulary')</label>
-            <input name="vocabulary" type="text" class="form-control" value="{{ $vocabulary->vocabulary }}">
+            <input name="vocabulary" type="text" class="form-control" value="{{ $vocabulary->vocabulary }}" required value="{{ old('vocabulary') }}">
             @if ($errors->has('vocabulary'))
               <span class="text-red help is-danger">* {{ $errors->first('vocabulary') }}</span>
             @endif
           </div>
           <div class="form-group">
-            <label>@lang('vocabulary.list_vocabulary.word_type')</label>
-            <input name="word_type" type="text" class="form-control" value="{{ $vocabulary->word_type }}">
-            @if ($errors->has('word_type'))
-              <span class="text-red help is-danger">* {{ $errors->first('word_type') }}</span>
-            @endif
-          </div>
-          <div class="form-group">
             <label>@lang('vocabulary.list_vocabulary.means')</label>
-            <input name="means" type="text" class="form-control" value="{{ $vocabulary->means }}">
+            <input name="means" type="text" class="form-control" value="{{ $vocabulary->means }}" required value="{{ old('means') }}">
             @if ($errors->has('means'))
               <span class="text-red help is-danger">* {{ $errors->first('means') }}</span>
             @endif

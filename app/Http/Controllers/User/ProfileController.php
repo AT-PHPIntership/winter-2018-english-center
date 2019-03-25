@@ -70,7 +70,8 @@ class ProfileController extends Controller
      */
     public function update(UpdateAuthUserRequest $request)
     {
-        $data = $request->except(['_token','_method']);
+        // $data = $request->except(['_token','_method']);
+        $data = $request->all();
         if ($request->hasFile('url')) {
             $data['url'] = $this->imageService->uploadImage($data['url']);
         }

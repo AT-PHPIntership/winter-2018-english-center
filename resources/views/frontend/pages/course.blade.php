@@ -38,14 +38,14 @@
             <div class="col-md-4 col-sm-6 margin-bottom">
                 <div class="single-item">
                     <div class="single-item-image overlay-effect">
-                        <a href="{{ route('user.course.detail', $childrenCourse->id) }}"><img src="{{ $childrenCourse->image }}" alt=""></a>
+                        <a href="{{ route('user.course.detail', $childrenCourse->id) }}"><img src="front_end/img/event/{{ $childrenCourse->image }}" alt=""></a>
                     </div>
                     <div class="single-item-text">
                         <h4><a href="{{ route('user.course.detail', $childrenCourse->id) }}">{{ $childrenCourse->name }}</a></h4>
                         <div class="single-item-text-info">
                             <span>@lang('layout_user.levels.date') <span>{{ $childrenCourse->updated_at }}</span></span>
                         </div>
-                        <p>{{ str_limit($childrenCourse->content, 123) }}</p>
+                        {!! str_limit($childrenCourse->content, 123) !!}
                         <div class="single-item-content">
                             <div class="single-item-comment-view">
                                 <span><i class="zmdi zmdi-eye"></i>{{ $childrenCourse->count_view }}</span>
