@@ -1,5 +1,6 @@
 <?php
 namespace App\Services;
+
 use App\Models\Lesson;
 use App\Models\Course;
 use App\Models\User;
@@ -12,6 +13,7 @@ use Event;
 use Auth;
 use JavaScript;
 use Carbon;
+
 class LessonService
 {
     /**

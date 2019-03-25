@@ -236,7 +236,7 @@ class CourseService
         $role = Auth::user()->role->name;
         // dd($role);
         $result['totalCourse'] = $totalCourse;
-        // $result['score'] = $score;
+        $result['score'] = $score;
         $result['currentCourse'] = $currentCourse;
         $result['learnedCourse'] = $learnedCourse;
         $result['role'] = $role;
