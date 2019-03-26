@@ -51,10 +51,11 @@ class ExerciseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateExerciseRequest $request)
+    public function store(Request $request)
     {
-        app(ExerciseService::class)->store($request->all());
-        return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
+
+        $response = app(ExerciseService::class)->store($request->get('exercises'), $request->get('lessonId'), $request->get('questions'), $request->get('totalAnswer'), $request->get('status'));
+        return response()->json($response);
     }
 
     /**
@@ -79,6 +80,7 @@ class ExerciseController extends Controller
      */
     public function update(CreateExerciseRequest $request, Exercise $exercise)
     {
+        // dd($exercise);
         app(ExerciseService::class)->update($request->all(), $exercise);
         return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
     }
@@ -94,5 +96,26 @@ class ExerciseController extends Controller
     {
         app(ExerciseService::class)->destroy($exercise);
         return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
+    }
+
+    /**
+     * Get List Vocabularies
+     *
+     * @param Request $request Request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getListExercises(Request $request)
+    {
+        if ($request->ajax()) {
+            $exercises = Exercise::select(['id', 'title as text'])->where('title', 'LIKE', '%' . $request["term"] . '%')->paginate(config('define.page_site_exercise'));
+            $results = [
+                "results" => $exercises->items(),
+                "pagination" => [
+                    "more" => $exercises->hasMorePages()
+                ]
+            ];
+            return response()->json($results);
+        }
     }
 }

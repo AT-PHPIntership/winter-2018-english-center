@@ -3,6 +3,7 @@
 return [
     'page_site' => 20,
     'page_site_vocabulary' => 10,
+    'page_site_exercise' => 6,
     'courses' => [
         'limit_courses' => 3,
         'limit_rows' => 20,
@@ -10,6 +11,7 @@ return [
         'vip' => 'VIP',
         'trial' => 'TRIAL',
         'page_site_course' => 6,
+        'page_site' => 4,
     ],
     'order_by_desc' =>'desc',
     'vip' => 'VIP',
@@ -25,4 +27,8 @@ return [
         'file_error' => 'Vocabulary is wrong',
     ],
     'recent_lessons' => 5,
+    'lessons' => [
+        'page_site' => 4,
+    ],
+    'length_course' => 123,
 ];

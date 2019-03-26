@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="about-text-container">
-                        <p><span>@lang('layout_user.aboutus.welcome')</span> {{ $system->aboutus }}</p>
+                        <p><span>@lang('layout_user.aboutus.welcome')</span> {!! $system->aboutus !!}</p>
                         <div class="about-us">
                             <span>@lang('layout_user.aboutus.span_1')</span>
                             <span>@lang('layout_user.aboutus.span_2')</span>
@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title-wrapper">
-                        <div class="section-title">
+                        <div class="section-title style">
                             <h3>@lang('layout_user.aboutus.skill')</h3>
                             <p>@lang('layout_user.aboutus.content')</p>
                         </div>

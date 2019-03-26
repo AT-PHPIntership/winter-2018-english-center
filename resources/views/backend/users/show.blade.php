@@ -18,19 +18,13 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="storage/avatar/{{ $user->userProfile->url }}" alt="">
+                    <img class="profile-user-img img-responsive img-circle" src="{{ !(substr($user->userProfile->url,0,4) == 'http') ? 'storage/avatar/' .$user->userProfile->url : $user->userProfile->url }}" alt="">
 
                     <h3 class="profile-username text-center">{{ $user->userProfile->name }}</h3>
 
                     <p class="text-muted text-center">{{ $user->email }}</p>
 
                     <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item text-center">
-                            <div class="row">
-                                <b class="col-lg-6">@lang('user.show_list_user.show_user.age')</b>
-                                <span class="col-lg-6">{{ $user->userProfile->age }}</span>
-                            </div>
-                        </li>
                         <li class="list-group-item text-center">
                             <div class="row">
                                 <b class="col-lg-6">@lang('user.show_list_user.show_user.birthday')</b>
@@ -48,7 +42,7 @@
                                 <b class="col-lg-6">@lang('user.show_list_user.show_user.course_learned')</b>
                                 <span class="col-lg-6">
                                     @foreach($user->courses as $course)
-                                    <a>{{ $course->title }}</a>&emsp;
+                                    <a>{{ $course->name }}</a>&emsp;
                                     @endforeach
                                 </span>
                             </div>

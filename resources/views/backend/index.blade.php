@@ -35,7 +35,7 @@
     
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-pricetag-outline"></i></span>
+        <span class="info-box-icon bg-aqua"><i class="fa fa-calendar"></i></span>
 
         <div class="info-box-content">
           <span class="info-box-text">{{ __('dashboard.total_course') }}</span>
@@ -60,23 +60,21 @@
     </div>
     
     <!-- /.col -->
-
     <!-- fix for small devices only -->
     {{-- <div class="clearfix visible-sm-block"></div> --}}
 
-
-        {{-- <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">{{ __('dashboard.like') }}</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-number">{{ $statisticals['avgRating']}}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
-        </div> --}}
+        </div>
     <!-- /.col -->
   </div>
   <!-- /.row -->
@@ -109,7 +107,7 @@
 
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">{{ __('dashboard.popular_lessons') }}</h3>
+          <h3 class="box-title">{{ __('dashboard.popular_courses') }}</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
@@ -129,11 +127,9 @@
             <div class="col-md-5">
               <ul class="chart-legend clearfix">
                
-                <li><i class="fa fa-circle-o text-red"></i> {{ $statisticals['maxLessonUser'][0]->name }}</li>
-                <li><i class="fa fa-circle-o text-green"></i> {{ $statisticals['maxLessonUser'][1]->name }}</li>
-                <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxLessonUser'][2]->name }}</li>
-                <li><i class="fa fa-circle-o text-aqua"></i> {{ $statisticals['maxLessonUser'][3]->name }}</li>
-                <li><i class="fa fa-circle-o text-light-blue"></i> {{ $statisticals['maxLessonUser'][4]->name }}</li>
+                <li><i class="fa fa-circle-o text-red"></i> {{ $statisticals['maxCourseUser'][0]->name }}</li>
+                <li><i class="fa fa-circle-o text-green"></i> {{ $statisticals['maxCourseUser'][1]->name }}</li>
+                <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxCourseUser'][2]->name }}</li>
               </ul>
             </div>
             <!-- /.col -->
@@ -148,26 +144,9 @@
 </section>
 <!-- /.content -->
 <div class="control-sidebar-bg"></div>
-<!-- ./wrapper -->
 <script type="text/javascript">
-    var lesson1 = {!! json_encode($statisticals['maxLessonUser'][0]) !!};
-    var lesson2 = {!! json_encode($statisticals['maxLessonUser'][1]) !!};
-    var lesson3 = {!! json_encode($statisticals['maxLessonUser'][2]) !!};
-    var lesson4 = {!! json_encode($statisticals['maxLessonUser'][3]) !!};
-    var lesson5 = {!! json_encode($statisticals['maxLessonUser'][4]) !!};
-
-    var month0 = {!! json_encode($statisticals['monthCourseUser'][0]->total_user) !!};
-    var month1 = {!! json_encode($statisticals['monthCourseUser'][1]->total_user) !!};
-    var month2 = {!! json_encode($statisticals['monthCourseUser'][2]->total_user) !!};
-    var month3 = {!! json_encode($statisticals['monthCourseUser'][3]->total_user) !!};
-    var month4 = {!! json_encode($statisticals['monthCourseUser'][4]->total_user) !!};
-    var month5 = {!! json_encode($statisticals['monthCourseUser'][5]->total_user) !!};
-    var month6 = {!! json_encode($statisticals['monthCourseUser'][6]->total_user) !!};
-    var month7 = {!! json_encode($statisticals['monthCourseUser'][7]->total_user) !!};
-    var month8 = {!! json_encode($statisticals['monthCourseUser'][8]->total_user) !!};
-    var month9 = {!! json_encode($statisticals['monthCourseUser'][9]->total_user) !!};
-    var month10 = {!! json_encode($statisticals['monthCourseUser'][10]->total_user) !!};
-    var month11 = {!! json_encode($statisticals['monthCourseUser'][11]->total_user) !!};
-    console.log(lesson1, lesson2, lesson3, lesson4, lesson5, month0, month2, month3, month4, month5, month6, month7, month8, month9, month10, month11);
+    var course1 = {!! json_encode($statisticals['maxCourseUser'][0]) !!};
+    var course2 = {!! json_encode($statisticals['maxCourseUser'][1]) !!};
+    var course3 = {!! json_encode($statisticals['maxCourseUser'][2]) !!};
 </script>
 @endsection

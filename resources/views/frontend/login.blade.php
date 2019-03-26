@@ -26,12 +26,14 @@
 				<form class="login100-form validate-form" method="POST" action="{{ route('user.login') }}">
 				@csrf
 				@if (session('warning'))
+				<div class="wrap-input100 m-b-16">
                     <div class="alert alert-warning">
 						<button type="button" class="close" data-dismiss="alert">
 							<i class="ace-icon fa fa-times"></i>
 						</button>
                         {{ session('warning') }}
                     </div>
+                </div>
 				@endif
 				@if (session('message'))
                     <div class="alert alert-warning">

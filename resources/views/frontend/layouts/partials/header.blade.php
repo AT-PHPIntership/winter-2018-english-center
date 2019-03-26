@@ -39,11 +39,11 @@
                   <li class="current"><a href="{{ route('user.home') }}">@lang('layout_user.header.home')</a></li>
                   <li><a href="{{ route('user.about') }}">@lang('layout_user.header.about')</a></li>
                   <li>
-                    <a href="{{ route('user.course') }}">@lang('layout_user.header.courses')</a>
+                    <a href="{{ route('user.courses') }}">@lang('layout_user.header.courses')</a>
                     <ul class="sub-menu">
                       @foreach ($courses as $parentCourse)
                       <li>
-                        <a href="#">{{ $parentCourse->name }}<i class="zmdi zmdi-chevron-right"></i></a>
+                        <a href="{{ route('user.courses.detail', $parentCourse->id) }}">{{ $parentCourse->name }}<i class="zmdi zmdi-chevron-right"></i></a>
                         <ul class="inside-menu">
                           @foreach ($parentCourse->children as $childrenCourse)
                             <li><a href="{{ route('user.course.detail', $childrenCourse->id) }}">{{ $childrenCourse->name }}</a></li>

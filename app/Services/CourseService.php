@@ -3,8 +3,11 @@
 namespace App\Services;
 
 use App\Models\Course;
+use App\Models\Lesson;
+use App\Models\User;
 use Event;
 use Auth;
+use DB;
 
 class CourseService
 {
@@ -15,8 +18,7 @@ class CourseService
     **/
     public function index()
     {
-        $courses = Course::with('parent')->orderBy('created_at', config('define.courses.order_by_desc'))->paginate(config('define.courses.limit_rows'));
-        return $courses;
+        return Course::with('parent')->latest()->paginate(config('define.courses.limit_rows'));
     }
 
     /**
@@ -40,7 +42,7 @@ class CourseService
     }
 
     /**
-     * Function store insert course
+     * Function store create course new
      *
      * @param ValidationCourse $request comment
      *
@@ -60,7 +62,6 @@ class CourseService
     **/
     public function edit($id)
     {
-        // dd($id);
         return Course::findOrFail($id);
     }
 
@@ -104,6 +105,7 @@ class CourseService
         return \DB::table('courses')
                     ->join('course_user', 'course_user.course_id', '=', 'courses.id')
                     ->select('courses.*', \DB::raw('count(*) as total'))
+                    ->where('parent_id', '!=', 'NULL')
                     ->groupBy('courses.id')
                     ->orderBy('total', 'desc')
                     ->limit(config('define.courses.limit_courses'))
@@ -119,7 +121,8 @@ class CourseService
     {
         return \DB::table('courses')
                     ->select('courses.*')
-                    ->orderBy('created_at', 'desc')
+                    ->where('parent_id', '!=', 'NULL')
+                    ->orderBy('updated_at', 'desc')
                     ->limit(config('define.courses.limit_courses'))
                     ->get();
     }
@@ -134,7 +137,7 @@ class CourseService
     public function ajaxCourseSearch($query)
     {
         return \DB::table('courses')
-            ->select('id', 'name')
+            ->select('id', 'name', 'parent_id')
             ->where('name', 'LIKE', "%{$query}%")
             ->limit(config('define.courses.page_site_course'))
             ->get();
@@ -166,22 +169,76 @@ class CourseService
         return $course;
     }
 
-
+    /**
+     * Function index get recent course
+     *
+     * @param \Illuminate\Http\Request $course  course
+     * @param \Illuminate\Http\Request $lessons lesson
+     *
+     * @return App\Services\LessonService
+    **/
     public function historyLesson($course, $lessons)
     {
-        // dd($lessons);
-        $lessonBasedCourseId = $lessons->filter(function($val) use($course) {
+        //All lessons in course collection
+        $lessonBasedCourseId = $lessons->filter(function ($val) use ($course) {
             return $val->course_id == $course->id;
         });
-        // dd($lessonBasedCourseId);
-        $lessonCompare = $lessonBasedCourseId->pluck('id');
-        $lessonUser = Auth::user()->lessons->pluck('id');
-        $compareDiff = $lessonCompare->diff($lessonUser); 
-        $results = $lessonBasedCourseId->whereIn('id', $compareDiff);
-        // dd($compareDiff != null);
-        if (count($compareDiff) == 0) {
-            return $lessonBasedCourseId->pluck('order')->max(); 
+        //id of each lesson
+        $lessonId = $lessonBasedCourseId->pluck('id');
+        if (Auth::check()) {
+            //lessons => user learned
+            $lessonUser = Auth::user()->lessons->pluck('id');
+            //$compareDiff lessons => user no yet learned
+            $compareDiff = $lessonId->diff($lessonUser);
+            $results = $lessonBasedCourseId->whereIn('id', $compareDiff);
+            if (count($compareDiff) == 0) {
+                return $lessonBasedCourseId->pluck('order')->max();
+            }
+            return $results->pluck('order')->min();
         }
-        return $results->pluck('order')->min();
-    } 
+    }
+
+    /**
+     * Function check account of user
+     *
+     * @param \Illuminate\Http\Request $userId   user
+     * @param \Illuminate\Http\Request $lessonId lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function checkAccount($userId, $lessonId)
+    {
+        $result = [];
+        //total course learned
+        $totalCourse = DB::table('course_user')->where('user_id', $userId)->select(DB::raw('count(*) as totalCourse'))->groupBy('course_user.user_id')->pluck('totalCourse')->first();
+        //score course learned
+        $score = DB::table('schedules')->where('user_id', $userId)->select(DB::raw('sum(score) as score'))->groupBy('schedules.user_id')->first()->score;
+        //compare currentCourse with learnedCourse
+        $currentCourse = Lesson::find($lessonId)->course->id;
+        $learnedCourse = DB::table('course_user')->where('user_id', $userId)->select('course_user.*')->pluck('course_id');
+
+        $role = Auth::user()->role->name;
+
+        $result['totalCourse'] = $totalCourse;
+        $result['score'] = $score;
+        $result['currentCourse'] = $currentCourse;
+        $result['learnedCourse'] = $learnedCourse;
+        $result['role'] = $role;
+        return $result;
+    }
+
+    /**
+     * Function get new courses
+     *
+     * @return App\Services\CourseService
+    **/
+    public function getHighestRatinCourses()
+    {
+        return \DB::table('courses')
+                    ->select('courses.*')
+                    ->where('parent_id', '!=', 'NULL')
+                    ->orderBy('average', 'desc')
+                    ->limit(config('define.courses.limit_courses'))
+                    ->get();
+    }
 }

@@ -1,0 +1,13 @@
+
+.uba_audioButton {
+    background: url('/images/icons/audio_short.png') no-repeat;
+    background-position: 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    width: 26px;
+    height: 30px;
+}
+.uba_audioButton:hover {
+    background-position: 0 -85px;
+}

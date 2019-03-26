@@ -43,6 +43,10 @@ return [
             'title' => 'POPULAR COURSES',
             'intro' => 'There are many popular courses of center',
         ],
+        'highestRating' => [
+            'title' => 'HIGHEST RATING COURSES',
+            'intro' => 'There are many highest rating courses of center',
+        ],
         'date' => 'Date:',
         'btn' => 'Learn Now',
         'see_all' => 'See All',
@@ -60,7 +64,14 @@ return [
             'comment' => [
                 'posted_on' => 'Posted on ',
             ],
+            'rating' => [
+                'title' => 'Rating Course',
+            ],
         ],
+        'courses_detail' => [
+            'title' => 'Courses Detail'
+        ],
+        'name' => 'courses'
     ],
     'lessons' => [
         'lesson_detail' => [
@@ -161,6 +172,7 @@ return [
         'position' => 'Developer Educat'
     ],
     'levels' => [
+        'name' => 'Our Level',
         'title' => 'LEVEL',
         'date' => 'Date:',
         'btn' => 'Learn Now',
@@ -181,4 +193,16 @@ return [
         ],
         'submit' => 'SUBMIT',
     ],
+    'rating' => [
+        'title' => 'Rating',
+        'btn' => 'See Now',
+        'course' => [
+            'title' => 'Latest Rating Courses',
+            'desc' => 'There are many rates of courses',
+        ],
+        'lesson' => [
+            'title' => 'Latest Rating Lessons',
+            'desc' => 'There are many rates of lessons',
+        ],
+    ]
 ];

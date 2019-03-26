@@ -5,10 +5,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="storage/avatar/4.jpeg" class="img-circle" alt="User Image">
+          <img src="storage/avatar/{{ Auth::user()->userProfile->url }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{ Auth::user()->userProfile->name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -100,6 +100,23 @@
           <ul class="treeview-menu">
             <li><a href="{{ route('admin.exercises.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_exercise')</a></li>
             <li><a href="{{ route('admin.exercises.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_exercise')</a></li>
+          </ul>
+        </li>
+         <li>
+          <a href="{{ route('admin.systems.index') }}">
+            <i class="fa fa-file"></i> <span>@lang('layout_admin.sidebar.system_management')</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>@lang('layout_admin.sidebar.slider_management')</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('admin.sliders.index') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.show_slider')</a></li>
+            <li><a href="{{ route('admin.sliders.create') }}"><i class="fa fa-circle-o"></i> @lang('layout_admin.sidebar.add_slider')</a></li>
           </ul>
         </li>
       </ul>

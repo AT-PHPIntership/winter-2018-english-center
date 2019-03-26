@@ -20,68 +20,55 @@
 </div>
 <!--End of Breadcrumb Banner Area-->
 <!--Event Area Start-->
-<div class="event-area section-padding event-page">
-  <div class="container">
-    <!--Testimonial Area Start-->
-    <div class="">
-      <div class="container">
-        @foreach ($courses as $course)
-        <div class="col-md-12">
-          <div class="section-title-wrapper">
-            <div class="section-title">
-              <h3>{{ $course->name }}</h3>
-              <span>{{ $course->children->count() }}</span>
-              <p>{{ __('layout_user.header.courses') }}</p>
-            </div>
-          </div>
-        </div>
-        {{-- 
+@foreach ($courses as $course)
+<div class="course-area section-padding">
+    <div class="container">
         <div class="row">
-          --}}
-          <div class="col-lg-12 col-lg-offset-0 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="testimonial-image-slider text-center">
-                  @foreach($course->children as $childrenCourse)
-                  <div class="col-md-4 col-sm-6">
-                    <div class="single-event-item">
-                      <div class="single-event-image">
-                        <a href="#">
-                        <a href="{{ route('user.course.detail', $childrenCourse->id) }}">
-                        <img src="{{ $childrenCourse->image }}" alt="">
-                        </a>
-                      </div>
-                      <div class="single-event-text">
-                        <h3>
-                        <a href="{{ route('user.course.detail', $childrenCourse->id) }}">{{ $childrenCourse->name }}</a>
-                        <div class="single-item-content">
-                          <div class="single-item-comment-view pull-left">
-                            <span><i class="zmdi zmdi-eye"></i>{{ $childrenCourse->count_view }}</span>
-                          </div>
-                          <div class="single-item-rating">
-                            <i class="zmdi {{ ($course->average -0.5)>0 ? 'zmdi-star': (($course->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                            <i class="zmdi {{ ($course->average -1.5)>0 ? 'zmdi-star': (($course->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                            <i class="zmdi {{ ($course->average -2.5)>0 ? 'zmdi-star': (($course->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                            <i class="zmdi {{ ($course->average -3.5)>0 ? 'zmdi-star': (($course->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                            <i class="zmdi {{ ($course->average -4.5)>0 ? 'zmdi-star': (($course->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                          </div>
-                        </div>
-                        <p>{{ $childrenCourse->content }}</p>
-                        <a class="button-default" href="{{ route('user.course.detail', $childrenCourse->id) }}">{{ __('layout_user.courses.btn') }}</a>
-                      </div>
+            <div class="col-md-12">
+                <div class="section-title-wrapper">
+                    <div class="section-title">
+                        <h3>{{ $course->name }}</h3>
+                        <p>{{ $course->children->count() }} @lang('layout_user.courses.name')</p>
                     </div>
-                  </div>
-                  @endforeach
                 </div>
-              </div>
             </div>
-          </div>
-          @endforeach
         </div>
-      </div>
+        <div class="row">
+            @foreach($course->children as $childrenCourse)
+            <div class="col-md-4 col-sm-6 margin-bottom">
+                <div class="single-item">
+                    <div class="single-item-image overlay-effect">
+                        <a href="{{ route('user.course.detail', $childrenCourse->id) }}"><img src="front_end/img/event/{{ $childrenCourse->image }}" alt=""></a>
+                    </div>
+                    <div class="single-item-text">
+                        <h4><a href="{{ route('user.course.detail', $childrenCourse->id) }}">{{ $childrenCourse->name }}</a></h4>
+                        <div class="single-item-text-info">
+                            <span>@lang('layout_user.levels.date') <span>{{ $childrenCourse->updated_at }}</span></span>
+                        </div>
+                        <p>{!! str_limit($childrenCourse->content, 123) !!}</p>
+                        <div class="single-item-content">
+                            <div class="single-item-comment-view">
+                                <span><i class="zmdi zmdi-eye"></i>{{ $childrenCourse->count_view }}</span>
+                                <span><i class="zmdi zmdi-comments"></i></span>
+                            </div>
+                            <div class="single-item-rating">
+                                <i class="zmdi {{ ($childrenCourse->average -0.5)>0 ? 'zmdi-star': (($childrenCourse->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($childrenCourse->average -1.5)>0 ? 'zmdi-star': (($childrenCourse->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($childrenCourse->average -2.5)>0 ? 'zmdi-star': (($childrenCourse->average -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($childrenCourse->average -3.5)>0 ? 'zmdi-star': (($childrenCourse->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                                <i class="zmdi {{ ($childrenCourse->average -4.5)>0 ? 'zmdi-star': (($childrenCourse->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="button-bottom">
+                        <a href="{{ route('user.course.detail', $childrenCourse->id) }}" class="button-default">@lang('layout_user.levels.btn')</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
-    <!--End of Testimonial Area-->
-  </div>
 </div>
+@endforeach
 <!--End of Event Area-->
 @endsection

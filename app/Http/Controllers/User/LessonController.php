@@ -72,21 +72,7 @@ class LessonController extends Controller
      */
     public function upgradeVip(Request $request)
     {
-        $next = app(LessonService::class)->upgradeVip($request->all());
-        return redirect()->route('user.lesson.detail', $next);
+        app(LessonService::class)->upgradeVip($request->all());
+        return redirect()->route('user.home');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Request $request lesson
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function editComment(Request $request)
-    {
-        $response = app(CommentService::class)->editComment($request->get('userId'), $request->get('commentId'));
-        return response()->json($response);
-    }
-   
 }

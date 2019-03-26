@@ -12,4 +12,5 @@ return [
     'back' => 'Back',
     'reset' => 'Reset',
     'btn' => 'Submit',
+    'changePass' => 'Change Password'
 ];

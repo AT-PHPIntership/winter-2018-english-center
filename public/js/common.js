@@ -13,34 +13,22 @@ $(function () {
   var pieChart       = new Chart(pieChartCanvas);
   var PieData        = [
     {
-      value    : lesson1['total'],
+      value    : course1['total'],
       color    : '#f56954',
       highlight: '#f56954',
-      label    : lesson1['name'],
+      label    : course1['name'],
     },
     {
-      value    : lesson2['total'],
+      value    : course2['total'],
       color    : '#00a65a',
       highlight: '#00a65a',
-      label    : lesson2['name']
+      label    : course2['name']
     },
     {
-      value    : lesson3['total'],
+      value    : course3['total'],
       color    : '#f39c12',
       highlight: '#f39c12',
-      label    : lesson3['name']
-    },
-    {
-      value    : lesson4['total'],
-      color    : '#00c0ef',
-      highlight: '#00c0ef',
-      label    : lesson4['name']
-    },
-    {
-      value    : lesson5['total'],
-      color    : '#3c8dbc',
-      highlight: '#3c8dbc',
-      label    : lesson5['name']
+      label    : course3['name']
     },
   ];
   var pieOptions     = {
@@ -78,7 +66,7 @@ $(function () {
   // 
   //-------------
   var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      labels  : ['January', 'February', 'March', 'April', 'May', 'June'],
       datasets: [
         {
           label               : 'Electronics',
@@ -88,7 +76,7 @@ $(function () {
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [month0, month1, month2, month3, month4, month5, month6, month7, month8, month9, month10, month11]
+          data                : [month0, month1, month2, month3, month4, month5]
         }
         // {
         //   label               : 'Digital Goods',

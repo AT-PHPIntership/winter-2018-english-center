@@ -113,7 +113,7 @@
                         </div>
                         <div class="form-group">
                             <label for="video">{{ __('lesson.create_lesson.video') }}</label>
-                            <input type="url" class="form-control" name="video" placeholder="@lang('lesson.create_lesson.placeholder')" value="{{ old('video') }}">
+                            <input type="url" class="form-control" name="video" placeholder="{{ __('lesson.edit_lesson.placeholder') }}" value="{{ old('video') }}">
                             @if ($errors->has('video'))
                                 <span class="help-block col-sm-12">
                                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('video') }}</strong>
@@ -136,4 +136,5 @@
 @endsection
 @section('script')
     <script type="text/javascript" src="{!! asset('js/vocalbularies.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('js/exercises.js') !!}"></script>
 @endsection

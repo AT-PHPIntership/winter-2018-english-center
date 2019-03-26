@@ -31,33 +31,35 @@
         <table id="example1" class="table table-bordered table-striped">
           <thead>
             <tr class="row">
-              <th class="col-lg-1">@lang('vocabulary.list_vocabulary.id')</th>
-              <th class="col-lg-1">@lang('vocabulary.list_vocabulary.vocabulary')</th>
-              <th class="col-lg-1">@lang('vocabulary.list_vocabulary.word_type')</th>
-              <th class="col-lg-3">@lang('vocabulary.list_vocabulary.means')</th>
-              <th class="col-lg-3">@lang('vocabulary.list_vocabulary.sound')</th>
-              <th class="col-lg-1">@lang('vocabulary.list_vocabulary.show')</th>
-              <th class="col-lg-2">@lang('vocabulary.list_vocabulary.action')</th>
+              <th style="text-align: center;">@lang('vocabulary.list_vocabulary.id')</th>
+              <th style="text-align: center;">@lang('vocabulary.list_vocabulary.vocabulary')</th>
+              <th style="text-align: center;">@lang('vocabulary.list_vocabulary.phonetic_spelling')</th>
+              <th style="text-align: center;">@lang('vocabulary.list_vocabulary.word_type')</th>
+              <th style="text-align: center;">@lang('vocabulary.list_vocabulary.means')</th>
+              <th style="text-align: center;">@lang('vocabulary.list_vocabulary.sound')</th>
+              <th style="text-align: center;">@lang('vocabulary.list_vocabulary.show')</th>
+              <th style="text-align: center;">@lang('vocabulary.list_vocabulary.action')</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($vocabularies as $key => $vocabulary)
             <tr class="row">
-              <td>{{ $vocabulary->id }}</td>
-              <td>{{ $vocabulary->vocabulary }}</td>
-              <td>{{ $vocabulary->word_type }}</td>
-              <td>{{ $vocabulary->means }}</td>
-              <td>
-                <div id="player">
-                    <audio controls>
-                        <source src="{{ $vocabulary->sound }}" type="audio/mpeg">
-                    </audio>
-                </div>
+              <td style="text-align: center;">{{ $vocabulary->id }}</td>
+              <td style="text-align: center;">{{ $vocabulary->vocabulary }}</td>
+              <td style="text-align: center;">{{ $vocabulary->phonetic_spelling }}</td>
+              <td style="text-align: center;">{{ $vocabulary->word_type }}</td>
+              <td style="text-align: center;">{{ $vocabulary->means }}</td>
+              <td style="cursor:pointer;text-align: center;">
+                <a type="button" class="uba_audioButton" >
+                  <audio>
+                    <source src="{{$vocabulary->sound}}" type="audio/mpeg">
+                  </audio>
+                </a>
               </td>
-              <td>
+              <td style="text-align: center;">
                 <a href="{{ route('admin.vocabularies.show', $vocabulary->id) }}" class="btn btn-warning">@lang('common.detail')</a>
               </td>
-              <td>
+              <td style="text-align: center;">
                 <a href="{{ route('admin.vocabularies.edit', $vocabulary->id) }}" class="btn btn-warning">@lang('course.list_course.edit')</a>
                 <form method="POST" action="{{ route('admin.vocabularies.destroy', $vocabulary->id) }}" class="inline" onsubmit="return confirmedDelete()">
                     @csrf

@@ -33,8 +33,21 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="email">{{ __('lesson.create_lesson.text') }}</label>
-                            <textarea class="form-control" name="text">{{ $lesson->text }}</textarea>
+                            <label>{{ __('lesson.create_lesson.text') }}</label>
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <div class="pull-right box-tools">
+                                        <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body pad">
+                                    <textarea class="ckeditor" name="text" rows="10" cols="80">
+                                        {{ $lesson->text }}
+                                    </textarea>
+                                </div>
+                            </div>
                             @if ($errors->has('text'))
                                 <span class="help-block col-sm-12">
                                     <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('text') }}</strong>
@@ -69,8 +82,8 @@
                         <div class="form-group">
                             <label for="course">{{ __('lesson.create_lesson.course') }}</label>
                             <select class="form-control" name="course_id">
-                                @foreach ($courses as $course)
-                                    <option value="{{ $course->id }}" <?php echo ($course->title == $lesson->course->title) ? "selected" : " " ?>>{{ $course->title }}</option>
+                                @foreach ($courseChildren as $course)
+                                    <option value="{{ $course->id }}" <?php echo ($course->name == $lesson->course->name) ? "selected" : " " ?>>{{ $course->name }}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('course_id'))

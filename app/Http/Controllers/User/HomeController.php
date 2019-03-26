@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CourseService;
 use App\Services\SliderService;
+use App\Services\RateService;
 use App\Models\Level;
 
 class HomeController extends Controller
@@ -15,13 +16,15 @@ class HomeController extends Controller
      *
      * @param SliderService $sliderService SliderService
      * @param CourseService $courseService CourseService
+     * @param RateService   $rateService   RateService
      *
      * @return void
      */
-    public function __construct(SliderService $sliderService, CourseService $courseService)
+    public function __construct(SliderService $sliderService, CourseService $courseService, RateService $rateService)
     {
         $this->sliderService = $sliderService;
         $this->courseService = $courseService;
+        $this->rateService   = $rateService;
     }
 
     /**
@@ -34,7 +37,10 @@ class HomeController extends Controller
         $sliders = $this->sliderService->getAll();
         $popularCourses = $this->courseService->getPopularCourses();
         $newCourses = $this->courseService->getNewCourses();
-        return view('frontend.home')->with(['sliders' => $sliders, 'popularCourses' => $popularCourses, 'newCourses' => $newCourses]);
+        $highestRatingCourses = $this->courseService->getHighestRatinCourses();
+        $newRatingLessons = $this->rateService->getNewRatingLessons();
+        $newRatingCourses = $this->rateService->getNewRatingCourses();
+        return view('frontend.home')->with(['sliders' => $sliders, 'popularCourses' => $popularCourses, 'newCourses' => $newCourses, 'newRatingLessons' => $newRatingLessons, 'newRatingCourses' => $newRatingCourses, 'highestRatingCourses' =>$highestRatingCourses]);
     }
 
     /**

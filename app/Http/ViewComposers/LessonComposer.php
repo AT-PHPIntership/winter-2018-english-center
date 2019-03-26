@@ -28,6 +28,6 @@ class LessonComposer
      */
     public function compose(View $view)
     {
-        $view->with('lessons', $this->lessonsService->index());
+        $view->with('lessons', $this->lessonsService->allLesson());
     }
 }

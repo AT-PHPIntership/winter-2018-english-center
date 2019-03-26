@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Services\VocabularyService;
+use GuzzleHttp\Client;
+use Symfony\Component\HttpFoundation\Response;
 
 class CreateVocabularyRequest extends FormRequest
 {
@@ -37,8 +40,33 @@ class CreateVocabularyRequest extends FormRequest
     public function messages()
     {
         return [
-            'vocabulary.regex' => 'Can not enter numeric.',
-            'means.regex' => 'Can not enter numeric.',
+            'vocabulary.regex' => 'Vocabulary can not enter numeric.',
+            'means.regex' => 'Means can not enter numeric.',
         ];
+    }
+
+     /**
+     * Configure the validator instance.
+     *
+     * @param \Illuminate\Validation\Validator $validator validator
+     *
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        // dd($validator);
+        $response = app(Client::class)->request('GET', sprintf(config('define.oxford.get_api').$this->all()['vocabulary']), [
+            'headers' => [
+                'app_id'  => config('define.oxford.app_id'),
+                'app_key' => config('define.oxford.app_key')
+            ],
+            'http_errors' => false
+        ]);
+        $validator->after(function ($validator) use ($response) {
+            if ($response->getStatusCode() == Response::HTTP_NOT_FOUND) {
+                $validator->errors()->add('vocabulary', 'Vocabulary is wrong');
+            }
+        });
+        return;
     }
 }

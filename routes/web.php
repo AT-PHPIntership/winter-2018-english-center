@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'adminLogin'], function() {
     Route::get('/', 'HomeController@index')->name('dashboard');
+
     Route::resource('users', 'UserController');
 
     Route::resource('courses', 'CourseController');
@@ -26,13 +28,19 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::post('vocabularies/import', 'VocabularyController@importFile')->name('vocabularies.import');
     Route::resource('vocabularies', 'VocabularyController');
 
-    Route::resource('exercises', 'ExerciseController');
+    Route::post('exercises/store', 'ExerciseController@store');
+
+    Route::resource('exercises', 'ExerciseController')->only(['index', 'show', 'create', 'edit', 'update', 'destroy']);
     
     Route::resource('lessons', 'LessonController');
 
     Route::resource('comments', 'CommentController');
 
     Route::resource('questions', 'QuestionController');
+
+    Route::resource('systems', 'SystemController');
+
+    Route::resource('sliders', 'SliderController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
@@ -41,23 +49,31 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'
     Route::get('/logout', 'LoginController@logout')->name('logout');
 });
 
-
+//Route User
 Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin'], function() {
     Route::get('/profiles', 'ProfileController@show')->name('profiles.show');
     Route::get('/profiles/edit', 'ProfileController@edit')->name('profiles.edit');
+    Route::get('/profiles/changePassword', 'ProfileController@changePass')->name('profiles.changePass');
     Route::put('/profiles', 'ProfileController@update')->name('profiles.update');
+    Route::put('/profiles/changePass', 'ProfileController@updatePass')->name('profiles.update.pass');
 
     Route::group(['middleware' => 'filter'], function() {
-        Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail');
+        Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail')->middleware('lessonDetail');
         Route::post('lesson', 'LessonController@resutlLesson');
+        Route::post('checkaccount', 'CourseController@checkAccount');
         Route::post('comment/{element}', 'CourseController@elementComment');
         Route::post('reply/{element}', 'CourseController@elementReply');
-        Route::get('rating/{ele}/{id}', 'RatingController@showRating')->name('rating');
-        Route::post('rating/{ele}/{id}', 'RatingController@getRating')->name('rating');
+        Route::get('rating/{course}', 'RatingController@showRating')->name('rating');
+        Route::post('rating/{id}', 'RatingController@getRating')->name('rating');
         Route::get('subscribe', 'LessonController@subscribeMember');
+        Route::get('unfinished', 'CourseController@unfinished');
         Route::delete('delete/comment', 'LessonController@deleteComment');
         Route::put('user/vip', 'LessonController@upgradeVip')->name('upgradeVip');
         Route::post('edit/comment', 'LessonController@editComment');
+
+        //changeAccount
+        // Route::get('account/email', 'CourseController@showEmailForm');
+        // Route::post('account/email', 'CourseController@sendEmail');
     });
 });
 Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
@@ -82,6 +98,7 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
 });
 
 Route::group(['middleware' => 'filter', 'namespace' => 'User', 'as' => 'user.'], function() {
-    Route::get('course', 'CourseController@index')->name('course');
+    Route::get('course', 'CourseController@index')->name('courses');
+    Route::get('/detail/courses/{course}', 'CourseController@showCourses')->name('courses.detail');
     Route::get('/detail/course/{course}', 'CourseController@show')->name('course.detail');
 });

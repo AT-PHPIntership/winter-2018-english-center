@@ -1,6 +1,6 @@
 <header class="main-header">
   <!-- Logo -->
-  <a href="index.html" class="logo">
+  <a href="/admin" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>A</b>LT</span>
     <!-- logo for regular state and mobile devices -->
@@ -20,16 +20,16 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <img src="{{ Auth::user()->userProfile->url }}" class="user-image" alt="User Image">
+          <img src="storage/avatar/{{ Auth::user()->userProfile->url }}" class="user-image" alt="User Image">
           <span class="hidden-xs">{{ Auth::user()->userProfile->name }}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="{{ Auth::user()->userProfile->url }}" class="img-circle" alt="User Image">
+              <img src="storage/avatar/{{ Auth::user()->userProfile->url }}" class="img-circle" alt="User Image">
               <p>
                 {{ Auth::user()->userProfile->name }}
-                <small>{{ Auth::user()->userProfile->age }} years old</small>
+                <small>{{ Auth::user()->userProfile->birthday }}</small>
               </p>
             </li>
             <!-- Menu Body -->
@@ -49,7 +49,7 @@
             </li> --}}
             <!-- Menu Footer-->
             <li class="user-footer">
-              {{-- <div class="pull-left">
+            {{--   <div class="pull-left">
                 <a href="#" class="btn btn-default btn-flat">@lang('layout_admin.header.profile')</a>
               </div> --}}
               <div class="pull-right">
