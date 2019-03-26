@@ -285,4 +285,28 @@ class LessonService
             return false;
         }
     }
+
+    /**
+     * Function get caculator percent learn
+     *
+     * @param \Illuminate\Http\Request $lessonId lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function progressLearn($lessonId)
+    {
+        if (Auth::check()) {
+
+            $resultLesson = DB::table('schedules')->select('score')->where([
+                ['lesson_id', $lessonId],
+                ['user_id', Auth::user()->id],
+            ])->first();
+            if ($resultLesson == null) {
+                return 0;
+            } else {
+                $percent = $resultLesson->score / 5 * 100;
+                return $percent;
+            }
+        }
+    }
 }

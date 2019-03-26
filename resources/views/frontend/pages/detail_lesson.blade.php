@@ -29,12 +29,36 @@
             <div class="single-event-image">
               <img src="storage/lesson/{{ $lessons->image }}" alt="">
             </div>
+              <!-- chart -->
             <div class="single-latest-text">
+                <!-- chart progress learning -->
+                <div id="lesson-basic-detail">
+                    <div id="learn-point">
+                        <div class="progress-pie-chart gt-50" data-percent="100">
+                            <div class="progress-label">Điểm số</div>
+                            <div class="ppc-progress">
+                                <div class="ppc-progress-fill" style="transform: rotate(360deg);"></div>
+                            </div>
+                            <div class="ppc-percents">
+                                <div class="pcc-percents-wrapper">
+                                <span>100</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="learn-progress">
+                        <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="135" height="135" xmlns="http://www.w3.org/2000/svg">
+                      <circle class="circle-chart__background" stroke="#fff" stroke-width="2.5" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
+                      <circle class="circle-chart__circle" stroke="#8BC34A" stroke-width="2.5" stroke-dasharray="{{$progressLearn}},100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
+                      <g class="circle-chart__info">
+                        <text class="circle-chart__percent" stroke="#C62828" x="16.91549431" y="15.5" alignment-baseline="central" text-anchor="middle" font-size="8">{{$progressLearn}}%</text>
+                        <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central" text-anchor="middle" font-size="3">Hoan thanh</text>
+                      </g>
+                    </svg>
+                    </div>
+                    <div class="clear-both"></div>
+                </div>
               <h3>{{ $lessons->name }}</h3>
-              <div class="single-item-comment-view">
-                <span><i class="zmdi zmdi-calendar-check"></i>{{ $lessons->created_at }}</span>
-                <span><i class="zmdi zmdi-eye"></i>{{ $countView->count_view }}</span>
-              </div>
               <div class="single-item-rating">
                   <i class="zmdi {{ ($lessons->average -0.5)>0 ? 'zmdi-star': (($lessons->average -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                   <i class="zmdi {{ ($lessons->average -1.5)>0 ? 'zmdi-star': (($lessons->average -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
@@ -42,6 +66,11 @@
                   <i class="zmdi {{ ($lessons->average -3.5)>0 ? 'zmdi-star': (($lessons->average -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                   <i class="zmdi {{ ($lessons->average -4.5)>0 ? 'zmdi-star': (($lessons->average -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
               </div>
+              <div class="single-item-comment-view">
+                <span><i class="zmdi zmdi-calendar-check"></i>{{ $lessons->created_at }}</span>
+                <span><i class="zmdi zmdi-eye"></i>{{ $countView->count_view }}</span>
+              </div>
+
               <strong>Vocabulary:</strong>
               <div class="single-item-comment-view">
                 <table border="2" cellspacing="10" cellpadding="10" id='{{count($lessons->vocabularies)}}'>
