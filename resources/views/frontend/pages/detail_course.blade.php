@@ -95,7 +95,6 @@
             @endif
             <ol class="comment-list">
             @foreach($rates as $rate)
-              @if($rate->course_id === $course->id)
                 <li class="comment-border" data-id='{{ $rate->id }}'>
                   <article id="{{$rate->id}}">
                     <img alt='' src="{{ !(substr($rate->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$rate->user->userProfile['url'] : $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
@@ -117,7 +116,6 @@
                     </div>
                   </article>
                 </li>
-                @endif
             @endforeach
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">

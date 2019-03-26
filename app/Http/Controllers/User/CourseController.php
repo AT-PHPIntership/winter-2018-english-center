@@ -8,6 +8,7 @@ use App\Services\CourseService;
 use App\Services\LessonService;
 use App\Services\CommentService;
 use App\Models\Course;
+use App\Services\RateService;
 
 class CourseController extends Controller
 {
@@ -46,8 +47,9 @@ class CourseController extends Controller
         $hasLearnLatestLesson = app(LessonService::class)->hasLearnLatestLesson($course->id);
         $lessons = app(LessonService::class)->allLesson();
         $countView = app(CourseService::class)->countViewCourse($course->id);
+        $rates = app(RateService::class)->getAll($course->id);
         $orderLearn = app(CourseService::class)->historyLesson($course, $lessons);
-        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn', 'hasLearnLatestLesson'));
+        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn', 'hasLearnLatestLesson', 'rates'));
     }
 
     /**
