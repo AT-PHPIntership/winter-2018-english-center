@@ -12,6 +12,7 @@ function exercise(key) {
 
 $(document).ready(function () {
   $('.uba_audioButton').on('click', function () {
+    console.log('aaa');
     $(this).find('audio').trigger('play');
   });
   $('.btn-success').one('click', function () {
@@ -213,7 +214,9 @@ $(document).on('click', '#reply-button', function () {
           output += '<div class="comment-des">';
           output += '<div class="comment-by">';
           output += '<p class="author"><strong>' + data.userName + '</strong></p>';
-          output += '<p class="date"><a><time>' + data.created_at + '</time></a> - <a class="edit-comment" id="' + data.id + '">Edit</a> - <a class="delete-comment" id="' + data.id + '">Delete</a>';
+          output += '<p class="date"><a><time>' + data.created_at + '</time></a> - <a class="edit-comment" id="' 
+                    + data.id + '">Edit</a> - <a class="delete-comment" id="' 
+                    + data.id + '">Delete</a>';
           output += '</div>';
           output += '<section>';
           output += '<p>' + data.content + '</p>';

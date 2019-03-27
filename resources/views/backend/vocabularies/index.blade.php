@@ -50,7 +50,7 @@
               <td style="text-align: center;">{{ $vocabulary->word_type }}</td>
               <td style="text-align: center;">{{ $vocabulary->means }}</td>
               <td style="cursor:pointer;text-align: center;">
-                <a type="button" class="uba_audioButton" >
+                <a type="button" class="uba_audioButton">
                   <audio>
                     <source src="{{$vocabulary->sound}}" type="audio/mpeg">
                   </audio>
