@@ -133,10 +133,16 @@ return [
         ],
     ],
     'logout' => 'Log Out',
-    'subcribe' => [
-        'title' => 'Subscribe',
+    'unfinished' => [
+        'title' => 'Notification',
         'notification' => 'Notification!',
-        'notification1' => 'You must register as a VIP member to continue!',
+        'notification1' => 'You must be VIP to continue!',
+        'goal' => ' Goal: Complete 2 course and reach 80%',
+    ],
+    'subscribe' => [
+        'title' => 'Subscribe',
+        'notification' => 'Congratulation!',
+        'notification1' => 'You have completed the goal. Please click the button below to upgrade.'
     ],
     'search' => [
         'find' => 'Find ',

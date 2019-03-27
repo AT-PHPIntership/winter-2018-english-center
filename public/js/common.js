@@ -2,6 +2,13 @@ function confirmedDelete() {
     return confirm(trans('delete'));
 }
 
+$(document).ready(function () {
+  $('.uba_audioButton').on('click', function () {
+    console.log('aaa');
+    $(this).find('audio').trigger('play');
+  });
+}
+
 $(function () {
 
   'use strict';
