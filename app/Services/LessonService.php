@@ -296,7 +296,6 @@ class LessonService
     public function progressLearn($lessonId)
     {
         if (Auth::check()) {
-
             $resultLesson = DB::table('schedules')->select('score')->where([
                 ['lesson_id', $lessonId],
                 ['user_id', Auth::user()->id],
@@ -304,8 +303,7 @@ class LessonService
             if ($resultLesson == null) {
                 return 0;
             } else {
-                $percent = $resultLesson->score / 5 * 100;
-                return $percent;
+                return $resultLesson->score / 5 * 100;
             }
         }
     }

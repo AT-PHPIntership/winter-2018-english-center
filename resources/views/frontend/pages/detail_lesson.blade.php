@@ -35,7 +35,7 @@
                 <div id="lesson-basic-detail">
                     <div id="learn-point">
                         <div class="progress-pie-chart gt-50" data-percent="100">
-                            <div class="progress-label">Điểm số</div>
+                            <div class="progress-label">Point</div>
                             <div class="ppc-progress">
                                 <div class="ppc-progress-fill" style="transform: rotate(360deg);"></div>
                             </div>
@@ -52,7 +52,7 @@
                       <circle class="circle-chart__circle" stroke="#8BC34A" stroke-width="2.5" stroke-dasharray="{{$progressLearn}},100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
                       <g class="circle-chart__info">
                         <text class="circle-chart__percent" stroke="#C62828" x="16.91549431" y="15.5" alignment-baseline="central" text-anchor="middle" font-size="8">{{$progressLearn}}%</text>
-                        <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central" text-anchor="middle" font-size="3">Hoan thanh</text>
+                        <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central" text-anchor="middle" font-size="3">Complete</text>
                       </g>
                     </svg>
                     </div>

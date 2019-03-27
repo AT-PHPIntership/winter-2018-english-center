@@ -208,11 +208,12 @@ class CourseService
     **/
     public function checkAccount($userId, $lessonId)
     {
+        // dd($userId);
         $result = [];
         //total course learned
         $totalCourse = DB::table('course_user')->where('user_id', $userId)->select(DB::raw('count(*) as totalCourse'))->groupBy('course_user.user_id')->pluck('totalCourse')->first();
         //score course learned
-        $score = DB::table('schedules')->where('user_id', $userId)->select(DB::raw('sum(score) as score'))->groupBy('schedules.user_id')->first()->score;
+        $score = optional(DB::table('schedules')->where('user_id', $userId)->select(DB::raw('sum(score) as score'))->groupBy('schedules.user_id')->first())->score;
         //compare currentCourse with learnedCourse
         $currentCourse = Lesson::find($lessonId)->course->id;
         $learnedCourse = DB::table('course_user')->where('user_id', $userId)->select('course_user.*')->pluck('course_id');
@@ -232,7 +233,7 @@ class CourseService
      *
      * @return App\Services\CourseService
     **/
-    public function getHighestRatinCourses()
+    public function getHighestRatingCourses()
     {
         return \DB::table('courses')
                     ->select('courses.*')
