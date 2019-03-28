@@ -44,6 +44,7 @@ $(document).ready(function () {
             var output = '<div class="correct">Correct: ' + data.correct.length + '<span>' + ' / ' + data.total.length + '</span>' + '</div>';
             $('.result-lesson').html(output);
           }
+          // console.log(data.goal);
           if (data.correct.length >= data.goal) {
             var navigation = '<ul class="pagination">';
             if (navigate('previous') != null) {
