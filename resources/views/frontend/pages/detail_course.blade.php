@@ -29,7 +29,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="overlay-effect">
-                  <a href=""><img src="front_end/img/course/{{ $course->image}}"></a>
+                  <a href=""><img src="front_end/img/event/{{ $course->image}}"></a>
                 </div>
               </div>
               <div class="col-md-6">
@@ -192,7 +192,7 @@
             @if ($parentCourse->id != $course->id)
             <div class="single-item">
               <div class="single-item-image overlay-effect">
-                <a href="{{ route('user.course.detail', $parentCourse->id) }}"><img src="front_end/img/course/{{ $parentCourse->image }}"></a>
+                <a href="{{ route('user.course.detail', $parentCourse->id) }}"><img src="front_end/img/event/{{ $parentCourse->image }}"></a>
               </div>
               <div class="single-item-text">
                 <h4><a href="{{ route('user.course.detail', $parentCourse->id) }}">{{ $parentCourse->name }}</a></h4>

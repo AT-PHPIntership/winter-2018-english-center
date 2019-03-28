@@ -218,7 +218,7 @@ class CourseService
      *
      * @param \Illuminate\Http\Request $userId   user
      * @param \Illuminate\Http\Request $lessonId lesson
-     *
+     
      * @return App\Services\LessonService
     **/
     public function checkAccount($userId, $lessonId)
@@ -232,7 +232,6 @@ class CourseService
         // dd($score);
         $currentCourse = Lesson::find($lessonId)->course->id;
         $learnedCourse = DB::table('course_user')->where('user_id', $userId)->select('course_user.*')->pluck('course_id');
-
         $role = Auth::user()->role->name;
         // dd($role);
         $result['totalCourse'] = $totalCourse;
