@@ -26,7 +26,6 @@ class LessonRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:50',
             'text' => 'required',
-            'role' => 'required',
             'level_id' => 'required',
             'course_id' => 'required',
             'vocabularies_id' => 'required',
