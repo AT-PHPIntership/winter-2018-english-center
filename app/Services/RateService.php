@@ -11,6 +11,8 @@ class RateService
     /**
      * Function index get all level
      *
+     * @param \Illuminate\Http\Request $id id
+     *
      * @return App\Services\RateService
     **/
     public function getAll($id)

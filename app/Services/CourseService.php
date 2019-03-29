@@ -218,7 +218,7 @@ class CourseService
      *
      * @param \Illuminate\Http\Request $userId   user
      * @param \Illuminate\Http\Request $lessonId lesson
-     
+
      * @return App\Services\LessonService
     **/
     public function checkAccount($userId, $lessonId)
