@@ -7,7 +7,7 @@ $(document).ready(function () {
     console.log('aaa');
     $(this).find('audio').trigger('play');
   });
-}
+});
 
 $(function () {
 

@@ -15,6 +15,7 @@
                   @else
                       <div class="content"><a href="{{ route('user.profiles.show') }}"><i class="zmdi zmdi-account"></i>{{ Auth::user()->userProfile->name }}</a>
                       </div>
+                      <div class="content"><a href="{{ route('user.process') }}"><i class="zmdi zmdi-favorite"></i> Wishlist</a></div>
                       <div class="content"><a href="{{ route('user.logout') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.logout')</a>
                       </div>
                   @endif

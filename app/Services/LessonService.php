@@ -208,6 +208,7 @@ class LessonService
                 ],
                 [
                     'score' => 0,
+                    'created_at' => Carbon\Carbon::now(),
                 ]
             );
             $result['correct'] = 0;
@@ -220,6 +221,7 @@ class LessonService
                 ],
                 [
                     'score' => count($correct),
+                    'created_at' => Carbon\Carbon::now(),
                 ]
             );
             $result['correct'] = $correct;

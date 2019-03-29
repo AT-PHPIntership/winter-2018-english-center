@@ -70,6 +70,8 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin
         Route::delete('delete/comment', 'LessonController@deleteComment');
         Route::put('user/vip', 'LessonController@upgradeVip')->name('upgradeVip');
         Route::post('edit/comment', 'LessonController@editComment');
+        Route::get('my-course', 'HomeController@processLearn')->name('process');
+        Route::post('process', 'HomeController@process');
 
         //changeAccount
         // Route::get('account/email', 'CourseController@showEmailForm');

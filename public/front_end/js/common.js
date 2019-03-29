@@ -241,7 +241,6 @@ $(document).on('click', '.delete-comment', function () {
   var commentId = $(this).attr('id');
   var userId = $('#comment-button').data('user');
   var token = $('#comment-button').data('token');
-  // var less
   if (userId != undefined) {
     $.ajax({
       url: 'delete/comment',
@@ -349,5 +348,73 @@ $(document).on('click', '.lesson', function () {
       });
   } else {
     window.location.href = '/login';
+  }
+});
+
+$(document).on('click', '.js-course', function(){
+  var userId = $(this).data('user');
+  var courseId = $(this).data('course');
+  var token =  $(this).data('token');
+  if(courseId != undefined) {
+    $.ajax({
+      url: 'process',
+      method: 'POST',
+      dataType: 'JSON',
+      data: {
+        userId: userId,
+        courseId: courseId,
+        _token: token,
+      },
+      success: function(data) {
+        if(data.length) {
+          var output = '';
+          var total = 0;
+          $.each(data, function(key, val) {
+            output += '<tr id="js-item">';
+            output += '<td><p>'+ val.key +'</p></td>';
+            output += '<td>';
+            output += '<p>';
+            output += '<a class="lesson-name" href="detail/lesson/'+ val.id +'">' + val.name_lesson + '</a>';
+            output += '</p>';
+            output += '</td>';
+            output += '<td>';
+            output += '<p>'+ val.date_start +'</p>';
+            output += '</td>';
+            output += '<td>';
+            output += '<p> -- </p>';
+            output += '</td>';
+            output += '<td>';
+            output += '<p>';
+            output += '<div class="progress progress-sm active">';
+            output += '<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: '+ val.percent_learn +'%">'+ val.percent_learn +'%</div>';
+            output += '</div>';
+            output += '</p>';
+            output += '</td>';
+            output += '</tr>';
+            total += +val.percent_learn / 5;
+          });
+
+            var item = '';
+            item += '<tr>'
+            item += '<th colspan="4">';
+            item += '<p>Learing Progress</p>';
+            item += '</th>';
+            item += '<th id="total-all">';
+            item += '<p>';
+            item += '<div class="progress progress-sm active">';
+            item += '<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:'+ total +'%">'+ total +'%</div>';
+            item += '</p>';
+            item += '</div>';
+            item += '</th>';
+            item += '</tr>';
+
+            $('#js-body-lesson').html(output);
+            $('#js-foot-lesson').html(item);
+        } else {
+          $('#js-body-lesson').html('');
+          $('#js-foot-lesson').html('');
+      }
+    }
+    });
   }
 });

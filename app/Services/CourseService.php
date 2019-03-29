@@ -122,7 +122,7 @@ class CourseService
         return \DB::table('courses')
                     ->select('courses.*')
                     ->where('parent_id', '!=', 'NULL')
-                    ->orderBy('updated_at', 'desc')
+                    ->orderBy('created_at', 'desc')
                     ->limit(config('define.courses.limit_courses'))
                     ->get();
     }
@@ -208,7 +208,6 @@ class CourseService
     **/
     public function checkAccount($userId, $lessonId)
     {
-        // dd($userId);
         $result = [];
         //total course learned
         $totalCourse = DB::table('course_user')->where('user_id', $userId)->select(DB::raw('count(*) as totalCourse'))->groupBy('course_user.user_id')->pluck('totalCourse')->first();

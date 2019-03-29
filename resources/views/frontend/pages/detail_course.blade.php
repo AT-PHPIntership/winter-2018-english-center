@@ -29,7 +29,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="overlay-effect">
-                  <a href=""><img src="front_end/img/event/{{ $course->image}}"></a>
+                  <a href=""><img src="front_end/img/course/{{ $course->image}}"></a>
                 </div>
               </div>
               <div class="col-md-6">
@@ -97,7 +97,6 @@
             @endif
             <ol class="comment-list">
             @foreach($rates as $rate)
-                @if($rate->course_id === $course->id)
                   <li class="comment-border" data-id='{{ $rate->id }}'>
                     <article id="{{$rate->id}}">
                       <img alt='' src="{{ !(substr($rate->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$rate->user->userProfile['url'] : $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
@@ -119,7 +118,6 @@
                       </div>
                     </article>
                   </li>
-                  @endif
             @endforeach
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
@@ -228,7 +226,7 @@
             @if ($parentCourse->id != $course->id)
             <div class="single-item">
               <div class="single-item-image overlay-effect">
-                <a href="{{ route('user.course.detail', $parentCourse->id) }}"><img src="front_end/img/event/{{ $parentCourse->image }}"></a>
+                <a href="{{ route('user.course.detail', $parentCourse->id) }}"><img src="front_end/img/course/{{ $parentCourse->image }}"></a>
               </div>
               <div class="single-item-text">
                 <h4><a href="{{ route('user.course.detail', $parentCourse->id) }}">{{ $parentCourse->name }}</a></h4>
