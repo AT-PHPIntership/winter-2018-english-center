@@ -187,7 +187,7 @@ class LessonService
             ['course_id', '=', $courseId],
             ['order', '>', $order],
         ])->min('order');
-        $nextLesson = Lesson::where('order', $nextOrder)->pluck('role')->first();
+        // $nextLesson = Lesson::where('order', $nextOrder)->pluck('role')->first();
         if (!isset($correct)) {
             DB::table('schedules')->updateOrInsert(
                 [
@@ -220,9 +220,9 @@ class LessonService
         $result['total'] = $answer;
         $result['goal'] = $goalLesson;
         $result['courseId'] = $totalLesson + 1;
-        $result['role'] = $role;
+        // $result['role'] = $role;
         $result['score'] = $score;
-        $result['nextLesson'] = $nextLesson;
+        // $result['nextLesson'] = $nextLesson;
         $result['totalCourse'] = $totalCourse;
         $result['learnedCourse'] = $learnedCourse;
         return $result;
