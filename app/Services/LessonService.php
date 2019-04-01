@@ -192,7 +192,6 @@ class LessonService
         $goalLesson = optional(\DB::table('goals')->select('goal')->where('id', $goalableLesson)->first())->goal;
         $lesson = Lesson::with('course')->where('id', intval($lessonId))->get();
         $totalLesson = $lesson->pluck('course')->pluck('id')->first();
-        $order = Lesson::where('id', $lessonId)->pluck('order')->first();
 
         if (!isset($correct)) {
             DB::table('schedules')->updateOrInsert(
@@ -224,7 +223,6 @@ class LessonService
         
         $score = DB::table('schedules')->select(DB::raw('sum(score) as score'))->groupBy('schedules.user_id', 'schedules.course_id')->first()->score;
         
-        $role  = User::find($userId)->role->name;
         $result['total'] = $answer;
         $result['goal'] = $goalLesson;
         $result['courseId'] = $totalLesson + 1;

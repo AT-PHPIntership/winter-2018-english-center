@@ -11,6 +11,8 @@ class RateService
     /**
      * Function index get all level
      *
+     * @param Rate $id rating
+     *
      * @return App\Services\RateService
     **/
     public function getAll($id)

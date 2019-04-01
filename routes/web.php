@@ -73,6 +73,7 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin
         Route::post('edit/comment', 'LessonController@editComment');
         Route::get('my-course', 'HomeController@processLearn')->name('process');
         Route::post('process', 'HomeController@process');
+        Route::post('process_detail', 'HomeController@processDetail');
 
         //changeAccount
         // Route::get('account/email', 'CourseController@showEmailForm');
