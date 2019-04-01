@@ -204,5 +204,8 @@ return [
             'title' => 'Latest Rating Lessons',
             'desc' => 'There are many rates of lessons',
         ],
-    ]
+    ],
+    'wishlist' => [
+        'title' => 'My course'
+    ],
 ];

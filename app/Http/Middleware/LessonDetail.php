@@ -24,10 +24,11 @@ class LessonDetail
         } else {
             $courseId = (int) ($lessonId/5 +5);
         }
+        $role = Auth::user()->role->name;
         $maxLessonCourse = Auth::user()->lessons->where('course_id', $courseId)->max('order');
-        if (($lessonId <= ($maxLessonCourse+1))||(($lessonId-1)%5 === 0)) {
+        if (($lessonId <= ($maxLessonCourse+1))||(($lessonId-1)%5 === 0)|| ($role === 'Admin')) {
             return $next($request);
         }
-        return abort(404);
+        return abort(401);
     }
 }

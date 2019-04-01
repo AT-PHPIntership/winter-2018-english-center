@@ -25,6 +25,7 @@ class LessonService
     {
         return Lesson::with(['course', 'level'])->latest()->paginate(config('define.page_site'));
     }
+
     /**
      * Function index get all lesson
      *
@@ -34,6 +35,7 @@ class LessonService
     {
         return Lesson::with(['course', 'level'])->get();
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -47,6 +49,7 @@ class LessonService
         $lesson->vocabularies()->attach($data['vocabularies_id']);
         return $lesson;
     }
+
     /**
      * Edit resource in storage.
      *
@@ -58,6 +61,7 @@ class LessonService
     {
         return $data->load(['vocabularies']);
     }
+
     /**
     * Handle update user to database
     *
@@ -73,6 +77,7 @@ class LessonService
             $lesson->vocabularies()->sync($data['vocabulary_id']);
         }
     }
+
     /**
      * Function destroy lesson
      *
@@ -97,6 +102,7 @@ class LessonService
     {
         return $lesson->load(['vocabularies', 'exercises', 'exercises.questions', 'exercises.questions.answers']);
     }
+
     /**
      * Function index get recent lesson
      *
@@ -124,6 +130,7 @@ class LessonService
         ]);
         return $lesson->load('exercises.questions');
     }
+
     /**
      * Function index get recent lesson
      *
@@ -133,6 +140,7 @@ class LessonService
     {
         return Lesson::orderBy('created_at', config('define.order_by_desc'))->limit(3)->get();
     }
+
     /**
      * Function index get recent lesson
      *
@@ -197,6 +205,7 @@ class LessonService
                 ],
                 [
                     'score' => 0,
+                    'created_at' => Carbon\Carbon::now(),
                 ]
             );
             $result['correct'] = 0;
@@ -209,6 +218,7 @@ class LessonService
                 ],
                 [
                     'score' => count($correct),
+                    'created_at' => Carbon\Carbon::now(),
                 ]
             );
             $result['correct'] = $correct;
@@ -227,6 +237,7 @@ class LessonService
         $result['learnedCourse'] = $learnedCourse;
         return $result;
     }
+
     /**
      * Function index get recent lesson
      *
@@ -240,6 +251,7 @@ class LessonService
         Event::fire('lessons.view', $lesson);
         return $lesson;
     }
+
     /**
      * Function index get recent lesson
      *
@@ -254,6 +266,7 @@ class LessonService
             ]);
         }
     }
+    
     /**
      * Function index get recent lesson
      *

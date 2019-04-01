@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\CourseService;
 use App\Services\SliderService;
 use App\Services\RateService;
+use App\Services\ProcessService;
 use App\Models\Level;
 
 class HomeController extends Controller
@@ -100,5 +101,22 @@ class HomeController extends Controller
     public function showContact()
     {
         return view('frontend.contact');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function processLearn()
+    {
+        $courseLearn = app(ProcessService::class)->getCourseLearn();
+        $lessonLearn = app(ProcessService::class)->getLessonLearn();
+        return view('frontend.pages.process', compact('courseLearn', 'lessonLearn'));
+    }
+    public function process(Request $request)
+    {
+        $response = app(ProcessService::class)->process($request->get('courseId'), $request->get('userId'));
+        return response()->json($response);
     }
 }

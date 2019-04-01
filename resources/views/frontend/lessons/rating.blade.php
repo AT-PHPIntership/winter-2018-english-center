@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="product-details-image">
-                        <img src="front_end/img/course/{{ $course->image }}" alt="">
+                        <img src="front_end/img/event/{{ $course->image }}" alt="">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
