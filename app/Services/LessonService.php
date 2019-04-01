@@ -189,15 +189,10 @@ class LessonService
             }
         }
         $goalableLesson = Lesson::find(intval($lessonId))->goals->pluck('goal_id')->first();
-        $goalLesson = \DB::table('goals')->select('goal')->where('id', $goalableLesson)->first()->goal;
+        $goalLesson = optional(\DB::table('goals')->select('goal')->where('id', $goalableLesson)->first())->goal;
         $lesson = Lesson::with('course')->where('id', intval($lessonId))->get();
         $totalLesson = $lesson->pluck('course')->pluck('id')->first();
         $order = Lesson::where('id', $lessonId)->pluck('order')->first();
-        $nextOrder = Lesson::where([
-            ['course_id', '=', $courseId],
-            ['order', '>', $order],
-        ])->min('order');
-        $nextLesson = Lesson::where('order', $nextOrder)->pluck('role')->first();
 
         if (!isset($correct)) {
             DB::table('schedules')->updateOrInsert(
@@ -233,9 +228,7 @@ class LessonService
         $result['total'] = $answer;
         $result['goal'] = $goalLesson;
         $result['courseId'] = $totalLesson + 1;
-        $result['role'] = $role;
         $result['score'] = $score;
-        $result['nextLesson'] = $nextLesson;
         $result['totalCourse'] = $totalCourse;
         $result['learnedCourse'] = $learnedCourse;
         return $result;

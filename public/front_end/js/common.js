@@ -38,6 +38,7 @@ $(document).ready(function () {
           _token: token
         },
         success: function (data) {
+          console.log(data.correct);
             if (data.correct == 0) {
               var output = '<div class="correct">Correct: 0 <span>' + ' / ' + data.total.length + '</span>' + '</div>';
               $('.result-lesson').html(output);
@@ -303,7 +304,6 @@ $(document).on('click', '.lesson', function () {
           _token: token
         },
         success: function (data) {
-          // console.log(data.score);
           if (data.score != null) { 
             if (data.role == "Trial") {
               if (data.totalCourse < 2) {
@@ -334,15 +334,27 @@ $(document).on('click', '.lesson', function () {
                 location.assign("detail/lesson/" + lessonId);
               }
             }
-          } else {
-            if (order > orderLearn) {
-              alert('Please complete the previous lesson.');            
-            } else {
+            if(data.role == "Admin") {
               location.assign("detail/lesson/" + lessonId);
             }
-          }
-          if(data.role == "Admin") {
-            location.assign("detail/lesson/" + lessonId);
+          } else {
+            if(data.role == "Trial") {
+              if (order > orderLearn) {
+                alert('Please complete the previous lesson.');            
+              } else {
+                location.assign("detail/lesson/" + lessonId);
+              }
+            }
+            if(data.role == "Admin") {
+              location.assign("detail/lesson/" + lessonId);
+            }
+            if(data.role == 'VIP'){
+              if (order > orderLearn) {
+                alert('Please complete the previous lesson.');            
+              } else {
+                location.assign("detail/lesson/" + lessonId);
+              }
+            }
           }
         }
       });

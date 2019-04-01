@@ -79,12 +79,6 @@
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <b class="col-lg-2">{{ __('lesson.list_lesson.role') }}</b>
-                                <span class="col-lg-10">{{ $lesson->role_name }}</span>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.show_lesson.exercise') }}</b>
                                 <span class="col-lg-10">
                                     @foreach($lesson->exercises as $exercise)
