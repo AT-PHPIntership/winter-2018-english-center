@@ -39,21 +39,7 @@
             <div role="tabpanel" class="tab-pane fade in active" id="product">
               <div class="setting-default setting-product">
                 <div class="table-responsive">
-                  <table class="table setting-product-table">
-                    <thead>
-                      <tr>
-                        <th style="text-align: center;">ID</th>
-                        <th style="text-align: center;">Lesson</th>
-                        <th style="text-align: center;">Start Date</th>
-                        <th style="text-align: center;">End Date</th>
-                        <th style="text-align: center;">Progress</th>
-                      </tr>
-                    </thead>
-                    <tbody id="js-body-lesson">
-                    </tbody>
-                    <tfoot id="js-foot-lesson">
-                    </tfoot>
-                  </table>
+                  
                 </div>
               </div>
             </div>

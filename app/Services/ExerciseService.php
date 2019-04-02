@@ -88,7 +88,7 @@ class ExerciseService
         // dd($data['questions']);
         $exercise->update($data);
         foreach ($data['questions'] as $question) {
-            // $questionId = Question::find($question['id']);
+            $questionId = Question::find($question['id']);
             // dd($questionId);
             $questionId->update(array_except($question, ['answers', 'status']));
             $questionId->answers()->delete();

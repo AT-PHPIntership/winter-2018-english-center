@@ -195,10 +195,10 @@
               @foreach ($recentLessons as $items)
               <div class="single-item">
                   <div class="single-item-image overlay-effect">
-                      <a href="{{ route('user.lesson.detail', $items->id) }}"><img src="storage/lesson/{{ $items->image }}" alt=""></a>
+                      <a class="lesson" href="{{ route('user.lesson.detail', $items->id) }}"><img src="storage/lesson/{{ $items->image }}" alt=""></a>
                   </div>
                   <div class="single-item-text">
-                      <h4><a href="{{ route('user.lesson.detail', $items->id) }}">{{ $items->name }}</a></h4>
+                      <h4><a class="lesson" href="{{ route('user.lesson.detail', $items->id) }}">{{ $items->name }}</a></h4>
                       <div class="single-item-text-info">
                           <span>@lang('layout_user.levels.date') <span>{{ $items->updated_at }}</span></span>
                       </div>
@@ -211,7 +211,7 @@
                       </div>   
                   </div>
                   <div class="button-bottom">
-                      <a href="{{ route('user.lesson.detail', $items->id) }}" class="button-default">@lang('layout_user.levels.btn')</a>
+                      <a href="{{ route('user.lesson.detail', $items->id) }}" class="button-default lesson">@lang('layout_user.levels.btn')</a>
                   </div>
               </div>
               @endforeach
