@@ -22,7 +22,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/profiles';
 
     /**
     * Display login page for user..

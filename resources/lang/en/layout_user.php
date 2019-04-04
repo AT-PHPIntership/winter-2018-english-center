@@ -105,7 +105,8 @@ return [
         'google' => 'Google',
         'not_member' => 'Not a member?',
         'sign_up' => 'Sign up now',
-        'warning' => 'You must Login!'
+        'active' => 'Your account not actived! Please check your mail!',
+        'warning' => 'You must login!'
     ],
     'register' => [
         'title' => 'Register',
