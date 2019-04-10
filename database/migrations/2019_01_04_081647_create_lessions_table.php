@@ -25,7 +25,6 @@ class CreateLessionsTable extends Migration
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('level_id')->unsigned();
             $table->foreign('level_id')->references('id')->on('m_level')->onDelete('cascade')->onUpdate('cascade');
-            $table->boolean('role')->comment('0:TRIAL account, 1:VIP account');
             $table->timestamps();
         });
     }

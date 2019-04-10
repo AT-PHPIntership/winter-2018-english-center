@@ -154,7 +154,7 @@ class CourseService
         return \DB::table('courses')
             ->select('id', 'name', 'parent_id')
             ->where('name', 'LIKE', "%{$query}%")
-            ->limit(config('define.courses.page_site_course'))
+            // ->limit(config('define.courses.page_site_course'))
             ->get();
     }
 
