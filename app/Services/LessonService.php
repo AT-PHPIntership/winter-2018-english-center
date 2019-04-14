@@ -135,11 +135,14 @@ class LessonService
     /**
      * Function index get recent lesson
      *
+     * @param \Illuminate\Http\Request $lesson Lesson
+     *
      * @return App\Services\LessonService
     **/
-    public function recentLesson()
+    public function recentLesson($lesson)
     {
-        return Lesson::orderBy('created_at', config('define.order_by_desc'))->limit(3)->get();
+        $courseId =  $lesson->course->id;
+        return Lesson::where('course_id', $courseId)->orderBy('created_at', config('define.order_by_desc'))->limit(4)->get();
     }
 
     /**

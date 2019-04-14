@@ -32,31 +32,34 @@
               <!-- chart -->
             <div class="single-latest-text">
                 <!-- chart progress learning -->
-                <div id="lesson-basic-detail">
-                    <div id="learn-point">
-                        <div class="progress-pie-chart gt-50" data-percent="100">
-                            <div class="progress-label">Point</div>
-                            <div class="ppc-progress">
-                                <div class="ppc-progress-fill" style="transform: rotate(360deg);"></div>
-                            </div>
-                            <div class="ppc-percents">
-                                <div class="pcc-percents-wrapper">
-                                <span>100</span>
+                    <div class='chart-point'> 
+                        <div id="learn-point">
+                            <div class="progress-pie-chart gt-50" data-percent="100">
+                                <div class="progress-label">Point</div>
+                                <div class="ppc-progress">
+                                    <div class="ppc-progress-fill" style="transform: rotate(360deg);"></div>
+                                </div>
+                                <div class="ppc-percents">
+                                    <div class="pcc-percents-wrapper">
+                                    <span>100</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div id="learn-progress">
+                            <svg     style="margin-top: -43px;" class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="135" height="135" xmlns="http://www.w3.org/2000/svg">
+                              <circle class="circle-chart__background" stroke="#fff" stroke-width="2.5" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
+                              <circle class="circle-chart__circle" stroke="#8BC34A" stroke-width="2.5" stroke-dasharray="{{$progressLearn}},100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
+                              <g class="circle-chart__info">
+                                <text class="circle-chart__percent" stroke="#C62828" x="16.91549431" y="15.5" alignment-baseline="central" text-anchor="middle" font-size="8">{{$progressLearn}}%</text>
+                                <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central" text-anchor="middle" font-size="3">Complete</text>
+                              </g>
+                            </svg>
+                        </div>
                     </div>
-                    <div id="learn-progress">
-                        <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="135" height="135" xmlns="http://www.w3.org/2000/svg">
-                      <circle class="circle-chart__background" stroke="#fff" stroke-width="2.5" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
-                      <circle class="circle-chart__circle" stroke="#8BC34A" stroke-width="2.5" stroke-dasharray="{{$progressLearn}},100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
-                      <g class="circle-chart__info">
-                        <text class="circle-chart__percent" stroke="#C62828" x="16.91549431" y="15.5" alignment-baseline="central" text-anchor="middle" font-size="8">{{$progressLearn}}%</text>
-                        <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central" text-anchor="middle" font-size="3">Complete</text>
-                      </g>
-                    </svg>
-                    </div>
-                    <div class="clear-both"></div>
+                <div id="lesson-basic-detail">
+                    
+                    {{-- <div class="clear-both"></div> --}}
                 </div>
               <h3>{{ $lessons->name }}</h3>
               <div class="single-item-comment-view">
@@ -97,13 +100,13 @@
               </div>
               <div>
                 <ul class="sidebar-menu" data-widget="tree">
-                  <li class="treeview">
+                  <li class="treeview menu-open">
                     <a>
                       <span>
                         <h3><i class="fa fa-edit"></i><strong>{{ __('layout_user.lessons.lesson_detail.exercise')}}</strong></h3>
                       </span>
                     </a>
-                    <ul class="treeview-menu" style="display: none;">
+                    <ul class="treeview-menu">
                       <div class="exercises" data-course='{{ $lessons->course->id }}' data-lesson= "{{$lessons->id}}" data-question='{{$lessons->exercises->pluck('questions')->
                         map(function ($item, $key) {
                         return collect($item)->count();
@@ -185,7 +188,7 @@
                         <span class="reply"><a class="add-reply" id='{{$comment->id}}'>Reply</a></span>
                     </div>
                     <section>
-                      <p>{{$comment->content}}</p>
+                      <p>{{ $comment->content }}</p>
                     </section>
                   </div>
                 </article>
@@ -222,6 +225,7 @@
             <h4 class="title">{{ __('layout_user.lessons.lesson_detail.recent_lesson') }}</h4>
             <div class="recent-content">
               @foreach ($recentLessons as $items)
+              @if($lessons->id != $items->id)
               <div class="single-item">
                   <div class="single-item-image overlay-effect">
                       <a class="lesson" href="{{ route('user.lesson.detail', $items->id) }}"><img src="storage/lesson/{{ $items->image }}" alt=""></a>
@@ -243,6 +247,7 @@
                       <a href="{{ route('user.lesson.detail', $items->id) }}" class="button-default lesson">@lang('layout_user.levels.btn')</a>
                   </div>
               </div>
+              @endif
               @endforeach
             </div>
           </div>

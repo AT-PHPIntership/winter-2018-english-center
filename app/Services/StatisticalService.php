@@ -26,7 +26,6 @@ class StastiticalService
                         ->orderBy('total', 'desc')
                         ->limit(5)
                         ->get();
-        // dd($maxCourseUser);
         $statistical = [
             'totalCourses' => $totalCourses,
             'totalLessons' => $totalLessons,

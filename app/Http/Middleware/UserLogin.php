@@ -17,8 +17,13 @@ class UserLogin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->is_actived == 1) {
-            return $next($request);
+        if (Auth::check()) {
+            if (Auth::user()->is_actived == 1) {
+                return $next($request);
+            } else {
+                Auth::logout();
+                return redirect('login')->with('warning', __('layout_user.login.active'));
+            }
         } else {
             return redirect('login')->with('warning', __('layout_user.login.warning'));
         }

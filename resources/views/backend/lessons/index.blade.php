@@ -29,25 +29,25 @@
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr class="row">
-                            <th>{{ __('lesson.list_lesson.id') }}</th>
-                            <th>{{ __('lesson.list_lesson.name') }}</th>
-                            <th>{{ __('lesson.list_lesson.course') }}</th>
-                            <th>{{ __('lesson.list_lesson.level') }}</th>
-                            <th>{{ __('lesson.list_lesson.show') }}</th>
-                            <th>{{ __('lesson.list_lesson.action') }}</th>
+                            <th style="text-align: center;">{{ __('lesson.list_lesson.id') }}</th>
+                            <th style="text-align: center;">{{ __('lesson.list_lesson.name') }}</th>
+                            <th style="text-align: center;">{{ __('lesson.list_lesson.course') }}</th>
+                            <th style="text-align: center;">{{ __('lesson.list_lesson.level') }}</th>
+                            <th style="text-align: center;">{{ __('lesson.list_lesson.show') }}</th>
+                            <th style="text-align: center;" >{{ __('lesson.list_lesson.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($lessons as $lesson)
                         <tr class="row">
-                            <td>{{ $lesson->id }}</td>
-                            <td>{{ $lesson->name }}</td>
-                            <td>{{ $lesson->course->name }}</td>
-                            <td>{{ $lesson->level->level }}</td>
-                            <td>
+                            <td style="text-align: center;">{{ $lesson->id }}</td>
+                            <td style="text-align: center;">{{ $lesson->name }}</td>
+                            <td style="text-align: center;">{{ $lesson->course->name }}</td>
+                            <td style="text-align: center;">{{ $lesson->level->level }}</td>
+                            <td style="text-align: center;">
                                 <a href="{{ route('admin.lessons.show', $lesson->id) }}" class="btn btn-warning">@lang('common.detail')</a>
                             </td>
-                            <td>
+                            <td style="text-align: center;">
                                 <a href="{{ route('admin.lessons.edit', $lesson->id) }}" class="btn btn-warning">@lang('common.edit')</a>
                                 <form method="POST" action="{{ route('admin.lessons.destroy', $lesson->id) }}" class="inline" onsubmit="return confirmedDelete()">
                                     @csrf

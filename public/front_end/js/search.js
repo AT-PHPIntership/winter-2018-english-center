@@ -50,9 +50,9 @@ $(document).ready(function () {
 });
 
 //Disappear search result when click out of form
-$(document).bind('click', function (event) {
-    // Check if we have not clicked on the search box
-    if (!($(event.target).parents().andSelf().is('#search'))) {
-        $('#courseList').fadeOut();
-    }
-});
+// $(document).bind('click', function (event) {
+//     // Check if we have not clicked on the search box
+//     if (!($(event.target).parents().andSelf().is('#search'))) {
+//         $('#courseList').fadeOut();
+//     }
+// });

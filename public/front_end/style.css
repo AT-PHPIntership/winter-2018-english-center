@@ -163,7 +163,7 @@ body {
 }
 .container { width: 1200px}
 .section-margin {margin: 120px 0 140px 0}
-.section-padding {padding: 50px 0 0 0}
+.section-padding {padding: 100px 0 0 0}
 .section-bottom-padding {padding: 0 0 120px 0}
 .section-top-padding {padding: 120px 0 0 0}
 .section-title {
@@ -174,7 +174,7 @@ body {
 .section-title h3 {
     color: #2d3e50;
     font-size: 30px;
-    line-height: 22px;
+    line-height: 30px;
     margin-bottom: 10px;
     text-transform: uppercase
 }
@@ -2240,6 +2240,7 @@ table td {
     float: left;
     padding: 0px 10px;
     margin-right: 10px;
+    margin-top: 10px;
     text-align: center;
     border-radius: 4px;
     background: antiquewhite;
@@ -2620,7 +2621,6 @@ p {
 #learn-point {
     width: 150px;
     float: right;
-    margin-top: 37px;
 }
 
 div {
@@ -2900,4 +2900,16 @@ p {
 
 .lesson-name {
     color: blue;
+}
+
+.profile-user-img {
+    padding: 25px;
+}
+
+.profile-username {
+    margin-bottom: 40px;
+}
+
+.text-center {
+    margin-bottom: 20px;
 }

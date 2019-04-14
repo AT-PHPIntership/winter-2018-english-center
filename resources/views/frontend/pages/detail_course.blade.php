@@ -29,7 +29,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="overlay-effect">
-                  <a href=""><img src="front_end/img/event/{{ $course->image}}"></a>
+                  <a><img src="front_end/img/event/{{ $course->image}}"></a>
                 </div>
               </div>
               <div class="col-md-6">
@@ -149,8 +149,7 @@
                       <p class="author"><strong>{{$comment->user->userProfile['name'] }}</strong></p>
                       <p class="date"><a><time>{{$comment->created_at}}</time></a>
                       @if(Auth::check())
-                        @if(Auth::user()->id == $comment->user_id )
-                         - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
+                        @if(Auth::user()->id == $comment->user_id ) - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
                         @endif
                       @endif
                         <span class="reply"><a class="add-reply" id='{{$comment->id}}'>Reply</a></span>
@@ -170,10 +169,10 @@
                           <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
                           <p class="date"><a><time>{{$reply->created_at}}</time></a>
                           @if(Auth::check())
-                            @if(Auth::user()->id == $comment->user_id )
-                             - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
+                            @if(Auth::user()->id == $reply->user_id ) - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
                             @endif
                           @endif
+                           </p>
                         </div>
                         <section>
                           <p>{{$reply->content}}</p>

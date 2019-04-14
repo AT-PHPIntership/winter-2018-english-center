@@ -30,21 +30,21 @@
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr class="row">
-                            <th class="col-lg-1">{{ __('user.show_list_user.id') }}</th>
-                            <th class="col-lg-4">{{ __('user.show_list_user.email') }}</th>
-                            <th class="col-lg-3">{{ __('user.show_list_user.role') }}</th>
-                            <th class="col-lg-2">{{ __('user.show_list_user.show') }}</th>
-                            <th class="col-lg-2">{{ __('user.show_list_user.action') }}</th>
+                            <th style="text-align: center;">{{ __('user.show_list_user.id') }}</th>
+                            <th style="text-align: center;">{{ __('user.show_list_user.email') }}</th>
+                            <th style="text-align: center;">{{ __('user.show_list_user.role') }}</th>
+                            <th style="text-align: center;">{{ __('user.show_list_user.show') }}</th>
+                            <th style="text-align: center;">{{ __('user.show_list_user.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($users as $user)
                         <tr class="row">
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->email }}</td>
+                            <td style="text-align: center;">{{ $user->id }}</td>
+                            <td style="text-align: center;">{{ $user->email }}</td>
                             {{-- <td>{{ $user->password }}</td> --}}
-                            <td>{{ $user->role->name }}</td>
-                            <td>
+                            <td style="text-align: center;">{{ $user->role->name }}</td>
+                            <td style="text-align: center;">
                                 <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-warning">@lang('common.detail')</a>
                             </td>
                             <td>

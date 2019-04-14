@@ -37,7 +37,7 @@ class ProcessService
             $data[$key]['id'] = $courseId;
             $data[$key]['name_course'] = Course::where('id', $courseId)->pluck('name')->first();
             $data[$key]['start_date'] = \DB::table('schedules')->where('course_id', $courseId)->pluck('created_at')->first();
-            $data[$key]['total_lesson'] = \DB::table('schedules')->select(\DB::raw('count(*) as totalLesson'))->where('course_id', $courseId)->groupBy('course_id')->pluck('totalLesson')->first();
+            $data[$key]['total_lesson'] = \DB::table('schedules')->select(\DB::raw('count(*) as totalLesson'))->where([['course_id', $courseId], ['user_id', $userId]])->groupBy('course_id')->pluck('totalLesson')->first();
         }
         return $data;
     }

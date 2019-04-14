@@ -129,7 +129,7 @@
                
                 <li><i class="fa fa-circle-o text-red"></i> {{ $statisticals['maxCourseUser'][0]->name }}</li>
                 <li><i class="fa fa-circle-o text-green"></i> {{ $statisticals['maxCourseUser'][1]->name }}</li>
-                {{-- <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxCourseUser'][2]->name }}</li> --}}
+                <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxCourseUser'][2]->name }}</li>
               </ul>
             </div>
             <!-- /.col -->
@@ -144,9 +144,9 @@
 </section>
 <!-- /.content -->
 <div class="control-sidebar-bg"></div>
-{{-- <script type="text/javascript">
+<script type="text/javascript">
     var course1 = {!! json_encode($statisticals['maxCourseUser'][0]) !!};
     var course2 = {!! json_encode($statisticals['maxCourseUser'][1]) !!};
     var course3 = {!! json_encode($statisticals['maxCourseUser'][2]) !!};
-</script> --}}
+</script>
 @endsection
