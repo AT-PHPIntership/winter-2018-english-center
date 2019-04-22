@@ -80,7 +80,7 @@ class ExerciseController extends Controller
      */
     public function update(CreateExerciseRequest $request, Exercise $exercise)
     {
-        // dd($exercise);
+        // dd($request->all());
         app(ExerciseService::class)->update($request->all(), $exercise);
         return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
     }

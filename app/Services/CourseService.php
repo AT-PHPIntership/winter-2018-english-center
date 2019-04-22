@@ -122,6 +122,7 @@ class CourseService
         return \DB::table('courses')
                     ->select('courses.*')
                     ->where('parent_id', '!=', 'NULL')
+                    ->whereNull('deleted_at')
                     ->orderBy('created_at', 'desc')
                     ->limit(config('define.courses.limit_courses'))
                     ->get();

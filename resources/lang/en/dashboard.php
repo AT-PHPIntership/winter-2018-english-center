@@ -1,9 +1,9 @@
 <?php
     return [
-        'popular_lessons' => 'Popular Lessions',
+        'popular_courses' => 'Popular Courses',
         'total_course' => 'Total Courses',
         'total_lesson' => 'Total Lessons',
-        'like' => 'Rating Lessons',
+        'rating' => 'Total Rating Coures',
         'members' => 'New Members',
         'count_user' => 'Count User',
     ];

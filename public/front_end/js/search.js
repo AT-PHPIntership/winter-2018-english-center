@@ -17,7 +17,7 @@ $(document).ready(function () {
         e.preventDefault();
         var query = $(this).val();
         // console.log(query);
-        if (query != '' && query.length >= 2) {
+        if (query != '' && query.length >= 1) {
             $.ajax({
                 url: 'search/courses',
                 method: "GET",

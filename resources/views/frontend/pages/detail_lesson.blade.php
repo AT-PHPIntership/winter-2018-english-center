@@ -74,7 +74,7 @@
                         <h3><i class="fa fa-edit"></i><strong>{{ __('layout_user.lessons.lesson_detail.exercise')}}</strong></h3>
                       </span>
                     </a>
-                    <ul class="treeview-menu" style="display: none;">
+                    <ul class="treeview-menu" style="">
                       <div class="exercises" data-course='{{ $lessons->course->id }}' data-lesson= "{{$lessons->id}}" data-question='{{$lessons->exercises->pluck('questions')->
                         map(function ($item, $key) {
                         return collect($item)->count();
@@ -89,7 +89,7 @@
                           <div class="details" data-user='{{ Auth::user()->id }}' data-token='{{ csrf_token() }}'>
                             <div class="basic_ques">
                               <p class="basic_index">{{ $q + 1}}</p>
-                              <div class="basic_index" id="exercises[{{ $key }}][questions][{{ $q }}][content]">{{ $questions->content }}</div>
+                              <div class="basic_index" style="margin-top: 16px" id="exercises[{{ $key }}][questions][{{ $q }}][content]">{{ $questions->content }}</div>
                               <div class="form-group col-lg-12">
                                 @foreach ($questions->answers as $a => $answers)
                                 <div class="radio-exercise col-lg-3">

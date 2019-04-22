@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,45 +9,31 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
-
 // Route admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'adminLogin'], function() {
     Route::get('/', 'HomeController@index')->name('dashboard');
-
     Route::resource('users', 'UserController');
-
     Route::resource('courses', 'CourseController');
-
     Route::resource('levels', 'LevelController');
-
     Route::post('vocabularies/import', 'VocabularyController@importFile')->name('vocabularies.import');
     Route::resource('vocabularies', 'VocabularyController');
-
     Route::post('exercises/store', 'ExerciseController@store');
-
     Route::resource('exercises', 'ExerciseController')->only(['index', 'show', 'create', 'edit', 'update', 'destroy']);
     
     Route::resource('lessons', 'LessonController');
-
     Route::resource('comments', 'CommentController');
-
     Route::resource('questions', 'QuestionController');
-
     Route::resource('systems', 'SystemController');
-
     Route::resource('sliders', 'SliderController');
 });
-
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
     Route::post('/login', 'LoginController@login')->name('login');
     Route::get('/logout', 'LoginController@logout')->name('logout');
 });
-
 //Route User
 Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin'], function() {
     Route::get('/profiles', 'ProfileController@show')->name('profiles.show');
@@ -56,7 +41,6 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin
     Route::get('/profiles/changePassword', 'ProfileController@changePass')->name('profiles.changePass');
     Route::put('/profiles', 'ProfileController@update')->name('profiles.update');
     Route::put('/profiles/changePass', 'ProfileController@updatePass')->name('profiles.update.pass');
-
     Route::group(['middleware' => 'filter'], function() {
         Route::get('/detail/lesson/{lesson}', 'LessonController@show')->name('lesson.detail')->middleware('lessonDetail');
         Route::post('lesson', 'LessonController@resutlLesson');
@@ -79,7 +63,6 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin
     });
 });
 Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
-
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('search/courses', 'HomeController@getListCourses')->name('courses.search');
     Route::get('/about', 'HomeController@showAboutUs')->name('about');
@@ -98,7 +81,6 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
     Route::post('/register', 'AuthController@register')->name('register');
     Route::get('activation/{token}', 'AuthController@activation')->name('activation');
 });
-
 Route::group(['middleware' => 'filter', 'namespace' => 'User', 'as' => 'user.'], function() {
     Route::get('course', 'CourseController@index')->name('courses');
     Route::get('/detail/courses/{course}', 'CourseController@showCourses')->name('courses.detail');

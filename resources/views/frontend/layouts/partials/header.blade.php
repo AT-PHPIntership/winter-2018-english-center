@@ -77,7 +77,7 @@
             <div class="search">
                 <div class="search-form">
                     <form id="search-form" action="{{ route('user.courses.search') }}" method="GET" autocomplete="off">
-                        <input id="search" type="search" placeholder="Search here..." name="search" />
+                        <input id="search" type="search" placeholder="Search courses here..." name="search" />
                         <button type="submit">
                             <span><i class="fa fa-search"></i></span>
                         </button>

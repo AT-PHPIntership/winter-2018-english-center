@@ -68,7 +68,8 @@
             <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">{{ __('dashboard.like') }}</span>
+              <span class="info-box-text">{{ __('dashboard.rating') }}</span>
+              <span class="info-box-number">{{ $statisticals['totalRatingCourses']}}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -81,7 +82,7 @@
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->
-    <div class="col-md-7">
+    {{-- <div class="col-md-7">
        <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">{{ __('dashboard.count_user') }}</h3>
@@ -99,14 +100,14 @@
         </div>
         <!-- /.box-body -->
       </div>
-    </div>
+    </div> --}}
     <!-- /.col -->
 
-    <div class="col-md-5">
+    <div class="col-md-6">
 
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">{{ __('dashboard.popular_lessons') }}</h3>
+          <h3 class="box-title">{{ __('dashboard.popular_courses') }}</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
@@ -118,7 +119,7 @@
           <div class="row">
             <div class="col-md-7">
               <div class="chart-responsive">
-                <canvas id="pieChart" height="155" width="192" style="width: 192px; height: 155px;"></canvas>
+                <canvas id="pieChart" height="155" width="192"></canvas>
               </div>
               <!-- ./chart-responsive -->
             </div>
@@ -126,11 +127,9 @@
             <div class="col-md-5">
               <ul class="chart-legend clearfix">
                
-                {{-- <li><i class="fa fa-circle-o text-red"></i> {{ $statisticals['maxLessonUser'][0]->name }}</li>
-                <li><i class="fa fa-circle-o text-green"></i> {{ $statisticals['maxLessonUser'][1]->name }}</li>
-                <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxLessonUser'][2]->name }}</li>
-                <li><i class="fa fa-circle-o text-aqua"></i> {{ $statisticals['maxLessonUser'][3]->name }}</li>
-                <li><i class="fa fa-circle-o text-light-blue"></i> {{ $statisticals['maxLessonUser'][4]->name }}</li> --}}
+                <li><i class="fa fa-circle-o text-red"></i> {{ $statisticals['maxCourseUser'][0]->name }}</li>
+                <li><i class="fa fa-circle-o text-green"></i> {{ $statisticals['maxCourseUser'][1]->name }}</li>
+                <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxCourseUser'][2]->name }}</li>
               </ul>
             </div>
             <!-- /.col -->
@@ -145,11 +144,10 @@
 </section>
 <!-- /.content -->
 <div class="control-sidebar-bg"></div>
-{{-- <script type="text/javascript">
-    var lesson1 = {!! json_encode($statisticals['maxLessonUser'][0]) !!};
-    var lesson2 = {!! json_encode($statisticals['maxLessonUser'][1]) !!};
-    var lesson3 = {!! json_encode($statisticals['maxLessonUser'][2]) !!};
-    var lesson4 = {!! json_encode($statisticals['maxLessonUser'][3]) !!};
-    var lesson5 = {!! json_encode($statisticals['maxLessonUser'][4]) !!};
-</script> --}}
+    
+<script type="text/javascript">
+    var course1 = {!! json_encode($statisticals['maxCourseUser'][0]) !!};
+    var course2 = {!! json_encode($statisticals['maxCourseUser'][1]) !!};
+    var course3 = {!! json_encode($statisticals['maxCourseUser'][2]) !!};
+</script>
 @endsection
