@@ -33,7 +33,6 @@
                             <th class="col-lg-3">{{ __('lesson.list_lesson.name') }}</th>
                             <th class="col-lg-2">{{ __('lesson.list_lesson.course') }}</th>
                             <th class="col-lg-2">{{ __('lesson.list_lesson.level') }}</th>
-                            <th class="col-lg-1">{{ __('lesson.list_lesson.role') }}</th>
                             <th class="col-lg-1">{{ __('lesson.list_lesson.show') }}</th>
                             <th class="col-lg-2">{{ __('lesson.list_lesson.action') }}</th>
                         </tr>
@@ -45,7 +44,6 @@
                             <td>{{ $lesson->name }}</td>
                             <td>{{ $lesson->course->name }}</td>
                             <td>{{ $lesson->level->level }}</td>
-                            <td>{{ $lesson->role_name }}</td>
                             <td>
                                 <a href="{{ route('admin.lessons.show', $lesson->id) }}" class="btn btn-warning">@lang('common.detail')</a>
                             </td>

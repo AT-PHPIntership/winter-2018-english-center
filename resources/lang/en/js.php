@@ -8,7 +8,7 @@ return [
         'add' => 'DISCUSS',
         'write' => 'Enter your comment here...',
         'submit' => 'Comment',
-        'cancel' => 'Cancel Reply',
+        'cancel' => 'Cancel',
         'posted_on' => ' Posted on '
     ],
     'rating' => [

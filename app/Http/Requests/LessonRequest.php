@@ -26,12 +26,10 @@ class LessonRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:50',
             'text' => 'required',
-            'role' => 'required',
             'level_id' => 'required',
             'course_id' => 'required',
             'vocabularies_id' => 'required',
-            // 'exercises_id' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,png|max:4096',
+            'image' => 'required|mimes:jpg,jpeg,png',
             'video' => 'required|url',
         ];
     }

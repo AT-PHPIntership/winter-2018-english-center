@@ -4,5 +4,6 @@
         'user_name' => 'UserName',
         'course_name' => 'Course or Lesson',
         'content' => 'Content',
-        'detail' => 'Detail',
+        'detail' => 'Reply',
+        'reply' => 'List Comments Reply'
     ];

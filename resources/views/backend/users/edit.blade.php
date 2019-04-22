@@ -41,15 +41,6 @@
                             </span>
                         @endif
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="age">{{ __('user.create_user.age') }}</label>
-                            <input type="text" class="form-control" name="age" placeholder="Enter age" value="{{ $user->userProfile->age }}">
-                            @if ($errors->has('age'))
-                            <span class="help-block col-sm-12">
-                                <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('age') }}</strong>
-                            </span>
-                        @endif
-                        </div> -->
                         <div class="form-group">
                             <label for="birthday">{{ __('user.create_user.birthday') }}</label>
                             <input type="date" class="form-control" name="birthday" value="{{ $user->userProfile->birthday }}">

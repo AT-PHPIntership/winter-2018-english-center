@@ -73,12 +73,12 @@
 						@endif
 					</div>
 
-					<div class="contact100-form-checkbox m-l-4">
+					<!-- <div class="contact100-form-checkbox m-l-4">
 						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
 						<label class="label-checkbox100" for="ckb1">
 							@lang('layout_user.login.remember_me')
 						</label>
-					</div>
+					</div> -->
 					
 					<div class="container-login100-form-btn p-t-25">
 						<button type="submit" class="login100-form-btn">

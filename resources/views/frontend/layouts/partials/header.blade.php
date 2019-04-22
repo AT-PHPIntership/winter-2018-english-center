@@ -15,6 +15,7 @@
                   @else
                       <div class="content"><a href="{{ route('user.profiles.show') }}"><i class="zmdi zmdi-account"></i>{{ Auth::user()->userProfile->name }}</a>
                       </div>
+                      <div class="content"><a href="{{ route('user.process') }}"><i class="zmdi zmdi-favorite"></i> Wishlist</a></div>
                       <div class="content"><a href="{{ route('user.logout') }}"><i class="zmdi zmdi-account"></i>@lang('layout_user.logout')</a>
                       </div>
                   @endif
@@ -76,7 +77,7 @@
             <div class="search">
                 <div class="search-form">
                     <form id="search-form" action="{{ route('user.courses.search') }}" method="GET" autocomplete="off">
-                        <input id="search" type="search" placeholder="Search here..." name="search" />
+                        <input id="search" type="search" placeholder="Search courses here..." name="search" />
                         <button type="submit">
                             <span><i class="fa fa-search"></i></span>
                         </button>

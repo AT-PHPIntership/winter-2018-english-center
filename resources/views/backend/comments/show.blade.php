@@ -2,14 +2,14 @@
 @section('title', 'HOME')
 @section('content')
 <section class="content-header">
-  <h1>@lang('course.list_course.title')</h1>
+  <h1>@lang('comment.reply')</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
       <i class="fas fa-tachometer-alt"></i>@lang('layout_admin.home')
       </a>
     </li>
-    <li class="active">@lang('course.list_course.title')</li>
+    <li class="active">@lang('comment.reply')</li>
   </ol>
 </section>
 <section class="content">

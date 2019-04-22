@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    protected $fillable = ['name', 'image', 'video', 'count_view', 'total_rating', 'average', 'role', 'text', 'level_id', 'course_id'];
+    protected $fillable = ['name', 'image', 'video', 'count_view', 'total_rating', 'average', 'text', 'level_id', 'course_id'];
 
     protected $table = 'lessons';
 
@@ -82,16 +82,6 @@ class Lesson extends Model
     public function comments()
     {
         return $this->morphMany('App\Models\Comment', 'commentable')->whereNull('parent_id');
-    }
-
-    /**
-     * MorphMany lesson
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\morphMany
-     */
-    public function ratings()
-    {
-        return $this->morphMany('App\Models\Rating', 'ratingable');
     }
 
     /**

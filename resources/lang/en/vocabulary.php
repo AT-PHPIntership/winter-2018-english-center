@@ -4,6 +4,7 @@
         'list_vocabulary' => [
             'id' => 'ID',
             'vocabulary' => 'Vocabulary',
+            'phonetic_spelling' => 'phonetic Spelling',
             'word_type' => 'Word Type',
             'means' => 'Means',
             'sound' => 'Sound',

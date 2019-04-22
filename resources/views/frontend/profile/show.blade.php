@@ -35,7 +35,7 @@
                             <span class="col-lg-6">{{ Auth::user()->userProfile->phone }}</span>
                         </div>
                     </li>
-                    <li class="list-group-item text-center">
+                    {{-- <li class="list-group-item text-center">
                         <div class="row">
                             <b class="col-lg-6">@lang('user.show_list_user.show_user.course_learned')</b>
                             <span class="col-lg-6">
@@ -54,7 +54,7 @@
                                 @endforeach
                             </span>
                         </div>
-                    </li>
+                    </li> --}}
                     <li class="list-group-item text-center">
                         <div class="row">
                             <b class="col-lg-6">@lang('user.show_list_user.show_user.created_at')</b>

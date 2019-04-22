@@ -105,7 +105,8 @@ return [
         'google' => 'Google',
         'not_member' => 'Not a member?',
         'sign_up' => 'Sign up now',
-        'warning' => 'You must Login!'
+        'active' => 'Your account not actived! Please check your mail!',
+        'warning' => 'You must login!'
     ],
     'register' => [
         'title' => 'Register',
@@ -133,10 +134,16 @@ return [
         ],
     ],
     'logout' => 'Log Out',
-    'subcribe' => [
-        'title' => 'Subscribe',
+    'unfinished' => [
+        'title' => 'Notification',
         'notification' => 'Notification!',
-        'notification1' => 'You must register as a VIP member to continue!',
+        'notification1' => 'You must be VIP to continue!',
+        'goal' => ' Goal: Complete 2 course and reach 80%',
+    ],
+    'subscribe' => [
+        'title' => 'Subscribe',
+        'notification' => 'Congratulation!',
+        'notification1' => 'You have completed the goal. Please click the button below to upgrade.'
     ],
     'search' => [
         'find' => 'Find ',
@@ -204,5 +211,8 @@ return [
             'title' => 'Latest Rating Lessons',
             'desc' => 'There are many rates of lessons',
         ],
-    ]
+    ],
+    'wishlist' => [
+        'title' => 'My course'
+    ],
 ];

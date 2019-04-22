@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
@@ -21,7 +20,6 @@ class RatingController extends Controller
     {
             return view('frontend.lessons.rating', compact('course'));
     }
-
     /**
      * Get the specified resource.
      *

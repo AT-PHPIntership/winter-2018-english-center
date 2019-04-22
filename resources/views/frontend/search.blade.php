@@ -17,14 +17,14 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="single-item">
                         <div class="single-item-image overlay-effect">
-                            <a href="{{ (is_null($course->parent_id))? route('user.courses.detail', $course->id) : route('user.course.detail', $course->id) }}"><img src="{{ $course->image }}" alt=""></a>
+                            <a href="{{ (is_null($course->parent_id))? route('user.courses.detail', $course->id) : route('user.course.detail', $course->id) }}"><img src="front_end/img/event/{{ $course->image }}" alt=""></a>
                         </div>
                         <div class="single-item-text">
                             <h4><a href="{{ (is_null($course->parent_id))? route('user.courses.detail', $course->id) : route('user.course.detail', $course->id) }}">{{ $course->name }}</a></h4>
                             <div class="single-item-text-info">
                                 <span>@lang('layout_user.courses.date') <span>{{ $course->updated_at }}</span></span>
                             </div>
-                            <p>{{ str_limit($course->content, 123) }}</p>
+                            {!! str_limit($course->content, 123) !!}
                             <div class="single-item-content">
                                 <div class="single-item-comment-view">
                                     <span><i class="zmdi zmdi-eye"></i>{{ $course->count_view }}</span>

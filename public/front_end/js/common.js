@@ -14,7 +14,6 @@ $(document).ready(function () {
   $('.uba_audioButton').on('click', function () {
     $(this).find('audio').trigger('play');
   });
-
   $('.btn-success').one('click', function () {
     var answers = $('input[type="radio"]:checked').map(function () {
       return this.id;
@@ -45,6 +44,7 @@ $(document).ready(function () {
             var output = '<div class="correct">Correct: ' + data.correct.length + '<span>' + ' / ' + data.total.length + '</span>' + '</div>';
             $('.result-lesson').html(output);
           }
+          // console.log(data.goal);
           if (data.correct.length >= data.goal) {
             var navigation = '<ul class="pagination">';
             if (navigate('previous') != null) {
@@ -73,13 +73,6 @@ $(document).ready(function () {
             }
             navigation += '</ul>';
             $('.pagination-content').append(navigation);
-            if (data.role != data.nextLesson) {
-              $('.next_lesson').removeAttr('href');
-              $(document).on('click', '.next_lesson', function () {
-                window.location.assign('subscribe');
-              });
-            }
-            // debugger;
           } else {
             var minimum = '<div class="correct">' + exercise('notification_correct') + data.goal + exercise('question') + '</div>';
             var tryButton = `<button type="button" class="btn btn-success" onclick="return location.reload();"><i class="fa fa-edit"></i>` + exercise('again') + `</button>`;
@@ -158,12 +151,12 @@ $(document).on('click', '.add-reply', function () {
     var replyId = $(this).attr('id');
     var output = '';
     output += '<div class="single-comment comment-reply" data-id=' + replyId + '>';
-    output += '<p class="discuss-lesson">' + comment('add') + ' <a class="cancelReply">' + comment('cancel') + '</a></p>';
+    output += '<p class="discuss-lesson">' + ' <a class="cancelReply">' + comment('cancel') + '</a></p>';
     output += '<div class="single-comment">';
     output += '<div class="comment-text">';
     output += '<textarea class="form-control" id="reply-text" name="review" placeholder="' + comment('write') + '"></textarea>';
     output += '</div>';
-    output += '<div class="col-lg-2 pull-right">';
+    output += '<div class="col-lg pull-right">';
     output += '<input class="btn btn-block" id="reply-button" value="' + comment('submit') + '" data-comment=' + replyId + ' type="submit">';
     output += '</div>';
     output += '</div>';
@@ -246,6 +239,7 @@ $(document).on('click', '.delete-comment', function () {
   var commentId = $(this).attr('id');
   var userId = $('#comment-button').data('user');
   var token = $('#comment-button').data('token');
+  // var less
   if (userId != undefined) {
     $.ajax({
       url: 'delete/comment',
@@ -278,7 +272,6 @@ var SetRatingStar = function () {
     }
   });
 };
-// debugger;
 $star_rating.on('click', function () {
   $star_rating.siblings('input.rating-value').val($(this).data('rating'));
   return SetRatingStar();
@@ -286,22 +279,236 @@ $star_rating.on('click', function () {
 
 SetRatingStar();
 $(document).ready(function () {
-
 });
 
 $(document).on('click', '.lesson', function () {
-  // console.log('ahaha');
   var userId = $(this).data('user');
+  var lessonId = $(this).data('lesson');
   var order = $(this).data('order');
   var orderLearn = $(this).data('order-learn');
-  debugger;
+  var href = $(this).data('href');
+  var token = $(this).data('token');
+  // debugger
   if (userId != undefined) {
-    if (order > orderLearn) {
-      $(this).removeAttr('href');
-      alert('Please complete the lesson ' + orderLearn);
-    }
-  }
-  else {
+    $.ajax({
+      url: 'checkaccount',
+      method: "POST",
+      dataType: "JSON",
+      data: {
+        userId: userId,
+        lessonId: lessonId,
+        _token: token
+      },
+      success: function (data) {
+        if (data.score != null) {
+          if (data.role == "Trial") {
+            if (data.totalCourse < 2) {
+              if (order > orderLearn) {
+                alert('Please complete the previous lesson.');
+              } else {
+                location.assign("detail/lesson/" + lessonId);
+              }
+            }
+            if ((data.totalCourse == 2 && data.score < 40)) {
+              if (data.learnedCourse.includes(data.currentCourse)) {
+                if (order > orderLearn) {
+                  alert('Please complete the previous lesson.');
+                } else {
+                  location.assign("detail/lesson/" + lessonId);
+                }
+              } else {
+                window.location.assign('unfinished');
+              }
+            } else if (data.totalCourse == 2 && data.score >= 40) {
+              window.location.assign('subscribe');
+            }
+          }
+          if (data.role == "VIP") {
+            if (order > orderLearn) {
+              alert('Please complete the previous lesson.');
+            } else {
+              location.assign("detail/lesson/" + lessonId);
+            }
+          }
+          if (data.role == "Admin") {
+            location.assign("detail/lesson/" + lessonId);
+          }
+        } else {
+          if (data.role == "Trial") {
+            if (order > orderLearn) {
+              alert('Please complete the previous lesson.');
+            } else {
+              location.assign("detail/lesson/" + lessonId);
+            }
+          }
+          if (data.role == "Admin") {
+            location.assign("detail/lesson/" + lessonId);
+          }
+          if (data.role == 'VIP') {
+            if (order > orderLearn) {
+              alert('Please complete the previous lesson.');
+            } else {
+              location.assign("detail/lesson/" + lessonId);
+            }
+          }
+        }
+      }
+    });
+  } else {
     window.location.href = '/login';
+  }
+});
+
+$(document).on('click', '.js-course', function () {
+  var userId = $(this).data('user');
+  var courseParentId = $(this).data('course');
+  var token = $(this).data('token');
+  if (courseParentId != undefined) {
+    $.ajax({
+      url: 'process',
+      method: 'POST',
+      dataType: 'JSON',
+      data: {
+        userId: userId,
+        courseParentId: courseParentId,
+        _token: token,
+      },
+      success: function (data) {
+        if (data.length) {
+          var output = '';
+          var total = 0;
+          output += '<table class="table setting-product-table course">';
+          output += '<thead>';
+          output += '<tr>'
+          output += '<th style="text-align: center;">ID</th>';
+          output += '<th style="text-align: center;">Course</th>';
+          output += '<th style="text-align: center;">Start Date</th>';
+          output += '<th style="text-align: center;">End Date</th>';
+          output += '<th style="text-align: center;">Status</th>';
+          output += '</tr>';
+          output += '</thead>';
+          output += '<tbody id="js-body-lesson">';
+          $.each(data, function (key, val) {
+            if (val.name_course != null) {
+              output += '<tr id="js-item">';
+              output += '<td><p>' + val.key + '</p></td>';
+              output += '<td>';
+              output += '<p>';
+              output += '<a class="lesson-name" href="detail/course/' + val.id + '">' + val.name_course + '</a>';
+              output += '</p>';
+              output += '</td>';
+              output += '<td>';
+              output += '<p>' + val.start_date + '</p>';
+              output += '</td>';
+              output += '<td>';
+              output += '<p> -- </p>';
+              output += '</td>';
+              if (val.total_lesson < 5) {
+                output += '<td class="status" style="color: #77bc00;" data-user=' + userId + ' data-course="' + val.id + '">';
+                output += '<p>Active</p>';
+                output += '</td>';
+              } else {
+                output += '<td class="status" style="color: #F36D00;" data-user=' + userId + ' data-course="' + val.id + '">';
+                output += '<p>Done</p>';
+                output += '</td>';
+              }
+              output += '</tr>';
+            }
+          });
+          output += '</tbody>';
+          output += '</table>';
+          $('.table-responsive').html(output);
+        } else {
+          $('#js-body-lesson').html('');
+          $('#js-foot-lesson').html('');
+        }
+      }
+    });
+  }
+});
+
+$(document).on('click', '.status', function () {
+  var userId = $(this).data('user');
+  var courseId = $(this).data('course');
+  // debugger
+  if (courseId != undefined) {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    $.ajax({
+      url: 'process_detail',
+      method: 'POST',
+      dataType: 'JSON',
+      data: {
+        userId: userId,
+        courseId: courseId,
+      },
+      success: function (data) {
+        if (data.length) {
+          var output = '';
+          var total = 0;
+          output += '<table class="table setting-product-table lesson">';
+          output += '<thead>';
+          output += '<tr>'
+          output += '<th style="text-align: center;">ID</th>';
+          output += '<th style="text-align: center;">Lesson</th>';
+          output += '<th style="text-align: center;">Start Date</th>';
+          output += '<th style="text-align: center;">End Date</th>';
+          output += '<th style="text-align: center;">Progress</th>';
+          output += '</tr>';
+          output += '</thead>';
+          output += '<tbody id="js-body-lesson">';
+          $.each(data, function (key, val) {
+            output += '<tr id="js-item">';
+            output += '<td><p>' + val.key + '</p></td>';
+            output += '<td>';
+            output += '<p>';
+            output += '<a class="lesson-name" href="detail/lesson/' + val.id + '">' + val.name_lesson + '</a>';
+            output += '</p>';
+            output += '</td>';
+            output += '<td>';
+            output += '<p>' + val.date_start + '</p>';
+            output += '</td>';
+            output += '<td>';
+            output += '<p> -- </p>';
+            output += '</td>';
+            output += '<td>';
+            output += '<p>';
+            output += '<div class="progress progress-sm active">';
+            output += '<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: ' + val.percent_learn + '%">' + val.percent_learn + '%</div>';
+            output += '</div>';
+            output += '</p>';
+            output += '</td>';
+            output += '</tr>';
+            total += +val.percent_learn / 5;
+          });
+          output += '</tbody>';
+          output += '<tfoot id="js-foot-lesson">';
+          output += '<tr>'
+          output += '<th colspan="4">';
+          output += '<p>Learing Progress</p>';
+          output += '</th>';
+          output += '<th id="total-all">';
+          output += '<p>';
+          output += '<div class="progress progress-sm active">';
+          output += '<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:' + total + '%">' + total + '%</div>';
+          output += '</p>';
+          output += '</div>';
+          output += '</th>';
+          output += '</tr>';
+          output += '</tfoot>';
+          output += '</table>';
+
+          // var item = '';
+          // $('#js-foot-lesson').html(item);
+          $('.table-responsive').html(output);
+        } else {
+          $('#js-body-lesson').html('');
+          // $('#js-foot-lesson').html('');
+        }
+      }
+    });
   }
 });

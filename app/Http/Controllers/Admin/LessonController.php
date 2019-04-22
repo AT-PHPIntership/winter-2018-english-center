@@ -70,7 +70,7 @@ class LessonController extends Controller
      */
     public function store(LessonRequest $request)
     {
-        $data = $request->except(['_token']);
+        $data = $request->all();
         $data['image'] = $this->imageService->uploadImageLesson($data['image']);
         $this->lessonService->store($data);
         return redirect()->route('admin.lessons.index')->with('success', __('common.success'));
@@ -99,7 +99,7 @@ class LessonController extends Controller
      */
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
-        $data = $request->except(['_token','_method']);
+        $data = $request->all();
         if ($request->hasFile('image')) {
             $data['image'] = $this->imageService->uploadImageLesson($data['image']);
         }

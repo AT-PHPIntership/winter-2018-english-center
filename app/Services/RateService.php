@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Services;
 
 use App\Models\Rating;
@@ -12,13 +11,14 @@ class RateService
     /**
      * Function index get all level
      *
+     * @param \Illuminate\Http\Request $id id
+     *
      * @return App\Services\RateService
     **/
-    public function getAll()
+    public function getAll($id)
     {
-        return Rating::latest()->paginate(3);
+        return Rating::where('course_id', $id)->latest()->paginate(3);
     }
-
     /**
      * Store and Update a newly created resource in storage.
      *
@@ -42,7 +42,6 @@ class RateService
             ]
         );
     }
-
     /**
      * Calculate average star
      *
@@ -60,31 +59,5 @@ class RateService
                 'average' => $avg,
             ]);
             return $course;
-    }
-
-    /**
-     * Function get new courses
-     *
-     * @return App\Services\RateService
-    **/
-    public function getNewRatingLessons()
-    {
-        return Rating::select('ratings.*')
-                        ->orderBy('updated_at', 'desc')
-                        ->limit(config('define.lessons.page_site'))
-                        ->get();
-    }
-
-    /**
-     * Function get new courses
-     *
-     * @return App\Services\RateService
-    **/
-    public function getNewRatingCourses()
-    {
-        return Rating::select('ratings.*')
-                        ->orderBy('updated_at', 'desc')
-                        ->limit(config('define.lessons.page_site'))
-                        ->get();
     }
 }

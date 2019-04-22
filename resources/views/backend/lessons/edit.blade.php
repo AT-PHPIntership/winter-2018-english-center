@@ -55,18 +55,6 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="role">{{ __('lesson.create_lesson.role') }}</label>
-                            <select class="form-control" name="role">
-                                <option value="{{  App\Models\Lesson::TRIAL }}" <?php echo ($lesson->role == App\Models\Lesson::TRIAL) ? "selected" : " " ?>>{{ config('define.trial') }}</option>
-                                <option value="{{  App\Models\Lesson::VIP }}" <?php echo ($lesson->role == App\Models\Lesson::VIP) ? "selected" : " " ?>>{{ config('define.vip') }}</option>
-                            </select>
-                            @if ($errors->has('role'))
-                                <span class="help-block col-sm-12">
-                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('role') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        <div class="form-group">
                             <label for="level">{{ __('lesson.create_lesson.level') }}</label>
                             <select class="form-control" name="level_id">
                                 @foreach ($levels as $level)
@@ -82,7 +70,7 @@
                         <div class="form-group">
                             <label for="course">{{ __('lesson.create_lesson.course') }}</label>
                             <select class="form-control" name="course_id">
-                                @foreach ($courses as $course)
+                                @foreach ($courseChildren as $course)
                                     <option value="{{ $course->id }}" <?php echo ($course->name == $lesson->course->name) ? "selected" : " " ?>>{{ $course->name }}</option>
                                 @endforeach
                             </select>

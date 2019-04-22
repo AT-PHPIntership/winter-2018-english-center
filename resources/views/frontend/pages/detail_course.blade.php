@@ -29,7 +29,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="overlay-effect">
-                  <a href=""><img alt="" src="{{ $course->image}}"></a>
+                  <a href=""><img src="front_end/img/event/{{ $course->image}}"></a>
                 </div>
               </div>
               <div class="col-md-6">
@@ -39,7 +39,7 @@
                     <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $course->created_at}}</span></span>
                   </div>
                   <div class="course-text-content">
-                    <p class="content-course">{{ $course->content }}</p>
+                    <p class="content-course">{!! $course->content !!}</p>
                   </div>
                   <div class="single-item-content">
                     <div class="single-item-comment-view">
@@ -61,12 +61,13 @@
             <div class="duration-title">
               <div class="text"><span>{{ __('layout_user.courses.course_detail.lessons') }}</span> <span class="text-right">{{ __('layout_user.courses.course_detail.open_time') }}</span></div>
             </div>
+        
             <div class="duration-text">
               @foreach ($lessons as $key => $lesson)
                   @if($lesson->course_id === $course->id)
                       <div class="text">
                         @if(Auth::check())
-                        <a class="lesson" data-user="{{ Auth::user()->id }}"  data-order-learn="{{ $orderLearn }}" data-order="{{ $lesson->order }}" id="first_lesson" href="{{ route('user.lesson.detail', $lesson->id) }}">{{ $lesson->name }}</a>
+                        <a class="lesson" data-user="{{ Auth::user()->id }}"  data-order-learn="{{ $orderLearn }}" data-order="{{ $lesson->order }}" id="first_lesson" data-href="javascript:void(0)" data-token='{{ csrf_token() }}' data-lesson="{{$lesson->id}}">{{ $lesson->name }}</a>
                         @else
                         <a class="lesson" data-order-learn="{{ $orderLearn }}" data-order="{{ $lesson->order }}" id="first_lesson" href="{{ route('user.lesson.detail', $lesson->id) }}">{{ $lesson->name }}</a>
                         @endif
@@ -76,8 +77,7 @@
               @endforeach
             </div>
           </div>
-          
-          <div class="comments">
+         <div class="comments">
             <h4 class="title">Ratings</h4>
             @if(Auth::check())
                 @if($hasLearnLatestLesson == 'true')
@@ -95,29 +95,27 @@
             @endif
             <ol class="comment-list">
             @foreach($rates as $rate)
-                @if($rate->course_id === $course->id)
-                  <li class="comment-border" data-id='{{ $rate->id }}'>
-                    <article id="{{$rate->id}}">
-                      <img alt='' src="{{ !(substr($rate->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$rate->user->userProfile['url'] : $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
-                      <div class="comment-des">
-                        <div class="comment-by">
-                              <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>
-                              <div class="single-item-rating" style="float: none;">
-                              <i class="zmdi {{ ($rate->star -0.5)>0 ? 'zmdi-star': (($rate->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                              <i class="zmdi {{ ($rate->star -1.5)>0 ? 'zmdi-star': (($rate->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                              <i class="zmdi {{ ($rate->star -2.5)>0 ? 'zmdi-star': (($rate->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                              <i class="zmdi {{ ($rate->star -3.5)>0 ? 'zmdi-star': (($rate->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                              <i class="zmdi {{ ($rate->star -4.5)>0 ? 'zmdi-star': (($rate->star -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
-                          </div>
-                          <p class="date"><a><time>{{$rate->created_at}}</time></a>
+                <li class="comment-border" data-id='{{ $rate->id }}'>
+                  <article id="{{$rate->id}}">
+                    <img alt='' src="{{ !(substr($rate->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$rate->user->userProfile['url'] : $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                    <div class="comment-des">
+                      <div class="comment-by">
+                            <p class="author"><strong>{{$rate->user->userProfile['name'] }}</strong></p>
+                            <div class="single-item-rating" style="float: none;">
+                            <i class="zmdi {{ ($rate->star -0.5)>0 ? 'zmdi-star': (($rate->star -0.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            <i class="zmdi {{ ($rate->star -1.5)>0 ? 'zmdi-star': (($rate->star -1.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            <i class="zmdi {{ ($rate->star -2.5)>0 ? 'zmdi-star': (($rate->star -2.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            <i class="zmdi {{ ($rate->star -3.5)>0 ? 'zmdi-star': (($rate->star -3.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
+                            <i class="zmdi {{ ($rate->star -4.5)>0 ? 'zmdi-star': (($rate->star -4.5)<0 ? 'zmdi-star-outline' : 'zmdi-star-half') }}"></i>
                         </div>
-                        <section>
-                          <p>{{$rate->content}}</p>
-                        </section>
+                        <p class="date"><a><time>{{$rate->created_at}}</time></a>
                       </div>
-                    </article>
-                  </li>
-                  @endif
+                      <section>
+                        <p>{{$rate->content}}</p>
+                      </section>
+                    </div>
+                  </article>
+                </li>
             @endforeach
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
@@ -194,14 +192,14 @@
             @if ($parentCourse->id != $course->id)
             <div class="single-item">
               <div class="single-item-image overlay-effect">
-                <a href="{{ route('user.course.detail', $parentCourse->id) }}"><img alt="" src="{{ $parentCourse->image }}"></a>
+                <a href="{{ route('user.course.detail', $parentCourse->id) }}"><img src="front_end/img/event/{{ $parentCourse->image }}"></a>
               </div>
               <div class="single-item-text">
                 <h4><a href="{{ route('user.course.detail', $parentCourse->id) }}">{{ $parentCourse->name }}</a></h4>
                 <div class="single-item-text-info">
                   <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $parentCourse->created_at}}</span></span>
                 </div>
-                <p>{{ str_limit($parentCourse->content, 78) }}</p>
+                <p>{!! str_limit($parentCourse->content, 78) !!}</p>
                 <div class="single-item-content">
                   <div class="single-item-comment-view">
                     <span><i class="zmdi zmdi-eye"></i>{{ $parentCourse->count_view }}</span>
