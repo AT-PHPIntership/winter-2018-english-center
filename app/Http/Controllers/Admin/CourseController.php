@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CourseService;
+use App\Services\ImageService;
 use App\Http\Requests\CreateCourseRequest;
+use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 
 class CourseController extends Controller
@@ -40,7 +42,9 @@ class CourseController extends Controller
      */
     public function store(CreateCourseRequest $requestCourse)
     {
-        app(CourseService::class)->store($requestCourse);
+        $data =  $requestCourse->all();
+        $data['image'] = app(ImageService::class)->uploadImageCourse($data['image']);
+        app(CourseService::class)->store($data);
         return redirect()->route('admin.courses.index')->with('success', __('common.success'));
     }
 
@@ -65,9 +69,13 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateCourseRequest $requestCourse, Course $course)
+    public function update(UpdateCourseRequest $requestCourse, Course $course)
     {
-        app(CourseService::class)->update($requestCourse->all(), $course);
+        $data = $requestCourse->all();
+        if ($requestCourse->hasFile('image')) {
+            $data['image'] = app(ImageService::class)->uploadImageCourse($data['image']);
+        }
+        app(CourseService::class)->update($data, $course);
         return redirect()->route('admin.courses.index')->with('success', __('common.success'));
     }
 

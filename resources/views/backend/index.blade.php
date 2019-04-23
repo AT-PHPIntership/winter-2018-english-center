@@ -82,7 +82,7 @@
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->
-    <div class="col-md-7">
+    {{-- <div class="col-md-7">
        <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">{{ __('dashboard.count_user') }}</h3>
@@ -100,10 +100,10 @@
         </div>
         <!-- /.box-body -->
       </div>
-    </div>
+    </div> --}}
     <!-- /.col -->
 
-    <div class="col-md-5">
+    <div class="col-md-6">
 
       <div class="box box-default">
         <div class="box-header with-border">
@@ -119,7 +119,7 @@
           <div class="row">
             <div class="col-md-7">
               <div class="chart-responsive">
-                <canvas id="pieChart" height="155" width="192" style="width: 192px; height: 155px;"></canvas>
+                <canvas id="pieChart" height="155" width="192"></canvas>
               </div>
               <!-- ./chart-responsive -->
             </div>
@@ -144,6 +144,7 @@
 </section>
 <!-- /.content -->
 <div class="control-sidebar-bg"></div>
+    
 <script type="text/javascript">
     var course1 = {!! json_encode($statisticals['maxCourseUser'][0]) !!};
     var course2 = {!! json_encode($statisticals['maxCourseUser'][1]) !!};

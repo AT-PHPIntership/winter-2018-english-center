@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 // Route admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'adminLogin'], function() {
+    
     Route::get('/', 'HomeController@index')->name('dashboard');
 
     Route::resource('users', 'UserController');
@@ -31,7 +32,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
 
     Route::post('exercises/store', 'ExerciseController@store');
 
-    Route::resource('exercises', 'ExerciseController')->only(['index', 'show', 'create', 'edit', 'update', 'destroy']);
+    Route::post('exercises/update', 'ExerciseController@update')->name('exercise.update');
+
+    Route::resource('exercises', 'ExerciseController')->only(['index', 'show', 'create', 'edit', 'destroy']);
     
     Route::resource('lessons', 'LessonController');
 
@@ -44,6 +47,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::resource('sliders', 'SliderController');
 });
 
+// Route login, logout for ADMIN
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
     Route::post('/login', 'LoginController@login')->name('login');

@@ -80,18 +80,18 @@
 
           <!-- rating  course-->
          <div class="comments">
-            <h4 class="title">Ratings</h4>
+            <h4 class="title">Student's assessment</h4>
             @if(Auth::check())
                 @if($hasLearnLatestLesson == 'true')
                 <div class="rating-link">
                   <div class="single-item-rating user-rating">
                     <i class="zmdi zmdi-star"></i>
+                    {{-- <i class="zmdi zmdi-star"></i>
                     <i class="zmdi zmdi-star"></i>
                     <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star"></i>
+                    <i class="zmdi zmdi-star"></i> --}}
                   </div>
-                  <a class="rating" href="{{ route('user.rating', $course->id )}}">Rating Link</a>
+                  <a class="rating" href="{{ route('user.rating', $course->id )}}">Review</a>
                 </div>
                 @endif
             @endif
@@ -130,7 +130,7 @@
           
           <!-- comment course -->
           <div class="comments">
-            <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
+              <h4 class="title"><i class="zmdi zmdi-comments"></i>{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             <div class="single-comment">
                 <div class="comment-text">
                     <textarea class="form-control" id='comment-text' name="review" placeholder="{{ __('layout_user.lessons.lesson_detail.comment.enter_comment') }}"></textarea>
@@ -232,7 +232,7 @@
                 <div class="single-item-text-info">
                   <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $parentCourse->created_at}}</span></span>
                 </div>
-                <p>{!! str_limit($parentCourse->content, 78) !!}</p>
+                {!! str_limit($parentCourse->content, 72) !!}
                 <div class="single-item-content">
                   <div class="single-item-comment-view">
                     <span><i class="zmdi zmdi-eye"></i>{{ $parentCourse->count_view }}</span>

@@ -44,13 +44,13 @@ class CourseService
     /**
      * Function store create course new
      *
-     * @param ValidationCourse $request comment
+     * @param ValidationCourse $data course
      *
      * @return App\Services\CourseService
     **/
-    public function store($request)
+    public function store($data)
     {
-        return Course::create($request->only(['name', 'parent_id','content']));
+        return Course::create($data);
     }
 
     /**

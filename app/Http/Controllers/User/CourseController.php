@@ -62,7 +62,6 @@ class CourseController extends Controller
      */
     public function elementComment(Request $request, $element)
     {
-        // dd($element);
         $response = app(CommentService::class)->comment($request->get('userId'), $request->get('elementId'), $request->get('content'), $element);
         return response()->json($response);
     }

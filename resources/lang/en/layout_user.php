@@ -56,7 +56,7 @@ return [
         ],
         'course_detail' =>[
             'course_detail' => 'Course Detail',
-            'cmt' => 'Comments',
+            'cmt' => ' Comments',
             'related_courses' => 'Related Courses',
             'date_time' => 'Date Time: ',
             'lessons' => 'Lessons',

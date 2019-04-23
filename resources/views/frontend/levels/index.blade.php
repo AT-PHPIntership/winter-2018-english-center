@@ -44,7 +44,7 @@
                             <div class="single-item-text-info">
                                 <span>@lang('layout_user.levels.date') <span>{{ $lesson->updated_at }}</span></span>
                             </div>
-                            {!! str_limit($lesson->text, 123) !!}
+                            {!! str_limit($lesson->text, 113) !!}
                             <div class="single-item-content">
                                 <div class="single-item-comment-view">
                                     <span><i class="zmdi zmdi-eye"></i>{{ $lesson->count_view }}</span>

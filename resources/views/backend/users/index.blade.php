@@ -31,7 +31,7 @@
                     <thead>
                         <tr class="row">
                             <th style="text-align: center;">{{ __('user.show_list_user.id') }}</th>
-                            <th style="text-align: center;">{{ __('user.show_list_user.email') }}</th>
+                            <th>{{ __('user.show_list_user.email') }}</th>
                             <th style="text-align: center;">{{ __('user.show_list_user.role') }}</th>
                             <th style="text-align: center;">{{ __('user.show_list_user.show') }}</th>
                             <th style="text-align: center;">{{ __('user.show_list_user.action') }}</th>
@@ -41,7 +41,7 @@
                         @foreach($users as $user)
                         <tr class="row">
                             <td style="text-align: center;">{{ $user->id }}</td>
-                            <td style="text-align: center;">{{ $user->email }}</td>
+                            <td>{{ $user->email }}</td>
                             {{-- <td>{{ $user->password }}</td> --}}
                             <td style="text-align: center;">{{ $user->role->name }}</td>
                             <td style="text-align: center;">

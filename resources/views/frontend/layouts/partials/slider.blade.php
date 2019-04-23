@@ -1,7 +1,7 @@
 <!--Slider Area Start-->
 <div class="slider-area">
     <div class="preview-2">
-            <div id="nivoslider" class="slides">	
+            <div id="nivoslider" class="slides">
                 @foreach ($sliders as $slider)
                     <img src="storage/slider/{{ $slider->image }}" alt="" title="#slider-1-caption{{ $slider->id }}"/>
                 @endforeach

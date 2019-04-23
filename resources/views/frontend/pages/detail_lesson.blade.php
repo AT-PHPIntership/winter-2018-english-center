@@ -29,38 +29,38 @@
             <div class="single-event-image">
               <img src="storage/lesson/{{ $lessons->image }}" alt="">
             </div>
-              <!-- chart -->
+            <!-- chart -->
             <div class="single-latest-text">
-                <!-- chart progress learning -->
-                    <div class='chart-point'> 
-                        <div id="learn-point">
-                            <div class="progress-pie-chart gt-50" data-percent="100">
-                                <div class="progress-label">Point</div>
-                                <div class="ppc-progress">
-                                    <div class="ppc-progress-fill" style="transform: rotate(360deg);"></div>
-                                </div>
-                                <div class="ppc-percents">
-                                    <div class="pcc-percents-wrapper">
-                                    <span>100</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="learn-progress">
-                            <svg     style="margin-top: -43px;" class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="135" height="135" xmlns="http://www.w3.org/2000/svg">
-                              <circle class="circle-chart__background" stroke="#fff" stroke-width="2.5" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
-                              <circle class="circle-chart__circle" stroke="#8BC34A" stroke-width="2.5" stroke-dasharray="{{$progressLearn}},100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
-                              <g class="circle-chart__info">
-                                <text class="circle-chart__percent" stroke="#C62828" x="16.91549431" y="15.5" alignment-baseline="central" text-anchor="middle" font-size="8">{{$progressLearn}}%</text>
-                                <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central" text-anchor="middle" font-size="3">Complete</text>
-                              </g>
-                            </svg>
-                        </div>
+              <!-- chart progress learning -->
+              <div class='chart-point'> 
+                <div id="learn-point">
+                  <div class="progress-pie-chart gt-50" data-percent="100">
+                    <div class="progress-label">Point</div>
+                    <div class="ppc-progress">
+                      <div class="ppc-progress-fill" style="transform: rotate(360deg);"></div>
                     </div>
-                <div id="lesson-basic-detail">
-                    
-                    {{-- <div class="clear-both"></div> --}}
+                    <div class="ppc-percents">
+                      <div class="pcc-percents-wrapper">
+                        <span>100</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                <div id="learn-progress">
+                  <svg     style="margin-top: -43px;" class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="135" height="135" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="circle-chart__background" stroke="#fff" stroke-width="2.5" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
+                    <circle class="circle-chart__circle" stroke="#8BC34A" stroke-width="2.5" stroke-dasharray="{{$progressLearn}},100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
+                    <g class="circle-chart__info">
+                      <text class="circle-chart__percent" stroke="#C62828" x="16.91549431" y="15.5" alignment-baseline="central" text-anchor="middle" font-size="8">{{$progressLearn}}%</text>
+                      <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central" text-anchor="middle" font-size="3">Complete</text>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div id="lesson-basic-detail">
+
+                {{-- <div class="clear-both"></div> --}}
+              </div>
               <h3>{{ $lessons->name }}</h3>
               <div class="single-item-comment-view">
                 <span><i class="zmdi zmdi-calendar-check"></i>{{ $lessons->created_at }}</span>
@@ -80,36 +80,36 @@
                         <a type="button" class="uba_audioButton" >
                           <audio>
                             <source src="{{$items->sound}}" type="audio/mpeg">
-                          </audio>
-                        </a>
-                      </td>
-                      <td>{{ $items->means }}</td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-md-12 detail-text-video">
-                <div class="detail-text">
-                  <p>{!! $lessons->text !!}</p>
+                            </audio>
+                          </a>
+                        </td>
+                        <td>{{ $items->means }}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                 </div>
-                <div class="detail-video">
-                  <iframe width="420" height="345" src="{{ $lessons->video }}">
-                  </iframe>
+                <div class="col-md-12 detail-text-video">
+                  <div class="detail-text">
+                    <p>{!! $lessons->text !!}</p>
+                  </div>
+                  <div class="detail-video">
+                    <iframe width="420" height="345" src="{{ $lessons->video }}">
+                    </iframe>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <ul class="sidebar-menu" data-widget="tree">
-                  <li class="treeview menu-open">
-                    <a>
-                      <span>
-                        <h3><i class="fa fa-edit"></i><strong>{{ __('layout_user.lessons.lesson_detail.exercise')}}</strong></h3>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <div class="exercises" data-course='{{ $lessons->course->id }}' data-lesson= "{{$lessons->id}}" data-question='{{$lessons->exercises->pluck('questions')->
+                <div>
+                  <ul class="sidebar-menu" data-widget="tree">
+                    <li class="treeview menu-open">
+                      <a>
+                        <span>
+                          <h3><i class="fa fa-edit"></i><strong>{{ __('layout_user.lessons.lesson_detail.exercise')}}</strong></h3>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                        <div class="exercises" data-course='{{ $lessons->course->id }}' data-lesson= "{{$lessons->id}}" data-question='{{$lessons->exercises->pluck('questions')->
                         map(function ($item, $key) {
-                        return collect($item)->count();
+                          return collect($item)->count();
                         })->sum()}}'>
                         @foreach ($lessons->exercises as $key => $exercises)
                         <div class="comment_bai_hoc clear">
@@ -120,8 +120,11 @@
                           @foreach ($exercises->questions as $q => $questions)
                           <div class="details" data-user='{{ Auth::user()->id }}' data-token='{{ csrf_token() }}'>
                             <div class="basic_ques">
-                              <p class="basic_index">{{ $q + 1}}</p>
-                              <div class="basic_index" id="exercises[{{ $key }}][questions][{{ $q }}][content]">{{ $questions->content }}</div>
+                              {{-- <div> --}}
+                                {{-- <p class="basic_index">{{ $q + 1}}</p> --}}
+                                {{-- <div class="basic_index" id="exercises[{{ $key }}][questions][{{ $q }}][content]">{{ $questions->content }}</div> --}}
+                                <p class="basic_index" id="exercises[{{ $key }}][questions][{{ $q }}][content]"><span class="basic_index">{{ $q + 1}}</span>{{ $questions->content }}</p>
+                              {{-- </div> --}}
                               <div class="form-group col-lg-12">
                                 @foreach ($questions->answers as $a => $answers)
                                 <div class="radio-exercise col-lg-3">
@@ -142,7 +145,7 @@
                         <div class="basic_alert_note">{{ __('layout_user.lessons.lesson_detail.complete_exercise')}}<strong> {{ __('common.btn') }}</strong> {{ __('layout_user.lessons.lesson_detail.complete_exercise_below')}}</div>
                         <div class="box_bt_ctrl">
                           <button type="button" class="btn btn-success submit-answer">
-                          <i class="fa fa-credit-card"></i> {{ __('common.btn') }}
+                            <i class="fa fa-credit-card"></i> {{ __('common.btn') }}
                           </button>
                         </div>
                       </div>
@@ -183,78 +186,78 @@
                       <p class="author"><strong>{{$comment->user->userProfile['name'] }}</strong></p>
                       <p class="date"><a><time>{{$comment->created_at}}</time></a>
                         @if(Auth::user()->id == $comment->user_id )
-                         - <a class="edit-comment" id="{{$comment->id}}">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
+                        - <a class="edit-comment" id="{{$comment->id}}">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
                         @endif
                         <span class="reply"><a class="add-reply" id='{{$comment->id}}'>Reply</a></span>
-                    </div>
-                    <section>
-                      <p>{{ $comment->content }}</p>
-                    </section>
-                  </div>
-                </article>
-                @foreach ($comment->children as $reply)
-                <ol class="children">
-                  <li class="children" id="commentChildren">
-                    <article id="{{$reply->id}}" class="comment">
-                      <img alt='' src="{{ !(substr($reply->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$reply->user->userProfile['url'] : $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
-                      <div class="comment-des">
-                        <div class="comment-by">
-                          <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
-                          <p class="date"><a><time>{{$reply->created_at}}</time></a>
-                            @if(Auth::user()->id == $comment->user_id )
-                             - <a class="edit-comment" id="{{$comment->id}}">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
-                            @endif
-                        </div>
-                        <section>
-                          <p>{{$reply->content}}</p>
-                        </section>
                       </div>
-                    </article>
+                      <section>
+                        <p>{{ $comment->content }}</p>
+                      </section>
+                    </div>
+                  </article>
+                  @foreach ($comment->children as $reply)
+                  <ol class="children">
+                    <li class="children" id="commentChildren">
+                      <article id="{{$reply->id}}" class="comment">
+                        <img alt='' src="{{ !(substr($reply->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$reply->user->userProfile['url'] : $reply->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
+                        <div class="comment-des">
+                          <div class="comment-by">
+                            <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
+                            <p class="date"><a><time>{{$reply->created_at}}</time></a>
+                              @if(Auth::user()->id == $comment->user_id )
+                              - <a class="edit-comment" id="{{$comment->id}}">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
+                              @endif
+                            </div>
+                            <section>
+                              <p>{{$reply->content}}</p>
+                            </section>
+                          </div>
+                        </article>
+                      </li>
+                    </ol>
+                    @endforeach
                   </li>
+                  @endforeach
                 </ol>
-                @endforeach
-              </li>
-              @endforeach
-            </ol>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4">
-        <div class="sidebar-widget">
-          <div class="single-sidebar-widget">
-            <h4 class="title">{{ __('layout_user.lessons.lesson_detail.recent_lesson') }}</h4>
-            <div class="recent-content">
-              @foreach ($recentLessons as $items)
-              @if($lessons->id != $items->id)
-              <div class="single-item">
-                  <div class="single-item-image overlay-effect">
+          <div class="col-lg-3 col-md-4">
+            <div class="sidebar-widget">
+              <div class="single-sidebar-widget">
+                <h4 class="title">{{ __('layout_user.lessons.lesson_detail.recent_lesson') }}</h4>
+                <div class="recent-content">
+                  @foreach ($recentLessons as $items)
+                  @if($lessons->id != $items->id)
+                  <div class="single-item">
+                    <div class="single-item-image overlay-effect">
                       <a class="lesson" href="{{ route('user.lesson.detail', $items->id) }}"><img src="storage/lesson/{{ $items->image }}" alt=""></a>
-                  </div>
-                  <div class="single-item-text">
+                    </div>
+                    <div class="single-item-text">
                       <h4><a class="lesson" href="{{ route('user.lesson.detail', $items->id) }}">{{ $items->name }}</a></h4>
                       <div class="single-item-text-info">
-                          <span>@lang('layout_user.levels.date') <span>{{ $items->updated_at }}</span></span>
+                        <span>@lang('layout_user.levels.date') <span>{{ $items->updated_at }}</span></span>
                       </div>
                       {!! str_limit($items->text, 80) !!}
                       <div class="single-item-content">
-                          <div class="single-item-comment-view">
-                              <span><i class="zmdi zmdi-eye"></i>{{ $items->count_view }}</span>
-                              <span><i class="zmdi zmdi-comments"></i></span>
-                          </div>
+                        <div class="single-item-comment-view">
+                          <span><i class="zmdi zmdi-eye"></i>{{ $items->count_view }}</span>
+                          <span><i class="zmdi zmdi-comments"></i></span>
+                        </div>
                       </div>   
-                  </div>
-                  <div class="button-bottom">
+                    </div>
+                    <div class="button-bottom">
                       <a href="{{ route('user.lesson.detail', $items->id) }}" class="button-default lesson">@lang('layout_user.levels.btn')</a>
+                    </div>
                   </div>
+                  @endif
+                  @endforeach
+                </div>
               </div>
-              @endif
-              @endforeach
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!--End of News Details Area-->
-@endsection
+    <!--End of News Details Area-->
+    @endsection
