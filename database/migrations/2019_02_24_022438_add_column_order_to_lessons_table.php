@@ -14,7 +14,7 @@ class AddColumnOrderToLessonsTable extends Migration
     public function up()
     {
         Schema::table('lessons', function (Blueprint $table) {
-            $table->integer('order')->after('role');
+            $table->integer('order')->after('video');
         });
     }
 

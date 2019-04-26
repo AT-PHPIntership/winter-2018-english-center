@@ -13,6 +13,12 @@ use Faker\Generator as Faker;
 |
 */
 
+$factory->define(App\Models\Role::class, function (Faker $faker) {
+    return [
+        'name' => $faker->text,
+    ];
+});
+
 $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'email' => $faker->unique()->safeEmail,

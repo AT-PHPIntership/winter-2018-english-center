@@ -124,14 +124,15 @@
               <!-- ./chart-responsive -->
             </div>
             <!-- /.col -->
+            @if(isset($statisticals['maxCourseUser']))
             <div class="col-md-5">
               <ul class="chart-legend clearfix">
-               
                 <li><i class="fa fa-circle-o text-red"></i> {{ $statisticals['maxCourseUser'][0]->name }}</li>
                 <li><i class="fa fa-circle-o text-green"></i> {{ $statisticals['maxCourseUser'][1]->name }}</li>
                 <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxCourseUser'][2]->name }}</li>
               </ul>
             </div>
+            @endif
             <!-- /.col -->
           </div>
           <!-- /.row -->
@@ -144,10 +145,11 @@
 </section>
 <!-- /.content -->
 <div class="control-sidebar-bg"></div>
-    
+@if(isset($statisticals['maxCourseUser']))
 <script type="text/javascript">
     var course1 = {!! json_encode($statisticals['maxCourseUser'][0]) !!};
     var course2 = {!! json_encode($statisticals['maxCourseUser'][1]) !!};
     var course3 = {!! json_encode($statisticals['maxCourseUser'][2]) !!};
 </script>
+@endif
 @endsection

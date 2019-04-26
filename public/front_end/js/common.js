@@ -151,7 +151,7 @@ $(document).on('click', '.add-reply', function () {
     var replyId = $(this).attr('id');
     var output = '';
     output += '<div class="single-comment comment-reply" data-id=' + replyId + '>';
-    output += '<p class="discuss-lesson">' + ' <a class="cancelReply">' + comment('cancel') + '</a></p>';
+    output += '<p class="discuss-lesson">' + comment('add') + ' <a class="cancelReply">' + comment('cancel') + '</a></p>';
     output += '<div class="single-comment">';
     output += '<div class="comment-text">';
     output += '<textarea class="form-control" id="reply-text" name="review" placeholder="' + comment('write') + '"></textarea>';
@@ -394,7 +394,7 @@ $(document).on('click', '.js-course', function () {
               output += '<td><p>' + val.key + '</p></td>';
               output += '<td>';
               output += '<p>';
-              output += '<a class="lesson-name" href="detail/course/' + val.id + '">' + val.name_course + '</a>';
+              output += '<a class="lesson-name" href="detail/lesson/' + val.id + '">' + val.name_course + '</a>';
               output += '</p>';
               output += '</td>';
               output += '<td>';
@@ -451,7 +451,7 @@ $(document).on('click', '.status', function () {
           var total = 0;
           output += '<table class="table setting-product-table lesson">';
           output += '<thead>';
-          output += '<tr>'
+          output += '<tr>';
           output += '<th style="text-align: center;">ID</th>';
           output += '<th style="text-align: center;">Lesson</th>';
           output += '<th style="text-align: center;">Start Date</th>';
