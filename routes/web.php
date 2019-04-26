@@ -12,13 +12,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function() {
+//     return 'Laravel';
+// });
+//
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'adminLogin'], function() {
-    
+
     Route::get('/', 'HomeController@index')->name('dashboard');
 
     Route::resource('users', 'UserController');
@@ -35,7 +39,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::post('exercises/update', 'ExerciseController@update')->name('exercise.update');
 
     Route::resource('exercises', 'ExerciseController')->only(['index', 'show', 'create', 'edit', 'destroy']);
-    
+
     Route::resource('lessons', 'LessonController');
 
     Route::resource('comments', 'CommentController');

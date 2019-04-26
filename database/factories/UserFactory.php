@@ -30,7 +30,6 @@ $factory->define(App\Models\Course::class, function(Faker $faker) {
         'count_view' => $faker->randomDigit,
         'total_rating' => $faker->numberBetween(1, 10),
         'average' => $faker->numberBetween(1, 5),
-        'flag' => $faker->boolean,
         'content' => $faker->text,
         'image' => $faker->imageUrl($width = 640, $height = 480),
     ];
@@ -70,6 +69,12 @@ $factory->define(App\Models\Exercise::class, function(Faker $faker) {
     return [
         'lesson_id' => factory('App\Models\Lesson')->create()->id,
         'title' => $faker->catchPhrase,
+    ];
+});
+
+$factory->define(App\Models\Role::class, function(Faker $faker) {
+    return [
+        'name' => $faker->word,
     ];
 });
 

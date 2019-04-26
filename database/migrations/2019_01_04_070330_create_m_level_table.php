@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddOrderToCoursesTable extends Migration
+class CreateMLevelTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddOrderToCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::table('courses', function (Blueprint $table) {
-            $table->integer('order')->after('flag');
+        Schema::create('m_level', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('level');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddOrderToCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::table('courses', function (Blueprint $table) {
-            $table->dropColumn('order');
-        });
+        Schema::dropIfExists('m_level');
     }
 }

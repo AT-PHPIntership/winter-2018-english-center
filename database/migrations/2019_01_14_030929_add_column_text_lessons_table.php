@@ -25,6 +25,8 @@ class AddColumnTextLessonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->dropColumn('text');
+        });
     }
 }

@@ -31,4 +31,7 @@ return [
         'page_site' => 4,
     ],
     'length_course' => 123,
+    'role' => [
+        'admin' => 0,
+    ],
 ];
