@@ -12,13 +12,9 @@
 |
 */
 
-// Route::get('/', function() {
-//     return 'Laravel';
-// });
-//
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'adminLogin'], function() {
