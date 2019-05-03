@@ -8,6 +8,7 @@ use App\Services\ImageService;
 use App\Services\SliderService;
 use App\Models\Slider;
 use App\Http\Requests\SliderRequest;
+use App\Http\Requests\UpdateSliderRequest;
 
 class SliderController extends Controller
 {
@@ -92,12 +93,12 @@ class SliderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request request
-     * @param Slider                   $slider  slider
+     * @param UpdateSliderRequest $request request
+     * @param Slider              $slider  slider
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Slider $slider)
+    public function update(UpdateSliderRequest $request, Slider $slider)
     {
         $data = $request->except(['_token','_method']);
         if ($request->hasFile('image')) {
