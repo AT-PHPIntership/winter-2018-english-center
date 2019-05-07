@@ -64,6 +64,7 @@ $factory->define(App\Models\Lesson::class, function(Faker $faker) {
 $factory->define(App\Models\Vocabulary::class, function(Faker $faker) {
     return [
         'vocabulary' => $faker->word,
+        'phonetic_spelling' => $faker->word,
         'word_type' => $faker->word,
         'means' => $faker->catchPhrase,
         'sound' => $faker->url,
