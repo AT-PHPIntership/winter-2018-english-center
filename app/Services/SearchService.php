@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Models\Course;
+use App\Models\Lesson;
 
 class SearchService
 {
@@ -53,9 +54,9 @@ class SearchService
     }
 
     /**
-     * Get users based on query
+     * Get course based on query
      *
-     * @param object $query [query get user]
+     * @param object $query [query get course]
      *
      * @return collection
      */
@@ -94,7 +95,7 @@ class SearchService
         return Course::where('name', 'LIKE', "%{$query}%")->paginate(config('define.page_site'))->appends(['search'=> $query]);
     }
 
-     /**
+    /**
      * Function destroy course
      *
      * @param Course $id
@@ -109,6 +110,53 @@ class SearchService
         } else {
             Course::where('id', $id)->delete();
         }
+        return $id;
+    }
+
+    /**
+     * Get lesson based on query
+     *
+     * @param object $query [query get lesson]
+     *
+     * @return collection
+     */
+    public function getLessonName($query)
+    {
+        return Lesson::where('name', 'LIKE', "%{$query}%")->paginate(config('define.page_site'))->appends(['search'=> $query]);
+    }
+
+    /**
+     * Get lesson based on query
+     *
+     * @param object $query [query get lesson]
+     *
+     * @return collection
+     */
+    public function ajaxGetLessonName($query)
+    {
+        $lessons = Lesson::where('name', 'LIKE', "%{$query}%")->get();
+            $items = [];
+            foreach ($lessons as $key => $lesson) {
+                $items[$key]['id'] = $lesson->id;
+                $items[$key]['name'] = $lesson->name;
+                $items[$key]['course'] = $lesson->course->name;
+                $items[$key]['level'] = $lesson->level->level;
+            }
+            return $items;
+    }
+
+    /**
+     * Function destroy lesson
+     *
+     * @param Lesson $id
+     *
+     * @return App\Services\SearchService
+    **/
+    public function deleteLesson($id)
+    {
+        $lesson = Lesson::find($id);
+        $lesson->vocabularies()->detach();
+        $lesson->delete();
         return $id;
     }
 

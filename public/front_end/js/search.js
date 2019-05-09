@@ -200,3 +200,76 @@ $(document).ajaxComplete(function () {
         }
     });
 });
+
+// search lesson name
+$(document).ready(function () {
+    $('#search-lesson').keyup(delay(function (e) {
+        e.preventDefault();
+        var query = $(this).val();
+        // console.log(query);
+        if (query != '' && query.length >= 1) {
+            $.ajax({
+                url: 'admin/lessons/search',
+                method: "GET",
+                data: { query: query },
+                dataType: "JSON",
+                success: function (data) {
+                    // console.log(data);
+                    if (data.length > 0) {
+                        var output = '';
+                        $.each(data, function (key, val) {
+                            output += '<tr class="row search-result" data-id="'+ val.id +'">';
+                            output += '<td>'+ val.id + '</td>';
+                            output += '<td>'+ val.name + '</td>';
+                            output += '<td>'+ val.course + '</td>';
+                            output += '<td>'+ val.level + '</td>';
+                            output += '<td>' + '<a href="admin/lessons/' + val.id + '" class="btn btn-warning">Detail</a>' + '</td>';
+                            output += '<td>'
+                            output += '<a href="admin/lessons/' + val.id +'/edit" class="btn btn-warning">Edit</a>';
+                            output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete" data-title="Delete Lesson" data-lesson-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
+                            output += '</td>'
+                            output += '</tr>';
+                        });
+                        $('#list-search-lessons').html(output);
+                        output2 = '';
+                        $('#search-no-result-lesson').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
+                    } else {
+                        output1 = '';
+                        output2 = 'No result';
+                        $('#list-search-lessons').html(output1);
+                        $('#search-no-result-lesson').html(output2);
+                    }
+                }
+            });
+        } else {
+            location.reload();
+        }
+    }, 250));
+});
+
+// delete course
+$(document).ajaxComplete(function () {
+    $('.search-delete').on('click', function () {
+        var delLesson = confirm('Are you sure you want to delete?');
+        if(delLesson) {
+            var lessonId = $(this).data('lesson-id');
+            $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN' : $('meta[name=“csrf-token”]').attr('content')
+                }
+            });
+            $.ajax({
+                url: 'admin/lessons/search/delete',
+                type: 'DELETE',
+                dataType: 'JSON',
+                data: { "lesson-id" : lessonId, _token : $('meta[name="csrf-token"]').attr('content'),} ,
+                success: function (data) {
+                    // console.log(data);
+                    $('.search-result[data-id='+ data + ']').remove();
+                }
+            });
+        }
+    });
+});

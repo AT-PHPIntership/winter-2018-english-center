@@ -75,4 +75,38 @@ class SearchController extends Controller
         $response = app(SearchService::class)->deleteCourse($course_id);
         return response()->json($response);
     }
+
+    /**
+     * Get lesson from keyword in search field
+     *
+     *@param request $request [request to get lesson]
+     *
+     * @return compare view
+     */
+    public function getLessonName(Request $request)
+    {
+        // dd(1);
+        if ($request->ajax()) {
+            $response = app(SearchService::class)->ajaxGetLessonName($request->get('query'));
+            return response()->json($response);
+        } else {
+            $query = $request->get('search');
+            $lessons = app(SearchService::class)->getLessonName($query);
+            return view('backend.lessons.search')->with(['lessons' => $lessons,'query' => $query]);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Request $request 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteLesson(Request $request)
+    {
+        $lesson_id = $request->get('lesson-id');
+        $response = app(SearchService::class)->deleteLesson($lesson_id);
+        return response()->json($response);
+    }
 }

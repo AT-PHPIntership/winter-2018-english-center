@@ -19,6 +19,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::delete('/users/search/delete', 'SearchController@deleteUser')->name('users.search.delete');
     Route::get('/courses/search', 'SearchController@getCourseName')->name('courses.search');
     Route::delete('/courses/search/delete', 'SearchController@deleteCourse')->name('courses.search.delete');
+    Route::get('/lessons/search', 'SearchController@getLessonName')->name('lessons.search');
+    Route::delete('/lessons/search/delete', 'SearchController@deleteLesson')->name('lessons.search.delete');
     Route::resource('users', 'UserController');
     Route::resource('courses', 'CourseController');
     Route::resource('levels', 'LevelController');
