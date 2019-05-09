@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/winter-2018-english-center/app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href=".css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href=".css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href=".css/style.css" rel="stylesheet" type="text/css">
+  <link href=".css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/var/www/winter-2018-english-center/app</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Events/ViewLesson.php.html#13">App\Events\ViewLesson</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Course.php.html#9">App\Models\Course</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Role.php.html#7">App\Models\Role</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Rating.php.html#6">App\Models\Rating</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Question.php.html#7">App\Models\Question</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Level.php.html#7">App\Models\Level</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#7">App\Models\Lesson</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Goalable.php.html#7">App\Models\Goalable</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Goal.php.html#7">App\Models\Goal</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Exercise.php.html#7">App\Models\Exercise</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Comment.php.html#8">App\Models\Comment</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#9">App\Models\User</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Answer.php.html#7">App\Models\Answer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mail/changeAccount.php.html#10">App\Mail\ChangeAccount</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/LessonViewCount.php.html#11">App\Listeners\LessonViewCount</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/CourseViewCount.php.html#9">App\Listeners\CourseViewCount</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/VocabularyComposer.php.html#8">App\Http\ViewComposers\VocabularyComposer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/SystemComposer.php.html#8">App\Http\ViewComposers\SystemComposer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/RoleComposer.php.html#8">App\Http\ViewComposers\RoleComposer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/LevelComposer.php.html#8">App\Http\ViewComposers\LevelComposer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/SocialProvider.php.html#6">App\Models\SocialProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/UserProfile.php.html#7">App\Models\UserProfile</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/CourseComposer.php.html#8">App\Http\ViewComposers\CourseComposer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/QuestionService.php.html#7">App\Services\QuestionService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/UserService.php.html#10">App\Services\UserService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SystemService.php.html#8">App\Services\SystemService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/StatisticalService.php.html#9">App\Services\StastiticalService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SocialProviderService.php.html#11">App\Services\SocialProviderService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SliderService.php.html#7">App\Services\SliderService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SearchService.php.html#7">App\Services\SearchService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/RoleService.php.html#8">App\Services\RoleService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/RateService.php.html#9">App\Services\RateService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ProcessService.php.html#6">App\Services\ProcessService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Vocabulary.php.html#7">App\Models\Vocabulary</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LevelService.php.html#7">App\Services\LevelService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#17">App\Services\LessonService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ImageService.php.html#7">App\Services\ImageService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ExerciseService.php.html#9">App\Services\ExerciseService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#12">App\Services\CourseService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#6">App\Services\CommentService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ActivationService.php.html#12">App\Services\ActivationService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/BroadcastServiceProvider.php.html#8">App\Providers\BroadcastServiceProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Observers/UserObserver.php.html#7">App\Observers\UserObserver</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/LessonComposer.php.html#7">App\Http\ViewComposers\LessonComposer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/CommentComposer.php.html#8">App\Http\ViewComposers\CommentComposer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exceptions/Handler.php.html#8">App\Exceptions\Handler</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LevelController.php.html#9">App\Http\Controllers\Admin\LevelController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#16">App\Http\Controllers\User\AuthController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/HomeController.php.html#7">App\Http\Controllers\HomeController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#12">App\Http\Controllers\Admin\VocabularyController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#13">App\Http\Controllers\Admin\UserController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SystemController.php.html#11">App\Http\Controllers\Admin\SystemController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#12">App\Http\Controllers\Admin\SliderController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SearchController.php.html#9">App\Http\Controllers\Admin\SearchController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/QuestionController.php.html#9">App\Http\Controllers\Admin\QuestionController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#13">App\Http\Controllers\Admin\LessonController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#13">App\Http\Controllers\User\HomeController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/HomeController.php.html#9">App\Http\Controllers\Admin\HomeController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#11">App\Http\Controllers\Admin\ExerciseController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CourseController.php.html#11">App\Http\Controllers\Admin\CourseController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CommentController.php.html#10">App\Http\Controllers\Admin\CommentController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/VerificationController.php.html#8">App\Http\Controllers\Admin\Auth\VerificationController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/ResetPasswordController.php.html#8">App\Http\Controllers\Admin\Auth\ResetPasswordController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/RegisterController.php.html#11">App\Http\Controllers\Admin\Auth\RegisterController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/LoginController.php.html#9">App\Http\Controllers\Admin\Auth\LoginController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/ForgotPasswordController.php.html#8">App\Http\Controllers\Admin\Auth\ForgotPasswordController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/CourseController.php.html#13">App\Http\Controllers\User\CourseController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/LessonController.php.html#13">App\Http\Controllers\User\LessonController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UserRequest.php.html#7">App\Http\Requests\UserRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/ImportVocabularyRequest.php.html#7">App\Http\Requests\ImportVocabularyRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateUserRequest.php.html#8">App\Http\Requests\UpdateUserRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateSystemRequest.php.html#7">App\Http\Requests\UpdateSystemRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateLessonRequest.php.html#7">App\Http\Requests\UpdateLessonRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateAuthUserRequest.php.html#8">App\Http\Requests\UpdateAuthUserRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateAuthUserPassRequest.php.html#9">App\Http\Requests\UpdateAuthUserPassRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/SliderRequest.php.html#7">App\Http\Requests\SliderRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/RegisterUserRequest.php.html#8">App\Http\Requests\RegisterUserRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/LessonRequest.php.html#7">App\Http\Requests\LessonRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateVocabularyRequest.php.html#10">App\Http\Requests\CreateVocabularyRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/ProfileController.php.html#13">App\Http\Controllers\User\ProfileController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateExerciseRequest.php.html#7">App\Http\Requests\CreateExerciseRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateCourseRequest.php.html#7">App\Http\Requests\CreateCourseRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/UserLogin.php.html#8">App\Http\Middleware\UserLogin</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#8">App\Http\Middleware\RedirectIfAuthenticated</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/LessonDetail.php.html#8">App\Http\Middleware\LessonDetail</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Filter.php.html#9">App\Http\Middleware\Filter</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#7">App\Http\Middleware\Authenticate</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/AdminLogin.php.html#9">App\Http\Middleware\AdminLogin</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/RatingController.php.html#10">App\Http\Controllers\User\RatingController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#10">App\Services\VocabularyService</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Services/LessonService.php.html#17">App\Services\LessonService</a></td><td class="text-right">420</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#12">App\Services\CourseService</a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#10">App\Services\VocabularyService</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#13">App\Http\Controllers\User\HomeController</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#12">App\Http\Controllers\Admin\VocabularyController</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Services/ExerciseService.php.html#9">App\Services\ExerciseService</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#13">App\Http\Controllers\Admin\UserController</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#11">App\Http\Controllers\Admin\ExerciseController</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#6">App\Services\CommentService</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#7">App\Models\Lesson</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#16">App\Http\Controllers\User\AuthController</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#12">App\Http\Controllers\Admin\SliderController</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#13">App\Http\Controllers\Admin\LessonController</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Services/ProcessService.php.html#6">App\Services\ProcessService</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Http/Requests/UserRequest.php.html#7">App\Http\Requests\UserRequest</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Http/Controllers/User/ProfileController.php.html#13">App\Http\Controllers\User\ProfileController</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Services/SocialProviderService.php.html#11">App\Services\SocialProviderService</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Http/Middleware/Filter.php.html#9">App\Http\Middleware\Filter</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Services/UserService.php.html#10">App\Services\UserService</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Http/Requests/CreateVocabularyRequest.php.html#10">App\Http\Requests\CreateVocabularyRequest</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Services/ActivationService.php.html#12">App\Services\ActivationService</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Listeners/LessonViewCount.php.html#11">App\Listeners\LessonViewCount</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Http/Requests/UpdateAuthUserPassRequest.php.html#9">App\Http\Requests\UpdateAuthUserPassRequest</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Http/Middleware/LessonDetail.php.html#8">App\Http\Middleware\LessonDetail</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Services/SearchService.php.html#7">App\Services\SearchService</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/LoginController.php.html#9">App\Http\Controllers\Admin\Auth\LoginController</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Middleware/UserLogin.php.html#8">App\Http\Middleware\UserLogin</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Middleware/AdminLogin.php.html#9">App\Http\Middleware\AdminLogin</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SearchController.php.html#9">App\Http\Controllers\Admin\SearchController</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#7">App\Http\Middleware\Authenticate</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/StatisticalService.php.html#9">App\Services\StastiticalService</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Events/ViewLesson.php.html#22"><abbr title="App\Events\ViewLesson::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#82"><abbr title="App\Models\Lesson::comments">comments</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Rating.php.html#27"><abbr title="App\Models\Rating::course">course</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Rating.php.html#17"><abbr title="App\Models\Rating::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Question.php.html#33"><abbr title="App\Models\Question::answers">answers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Question.php.html#23"><abbr title="App\Models\Question::exercise">exercise</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Level.php.html#22"><abbr title="App\Models\Level::lessons">lessons</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#92"><abbr title="App\Models\Lesson::goals">goals</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#72"><abbr title="App\Models\Lesson::exercises">exercises</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/SocialProvider.php.html#22"><abbr title="App\Models\SocialProvider::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#63"><abbr title="App\Models\Lesson::users">users</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#51"><abbr title="App\Models\Lesson::getRoleNameAttribute">getRoleNameAttribute</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#41"><abbr title="App\Models\Lesson::vocabularies">vocabularies</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#31"><abbr title="App\Models\Lesson::level">level</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#21"><abbr title="App\Models\Lesson::course">course</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Goalable.php.html#28"><abbr title="App\Models\Goalable::abc">abc</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Role.php.html#27"><abbr title="App\Models\Role::users">users</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#36"><abbr title="App\Models\User::userProfile">userProfile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Goal.php.html#23"><abbr title="App\Models\Goal::goalables">goalables</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Vocabulary.php.html#18"><abbr title="App\Models\Vocabulary::lessons">lessons</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#29"><abbr title="App\Services\CommentService::comment">comment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#13"><abbr title="App\Services\CommentService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ActivationService.php.html#47"><abbr title="App\Services\ActivationService::activation">activation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ActivationService.php.html#21"><abbr title="App\Services\ActivationService::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/BroadcastServiceProvider.php.html#15"><abbr title="App\Providers\BroadcastServiceProvider::boot">boot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Observers/UserObserver.php.html#16"><abbr title="App\Observers\UserObserver::deleting">deleting</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/UserProfile.php.html#23"><abbr title="App\Models\UserProfile::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#46"><abbr title="App\Models\User::role">role</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#108"><abbr title="App\Models\User::socialProviders">socialProviders</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#98"><abbr title="App\Models\User::ratings">ratings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#88"><abbr title="App\Models\User::comments">comments</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#78"><abbr title="App\Models\User::setPasswordAttribute">setPasswordAttribute</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#66"><abbr title="App\Models\User::lessons">lessons</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#56"><abbr title="App\Models\User::courses">courses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Goalable.php.html#18"><abbr title="App\Models\Goalable::goalable">goalable</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Exercise.php.html#43"><abbr title="App\Models\Exercise::answers">answers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#75"><abbr title="App\Services\CommentService::deleteComment">deleteComment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/LevelComposer.php.html#36"><abbr title="App\Http\ViewComposers\LevelComposer::compose">compose</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/VocabularyComposer.php.html#36"><abbr title="App\Http\ViewComposers\VocabularyComposer::compose">compose</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/VocabularyComposer.php.html#24"><abbr title="App\Http\ViewComposers\VocabularyComposer::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/SystemComposer.php.html#36"><abbr title="App\Http\ViewComposers\SystemComposer::compose">compose</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/SystemComposer.php.html#24"><abbr title="App\Http\ViewComposers\SystemComposer::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/RoleComposer.php.html#36"><abbr title="App\Http\ViewComposers\RoleComposer::compose">compose</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/RoleComposer.php.html#24"><abbr title="App\Http\ViewComposers\RoleComposer::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/LevelComposer.php.html#24"><abbr title="App\Http\ViewComposers\LevelComposer::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/CourseViewCount.php.html#28"><abbr title="App\Listeners\CourseViewCount::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/LessonComposer.php.html#29"><abbr title="App\Http\ViewComposers\LessonComposer::compose">compose</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/LessonComposer.php.html#17"><abbr title="App\Http\ViewComposers\LessonComposer::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/CourseComposer.php.html#30"><abbr title="App\Http\ViewComposers\CourseComposer::compose">compose</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/CourseComposer.php.html#18"><abbr title="App\Http\ViewComposers\CourseComposer::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/CommentComposer.php.html#30"><abbr title="App\Http\ViewComposers\CommentComposer::compose">compose</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/ViewComposers/CommentComposer.php.html#18"><abbr title="App\Http\ViewComposers\CommentComposer::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/CourseViewCount.php.html#16"><abbr title="App\Listeners\CourseViewCount::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/LessonViewCount.php.html#22"><abbr title="App\Listeners\LessonViewCount::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Exercise.php.html#33"><abbr title="App\Models\Exercise::questions">questions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Course.php.html#40"><abbr title="App\Models\Course::parent">parent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Exercise.php.html#23"><abbr title="App\Models\Exercise::lesson">lesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Course.php.html#90"><abbr title="App\Models\Course::goals">goals</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Course.php.html#80"><abbr title="App\Models\Course::ratings">ratings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Course.php.html#70"><abbr title="App\Models\Course::comments">comments</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Course.php.html#60"><abbr title="App\Models\Course::users">users</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Course.php.html#50"><abbr title="App\Models\Course::lessons">lessons</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Course.php.html#30"><abbr title="App\Models\Course::children">children</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/LessonViewCount.php.html#34"><abbr title="App\Listeners\LessonViewCount::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Comment.php.html#31"><abbr title="App\Models\Comment::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Comment.php.html#21"><abbr title="App\Models\Comment::commentable">commentable</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Answer.php.html#23"><abbr title="App\Models\Answer::question">question</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mail/changeAccount.php.html#29"><abbr title="App\Mail\ChangeAccount::build">build</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mail/changeAccount.php.html#19"><abbr title="App\Mail\ChangeAccount::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/LessonViewCount.php.html#62"><abbr title="App\Listeners\LessonViewCount::storeLesson">storeLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/LessonViewCount.php.html#49"><abbr title="App\Listeners\LessonViewCount::isLessonViewed">isLessonViewed</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#53"><abbr title="App\Services\CommentService::reply">reply</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#92"><abbr title="App\Services\CommentService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UserRequest.php.html#14"><abbr title="App\Http\Requests\UserRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/RoleService.php.html#15"><abbr title="App\Services\RoleService::getAll">getAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SliderService.php.html#39"><abbr title="App\Services\SliderService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SliderService.php.html#27"><abbr title="App\Services\SliderService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SliderService.php.html#14"><abbr title="App\Services\SliderService::getAll">getAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SearchService.php.html#52"><abbr title="App\Services\SearchService::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SearchService.php.html#40"><abbr title="App\Services\SearchService::getUserEmail">getUserEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SearchService.php.html#16"><abbr title="App\Services\SearchService::ajaxGetUserEmail">ajaxGetUserEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/RateService.php.html#52"><abbr title="App\Services\RateService::calAvg">calAvg</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SocialProviderService.php.html#27"><abbr title="App\Services\SocialProviderService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/RateService.php.html#30"><abbr title="App\Services\RateService::ratingStar">ratingStar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/RateService.php.html#18"><abbr title="App\Services\RateService::getAll">getAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/QuestionService.php.html#16"><abbr title="App\Services\QuestionService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ProcessService.php.html#49"><abbr title="App\Services\ProcessService::processDetail">processDetail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ProcessService.php.html#25"><abbr title="App\Services\ProcessService::process">process</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ProcessService.php.html#13"><abbr title="App\Services\ProcessService::getCourseLearn">getCourseLearn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SliderService.php.html#51"><abbr title="App\Services\SliderService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SocialProviderService.php.html#39"><abbr title="App\Services\SocialProviderService::createOrGetUser">createOrGetUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#277"><abbr title="App\Services\LessonService::hasLearnLatestLesson">hasLearnLatestLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#29"><abbr title="App\Services\VocabularyService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#154"><abbr title="App\Services\VocabularyService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#136"><abbr title="App\Services\VocabularyService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#120"><abbr title="App\Services\VocabularyService::parseVocabularyContent">parseVocabularyContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#95"><abbr title="App\Services\VocabularyService::getVocabularyContent">getVocabularyContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#57"><abbr title="App\Services\VocabularyService::importFile">importFile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#41"><abbr title="App\Services\VocabularyService::filterVoca">filterVoca</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#19"><abbr title="App\Services\VocabularyService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/StatisticalService.php.html#16"><abbr title="App\Services\StastiticalService::getData">getData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/UserService.php.html#69"><abbr title="App\Services\UserService::createUser">createUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/UserService.php.html#57"><abbr title="App\Services\UserService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/UserService.php.html#44"><abbr title="App\Services\UserService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/UserService.php.html#30"><abbr title="App\Services\UserService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/UserService.php.html#17"><abbr title="App\Services\UserService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SystemService.php.html#28"><abbr title="App\Services\SystemService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/SystemService.php.html#15"><abbr title="App\Services\SystemService::get">get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LevelService.php.html#14"><abbr title="App\Services\LevelService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#260"><abbr title="App\Services\LessonService::upgradeVip">upgradeVip</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#110"><abbr title="App\Services\CommentService::editComment">editComment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#103"><abbr title="App\Services\CourseService::getPopularCourses">getPopularCourses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#196"><abbr title="App\Services\CourseService::historyLesson">historyLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#181"><abbr title="App\Services\CourseService::countViewCourse">countViewCourse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#169"><abbr title="App\Services\CourseService::courseSearch">courseSearch</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#153"><abbr title="App\Services\CourseService::ajaxCourseSearch">ajaxCourseSearch</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#136"><abbr title="App\Services\CourseService::getHighestRatingCourses">getHighestRatingCourses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#120"><abbr title="App\Services\CourseService::getNewCourses">getNewCourses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#88"><abbr title="App\Services\CourseService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ExerciseService.php.html#16"><abbr title="App\Services\ExerciseService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#76"><abbr title="App\Services\CourseService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#63"><abbr title="App\Services\CourseService::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#51"><abbr title="App\Services\CourseService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#39"><abbr title="App\Services\CourseService::getCourse">getCourse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#29"><abbr title="App\Services\CourseService::getChildren">getChildren</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#19"><abbr title="App\Services\CourseService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#225"><abbr title="App\Services\CourseService::checkAccount">checkAccount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ExerciseService.php.html#29"><abbr title="App\Services\ExerciseService::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#248"><abbr title="App\Services\LessonService::countViewLesson">countViewLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#60"><abbr title="App\Services\LessonService::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#154"><abbr title="App\Services\LessonService::resutlLesson">resutlLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#139"><abbr title="App\Services\LessonService::recentLesson">recentLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#113"><abbr title="App\Services\LessonService::getLesson">getLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#101"><abbr title="App\Services\LessonService::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#88"><abbr title="App\Services\LessonService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#73"><abbr title="App\Services\LessonService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#46"><abbr title="App\Services\LessonService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ExerciseService.php.html#46"><abbr title="App\Services\ExerciseService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#34"><abbr title="App\Services\LessonService::allLesson">allLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#24"><abbr title="App\Services\LessonService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ImageService.php.html#46"><abbr title="App\Services\ImageService::uploadImageSlider">uploadImageSlider</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ImageService.php.html#31"><abbr title="App\Services\ImageService::uploadImageLesson">uploadImageLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ImageService.php.html#16"><abbr title="App\Services\ImageService::uploadImage">uploadImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ExerciseService.php.html#109"><abbr title="App\Services\ExerciseService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ExerciseService.php.html#86"><abbr title="App\Services\ExerciseService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UserRequest.php.html#24"><abbr title="App\Http\Requests\UserRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateUserRequest.php.html#25"><abbr title="App\Http\Requests\UpdateUserRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Events/ViewLesson.php.html#32"><abbr title="App\Events\ViewLesson::broadcastOn">broadcastOn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#70"><abbr title="App\Http\Controllers\Admin\SliderController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SystemController.php.html#50"><abbr title="App\Http\Controllers\Admin\SystemController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SystemController.php.html#37"><abbr title="App\Http\Controllers\Admin\SystemController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SystemController.php.html#27"><abbr title="App\Http\Controllers\Admin\SystemController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#117"><abbr title="App\Http\Controllers\Admin\SliderController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#100"><abbr title="App\Http\Controllers\Admin\SliderController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#87"><abbr title="App\Http\Controllers\Admin\SliderController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#58"><abbr title="App\Http\Controllers\Admin\SliderController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#37"><abbr title="App\Http\Controllers\Admin\UserController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#47"><abbr title="App\Http\Controllers\Admin\SliderController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#36"><abbr title="App\Http\Controllers\Admin\SliderController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SearchController.php.html#38"><abbr title="App\Http\Controllers\Admin\SearchController::deleteUser">deleteUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SearchController.php.html#18"><abbr title="App\Http\Controllers\Admin\SearchController::getUserEmail">getUserEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/QuestionController.php.html#18"><abbr title="App\Http\Controllers\Admin\QuestionController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LevelController.php.html#16"><abbr title="App\Http\Controllers\Admin\LevelController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SystemController.php.html#63"><abbr title="App\Http\Controllers\Admin\SystemController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#48"><abbr title="App\Http\Controllers\Admin\UserController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#117"><abbr title="App\Http\Controllers\Admin\LessonController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#59"><abbr title="App\Http\Controllers\Admin\VocabularyController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/HomeController.php.html#14"><abbr title="App\Http\Controllers\HomeController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#123"><abbr title="App\Http\Controllers\Admin\VocabularyController::getListVocabularies">getListVocabularies</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#111"><abbr title="App\Http\Controllers\Admin\VocabularyController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#98"><abbr title="App\Http\Controllers\Admin\VocabularyController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#85"><abbr title="App\Http\Controllers\Admin\VocabularyController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#72"><abbr title="App\Http\Controllers\Admin\VocabularyController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#42"><abbr title="App\Http\Controllers\Admin\VocabularyController::importFile">importFile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#59"><abbr title="App\Http\Controllers\Admin\UserController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#30"><abbr title="App\Http\Controllers\Admin\VocabularyController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#19"><abbr title="App\Http\Controllers\Admin\VocabularyController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#130"><abbr title="App\Http\Controllers\Admin\UserController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#113"><abbr title="App\Http\Controllers\Admin\UserController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#100"><abbr title="App\Http\Controllers\Admin\UserController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#88"><abbr title="App\Http\Controllers\Admin\UserController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#71"><abbr title="App\Http\Controllers\Admin\UserController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#130"><abbr title="App\Http\Controllers\Admin\LessonController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#100"><abbr title="App\Http\Controllers\Admin\LessonController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#32"><abbr title="App\Http\Controllers\User\AuthController::showLoginForm">showLoginForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/RegisterController.php.html#50"><abbr title="App\Http\Controllers\Admin\Auth\RegisterController::validator">validator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CommentController.php.html#42"><abbr title="App\Http\Controllers\Admin\CommentController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CommentController.php.html#30"><abbr title="App\Http\Controllers\Admin\CommentController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CommentController.php.html#17"><abbr title="App\Http\Controllers\Admin\CommentController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/VerificationController.php.html#35"><abbr title="App\Http\Controllers\Admin\Auth\VerificationController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/ResetPasswordController.php.html#35"><abbr title="App\Http\Controllers\Admin\Auth\ResetPasswordController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/RegisterController.php.html#66"><abbr title="App\Http\Controllers\Admin\Auth\RegisterController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/RegisterController.php.html#38"><abbr title="App\Http\Controllers\Admin\Auth\RegisterController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CourseController.php.html#29"><abbr title="App\Http\Controllers\Admin\CourseController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/LoginController.php.html#60"><abbr title="App\Http\Controllers\Admin\Auth\LoginController::showLoginForm">showLoginForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/LoginController.php.html#50"><abbr title="App\Http\Controllers\Admin\Auth\LoginController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/LoginController.php.html#38"><abbr title="App\Http\Controllers\Admin\Auth\LoginController::logout">logout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/ForgotPasswordController.php.html#28"><abbr title="App\Http\Controllers\Admin\Auth\ForgotPasswordController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exceptions/Handler.php.html#49"><abbr title="App\Exceptions\Handler::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exceptions/Handler.php.html#36"><abbr title="App\Exceptions\Handler::report">report</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CourseController.php.html#18"><abbr title="App\Http\Controllers\Admin\CourseController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CourseController.php.html#41"><abbr title="App\Http\Controllers\Admin\CourseController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#86"><abbr title="App\Http\Controllers\Admin\LessonController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#95"><abbr title="App\Http\Controllers\Admin\ExerciseController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#71"><abbr title="App\Http\Controllers\Admin\LessonController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#59"><abbr title="App\Http\Controllers\Admin\LessonController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#48"><abbr title="App\Http\Controllers\Admin\LessonController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#37"><abbr title="App\Http\Controllers\Admin\LessonController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/HomeController.php.html#16"><abbr title="App\Http\Controllers\Admin\HomeController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#108"><abbr title="App\Http\Controllers\Admin\ExerciseController::getListExercises">getListExercises</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#81"><abbr title="App\Http\Controllers\Admin\ExerciseController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CourseController.php.html#54"><abbr title="App\Http\Controllers\Admin\CourseController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#68"><abbr title="App\Http\Controllers\Admin\ExerciseController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#54"><abbr title="App\Http\Controllers\Admin\ExerciseController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#42"><abbr title="App\Http\Controllers\Admin\ExerciseController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#31"><abbr title="App\Http\Controllers\Admin\ExerciseController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#18"><abbr title="App\Http\Controllers\Admin\ExerciseController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CourseController.php.html#81"><abbr title="App\Http\Controllers\Admin\CourseController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/CourseController.php.html#68"><abbr title="App\Http\Controllers\Admin\CourseController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/HomeController.php.html#24"><abbr title="App\Http\Controllers\HomeController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#44"><abbr title="App\Http\Controllers\User\AuthController::redirectToProvider">redirectToProvider</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateUserRequest.php.html#15"><abbr title="App\Http\Requests\UpdateUserRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateCourseRequest.php.html#14"><abbr title="App\Http\Requests\CreateCourseRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateVocabularyRequest.php.html#27"><abbr title="App\Http\Requests\CreateVocabularyRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateVocabularyRequest.php.html#17"><abbr title="App\Http\Requests\CreateVocabularyRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateExerciseRequest.php.html#24"><abbr title="App\Http\Requests\CreateExerciseRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateExerciseRequest.php.html#14"><abbr title="App\Http\Requests\CreateExerciseRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateCourseRequest.php.html#38"><abbr title="App\Http\Requests\CreateCourseRequest::messages">messages</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateCourseRequest.php.html#24"><abbr title="App\Http\Requests\CreateCourseRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/UserLogin.php.html#18"><abbr title="App\Http\Middleware\UserLogin::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateVocabularyRequest.php.html#55"><abbr title="App\Http\Requests\CreateVocabularyRequest::withValidator">withValidator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="App\Http\Middleware\RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/LessonDetail.php.html#18"><abbr title="App\Http\Middleware\LessonDetail::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Filter.php.html#81"><abbr title="App\Http\Middleware\Filter::storeLessons">storeLessons</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Filter.php.html#62"><abbr title="App\Http\Middleware\Filter::cleanExpiredViews">cleanExpiredViews</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Filter.php.html#50"><abbr title="App\Http\Middleware\Filter::getViewedLessons">getViewedLessons</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Filter.php.html#33"><abbr title="App\Http\Middleware\Filter::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CreateVocabularyRequest.php.html#40"><abbr title="App\Http\Requests\CreateVocabularyRequest::messages">messages</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/ImportVocabularyRequest.php.html#14"><abbr title="App\Http\Requests\ImportVocabularyRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#16"><abbr title="App\Http\Middleware\Authenticate::redirectTo">redirectTo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateAuthUserPassRequest.php.html#42"><abbr title="App\Http\Requests\UpdateAuthUserPassRequest::withValidator">withValidator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateSystemRequest.php.html#24"><abbr title="App\Http\Requests\UpdateSystemRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateSystemRequest.php.html#14"><abbr title="App\Http\Requests\UpdateSystemRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateLessonRequest.php.html#24"><abbr title="App\Http\Requests\UpdateLessonRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateLessonRequest.php.html#14"><abbr title="App\Http\Requests\UpdateLessonRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateAuthUserRequest.php.html#25"><abbr title="App\Http\Requests\UpdateAuthUserRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateAuthUserRequest.php.html#15"><abbr title="App\Http\Requests\UpdateAuthUserRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateAuthUserPassRequest.php.html#26"><abbr title="App\Http\Requests\UpdateAuthUserPassRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/ImportVocabularyRequest.php.html#24"><abbr title="App\Http\Requests\ImportVocabularyRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateAuthUserPassRequest.php.html#16"><abbr title="App\Http\Requests\UpdateAuthUserPassRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/SliderRequest.php.html#24"><abbr title="App\Http\Requests\SliderRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/SliderRequest.php.html#14"><abbr title="App\Http\Requests\SliderRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/RegisterUserRequest.php.html#25"><abbr title="App\Http\Requests\RegisterUserRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/RegisterUserRequest.php.html#15"><abbr title="App\Http\Requests\RegisterUserRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/LessonRequest.php.html#24"><abbr title="App\Http\Requests\LessonRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/LessonRequest.php.html#14"><abbr title="App\Http\Requests\LessonRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Filter.php.html#20"><abbr title="App\Http\Middleware\Filter::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/AdminLogin.php.html#19"><abbr title="App\Http\Middleware\AdminLogin::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#56"><abbr title="App\Http\Controllers\User\AuthController::handleProviderCallback">handleProviderCallback</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/CourseController.php.html#63"><abbr title="App\Http\Controllers\User\CourseController::elementComment">elementComment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#52"><abbr title="App\Http\Controllers\User\HomeController::getListCourses">getListCourses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#36"><abbr title="App\Http\Controllers\User\HomeController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#24"><abbr title="App\Http\Controllers\User\HomeController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/CourseController.php.html#102"><abbr title="App\Http\Controllers\User\CourseController::unfinished">unfinished</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/CourseController.php.html#91"><abbr title="App\Http\Controllers\User\CourseController::checkAccount">checkAccount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/CourseController.php.html#78"><abbr title="App\Http\Controllers\User\CourseController::elementReply">elementReply</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/CourseController.php.html#45"><abbr title="App\Http\Controllers\User\CourseController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#79"><abbr title="App\Http\Controllers\User\HomeController::listLevel">listLevel</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/CourseController.php.html#33"><abbr title="App\Http\Controllers\User\CourseController::showCourses">showCourses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/CourseController.php.html#20"><abbr title="App\Http\Controllers\User\CourseController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#111"><abbr title="App\Http\Controllers\User\AuthController::activation">activation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#98"><abbr title="App\Http\Controllers\User\AuthController::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#86"><abbr title="App\Http\Controllers\User\AuthController::showRegisterForm">showRegisterForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#74"><abbr title="App\Http\Controllers\User\AuthController::logout">logout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#69"><abbr title="App\Http\Controllers\User\HomeController::showAboutUs">showAboutUs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#91"><abbr title="App\Http\Controllers\User\HomeController::showLevel">showLevel</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/RatingController.php.html#31"><abbr title="App\Http\Controllers\User\RatingController::getRating">getRating</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/ProfileController.php.html#29"><abbr title="App\Http\Controllers\User\ProfileController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/RatingController.php.html#19"><abbr title="App\Http\Controllers\User\RatingController::showRating">showRating</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/ProfileController.php.html#90"><abbr title="App\Http\Controllers\User\ProfileController::updatePass">updatePass</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/ProfileController.php.html#71"><abbr title="App\Http\Controllers\User\ProfileController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/ProfileController.php.html#59"><abbr title="App\Http\Controllers\User\ProfileController::changePass">changePass</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/ProfileController.php.html#49"><abbr title="App\Http\Controllers\User\ProfileController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/ProfileController.php.html#39"><abbr title="App\Http\Controllers\User\ProfileController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/LessonController.php.html#73"><abbr title="App\Http\Controllers\User\LessonController::upgradeVip">upgradeVip</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#101"><abbr title="App\Http\Controllers\User\HomeController::showContact">showContact</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/LessonController.php.html#60"><abbr title="App\Http\Controllers\User\LessonController::deleteComment">deleteComment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/LessonController.php.html#48"><abbr title="App\Http\Controllers\User\LessonController::subscribeMember">subscribeMember</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/LessonController.php.html#37"><abbr title="App\Http\Controllers\User\LessonController::resutlLesson">resutlLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/LessonController.php.html#22"><abbr title="App\Http\Controllers\User\LessonController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#135"><abbr title="App\Http\Controllers\User\HomeController::processDetail">processDetail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#123"><abbr title="App\Http\Controllers\User\HomeController::process">process</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#111"><abbr title="App\Http\Controllers\User\HomeController::processLearn">processLearn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#171"><abbr title="App\Services\VocabularyService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Requests/UserRequest.php.html#24"><abbr title="App\Http\Requests\UserRequest::rules">rules</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Http/Middleware/LessonDetail.php.html#18"><abbr title="App\Http\Middleware\LessonDetail::handle">handle</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Services/ExerciseService.php.html#46"><abbr title="App\Services\ExerciseService::store">store</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Services/SocialProviderService.php.html#39"><abbr title="App\Services\SocialProviderService::createOrGetUser">createOrGetUser</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#154"><abbr title="App\Services\LessonService::resutlLesson">resutlLesson</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Services/ProcessService.php.html#49"><abbr title="App\Services\ProcessService::processDetail">processDetail</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#196"><abbr title="App\Services\CourseService::historyLesson">historyLesson</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Middleware/AdminLogin.php.html#19"><abbr title="App\Http\Middleware\AdminLogin::handle">handle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/ActivationService.php.html#47"><abbr title="App\Services\ActivationService::activation">activation</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#277"><abbr title="App\Services\LessonService::hasLearnLatestLesson">hasLearnLatestLesson</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Requests/UpdateAuthUserPassRequest.php.html#42"><abbr title="App\Http\Requests\UpdateAuthUserPassRequest::withValidator">withValidator</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Middleware/UserLogin.php.html#18"><abbr title="App\Http\Middleware\UserLogin::handle">handle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/ProcessService.php.html#25"><abbr title="App\Services\ProcessService::process">process</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#57"><abbr title="App\Services\VocabularyService::importFile">importFile</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/CourseService.php.html#88"><abbr title="App\Services\CourseService::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#110"><abbr title="App\Services\CommentService::editComment">editComment</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#92"><abbr title="App\Services\CommentService::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/Auth/LoginController.php.html#38"><abbr title="App\Http\Controllers\Admin\Auth\LoginController::logout">logout</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#73"><abbr title="App\Services\LessonService::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/ExerciseService.php.html#86"><abbr title="App\Services\ExerciseService::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/LessonService.php.html#260"><abbr title="App\Services\LessonService::upgradeVip">upgradeVip</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/SearchService.php.html#16"><abbr title="App\Services\SearchService::ajaxGetUserEmail">ajaxGetUserEmail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/StatisticalService.php.html#16"><abbr title="App\Services\StastiticalService::getData">getData</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/UserService.php.html#69"><abbr title="App\Services\UserService::createUser">createUser</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/CommentService.php.html#75"><abbr title="App\Services\CommentService::deleteComment">deleteComment</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Listeners/LessonViewCount.php.html#34"><abbr title="App\Listeners\LessonViewCount::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/ActivationService.php.html#21"><abbr title="App\Services\ActivationService::register">register</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#123"><abbr title="App\Http\Controllers\Admin\VocabularyController::getListVocabularies">getListVocabularies</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/LessonController.php.html#100"><abbr title="App\Http\Controllers\Admin\LessonController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SearchController.php.html#18"><abbr title="App\Http\Controllers\Admin\SearchController::getUserEmail">getUserEmail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#70"><abbr title="App\Http\Controllers\Admin\SliderController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/SliderController.php.html#100"><abbr title="App\Http\Controllers\Admin\SliderController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#71"><abbr title="App\Http\Controllers\Admin\UserController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/UserController.php.html#113"><abbr title="App\Http\Controllers\Admin\UserController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/VocabularyController.php.html#42"><abbr title="App\Http\Controllers\Admin\VocabularyController::importFile">importFile</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#56"><abbr title="App\Http\Controllers\User\AuthController::handleProviderCallback">handleProviderCallback</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Models/Lesson.php.html#51"><abbr title="App\Models\Lesson::getRoleNameAttribute">getRoleNameAttribute</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/User/AuthController.php.html#74"><abbr title="App\Http\Controllers\User\AuthController::logout">logout</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/User/HomeController.php.html#52"><abbr title="App\Http\Controllers\User\HomeController::getListCourses">getListCourses</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/User/ProfileController.php.html#71"><abbr title="App\Http\Controllers\User\ProfileController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#16"><abbr title="App\Http\Middleware\Authenticate::redirectTo">redirectTo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/Filter.php.html#33"><abbr title="App\Http\Middleware\Filter::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Requests/CreateVocabularyRequest.php.html#55"><abbr title="App\Http\Requests\CreateVocabularyRequest::withValidator">withValidator</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Admin/ExerciseController.php.html#108"><abbr title="App\Http\Controllers\Admin\ExerciseController::getListExercises">getListExercises</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/VocabularyService.php.html#95"><abbr title="App\Services\VocabularyService::getVocabularyContent">getVocabularyContent</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.2.17-1+ubuntu16.04.1+deb.sury.org+3</a> with <a href="https://xdebug.org/">Xdebug 2.7.1</a> and <a href="https://phpunit.de/">PHPUnit 7.5.2</a> at Thu May 9 2:24:09 UTC 2019.</small>
+    </p>
+   </footer>
+  </div>
+  <script src=".js/jquery.min.js" type="text/javascript"></script>
+  <script src=".js/d3.min.js" type="text/javascript"></script>
+  <script src=".js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([90,0,0,0,0,0,0,0,0,0,0,15], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([294,0,0,0,0,0,0,0,0,0,0,13], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,2,"<a href=\"Console\/Kernel.php.html#8\">App\\Console\\Kernel<\/a>"],[0,2,"<a href=\"Events\/ViewLesson.php.html#13\">App\\Events\\ViewLesson<\/a>"],[0,2,"<a href=\"Exceptions\/Handler.php.html#8\">App\\Exceptions\\Handler<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/ForgotPasswordController.php.html#8\">App\\Http\\Controllers\\Admin\\Auth\\ForgotPasswordController<\/a>"],[0,4,"<a href=\"Http\/Controllers\/Admin\/Auth\/LoginController.php.html#9\">App\\Http\\Controllers\\Admin\\Auth\\LoginController<\/a>"],[0,3,"<a href=\"Http\/Controllers\/Admin\/Auth\/RegisterController.php.html#11\">App\\Http\\Controllers\\Admin\\Auth\\RegisterController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/ResetPasswordController.php.html#8\">App\\Http\\Controllers\\Admin\\Auth\\ResetPasswordController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/VerificationController.php.html#8\">App\\Http\\Controllers\\Admin\\Auth\\VerificationController<\/a>"],[0,3,"<a href=\"Http\/Controllers\/Admin\/CommentController.php.html#10\">App\\Http\\Controllers\\Admin\\CommentController<\/a>"],[0,6,"<a href=\"Http\/Controllers\/Admin\/CourseController.php.html#11\">App\\Http\\Controllers\\Admin\\CourseController<\/a>"],[0,9,"<a href=\"Http\/Controllers\/Admin\/ExerciseController.php.html#11\">App\\Http\\Controllers\\Admin\\ExerciseController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/HomeController.php.html#9\">App\\Http\\Controllers\\Admin\\HomeController<\/a>"],[0,9,"<a href=\"Http\/Controllers\/Admin\/LessonController.php.html#13\">App\\Http\\Controllers\\Admin\\LessonController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/LevelController.php.html#9\">App\\Http\\Controllers\\Admin\\LevelController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/QuestionController.php.html#9\">App\\Http\\Controllers\\Admin\\QuestionController<\/a>"],[0,3,"<a href=\"Http\/Controllers\/Admin\/SearchController.php.html#9\">App\\Http\\Controllers\\Admin\\SearchController<\/a>"],[0,9,"<a href=\"Http\/Controllers\/Admin\/SliderController.php.html#12\">App\\Http\\Controllers\\Admin\\SliderController<\/a>"],[0,4,"<a href=\"Http\/Controllers\/Admin\/SystemController.php.html#11\">App\\Http\\Controllers\\Admin\\SystemController<\/a>"],[0,10,"<a href=\"Http\/Controllers\/Admin\/UserController.php.html#13\">App\\Http\\Controllers\\Admin\\UserController<\/a>"],[0,11,"<a href=\"Http\/Controllers\/Admin\/VocabularyController.php.html#12\">App\\Http\\Controllers\\Admin\\VocabularyController<\/a>"],[100,0,"<a href=\"Http\/Controllers\/Controller.php.html#10\">App\\Http\\Controllers\\Controller<\/a>"],[0,2,"<a href=\"Http\/Controllers\/HomeController.php.html#7\">App\\Http\\Controllers\\HomeController<\/a>"],[0,9,"<a href=\"Http\/Controllers\/User\/AuthController.php.html#16\">App\\Http\\Controllers\\User\\AuthController<\/a>"],[0,7,"<a href=\"Http\/Controllers\/User\/CourseController.php.html#13\">App\\Http\\Controllers\\User\\CourseController<\/a>"],[0,11,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#13\">App\\Http\\Controllers\\User\\HomeController<\/a>"],[0,5,"<a href=\"Http\/Controllers\/User\/LessonController.php.html#13\">App\\Http\\Controllers\\User\\LessonController<\/a>"],[0,7,"<a href=\"Http\/Controllers\/User\/ProfileController.php.html#13\">App\\Http\\Controllers\\User\\ProfileController<\/a>"],[0,2,"<a href=\"Http\/Controllers\/User\/RatingController.php.html#10\">App\\Http\\Controllers\\User\\RatingController<\/a>"],[100,0,"<a href=\"Http\/Kernel.php.html#7\">App\\Http\\Kernel<\/a>"],[0,3,"<a href=\"Http\/Middleware\/AdminLogin.php.html#9\">App\\Http\\Middleware\\AdminLogin<\/a>"],[0,2,"<a href=\"Http\/Middleware\/Authenticate.php.html#7\">App\\Http\\Middleware\\Authenticate<\/a>"],[100,0,"<a href=\"Http\/Middleware\/CheckForMaintenanceMode.php.html#7\">App\\Http\\Middleware\\CheckForMaintenanceMode<\/a>"],[100,0,"<a href=\"Http\/Middleware\/EncryptCookies.php.html#7\">App\\Http\\Middleware\\EncryptCookies<\/a>"],[0,6,"<a href=\"Http\/Middleware\/Filter.php.html#9\">App\\Http\\Middleware\\Filter<\/a>"],[0,5,"<a href=\"Http\/Middleware\/LessonDetail.php.html#8\">App\\Http\\Middleware\\LessonDetail<\/a>"],[0,1,"<a href=\"Http\/Middleware\/RedirectIfAuthenticated.php.html#8\">App\\Http\\Middleware\\RedirectIfAuthenticated<\/a>"],[100,0,"<a href=\"Http\/Middleware\/TrimStrings.php.html#7\">App\\Http\\Middleware\\TrimStrings<\/a>"],[100,0,"<a href=\"Http\/Middleware\/TrustProxies.php.html#8\">App\\Http\\Middleware\\TrustProxies<\/a>"],[0,3,"<a href=\"Http\/Middleware\/UserLogin.php.html#8\">App\\Http\\Middleware\\UserLogin<\/a>"],[100,0,"<a href=\"Http\/Middleware\/VerifyCsrfToken.php.html#7\">App\\Http\\Middleware\\VerifyCsrfToken<\/a>"],[0,3,"<a href=\"Http\/Requests\/CreateCourseRequest.php.html#7\">App\\Http\\Requests\\CreateCourseRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/CreateExerciseRequest.php.html#7\">App\\Http\\Requests\\CreateExerciseRequest<\/a>"],[0,5,"<a href=\"Http\/Requests\/CreateVocabularyRequest.php.html#10\">App\\Http\\Requests\\CreateVocabularyRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/ImportVocabularyRequest.php.html#7\">App\\Http\\Requests\\ImportVocabularyRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/LessonRequest.php.html#7\">App\\Http\\Requests\\LessonRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/RegisterUserRequest.php.html#8\">App\\Http\\Requests\\RegisterUserRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/SliderRequest.php.html#7\">App\\Http\\Requests\\SliderRequest<\/a>"],[0,5,"<a href=\"Http\/Requests\/UpdateAuthUserPassRequest.php.html#9\">App\\Http\\Requests\\UpdateAuthUserPassRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/UpdateAuthUserRequest.php.html#8\">App\\Http\\Requests\\UpdateAuthUserRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/UpdateLessonRequest.php.html#7\">App\\Http\\Requests\\UpdateLessonRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/UpdateSystemRequest.php.html#7\">App\\Http\\Requests\\UpdateSystemRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/UpdateUserRequest.php.html#8\">App\\Http\\Requests\\UpdateUserRequest<\/a>"],[0,7,"<a href=\"Http\/Requests\/UserRequest.php.html#7\">App\\Http\\Requests\\UserRequest<\/a>"],[0,2,"<a href=\"Http\/ViewComposers\/CommentComposer.php.html#8\">App\\Http\\ViewComposers\\CommentComposer<\/a>"],[0,2,"<a href=\"Http\/ViewComposers\/CourseComposer.php.html#8\">App\\Http\\ViewComposers\\CourseComposer<\/a>"],[0,2,"<a href=\"Http\/ViewComposers\/LessonComposer.php.html#7\">App\\Http\\ViewComposers\\LessonComposer<\/a>"],[0,2,"<a href=\"Http\/ViewComposers\/LevelComposer.php.html#8\">App\\Http\\ViewComposers\\LevelComposer<\/a>"],[0,2,"<a href=\"Http\/ViewComposers\/RoleComposer.php.html#8\">App\\Http\\ViewComposers\\RoleComposer<\/a>"],[0,2,"<a href=\"Http\/ViewComposers\/SystemComposer.php.html#8\">App\\Http\\ViewComposers\\SystemComposer<\/a>"],[0,2,"<a href=\"Http\/ViewComposers\/VocabularyComposer.php.html#8\">App\\Http\\ViewComposers\\VocabularyComposer<\/a>"],[0,2,"<a href=\"Listeners\/CourseViewCount.php.html#9\">App\\Listeners\\CourseViewCount<\/a>"],[0,5,"<a href=\"Listeners\/LessonViewCount.php.html#11\">App\\Listeners\\LessonViewCount<\/a>"],[0,2,"<a href=\"Mail\/changeAccount.php.html#10\">App\\Mail\\ChangeAccount<\/a>"],[0,1,"<a href=\"Models\/Answer.php.html#7\">App\\Models\\Answer<\/a>"],[0,2,"<a href=\"Models\/Comment.php.html#8\">App\\Models\\Comment<\/a>"],[0,7,"<a href=\"Models\/Course.php.html#9\">App\\Models\\Course<\/a>"],[0,3,"<a href=\"Models\/Exercise.php.html#7\">App\\Models\\Exercise<\/a>"],[0,1,"<a href=\"Models\/Goal.php.html#7\">App\\Models\\Goal<\/a>"],[0,2,"<a href=\"Models\/Goalable.php.html#7\">App\\Models\\Goalable<\/a>"],[0,9,"<a href=\"Models\/Lesson.php.html#7\">App\\Models\\Lesson<\/a>"],[0,1,"<a href=\"Models\/Level.php.html#7\">App\\Models\\Level<\/a>"],[0,2,"<a href=\"Models\/Question.php.html#7\">App\\Models\\Question<\/a>"],[0,2,"<a href=\"Models\/Rating.php.html#6\">App\\Models\\Rating<\/a>"],[0,1,"<a href=\"Models\/Role.php.html#7\">App\\Models\\Role<\/a>"],[100,0,"<a href=\"Models\/Slider.php.html#7\">App\\Models\\Slider<\/a>"],[0,1,"<a href=\"Models\/SocialProvider.php.html#6\">App\\Models\\SocialProvider<\/a>"],[100,0,"<a href=\"Models\/System.php.html#7\">App\\Models\\System<\/a>"],[0,8,"<a href=\"Models\/User.php.html#9\">App\\Models\\User<\/a>"],[0,1,"<a href=\"Models\/UserProfile.php.html#7\">App\\Models\\UserProfile<\/a>"],[0,1,"<a href=\"Models\/Vocabulary.php.html#7\">App\\Models\\Vocabulary<\/a>"],[0,1,"<a href=\"Observers\/UserObserver.php.html#7\">App\\Observers\\UserObserver<\/a>"],[100,3,"<a href=\"Providers\/AppServiceProvider.php.html#11\">App\\Providers\\AppServiceProvider<\/a>"],[100,1,"<a href=\"Providers\/AuthServiceProvider.php.html#8\">App\\Providers\\AuthServiceProvider<\/a>"],[0,1,"<a href=\"Providers\/BroadcastServiceProvider.php.html#8\">App\\Providers\\BroadcastServiceProvider<\/a>"],[100,1,"<a href=\"Providers\/EventServiceProvider.php.html#10\">App\\Providers\\EventServiceProvider<\/a>"],[100,4,"<a href=\"Providers\/RouteServiceProvider.php.html#8\">App\\Providers\\RouteServiceProvider<\/a>"],[100,2,"<a href=\"Providers\/ViewServiceProvider.php.html#15\">App\\Providers\\ViewServiceProvider<\/a>"],[0,5,"<a href=\"Services\/ActivationService.php.html#12\">App\\Services\\ActivationService<\/a>"],[0,9,"<a href=\"Services\/CommentService.php.html#6\">App\\Services\\CommentService<\/a>"],[0,18,"<a href=\"Services\/CourseService.php.html#12\">App\\Services\\CourseService<\/a>"],[0,10,"<a href=\"Services\/ExerciseService.php.html#9\">App\\Services\\ExerciseService<\/a>"],[0,3,"<a href=\"Services\/ImageService.php.html#7\">App\\Services\\ImageService<\/a>"],[0,20,"<a href=\"Services\/LessonService.php.html#17\">App\\Services\\LessonService<\/a>"],[0,1,"<a href=\"Services\/LevelService.php.html#7\">App\\Services\\LevelService<\/a>"],[0,8,"<a href=\"Services\/ProcessService.php.html#6\">App\\Services\\ProcessService<\/a>"],[0,1,"<a href=\"Services\/QuestionService.php.html#7\">App\\Services\\QuestionService<\/a>"],[0,3,"<a href=\"Services\/RateService.php.html#9\">App\\Services\\RateService<\/a>"],[0,1,"<a href=\"Services\/RoleService.php.html#8\">App\\Services\\RoleService<\/a>"],[0,4,"<a href=\"Services\/SearchService.php.html#7\">App\\Services\\SearchService<\/a>"],[0,4,"<a href=\"Services\/SliderService.php.html#7\">App\\Services\\SliderService<\/a>"],[0,6,"<a href=\"Services\/SocialProviderService.php.html#11\">App\\Services\\SocialProviderService<\/a>"],[0,2,"<a href=\"Services\/StatisticalService.php.html#9\">App\\Services\\StastiticalService<\/a>"],[0,2,"<a href=\"Services\/SystemService.php.html#8\">App\\Services\\SystemService<\/a>"],[0,6,"<a href=\"Services\/UserService.php.html#10\">App\\Services\\UserService<\/a>"],[0,12,"<a href=\"Services\/VocabularyService.php.html#10\">App\\Services\\VocabularyService<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"Console\/Kernel.php.html#26\">App\\Console\\Kernel::schedule<\/a>"],[100,1,"<a href=\"Console\/Kernel.php.html#38\">App\\Console\\Kernel::commands<\/a>"],[0,1,"<a href=\"Events\/ViewLesson.php.html#22\">App\\Events\\ViewLesson::__construct<\/a>"],[0,1,"<a href=\"Events\/ViewLesson.php.html#32\">App\\Events\\ViewLesson::broadcastOn<\/a>"],[0,1,"<a href=\"Exceptions\/Handler.php.html#36\">App\\Exceptions\\Handler::report<\/a>"],[0,1,"<a href=\"Exceptions\/Handler.php.html#49\">App\\Exceptions\\Handler::render<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/ForgotPasswordController.php.html#28\">App\\Http\\Controllers\\Admin\\Auth\\ForgotPasswordController::__construct<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Admin\/Auth\/LoginController.php.html#38\">App\\Http\\Controllers\\Admin\\Auth\\LoginController::logout<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/LoginController.php.html#50\">App\\Http\\Controllers\\Admin\\Auth\\LoginController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/LoginController.php.html#60\">App\\Http\\Controllers\\Admin\\Auth\\LoginController::showLoginForm<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/RegisterController.php.html#38\">App\\Http\\Controllers\\Admin\\Auth\\RegisterController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/RegisterController.php.html#50\">App\\Http\\Controllers\\Admin\\Auth\\RegisterController::validator<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/RegisterController.php.html#66\">App\\Http\\Controllers\\Admin\\Auth\\RegisterController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/ResetPasswordController.php.html#35\">App\\Http\\Controllers\\Admin\\Auth\\ResetPasswordController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/Auth\/VerificationController.php.html#35\">App\\Http\\Controllers\\Admin\\Auth\\VerificationController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/CommentController.php.html#17\">App\\Http\\Controllers\\Admin\\CommentController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/CommentController.php.html#30\">App\\Http\\Controllers\\Admin\\CommentController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/CommentController.php.html#42\">App\\Http\\Controllers\\Admin\\CommentController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/CourseController.php.html#18\">App\\Http\\Controllers\\Admin\\CourseController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/CourseController.php.html#29\">App\\Http\\Controllers\\Admin\\CourseController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/CourseController.php.html#41\">App\\Http\\Controllers\\Admin\\CourseController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/CourseController.php.html#54\">App\\Http\\Controllers\\Admin\\CourseController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/CourseController.php.html#68\">App\\Http\\Controllers\\Admin\\CourseController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/CourseController.php.html#81\">App\\Http\\Controllers\\Admin\\CourseController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/ExerciseController.php.html#18\">App\\Http\\Controllers\\Admin\\ExerciseController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/ExerciseController.php.html#31\">App\\Http\\Controllers\\Admin\\ExerciseController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/ExerciseController.php.html#42\">App\\Http\\Controllers\\Admin\\ExerciseController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/ExerciseController.php.html#54\">App\\Http\\Controllers\\Admin\\ExerciseController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/ExerciseController.php.html#68\">App\\Http\\Controllers\\Admin\\ExerciseController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/ExerciseController.php.html#81\">App\\Http\\Controllers\\Admin\\ExerciseController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/ExerciseController.php.html#95\">App\\Http\\Controllers\\Admin\\ExerciseController::destroy<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Admin\/ExerciseController.php.html#108\">App\\Http\\Controllers\\Admin\\ExerciseController::getListExercises<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/HomeController.php.html#16\">App\\Http\\Controllers\\Admin\\HomeController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/LessonController.php.html#37\">App\\Http\\Controllers\\Admin\\LessonController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/LessonController.php.html#48\">App\\Http\\Controllers\\Admin\\LessonController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/LessonController.php.html#59\">App\\Http\\Controllers\\Admin\\LessonController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/LessonController.php.html#71\">App\\Http\\Controllers\\Admin\\LessonController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/LessonController.php.html#86\">App\\Http\\Controllers\\Admin\\LessonController::edit<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Admin\/LessonController.php.html#100\">App\\Http\\Controllers\\Admin\\LessonController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/LessonController.php.html#117\">App\\Http\\Controllers\\Admin\\LessonController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/LessonController.php.html#130\">App\\Http\\Controllers\\Admin\\LessonController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/LevelController.php.html#16\">App\\Http\\Controllers\\Admin\\LevelController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/QuestionController.php.html#18\">App\\Http\\Controllers\\Admin\\QuestionController::destroy<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Admin\/SearchController.php.html#18\">App\\Http\\Controllers\\Admin\\SearchController::getUserEmail<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/SearchController.php.html#38\">App\\Http\\Controllers\\Admin\\SearchController::deleteUser<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/SliderController.php.html#36\">App\\Http\\Controllers\\Admin\\SliderController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/SliderController.php.html#47\">App\\Http\\Controllers\\Admin\\SliderController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/SliderController.php.html#58\">App\\Http\\Controllers\\Admin\\SliderController::create<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Admin\/SliderController.php.html#70\">App\\Http\\Controllers\\Admin\\SliderController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/SliderController.php.html#87\">App\\Http\\Controllers\\Admin\\SliderController::edit<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Admin\/SliderController.php.html#100\">App\\Http\\Controllers\\Admin\\SliderController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/SliderController.php.html#117\">App\\Http\\Controllers\\Admin\\SliderController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/SystemController.php.html#27\">App\\Http\\Controllers\\Admin\\SystemController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/SystemController.php.html#37\">App\\Http\\Controllers\\Admin\\SystemController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/SystemController.php.html#50\">App\\Http\\Controllers\\Admin\\SystemController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/SystemController.php.html#63\">App\\Http\\Controllers\\Admin\\SystemController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/UserController.php.html#37\">App\\Http\\Controllers\\Admin\\UserController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/UserController.php.html#48\">App\\Http\\Controllers\\Admin\\UserController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/UserController.php.html#59\">App\\Http\\Controllers\\Admin\\UserController::create<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Admin\/UserController.php.html#71\">App\\Http\\Controllers\\Admin\\UserController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/UserController.php.html#88\">App\\Http\\Controllers\\Admin\\UserController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/UserController.php.html#100\">App\\Http\\Controllers\\Admin\\UserController::edit<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Admin\/UserController.php.html#113\">App\\Http\\Controllers\\Admin\\UserController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/UserController.php.html#130\">App\\Http\\Controllers\\Admin\\UserController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/VocabularyController.php.html#19\">App\\Http\\Controllers\\Admin\\VocabularyController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/VocabularyController.php.html#30\">App\\Http\\Controllers\\Admin\\VocabularyController::create<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Admin\/VocabularyController.php.html#42\">App\\Http\\Controllers\\Admin\\VocabularyController::importFile<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/VocabularyController.php.html#59\">App\\Http\\Controllers\\Admin\\VocabularyController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/VocabularyController.php.html#72\">App\\Http\\Controllers\\Admin\\VocabularyController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/VocabularyController.php.html#85\">App\\Http\\Controllers\\Admin\\VocabularyController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/VocabularyController.php.html#98\">App\\Http\\Controllers\\Admin\\VocabularyController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Admin\/VocabularyController.php.html#111\">App\\Http\\Controllers\\Admin\\VocabularyController::show<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Admin\/VocabularyController.php.html#123\">App\\Http\\Controllers\\Admin\\VocabularyController::getListVocabularies<\/a>"],[0,1,"<a href=\"Http\/Controllers\/HomeController.php.html#14\">App\\Http\\Controllers\\HomeController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/HomeController.php.html#24\">App\\Http\\Controllers\\HomeController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/AuthController.php.html#32\">App\\Http\\Controllers\\User\\AuthController::showLoginForm<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/AuthController.php.html#44\">App\\Http\\Controllers\\User\\AuthController::redirectToProvider<\/a>"],[0,2,"<a href=\"Http\/Controllers\/User\/AuthController.php.html#56\">App\\Http\\Controllers\\User\\AuthController::handleProviderCallback<\/a>"],[0,2,"<a href=\"Http\/Controllers\/User\/AuthController.php.html#74\">App\\Http\\Controllers\\User\\AuthController::logout<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/AuthController.php.html#86\">App\\Http\\Controllers\\User\\AuthController::showRegisterForm<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/AuthController.php.html#98\">App\\Http\\Controllers\\User\\AuthController::register<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/AuthController.php.html#111\">App\\Http\\Controllers\\User\\AuthController::activation<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/CourseController.php.html#20\">App\\Http\\Controllers\\User\\CourseController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/CourseController.php.html#33\">App\\Http\\Controllers\\User\\CourseController::showCourses<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/CourseController.php.html#45\">App\\Http\\Controllers\\User\\CourseController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/CourseController.php.html#63\">App\\Http\\Controllers\\User\\CourseController::elementComment<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/CourseController.php.html#78\">App\\Http\\Controllers\\User\\CourseController::elementReply<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/CourseController.php.html#91\">App\\Http\\Controllers\\User\\CourseController::checkAccount<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/CourseController.php.html#102\">App\\Http\\Controllers\\User\\CourseController::unfinished<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#24\">App\\Http\\Controllers\\User\\HomeController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#36\">App\\Http\\Controllers\\User\\HomeController::index<\/a>"],[0,2,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#52\">App\\Http\\Controllers\\User\\HomeController::getListCourses<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#69\">App\\Http\\Controllers\\User\\HomeController::showAboutUs<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#79\">App\\Http\\Controllers\\User\\HomeController::listLevel<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#91\">App\\Http\\Controllers\\User\\HomeController::showLevel<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#101\">App\\Http\\Controllers\\User\\HomeController::showContact<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#111\">App\\Http\\Controllers\\User\\HomeController::processLearn<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#123\">App\\Http\\Controllers\\User\\HomeController::process<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/HomeController.php.html#135\">App\\Http\\Controllers\\User\\HomeController::processDetail<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/LessonController.php.html#22\">App\\Http\\Controllers\\User\\LessonController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/LessonController.php.html#37\">App\\Http\\Controllers\\User\\LessonController::resutlLesson<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/LessonController.php.html#48\">App\\Http\\Controllers\\User\\LessonController::subscribeMember<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/LessonController.php.html#60\">App\\Http\\Controllers\\User\\LessonController::deleteComment<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/LessonController.php.html#73\">App\\Http\\Controllers\\User\\LessonController::upgradeVip<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/ProfileController.php.html#29\">App\\Http\\Controllers\\User\\ProfileController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/ProfileController.php.html#39\">App\\Http\\Controllers\\User\\ProfileController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/ProfileController.php.html#49\">App\\Http\\Controllers\\User\\ProfileController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/ProfileController.php.html#59\">App\\Http\\Controllers\\User\\ProfileController::changePass<\/a>"],[0,2,"<a href=\"Http\/Controllers\/User\/ProfileController.php.html#71\">App\\Http\\Controllers\\User\\ProfileController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/ProfileController.php.html#90\">App\\Http\\Controllers\\User\\ProfileController::updatePass<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/RatingController.php.html#19\">App\\Http\\Controllers\\User\\RatingController::showRating<\/a>"],[0,1,"<a href=\"Http\/Controllers\/User\/RatingController.php.html#31\">App\\Http\\Controllers\\User\\RatingController::getRating<\/a>"],[0,3,"<a href=\"Http\/Middleware\/AdminLogin.php.html#19\">App\\Http\\Middleware\\AdminLogin::handle<\/a>"],[0,2,"<a href=\"Http\/Middleware\/Authenticate.php.html#16\">App\\Http\\Middleware\\Authenticate::redirectTo<\/a>"],[0,1,"<a href=\"Http\/Middleware\/Filter.php.html#20\">App\\Http\\Middleware\\Filter::__construct<\/a>"],[0,2,"<a href=\"Http\/Middleware\/Filter.php.html#33\">App\\Http\\Middleware\\Filter::handle<\/a>"],[0,1,"<a href=\"Http\/Middleware\/Filter.php.html#50\">App\\Http\\Middleware\\Filter::getViewedLessons<\/a>"],[0,1,"<a href=\"Http\/Middleware\/Filter.php.html#62\">App\\Http\\Middleware\\Filter::cleanExpiredViews<\/a>"],[0,1,"<a href=\"Http\/Middleware\/Filter.php.html#81\">App\\Http\\Middleware\\Filter::storeLessons<\/a>"],[0,5,"<a href=\"Http\/Middleware\/LessonDetail.php.html#18\">App\\Http\\Middleware\\LessonDetail::handle<\/a>"],[0,1,"<a href=\"Http\/Middleware\/RedirectIfAuthenticated.php.html#18\">App\\Http\\Middleware\\RedirectIfAuthenticated::handle<\/a>"],[0,3,"<a href=\"Http\/Middleware\/UserLogin.php.html#18\">App\\Http\\Middleware\\UserLogin::handle<\/a>"],[0,1,"<a href=\"Http\/Requests\/CreateCourseRequest.php.html#14\">App\\Http\\Requests\\CreateCourseRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/CreateCourseRequest.php.html#24\">App\\Http\\Requests\\CreateCourseRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/CreateCourseRequest.php.html#38\">App\\Http\\Requests\\CreateCourseRequest::messages<\/a>"],[0,1,"<a href=\"Http\/Requests\/CreateExerciseRequest.php.html#14\">App\\Http\\Requests\\CreateExerciseRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/CreateExerciseRequest.php.html#24\">App\\Http\\Requests\\CreateExerciseRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/CreateVocabularyRequest.php.html#17\">App\\Http\\Requests\\CreateVocabularyRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/CreateVocabularyRequest.php.html#27\">App\\Http\\Requests\\CreateVocabularyRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/CreateVocabularyRequest.php.html#40\">App\\Http\\Requests\\CreateVocabularyRequest::messages<\/a>"],[0,2,"<a href=\"Http\/Requests\/CreateVocabularyRequest.php.html#55\">App\\Http\\Requests\\CreateVocabularyRequest::withValidator<\/a>"],[0,1,"<a href=\"Http\/Requests\/ImportVocabularyRequest.php.html#14\">App\\Http\\Requests\\ImportVocabularyRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/ImportVocabularyRequest.php.html#24\">App\\Http\\Requests\\ImportVocabularyRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/LessonRequest.php.html#14\">App\\Http\\Requests\\LessonRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/LessonRequest.php.html#24\">App\\Http\\Requests\\LessonRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/RegisterUserRequest.php.html#15\">App\\Http\\Requests\\RegisterUserRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/RegisterUserRequest.php.html#25\">App\\Http\\Requests\\RegisterUserRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/SliderRequest.php.html#14\">App\\Http\\Requests\\SliderRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/SliderRequest.php.html#24\">App\\Http\\Requests\\SliderRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateAuthUserPassRequest.php.html#16\">App\\Http\\Requests\\UpdateAuthUserPassRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateAuthUserPassRequest.php.html#26\">App\\Http\\Requests\\UpdateAuthUserPassRequest::rules<\/a>"],[0,3,"<a href=\"Http\/Requests\/UpdateAuthUserPassRequest.php.html#42\">App\\Http\\Requests\\UpdateAuthUserPassRequest::withValidator<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateAuthUserRequest.php.html#15\">App\\Http\\Requests\\UpdateAuthUserRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateAuthUserRequest.php.html#25\">App\\Http\\Requests\\UpdateAuthUserRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateLessonRequest.php.html#14\">App\\Http\\Requests\\UpdateLessonRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateLessonRequest.php.html#24\">App\\Http\\Requests\\UpdateLessonRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateSystemRequest.php.html#14\">App\\Http\\Requests\\UpdateSystemRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateSystemRequest.php.html#24\">App\\Http\\Requests\\UpdateSystemRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateUserRequest.php.html#15\">App\\Http\\Requests\\UpdateUserRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateUserRequest.php.html#25\">App\\Http\\Requests\\UpdateUserRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/UserRequest.php.html#14\">App\\Http\\Requests\\UserRequest::authorize<\/a>"],[0,6,"<a href=\"Http\/Requests\/UserRequest.php.html#24\">App\\Http\\Requests\\UserRequest::rules<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/CommentComposer.php.html#18\">App\\Http\\ViewComposers\\CommentComposer::__construct<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/CommentComposer.php.html#30\">App\\Http\\ViewComposers\\CommentComposer::compose<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/CourseComposer.php.html#18\">App\\Http\\ViewComposers\\CourseComposer::__construct<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/CourseComposer.php.html#30\">App\\Http\\ViewComposers\\CourseComposer::compose<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/LessonComposer.php.html#17\">App\\Http\\ViewComposers\\LessonComposer::__construct<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/LessonComposer.php.html#29\">App\\Http\\ViewComposers\\LessonComposer::compose<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/LevelComposer.php.html#24\">App\\Http\\ViewComposers\\LevelComposer::__construct<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/LevelComposer.php.html#36\">App\\Http\\ViewComposers\\LevelComposer::compose<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/RoleComposer.php.html#24\">App\\Http\\ViewComposers\\RoleComposer::__construct<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/RoleComposer.php.html#36\">App\\Http\\ViewComposers\\RoleComposer::compose<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/SystemComposer.php.html#24\">App\\Http\\ViewComposers\\SystemComposer::__construct<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/SystemComposer.php.html#36\">App\\Http\\ViewComposers\\SystemComposer::compose<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/VocabularyComposer.php.html#24\">App\\Http\\ViewComposers\\VocabularyComposer::__construct<\/a>"],[0,1,"<a href=\"Http\/ViewComposers\/VocabularyComposer.php.html#36\">App\\Http\\ViewComposers\\VocabularyComposer::compose<\/a>"],[0,1,"<a href=\"Listeners\/CourseViewCount.php.html#16\">App\\Listeners\\CourseViewCount::__construct<\/a>"],[0,1,"<a href=\"Listeners\/CourseViewCount.php.html#28\">App\\Listeners\\CourseViewCount::handle<\/a>"],[0,1,"<a href=\"Listeners\/LessonViewCount.php.html#22\">App\\Listeners\\LessonViewCount::__construct<\/a>"],[0,2,"<a href=\"Listeners\/LessonViewCount.php.html#34\">App\\Listeners\\LessonViewCount::handle<\/a>"],[0,1,"<a href=\"Listeners\/LessonViewCount.php.html#49\">App\\Listeners\\LessonViewCount::isLessonViewed<\/a>"],[0,1,"<a href=\"Listeners\/LessonViewCount.php.html#62\">App\\Listeners\\LessonViewCount::storeLesson<\/a>"],[0,1,"<a href=\"Mail\/changeAccount.php.html#19\">App\\Mail\\ChangeAccount::__construct<\/a>"],[0,1,"<a href=\"Mail\/changeAccount.php.html#29\">App\\Mail\\ChangeAccount::build<\/a>"],[0,1,"<a href=\"Models\/Answer.php.html#23\">App\\Models\\Answer::question<\/a>"],[0,1,"<a href=\"Models\/Comment.php.html#21\">App\\Models\\Comment::commentable<\/a>"],[0,1,"<a href=\"Models\/Comment.php.html#31\">App\\Models\\Comment::user<\/a>"],[0,1,"<a href=\"Models\/Course.php.html#30\">App\\Models\\Course::children<\/a>"],[0,1,"<a href=\"Models\/Course.php.html#40\">App\\Models\\Course::parent<\/a>"],[0,1,"<a href=\"Models\/Course.php.html#50\">App\\Models\\Course::lessons<\/a>"],[0,1,"<a href=\"Models\/Course.php.html#60\">App\\Models\\Course::users<\/a>"],[0,1,"<a href=\"Models\/Course.php.html#70\">App\\Models\\Course::comments<\/a>"],[0,1,"<a href=\"Models\/Course.php.html#80\">App\\Models\\Course::ratings<\/a>"],[0,1,"<a href=\"Models\/Course.php.html#90\">App\\Models\\Course::goals<\/a>"],[0,1,"<a href=\"Models\/Exercise.php.html#23\">App\\Models\\Exercise::lesson<\/a>"],[0,1,"<a href=\"Models\/Exercise.php.html#33\">App\\Models\\Exercise::questions<\/a>"],[0,1,"<a href=\"Models\/Exercise.php.html#43\">App\\Models\\Exercise::answers<\/a>"],[0,1,"<a href=\"Models\/Goal.php.html#23\">App\\Models\\Goal::goalables<\/a>"],[0,1,"<a href=\"Models\/Goalable.php.html#18\">App\\Models\\Goalable::goalable<\/a>"],[0,1,"<a href=\"Models\/Goalable.php.html#28\">App\\Models\\Goalable::abc<\/a>"],[0,1,"<a href=\"Models\/Lesson.php.html#21\">App\\Models\\Lesson::course<\/a>"],[0,1,"<a href=\"Models\/Lesson.php.html#31\">App\\Models\\Lesson::level<\/a>"],[0,1,"<a href=\"Models\/Lesson.php.html#41\">App\\Models\\Lesson::vocabularies<\/a>"],[0,2,"<a href=\"Models\/Lesson.php.html#51\">App\\Models\\Lesson::getRoleNameAttribute<\/a>"],[0,1,"<a href=\"Models\/Lesson.php.html#63\">App\\Models\\Lesson::users<\/a>"],[0,1,"<a href=\"Models\/Lesson.php.html#72\">App\\Models\\Lesson::exercises<\/a>"],[0,1,"<a href=\"Models\/Lesson.php.html#82\">App\\Models\\Lesson::comments<\/a>"],[0,1,"<a href=\"Models\/Lesson.php.html#92\">App\\Models\\Lesson::goals<\/a>"],[0,1,"<a href=\"Models\/Level.php.html#22\">App\\Models\\Level::lessons<\/a>"],[0,1,"<a href=\"Models\/Question.php.html#23\">App\\Models\\Question::exercise<\/a>"],[0,1,"<a href=\"Models\/Question.php.html#33\">App\\Models\\Question::answers<\/a>"],[0,1,"<a href=\"Models\/Rating.php.html#17\">App\\Models\\Rating::user<\/a>"],[0,1,"<a href=\"Models\/Rating.php.html#27\">App\\Models\\Rating::course<\/a>"],[0,1,"<a href=\"Models\/Role.php.html#27\">App\\Models\\Role::users<\/a>"],[0,1,"<a href=\"Models\/SocialProvider.php.html#22\">App\\Models\\SocialProvider::user<\/a>"],[0,1,"<a href=\"Models\/User.php.html#36\">App\\Models\\User::userProfile<\/a>"],[0,1,"<a href=\"Models\/User.php.html#46\">App\\Models\\User::role<\/a>"],[0,1,"<a href=\"Models\/User.php.html#56\">App\\Models\\User::courses<\/a>"],[0,1,"<a href=\"Models\/User.php.html#66\">App\\Models\\User::lessons<\/a>"],[0,1,"<a href=\"Models\/User.php.html#78\">App\\Models\\User::setPasswordAttribute<\/a>"],[0,1,"<a href=\"Models\/User.php.html#88\">App\\Models\\User::comments<\/a>"],[0,1,"<a href=\"Models\/User.php.html#98\">App\\Models\\User::ratings<\/a>"],[0,1,"<a href=\"Models\/User.php.html#108\">App\\Models\\User::socialProviders<\/a>"],[0,1,"<a href=\"Models\/UserProfile.php.html#23\">App\\Models\\UserProfile::user<\/a>"],[0,1,"<a href=\"Models\/Vocabulary.php.html#18\">App\\Models\\Vocabulary::lessons<\/a>"],[0,1,"<a href=\"Observers\/UserObserver.php.html#16\">App\\Observers\\UserObserver::deleting<\/a>"],[100,1,"<a href=\"Providers\/AppServiceProvider.php.html#18\">App\\Providers\\AppServiceProvider::boot<\/a>"],[100,1,"<a href=\"Providers\/AppServiceProvider.php.html#33\">App\\Providers\\AppServiceProvider::register<\/a>"],[100,1,"<a href=\"Providers\/AppServiceProvider.php.html#43\">App\\Providers\\AppServiceProvider::putPHPToJavaScript<\/a>"],[100,1,"<a href=\"Providers\/AuthServiceProvider.php.html#24\">App\\Providers\\AuthServiceProvider::boot<\/a>"],[0,1,"<a href=\"Providers\/BroadcastServiceProvider.php.html#15\">App\\Providers\\BroadcastServiceProvider::boot<\/a>"],[100,1,"<a href=\"Providers\/EventServiceProvider.php.html#28\">App\\Providers\\EventServiceProvider::boot<\/a>"],[100,1,"<a href=\"Providers\/RouteServiceProvider.php.html#24\">App\\Providers\\RouteServiceProvider::boot<\/a>"],[100,1,"<a href=\"Providers\/RouteServiceProvider.php.html#36\">App\\Providers\\RouteServiceProvider::map<\/a>"],[100,1,"<a href=\"Providers\/RouteServiceProvider.php.html#52\">App\\Providers\\RouteServiceProvider::mapWebRoutes<\/a>"],[100,1,"<a href=\"Providers\/RouteServiceProvider.php.html#66\">App\\Providers\\RouteServiceProvider::mapApiRoutes<\/a>"],[100,1,"<a href=\"Providers\/ViewServiceProvider.php.html#22\">App\\Providers\\ViewServiceProvider::boot<\/a>"],[100,1,"<a href=\"Providers\/ViewServiceProvider.php.html#42\">App\\Providers\\ViewServiceProvider::register<\/a>"],[0,2,"<a href=\"Services\/ActivationService.php.html#21\">App\\Services\\ActivationService::register<\/a>"],[0,3,"<a href=\"Services\/ActivationService.php.html#47\">App\\Services\\ActivationService::activation<\/a>"],[0,1,"<a href=\"Services\/CommentService.php.html#13\">App\\Services\\CommentService::index<\/a>"],[0,1,"<a href=\"Services\/CommentService.php.html#29\">App\\Services\\CommentService::comment<\/a>"],[0,1,"<a href=\"Services\/CommentService.php.html#53\">App\\Services\\CommentService::reply<\/a>"],[0,2,"<a href=\"Services\/CommentService.php.html#75\">App\\Services\\CommentService::deleteComment<\/a>"],[0,2,"<a href=\"Services\/CommentService.php.html#92\">App\\Services\\CommentService::destroy<\/a>"],[0,2,"<a href=\"Services\/CommentService.php.html#110\">App\\Services\\CommentService::editComment<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#19\">App\\Services\\CourseService::index<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#29\">App\\Services\\CourseService::getChildren<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#39\">App\\Services\\CourseService::getCourse<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#51\">App\\Services\\CourseService::store<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#63\">App\\Services\\CourseService::edit<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#76\">App\\Services\\CourseService::update<\/a>"],[0,2,"<a href=\"Services\/CourseService.php.html#88\">App\\Services\\CourseService::destroy<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#103\">App\\Services\\CourseService::getPopularCourses<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#120\">App\\Services\\CourseService::getNewCourses<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#136\">App\\Services\\CourseService::getHighestRatingCourses<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#153\">App\\Services\\CourseService::ajaxCourseSearch<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#169\">App\\Services\\CourseService::courseSearch<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#181\">App\\Services\\CourseService::countViewCourse<\/a>"],[0,3,"<a href=\"Services\/CourseService.php.html#196\">App\\Services\\CourseService::historyLesson<\/a>"],[0,1,"<a href=\"Services\/CourseService.php.html#225\">App\\Services\\CourseService::checkAccount<\/a>"],[0,1,"<a href=\"Services\/ExerciseService.php.html#16\">App\\Services\\ExerciseService::index<\/a>"],[0,1,"<a href=\"Services\/ExerciseService.php.html#29\">App\\Services\\ExerciseService::show<\/a>"],[0,5,"<a href=\"Services\/ExerciseService.php.html#46\">App\\Services\\ExerciseService::store<\/a>"],[0,2,"<a href=\"Services\/ExerciseService.php.html#86\">App\\Services\\ExerciseService::update<\/a>"],[0,1,"<a href=\"Services\/ExerciseService.php.html#109\">App\\Services\\ExerciseService::destroy<\/a>"],[0,1,"<a href=\"Services\/ImageService.php.html#16\">App\\Services\\ImageService::uploadImage<\/a>"],[0,1,"<a href=\"Services\/ImageService.php.html#31\">App\\Services\\ImageService::uploadImageLesson<\/a>"],[0,1,"<a href=\"Services\/ImageService.php.html#46\">App\\Services\\ImageService::uploadImageSlider<\/a>"],[0,1,"<a href=\"Services\/LessonService.php.html#24\">App\\Services\\LessonService::index<\/a>"],[0,1,"<a href=\"Services\/LessonService.php.html#34\">App\\Services\\LessonService::allLesson<\/a>"],[0,1,"<a href=\"Services\/LessonService.php.html#46\">App\\Services\\LessonService::store<\/a>"],[0,1,"<a href=\"Services\/LessonService.php.html#60\">App\\Services\\LessonService::edit<\/a>"],[0,2,"<a href=\"Services\/LessonService.php.html#73\">App\\Services\\LessonService::update<\/a>"],[0,1,"<a href=\"Services\/LessonService.php.html#88\">App\\Services\\LessonService::destroy<\/a>"],[0,1,"<a href=\"Services\/LessonService.php.html#101\">App\\Services\\LessonService::show<\/a>"],[0,1,"<a href=\"Services\/LessonService.php.html#113\">App\\Services\\LessonService::getLesson<\/a>"],[0,1,"<a href=\"Services\/LessonService.php.html#139\">App\\Services\\LessonService::recentLesson<\/a>"],[0,4,"<a href=\"Services\/LessonService.php.html#154\">App\\Services\\LessonService::resutlLesson<\/a>"],[0,1,"<a href=\"Services\/LessonService.php.html#248\">App\\Services\\LessonService::countViewLesson<\/a>"],[0,2,"<a href=\"Services\/LessonService.php.html#260\">App\\Services\\LessonService::upgradeVip<\/a>"],[0,3,"<a href=\"Services\/LessonService.php.html#277\">App\\Services\\LessonService::hasLearnLatestLesson<\/a>"],[0,1,"<a href=\"Services\/LevelService.php.html#14\">App\\Services\\LevelService::index<\/a>"],[0,1,"<a href=\"Services\/ProcessService.php.html#13\">App\\Services\\ProcessService::getCourseLearn<\/a>"],[0,3,"<a href=\"Services\/ProcessService.php.html#25\">App\\Services\\ProcessService::process<\/a>"],[0,4,"<a href=\"Services\/ProcessService.php.html#49\">App\\Services\\ProcessService::processDetail<\/a>"],[0,1,"<a href=\"Services\/QuestionService.php.html#16\">App\\Services\\QuestionService::destroy<\/a>"],[0,1,"<a href=\"Services\/RateService.php.html#18\">App\\Services\\RateService::getAll<\/a>"],[0,1,"<a href=\"Services\/RateService.php.html#30\">App\\Services\\RateService::ratingStar<\/a>"],[0,1,"<a href=\"Services\/RateService.php.html#52\">App\\Services\\RateService::calAvg<\/a>"],[0,1,"<a href=\"Services\/RoleService.php.html#15\">App\\Services\\RoleService::getAll<\/a>"],[0,2,"<a href=\"Services\/SearchService.php.html#16\">App\\Services\\SearchService::ajaxGetUserEmail<\/a>"],[0,1,"<a href=\"Services\/SearchService.php.html#40\">App\\Services\\SearchService::getUserEmail<\/a>"],[0,1,"<a href=\"Services\/SearchService.php.html#52\">App\\Services\\SearchService::delete<\/a>"],[0,1,"<a href=\"Services\/SliderService.php.html#14\">App\\Services\\SliderService::getAll<\/a>"],[0,1,"<a href=\"Services\/SliderService.php.html#27\">App\\Services\\SliderService::update<\/a>"],[0,1,"<a href=\"Services\/SliderService.php.html#39\">App\\Services\\SliderService::store<\/a>"],[0,1,"<a href=\"Services\/SliderService.php.html#51\">App\\Services\\SliderService::destroy<\/a>"],[0,1,"<a href=\"Services\/SocialProviderService.php.html#27\">App\\Services\\SocialProviderService::__construct<\/a>"],[0,5,"<a href=\"Services\/SocialProviderService.php.html#39\">App\\Services\\SocialProviderService::createOrGetUser<\/a>"],[0,2,"<a href=\"Services\/StatisticalService.php.html#16\">App\\Services\\StastiticalService::getData<\/a>"],[0,1,"<a href=\"Services\/SystemService.php.html#15\">App\\Services\\SystemService::get<\/a>"],[0,1,"<a href=\"Services\/SystemService.php.html#28\">App\\Services\\SystemService::update<\/a>"],[0,1,"<a href=\"Services\/UserService.php.html#17\">App\\Services\\UserService::index<\/a>"],[0,1,"<a href=\"Services\/UserService.php.html#30\">App\\Services\\UserService::store<\/a>"],[0,1,"<a href=\"Services\/UserService.php.html#44\">App\\Services\\UserService::update<\/a>"],[0,1,"<a href=\"Services\/UserService.php.html#57\">App\\Services\\UserService::destroy<\/a>"],[0,2,"<a href=\"Services\/UserService.php.html#69\">App\\Services\\UserService::createUser<\/a>"],[0,1,"<a href=\"Services\/VocabularyService.php.html#19\">App\\Services\\VocabularyService::__construct<\/a>"],[0,1,"<a href=\"Services\/VocabularyService.php.html#29\">App\\Services\\VocabularyService::index<\/a>"],[0,1,"<a href=\"Services\/VocabularyService.php.html#41\">App\\Services\\VocabularyService::filterVoca<\/a>"],[0,3,"<a href=\"Services\/VocabularyService.php.html#57\">App\\Services\\VocabularyService::importFile<\/a>"],[0,2,"<a href=\"Services\/VocabularyService.php.html#95\">App\\Services\\VocabularyService::getVocabularyContent<\/a>"],[0,1,"<a href=\"Services\/VocabularyService.php.html#120\">App\\Services\\VocabularyService::parseVocabularyContent<\/a>"],[0,1,"<a href=\"Services\/VocabularyService.php.html#136\">App\\Services\\VocabularyService::store<\/a>"],[0,1,"<a href=\"Services\/VocabularyService.php.html#154\">App\\Services\\VocabularyService::update<\/a>"],[0,1,"<a href=\"Services\/VocabularyService.php.html#171\">App\\Services\\VocabularyService::destroy<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

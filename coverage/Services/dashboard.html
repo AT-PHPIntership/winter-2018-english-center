@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/winter-2018-english-center/app/Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/style.css" rel="stylesheet" type="text/css">
+  <link href="../.css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">/var/www/winter-2018-english-center/app</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Services</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ActivationService.php.html#12">App\Services\ActivationService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RoleService.php.html#8">App\Services\RoleService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserService.php.html#10">App\Services\UserService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SystemService.php.html#8">App\Services\SystemService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StatisticalService.php.html#9">App\Services\StastiticalService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SocialProviderService.php.html#11">App\Services\SocialProviderService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SliderService.php.html#7">App\Services\SliderService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SearchService.php.html#7">App\Services\SearchService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateService.php.html#9">App\Services\RateService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CommentService.php.html#6">App\Services\CommentService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="QuestionService.php.html#7">App\Services\QuestionService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProcessService.php.html#6">App\Services\ProcessService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LevelService.php.html#7">App\Services\LevelService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#17">App\Services\LessonService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageService.php.html#7">App\Services\ImageService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExerciseService.php.html#9">App\Services\ExerciseService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#12">App\Services\CourseService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VocabularyService.php.html#10">App\Services\VocabularyService</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="LessonService.php.html#17">App\Services\LessonService</a></td><td class="text-right">420</td></tr>
+       <tr><td><a href="CourseService.php.html#12">App\Services\CourseService</a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="VocabularyService.php.html#10">App\Services\VocabularyService</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="ExerciseService.php.html#9">App\Services\ExerciseService</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="CommentService.php.html#6">App\Services\CommentService</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="ProcessService.php.html#6">App\Services\ProcessService</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="SocialProviderService.php.html#11">App\Services\SocialProviderService</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="UserService.php.html#10">App\Services\UserService</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="ActivationService.php.html#12">App\Services\ActivationService</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="SearchService.php.html#7">App\Services\SearchService</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="StatisticalService.php.html#9">App\Services\StastiticalService</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ActivationService.php.html#21"><abbr title="App\Services\ActivationService::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateService.php.html#30"><abbr title="App\Services\RateService::ratingStar">ratingStar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SliderService.php.html#27"><abbr title="App\Services\SliderService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SliderService.php.html#14"><abbr title="App\Services\SliderService::getAll">getAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SearchService.php.html#52"><abbr title="App\Services\SearchService::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SearchService.php.html#40"><abbr title="App\Services\SearchService::getUserEmail">getUserEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SearchService.php.html#16"><abbr title="App\Services\SearchService::ajaxGetUserEmail">ajaxGetUserEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RoleService.php.html#15"><abbr title="App\Services\RoleService::getAll">getAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateService.php.html#52"><abbr title="App\Services\RateService::calAvg">calAvg</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateService.php.html#18"><abbr title="App\Services\RateService::getAll">getAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SliderService.php.html#51"><abbr title="App\Services\SliderService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="QuestionService.php.html#16"><abbr title="App\Services\QuestionService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProcessService.php.html#49"><abbr title="App\Services\ProcessService::processDetail">processDetail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProcessService.php.html#25"><abbr title="App\Services\ProcessService::process">process</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProcessService.php.html#13"><abbr title="App\Services\ProcessService::getCourseLearn">getCourseLearn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LevelService.php.html#14"><abbr title="App\Services\LevelService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#277"><abbr title="App\Services\LessonService::hasLearnLatestLesson">hasLearnLatestLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#260"><abbr title="App\Services\LessonService::upgradeVip">upgradeVip</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SliderService.php.html#39"><abbr title="App\Services\SliderService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SocialProviderService.php.html#27"><abbr title="App\Services\SocialProviderService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#154"><abbr title="App\Services\LessonService::resutlLesson">resutlLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VocabularyService.php.html#19"><abbr title="App\Services\VocabularyService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VocabularyService.php.html#154"><abbr title="App\Services\VocabularyService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VocabularyService.php.html#136"><abbr title="App\Services\VocabularyService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VocabularyService.php.html#120"><abbr title="App\Services\VocabularyService::parseVocabularyContent">parseVocabularyContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VocabularyService.php.html#95"><abbr title="App\Services\VocabularyService::getVocabularyContent">getVocabularyContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VocabularyService.php.html#57"><abbr title="App\Services\VocabularyService::importFile">importFile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VocabularyService.php.html#41"><abbr title="App\Services\VocabularyService::filterVoca">filterVoca</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VocabularyService.php.html#29"><abbr title="App\Services\VocabularyService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserService.php.html#69"><abbr title="App\Services\UserService::createUser">createUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SocialProviderService.php.html#39"><abbr title="App\Services\SocialProviderService::createOrGetUser">createOrGetUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserService.php.html#57"><abbr title="App\Services\UserService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserService.php.html#44"><abbr title="App\Services\UserService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserService.php.html#30"><abbr title="App\Services\UserService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserService.php.html#17"><abbr title="App\Services\UserService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SystemService.php.html#28"><abbr title="App\Services\SystemService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SystemService.php.html#15"><abbr title="App\Services\SystemService::get">get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StatisticalService.php.html#16"><abbr title="App\Services\StastiticalService::getData">getData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#248"><abbr title="App\Services\LessonService::countViewLesson">countViewLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#139"><abbr title="App\Services\LessonService::recentLesson">recentLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivationService.php.html#47"><abbr title="App\Services\ActivationService::activation">activation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#39"><abbr title="App\Services\CourseService::getCourse">getCourse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#136"><abbr title="App\Services\CourseService::getHighestRatingCourses">getHighestRatingCourses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#120"><abbr title="App\Services\CourseService::getNewCourses">getNewCourses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#103"><abbr title="App\Services\CourseService::getPopularCourses">getPopularCourses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#88"><abbr title="App\Services\CourseService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#76"><abbr title="App\Services\CourseService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#63"><abbr title="App\Services\CourseService::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#51"><abbr title="App\Services\CourseService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#29"><abbr title="App\Services\CourseService::getChildren">getChildren</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#169"><abbr title="App\Services\CourseService::courseSearch">courseSearch</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#19"><abbr title="App\Services\CourseService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CommentService.php.html#110"><abbr title="App\Services\CommentService::editComment">editComment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CommentService.php.html#92"><abbr title="App\Services\CommentService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CommentService.php.html#75"><abbr title="App\Services\CommentService::deleteComment">deleteComment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CommentService.php.html#53"><abbr title="App\Services\CommentService::reply">reply</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CommentService.php.html#29"><abbr title="App\Services\CommentService::comment">comment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CommentService.php.html#13"><abbr title="App\Services\CommentService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#153"><abbr title="App\Services\CourseService::ajaxCourseSearch">ajaxCourseSearch</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#181"><abbr title="App\Services\CourseService::countViewCourse">countViewCourse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#113"><abbr title="App\Services\LessonService::getLesson">getLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageService.php.html#46"><abbr title="App\Services\ImageService::uploadImageSlider">uploadImageSlider</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#101"><abbr title="App\Services\LessonService::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#88"><abbr title="App\Services\LessonService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#73"><abbr title="App\Services\LessonService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#60"><abbr title="App\Services\LessonService::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#46"><abbr title="App\Services\LessonService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#34"><abbr title="App\Services\LessonService::allLesson">allLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonService.php.html#24"><abbr title="App\Services\LessonService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageService.php.html#31"><abbr title="App\Services\ImageService::uploadImageLesson">uploadImageLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#196"><abbr title="App\Services\CourseService::historyLesson">historyLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageService.php.html#16"><abbr title="App\Services\ImageService::uploadImage">uploadImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExerciseService.php.html#109"><abbr title="App\Services\ExerciseService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExerciseService.php.html#86"><abbr title="App\Services\ExerciseService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExerciseService.php.html#46"><abbr title="App\Services\ExerciseService::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExerciseService.php.html#29"><abbr title="App\Services\ExerciseService::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExerciseService.php.html#16"><abbr title="App\Services\ExerciseService::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseService.php.html#225"><abbr title="App\Services\CourseService::checkAccount">checkAccount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VocabularyService.php.html#171"><abbr title="App\Services\VocabularyService::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="SocialProviderService.php.html#39"><abbr title="App\Services\SocialProviderService::createOrGetUser">createOrGetUser</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="ExerciseService.php.html#46"><abbr title="App\Services\ExerciseService::store">store</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="LessonService.php.html#154"><abbr title="App\Services\LessonService::resutlLesson">resutlLesson</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ProcessService.php.html#49"><abbr title="App\Services\ProcessService::processDetail">processDetail</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="LessonService.php.html#277"><abbr title="App\Services\LessonService::hasLearnLatestLesson">hasLearnLatestLesson</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="VocabularyService.php.html#57"><abbr title="App\Services\VocabularyService::importFile">importFile</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="CourseService.php.html#196"><abbr title="App\Services\CourseService::historyLesson">historyLesson</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ActivationService.php.html#47"><abbr title="App\Services\ActivationService::activation">activation</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ProcessService.php.html#25"><abbr title="App\Services\ProcessService::process">process</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="UserService.php.html#69"><abbr title="App\Services\UserService::createUser">createUser</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="StatisticalService.php.html#16"><abbr title="App\Services\StastiticalService::getData">getData</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="SearchService.php.html#16"><abbr title="App\Services\SearchService::ajaxGetUserEmail">ajaxGetUserEmail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActivationService.php.html#21"><abbr title="App\Services\ActivationService::register">register</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LessonService.php.html#260"><abbr title="App\Services\LessonService::upgradeVip">upgradeVip</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LessonService.php.html#73"><abbr title="App\Services\LessonService::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ExerciseService.php.html#86"><abbr title="App\Services\ExerciseService::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CourseService.php.html#88"><abbr title="App\Services\CourseService::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CommentService.php.html#110"><abbr title="App\Services\CommentService::editComment">editComment</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CommentService.php.html#92"><abbr title="App\Services\CommentService::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CommentService.php.html#75"><abbr title="App\Services\CommentService::deleteComment">deleteComment</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="VocabularyService.php.html#95"><abbr title="App\Services\VocabularyService::getVocabularyContent">getVocabularyContent</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.2.17-1+ubuntu16.04.1+deb.sury.org+3</a> with <a href="https://xdebug.org/">Xdebug 2.7.1</a> and <a href="https://phpunit.de/">PHPUnit 7.5.2</a> at Thu May 9 2:24:09 UTC 2019.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([18,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([79,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,5,"<a href=\"ActivationService.php.html#12\">App\\Services\\ActivationService<\/a>"],[0,9,"<a href=\"CommentService.php.html#6\">App\\Services\\CommentService<\/a>"],[0,18,"<a href=\"CourseService.php.html#12\">App\\Services\\CourseService<\/a>"],[0,10,"<a href=\"ExerciseService.php.html#9\">App\\Services\\ExerciseService<\/a>"],[0,3,"<a href=\"ImageService.php.html#7\">App\\Services\\ImageService<\/a>"],[0,20,"<a href=\"LessonService.php.html#17\">App\\Services\\LessonService<\/a>"],[0,1,"<a href=\"LevelService.php.html#7\">App\\Services\\LevelService<\/a>"],[0,8,"<a href=\"ProcessService.php.html#6\">App\\Services\\ProcessService<\/a>"],[0,1,"<a href=\"QuestionService.php.html#7\">App\\Services\\QuestionService<\/a>"],[0,3,"<a href=\"RateService.php.html#9\">App\\Services\\RateService<\/a>"],[0,1,"<a href=\"RoleService.php.html#8\">App\\Services\\RoleService<\/a>"],[0,4,"<a href=\"SearchService.php.html#7\">App\\Services\\SearchService<\/a>"],[0,4,"<a href=\"SliderService.php.html#7\">App\\Services\\SliderService<\/a>"],[0,6,"<a href=\"SocialProviderService.php.html#11\">App\\Services\\SocialProviderService<\/a>"],[0,2,"<a href=\"StatisticalService.php.html#9\">App\\Services\\StastiticalService<\/a>"],[0,2,"<a href=\"SystemService.php.html#8\">App\\Services\\SystemService<\/a>"],[0,6,"<a href=\"UserService.php.html#10\">App\\Services\\UserService<\/a>"],[0,12,"<a href=\"VocabularyService.php.html#10\">App\\Services\\VocabularyService<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,2,"<a href=\"ActivationService.php.html#21\">App\\Services\\ActivationService::register<\/a>"],[0,3,"<a href=\"ActivationService.php.html#47\">App\\Services\\ActivationService::activation<\/a>"],[0,1,"<a href=\"CommentService.php.html#13\">App\\Services\\CommentService::index<\/a>"],[0,1,"<a href=\"CommentService.php.html#29\">App\\Services\\CommentService::comment<\/a>"],[0,1,"<a href=\"CommentService.php.html#53\">App\\Services\\CommentService::reply<\/a>"],[0,2,"<a href=\"CommentService.php.html#75\">App\\Services\\CommentService::deleteComment<\/a>"],[0,2,"<a href=\"CommentService.php.html#92\">App\\Services\\CommentService::destroy<\/a>"],[0,2,"<a href=\"CommentService.php.html#110\">App\\Services\\CommentService::editComment<\/a>"],[0,1,"<a href=\"CourseService.php.html#19\">App\\Services\\CourseService::index<\/a>"],[0,1,"<a href=\"CourseService.php.html#29\">App\\Services\\CourseService::getChildren<\/a>"],[0,1,"<a href=\"CourseService.php.html#39\">App\\Services\\CourseService::getCourse<\/a>"],[0,1,"<a href=\"CourseService.php.html#51\">App\\Services\\CourseService::store<\/a>"],[0,1,"<a href=\"CourseService.php.html#63\">App\\Services\\CourseService::edit<\/a>"],[0,1,"<a href=\"CourseService.php.html#76\">App\\Services\\CourseService::update<\/a>"],[0,2,"<a href=\"CourseService.php.html#88\">App\\Services\\CourseService::destroy<\/a>"],[0,1,"<a href=\"CourseService.php.html#103\">App\\Services\\CourseService::getPopularCourses<\/a>"],[0,1,"<a href=\"CourseService.php.html#120\">App\\Services\\CourseService::getNewCourses<\/a>"],[0,1,"<a href=\"CourseService.php.html#136\">App\\Services\\CourseService::getHighestRatingCourses<\/a>"],[0,1,"<a href=\"CourseService.php.html#153\">App\\Services\\CourseService::ajaxCourseSearch<\/a>"],[0,1,"<a href=\"CourseService.php.html#169\">App\\Services\\CourseService::courseSearch<\/a>"],[0,1,"<a href=\"CourseService.php.html#181\">App\\Services\\CourseService::countViewCourse<\/a>"],[0,3,"<a href=\"CourseService.php.html#196\">App\\Services\\CourseService::historyLesson<\/a>"],[0,1,"<a href=\"CourseService.php.html#225\">App\\Services\\CourseService::checkAccount<\/a>"],[0,1,"<a href=\"ExerciseService.php.html#16\">App\\Services\\ExerciseService::index<\/a>"],[0,1,"<a href=\"ExerciseService.php.html#29\">App\\Services\\ExerciseService::show<\/a>"],[0,5,"<a href=\"ExerciseService.php.html#46\">App\\Services\\ExerciseService::store<\/a>"],[0,2,"<a href=\"ExerciseService.php.html#86\">App\\Services\\ExerciseService::update<\/a>"],[0,1,"<a href=\"ExerciseService.php.html#109\">App\\Services\\ExerciseService::destroy<\/a>"],[0,1,"<a href=\"ImageService.php.html#16\">App\\Services\\ImageService::uploadImage<\/a>"],[0,1,"<a href=\"ImageService.php.html#31\">App\\Services\\ImageService::uploadImageLesson<\/a>"],[0,1,"<a href=\"ImageService.php.html#46\">App\\Services\\ImageService::uploadImageSlider<\/a>"],[0,1,"<a href=\"LessonService.php.html#24\">App\\Services\\LessonService::index<\/a>"],[0,1,"<a href=\"LessonService.php.html#34\">App\\Services\\LessonService::allLesson<\/a>"],[0,1,"<a href=\"LessonService.php.html#46\">App\\Services\\LessonService::store<\/a>"],[0,1,"<a href=\"LessonService.php.html#60\">App\\Services\\LessonService::edit<\/a>"],[0,2,"<a href=\"LessonService.php.html#73\">App\\Services\\LessonService::update<\/a>"],[0,1,"<a href=\"LessonService.php.html#88\">App\\Services\\LessonService::destroy<\/a>"],[0,1,"<a href=\"LessonService.php.html#101\">App\\Services\\LessonService::show<\/a>"],[0,1,"<a href=\"LessonService.php.html#113\">App\\Services\\LessonService::getLesson<\/a>"],[0,1,"<a href=\"LessonService.php.html#139\">App\\Services\\LessonService::recentLesson<\/a>"],[0,4,"<a href=\"LessonService.php.html#154\">App\\Services\\LessonService::resutlLesson<\/a>"],[0,1,"<a href=\"LessonService.php.html#248\">App\\Services\\LessonService::countViewLesson<\/a>"],[0,2,"<a href=\"LessonService.php.html#260\">App\\Services\\LessonService::upgradeVip<\/a>"],[0,3,"<a href=\"LessonService.php.html#277\">App\\Services\\LessonService::hasLearnLatestLesson<\/a>"],[0,1,"<a href=\"LevelService.php.html#14\">App\\Services\\LevelService::index<\/a>"],[0,1,"<a href=\"ProcessService.php.html#13\">App\\Services\\ProcessService::getCourseLearn<\/a>"],[0,3,"<a href=\"ProcessService.php.html#25\">App\\Services\\ProcessService::process<\/a>"],[0,4,"<a href=\"ProcessService.php.html#49\">App\\Services\\ProcessService::processDetail<\/a>"],[0,1,"<a href=\"QuestionService.php.html#16\">App\\Services\\QuestionService::destroy<\/a>"],[0,1,"<a href=\"RateService.php.html#18\">App\\Services\\RateService::getAll<\/a>"],[0,1,"<a href=\"RateService.php.html#30\">App\\Services\\RateService::ratingStar<\/a>"],[0,1,"<a href=\"RateService.php.html#52\">App\\Services\\RateService::calAvg<\/a>"],[0,1,"<a href=\"RoleService.php.html#15\">App\\Services\\RoleService::getAll<\/a>"],[0,2,"<a href=\"SearchService.php.html#16\">App\\Services\\SearchService::ajaxGetUserEmail<\/a>"],[0,1,"<a href=\"SearchService.php.html#40\">App\\Services\\SearchService::getUserEmail<\/a>"],[0,1,"<a href=\"SearchService.php.html#52\">App\\Services\\SearchService::delete<\/a>"],[0,1,"<a href=\"SliderService.php.html#14\">App\\Services\\SliderService::getAll<\/a>"],[0,1,"<a href=\"SliderService.php.html#27\">App\\Services\\SliderService::update<\/a>"],[0,1,"<a href=\"SliderService.php.html#39\">App\\Services\\SliderService::store<\/a>"],[0,1,"<a href=\"SliderService.php.html#51\">App\\Services\\SliderService::destroy<\/a>"],[0,1,"<a href=\"SocialProviderService.php.html#27\">App\\Services\\SocialProviderService::__construct<\/a>"],[0,5,"<a href=\"SocialProviderService.php.html#39\">App\\Services\\SocialProviderService::createOrGetUser<\/a>"],[0,2,"<a href=\"StatisticalService.php.html#16\">App\\Services\\StastiticalService::getData<\/a>"],[0,1,"<a href=\"SystemService.php.html#15\">App\\Services\\SystemService::get<\/a>"],[0,1,"<a href=\"SystemService.php.html#28\">App\\Services\\SystemService::update<\/a>"],[0,1,"<a href=\"UserService.php.html#17\">App\\Services\\UserService::index<\/a>"],[0,1,"<a href=\"UserService.php.html#30\">App\\Services\\UserService::store<\/a>"],[0,1,"<a href=\"UserService.php.html#44\">App\\Services\\UserService::update<\/a>"],[0,1,"<a href=\"UserService.php.html#57\">App\\Services\\UserService::destroy<\/a>"],[0,2,"<a href=\"UserService.php.html#69\">App\\Services\\UserService::createUser<\/a>"],[0,1,"<a href=\"VocabularyService.php.html#19\">App\\Services\\VocabularyService::__construct<\/a>"],[0,1,"<a href=\"VocabularyService.php.html#29\">App\\Services\\VocabularyService::index<\/a>"],[0,1,"<a href=\"VocabularyService.php.html#41\">App\\Services\\VocabularyService::filterVoca<\/a>"],[0,3,"<a href=\"VocabularyService.php.html#57\">App\\Services\\VocabularyService::importFile<\/a>"],[0,2,"<a href=\"VocabularyService.php.html#95\">App\\Services\\VocabularyService::getVocabularyContent<\/a>"],[0,1,"<a href=\"VocabularyService.php.html#120\">App\\Services\\VocabularyService::parseVocabularyContent<\/a>"],[0,1,"<a href=\"VocabularyService.php.html#136\">App\\Services\\VocabularyService::store<\/a>"],[0,1,"<a href=\"VocabularyService.php.html#154\">App\\Services\\VocabularyService::update<\/a>"],[0,1,"<a href=\"VocabularyService.php.html#171\">App\\Services\\VocabularyService::destroy<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
