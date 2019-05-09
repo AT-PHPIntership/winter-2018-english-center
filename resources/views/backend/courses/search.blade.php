@@ -2,7 +2,7 @@
 @section('title', 'HOME')
 @section('content')
 <section class="content-header">
-  <h1>@lang('course.list_course.title')</h1>
+  <h1>@lang('course.list_course.title') Search</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
@@ -12,18 +12,6 @@
     <li class="active">@lang('course.list_course.title')</li>
   </ol>
 </section>
-<!-- search form -->
-<form action="{{ route('admin.courses.search') }}" method="get" class="sidebar-form" id="sidebar-form">
-    <div class="input-group">
-        <input type="text" name="search" class="form-control" id="search-course" placeholder="Search...">
-        <span class="input-group-btn">
-            <button type="submit" class="btn btn-flat"><i class="fa fa-search"></i>
-            </button>
-        </span>
-    </div>
-</form>
-<div id="search-no-result-course" class="no-result"></div>
-<!-- /.search form -->
 <section class="content">
   <div class="row">
   @if (Session::has('success'))
@@ -41,7 +29,7 @@
       <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
           <thead>
-            <tr class="row">
+          <tr class="row">
               <th class="col-md-1" style="text-align: center;">@lang('course.list_course.id')</th>
               <th class="col-md-2" style="text-align: center;">@lang('course.list_course.name')</th>
               <th class="col-md-2" style="text-align: center;">@lang('course.list_course.parent')</th>
@@ -51,7 +39,7 @@
               <th class="col-md-2" style="text-align: center;">@lang('course.list_course.action')</th>
             </tr>
           </thead>
-          <tbody id="list-search-courses">
+          <tbody>
             @foreach ($courses as $key => $course)
             <tr class="row">
               <td style="text-align: center;">{{ $course->id }}</td>

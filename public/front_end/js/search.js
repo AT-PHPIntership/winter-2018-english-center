@@ -104,7 +104,7 @@ $(document).ready(function () {
     }, 250));
 });
 
-
+// delete user
 $(document).ajaxComplete(function () {
     $('.search-delete').on('click', function () {
         var delUser = confirm('Are you sure you want to delete?');
@@ -121,7 +121,79 @@ $(document).ajaxComplete(function () {
                 dataType: 'JSON',
                 data: { "user-id" : userId, _token : $('meta[name="csrf-token"]').attr('content'),} ,
                 success: function (data) {
-                    console.log(data);
+                    // console.log(data);
+                    $('.search-result[data-id='+ data + ']').remove();
+                }
+            });
+        }
+    });
+});
+
+// search course name
+$(document).ready(function () {
+    $('#search-course').keyup(delay(function (e) {
+        e.preventDefault();
+        var query = $(this).val();
+        // console.log(query);
+        if (query != '' && query.length >= 1) {
+            $.ajax({
+                url: 'admin/courses/search',
+                method: "GET",
+                data: { query: query },
+                dataType: "JSON",
+                success: function (data) {
+                    // console.log(data);
+                    if (data.length > 0) {
+                        var output = '';
+                        $.each(data, function (key, val) {
+                            output += '<tr class="row search-result" data-id="'+ val.id +'">';
+                            output += '<td style="text-align: center;">'+ val.id + '</td>';
+                            output += '<td style="text-align: center;">'+ val.name + '</td>';
+                            output += '<td style="text-align: center;">'+ val.course_parent + '</td>';
+                            output += '<td style="text-align: center;">'+ val.view + '</td>';
+                            output += '<td style="text-align: center;">'+ val.rating + '</td>';
+                            output += '<td style="text-align: center;">'+ val.content + '</td>';
+                            output += '<td style="text-align: center;">'
+                            output += '<a href="admin/courses/' + val.id +'/edit" class="btn btn-warning">Edit</a>';
+                            output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete" data-title="Delete Course" data-course-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
+                            output += '</td>'
+                            output += '</tr>';
+                        });
+                        $('#list-search-courses').html(output);
+                        output2 = '';
+                        $('#search-no-result-course').html(output2);
+                    } else {
+                        output1 = '';
+                        output2 = 'No result';
+                        $('#list-search-courses').html(output1);
+                        $('#search-no-result-course').html(output2);
+                    }
+                }
+            });
+        } else {
+            location.reload();
+        }
+    }, 250));
+});
+
+// delete course
+$(document).ajaxComplete(function () {
+    $('.search-delete').on('click', function () {
+        var delCourse = confirm('Are you sure you want to delete?');
+        if(delCourse) {
+            var courseId = $(this).data('course-id');
+            $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN' : $('meta[name=“csrf-token”]').attr('content')
+                }
+            });
+            $.ajax({
+                url: 'admin/courses/search/delete',
+                type: 'DELETE',
+                dataType: 'JSON',
+                data: { "course-id" : courseId, _token : $('meta[name="csrf-token"]').attr('content'),} ,
+                success: function (data) {
+                    // console.log(data);
                     $('.search-result[data-id='+ data + ']').remove();
                 }
             });

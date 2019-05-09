@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @section('content')
 <section class="content-header">
-  <h1>@lang('user.show_list_user.title')</h1>
+  <h1>@lang('user.show_list_user.title') Search</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">

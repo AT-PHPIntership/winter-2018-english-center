@@ -17,12 +17,16 @@
     margin-left: 15px;
 }
 
-#search-no-result {
+.no-result {
     color: red;
     font-size: 20px;
     margin-left: 25px;
 }
 
-#search-user {
+#sidebar-form .form-control {
     background-color: white;
+}
+
+.search-delete {
+    margin-left: 3px;
 }

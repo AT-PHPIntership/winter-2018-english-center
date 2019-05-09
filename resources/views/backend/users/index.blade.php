@@ -22,7 +22,7 @@
         </span>
     </div>
 </form>
-<div id="search-no-result"></div>
+<div id="search-no-result" class="no-result"></div>
 <!-- /.search form -->
 <section class="content">
     <div class="row">
