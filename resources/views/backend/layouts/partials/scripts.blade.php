@@ -34,3 +34,7 @@
 </script>
 <script src="bower_components/ckeditor/ckeditor.js"></script>
 {{-- <script type="text/javascript" src="front_end/js/common.js"></script> --}}
+<!-- Search JS
+============================================ -->
+<script src="front_end/js/search.js"></script>
+

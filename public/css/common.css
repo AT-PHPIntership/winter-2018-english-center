@@ -11,3 +11,18 @@
 .uba_audioButton:hover {
     background-position: 0 -85px;
 }
+
+#sidebar-form {
+    width: 40%;
+    margin-left: 15px;
+}
+
+#search-no-result {
+    color: red;
+    font-size: 20px;
+    margin-left: 25px;
+}
+
+#search-user {
+    background-color: white;
+}

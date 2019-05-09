@@ -12,6 +12,18 @@
     <li class="active">@lang('user.show_list_user.title')</li>
   </ol>
 </section>
+<!-- search form -->
+<form action="{{ route('admin.users.search') }}" method="get" class="sidebar-form" id="sidebar-form">
+    <div class="input-group">
+        <input type="text" name="search" class="form-control" id="search-user" placeholder="Search...">
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn-flat"><i class="fa fa-search"></i>
+            </button>
+        </span>
+    </div>
+</form>
+<div id="search-no-result"></div>
+<!-- /.search form -->
 <section class="content">
     <div class="row">
         @if (Session::has('success'))
@@ -37,28 +49,28 @@
                             <th class="col-lg-2">{{ __('user.show_list_user.action') }}</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach($users as $user)
-                        <tr class="row">
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->email }}</td>
-                            {{-- <td>{{ $user->password }}</td> --}}
-                            <td>{{ $user->role->name }}</td>
-                            <td>
-                                <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-warning">@lang('common.detail')</a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning">@lang('common.edit')</a>
-                                @if ($user->role->name != App\Models\Role::ROLE_ADMIN)
-                                <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline" onsubmit="return confirmedDelete()">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete User">@lang('common.delete')</button>
-                                </form>
-                                @endif
-                            </td>
-                        </tr>
-                        @endforeach 
+                    <tbody id="list-search-users">
+                            @foreach($users as $user)
+                            <tr class="row">
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->email }}</td>
+                                {{-- <td>{{ $user->password }}</td> --}}
+                                <td>{{ $user->role->name }}</td>
+                                <td>
+                                    <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-warning">@lang('common.detail')</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning">@lang('common.edit')</a>
+                                    @if ($user->role->name != App\Models\Role::ROLE_ADMIN)
+                                    <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline" onsubmit="return confirmedDelete()">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger form-delete btn-delete-item" data-title="Delete User">@lang('common.delete')</button>
+                                    </form>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
                     </tbody>
                     </table>
                     <ul class="pagination pagination-sm no-margin pull-right text-center">

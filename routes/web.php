@@ -15,6 +15,8 @@ Route::get('/', function () {
 // Route admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'adminLogin'], function() {
     Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::get('/users/search', 'SearchController@getUserEmail')->name('users.search');
+    Route::delete('/users/search/delete', 'SearchController@deleteUser')->name('users.search.delete');
     Route::resource('users', 'UserController');
     Route::resource('courses', 'CourseController');
     Route::resource('levels', 'LevelController');
