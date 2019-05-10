@@ -20,7 +20,11 @@ class SearchService
      */
     public function ajaxGetUserEmail($query)
     {
-        $users = User::where('email', 'LIKE', "%{$query}%")->get();
+        $users = User::join('roles', 'users.role_id', '=', 'roles.id')
+                 ->select('users.*')
+                 ->where('email', 'LIKE', "%{$query}%")
+                 ->orWhere('name', 'LIKE', "%{$query}%")
+                 ->get();
             $items = [];
             foreach ($users as $key => $user) {
                 $items[$key]['id'] = $user->id;
@@ -184,7 +188,10 @@ class SearchService
      */
     public function ajaxGetExerciseName($query)
     {
-        $exercises = Exercise::where('title', 'LIKE', "%{$query}%")->get();
+        $exercises = Exercise::join('lessons', 'exercises.lesson_id', '=', 'lessons.id')
+                     ->where('title', 'LIKE', "%{$query}%")
+                     ->orWhere('name', 'LIKE', "%{$query}%")
+                     ->get();
             $items = [];
             foreach ($exercises as $key => $exercise) {
                 $items[$key]['id'] = $exercise->id;
