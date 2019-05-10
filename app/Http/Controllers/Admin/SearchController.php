@@ -109,4 +109,72 @@ class SearchController extends Controller
         $response = app(SearchService::class)->deleteLesson($lesson_id);
         return response()->json($response);
     }
+
+    /**
+     * Get exercise from keyword in search field
+     *
+     *@param request $request [request to get exercise]
+     *
+     * @return compare view
+     */
+    public function getExerciseName(Request $request)
+    {
+        // dd(1);
+        if ($request->ajax()) {
+            $response = app(SearchService::class)->ajaxGetExerciseName($request->get('query'));
+            return response()->json($response);
+        } else {
+            $query = $request->get('search');
+            $exercises = app(SearchService::class)->getExerciseName($query);
+            return view('backend.exercises.search')->with(['exercises' => $exercises,'query' => $query]);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Request $request 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteExercise(Request $request)
+    {
+        $exercise_id = $request->get('exercise-id');
+        $response = app(SearchService::class)->deleteExercise($exercise_id);
+        return response()->json($response);
+    }
+
+    /**
+     * Get comment from keyword in search field
+     *
+     *@param request $request [request to get comment]
+     *
+     * @return compare view
+     */
+    public function getCommentContent(Request $request)
+    {
+        // dd(1);
+        if ($request->ajax()) {
+            $response = app(SearchService::class)->ajaxGetCommentContent($request->get('query'));
+            return response()->json($response);
+        } else {
+            $query = $request->get('search');
+            $comments = app(SearchService::class)->getCommentContent($query);
+            return view('backend.comments.search')->with(['comments' => $comments,'query' => $query]);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Request $request 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteComment(Request $request)
+    {
+        $comment_id = $request->get('comment-id');
+        $response = app(SearchService::class)->deleteComment($comment_id);
+        return response()->json($response);
+    }
 }

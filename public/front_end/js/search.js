@@ -83,18 +83,22 @@ $(document).ready(function () {
                             output += '<td>'
                             output += '<a href="admin/users/' + val.id +'/edit" class="btn btn-warning">Edit</a>';
                             if(val.role != 'Admin') {
-                               output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete" data-title="Delete User" data-user-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
+                               output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete-user" data-title="Delete User" data-user-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
                             }
                             output += '</tr>';
                         });
                         $('#list-search-users').html(output);
                         output2 = '';
                         $('#search-no-result').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
                     } else {
                         output1 = '';
                         output2 = 'No result';
                         $('#list-search-users').html(output1);
                         $('#search-no-result').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
                     }
                 }
             });
@@ -106,7 +110,7 @@ $(document).ready(function () {
 
 // delete user
 $(document).ajaxComplete(function () {
-    $('.search-delete').on('click', function () {
+    $('.search-delete-user').on('click', function () {
         var delUser = confirm('Are you sure you want to delete?');
         if(delUser) {
             var userId = $(this).data('user-id');
@@ -155,18 +159,22 @@ $(document).ready(function () {
                             output += '<td style="text-align: center;">'+ val.content + '</td>';
                             output += '<td style="text-align: center;">'
                             output += '<a href="admin/courses/' + val.id +'/edit" class="btn btn-warning">Edit</a>';
-                            output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete" data-title="Delete Course" data-course-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
+                            output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete-course" data-title="Delete Course" data-course-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
                             output += '</td>'
                             output += '</tr>';
                         });
                         $('#list-search-courses').html(output);
                         output2 = '';
                         $('#search-no-result-course').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
                     } else {
                         output1 = '';
                         output2 = 'No result';
                         $('#list-search-courses').html(output1);
                         $('#search-no-result-course').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
                     }
                 }
             });
@@ -178,7 +186,7 @@ $(document).ready(function () {
 
 // delete course
 $(document).ajaxComplete(function () {
-    $('.search-delete').on('click', function () {
+    $('.search-delete-course').on('click', function () {
         var delCourse = confirm('Are you sure you want to delete?');
         if(delCourse) {
             var courseId = $(this).data('course-id');
@@ -226,7 +234,7 @@ $(document).ready(function () {
                             output += '<td>' + '<a href="admin/lessons/' + val.id + '" class="btn btn-warning">Detail</a>' + '</td>';
                             output += '<td>'
                             output += '<a href="admin/lessons/' + val.id +'/edit" class="btn btn-warning">Edit</a>';
-                            output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete" data-title="Delete Lesson" data-lesson-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
+                            output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete-lesson" data-title="Delete Lesson" data-lesson-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
                             output += '</td>'
                             output += '</tr>';
                         });
@@ -240,6 +248,8 @@ $(document).ready(function () {
                         output2 = 'No result';
                         $('#list-search-lessons').html(output1);
                         $('#search-no-result-lesson').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
                     }
                 }
             });
@@ -249,9 +259,9 @@ $(document).ready(function () {
     }, 250));
 });
 
-// delete course
+// delete lesson
 $(document).ajaxComplete(function () {
-    $('.search-delete').on('click', function () {
+    $('.search-delete-lesson').on('click', function () {
         var delLesson = confirm('Are you sure you want to delete?');
         if(delLesson) {
             var lessonId = $(this).data('lesson-id');
@@ -265,6 +275,158 @@ $(document).ajaxComplete(function () {
                 type: 'DELETE',
                 dataType: 'JSON',
                 data: { "lesson-id" : lessonId, _token : $('meta[name="csrf-token"]').attr('content'),} ,
+                success: function (data) {
+                    // console.log(data);
+                    $('.search-result[data-id='+ data + ']').remove();
+                }
+            });
+        }
+    });
+});
+
+// search exercise name
+$(document).ready(function () {
+    $('#search-exercise').keyup(delay(function (e) {
+        e.preventDefault();
+        var query = $(this).val();
+        // console.log(query);
+        if (query != '' && query.length >= 1) {
+            $.ajax({
+                url: 'admin/exercises/search',
+                method: "GET",
+                data: { query: query },
+                dataType: "JSON",
+                success: function (data) {
+                    // console.log(data);
+                    if (data.length > 0) {
+                        var output = '';
+                        $.each(data, function (key, val) {
+                            output += '<tr class="search-result" data-id="'+ val.id +'">';
+                            output += '<td>'+ val.id + '</td>';
+                            output += '<td>';
+                            output += '<a href="admin/exercises/' + val.id + '">';
+                            output += val.title;
+                            output += '</a>';
+                            output += '</td>';
+                            output += '<td>'+ val.lesson + '</td>';
+                            output += '<td>'
+                            output += '<a href="admin/exercises/' + val.id +'/edit" class="btn btn-warning">Edit</a>';
+                            output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete-exercise" data-title="Delete Exercise" data-exercise-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
+                            output += '</td>'
+                            output += '</tr>';
+                        });
+                        $('#list-search-exercises').html(output);
+                        output2 = '';
+                        $('#search-no-result-exercise').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
+                    } else {
+                        output1 = '';
+                        output2 = 'No result';
+                        $('#list-search-exercises').html(output1);
+                        $('#search-no-result-exercise').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
+                    }
+                }
+            });
+        } else {
+            location.reload();
+        }
+    }, 250));
+});
+
+// delete exercise
+$(document).ajaxComplete(function () {
+    $('.search-delete-exercise').on('click', function () {
+        var delExercise = confirm('Are you sure you want to delete?');
+        if(delExercise) {
+            var exerciseId = $(this).data('exercise-id');
+            $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN' : $('meta[name=“csrf-token”]').attr('content')
+                }
+            });
+            $.ajax({
+                url: 'admin/exercises/search/delete',
+                type: 'DELETE',
+                dataType: 'JSON',
+                data: { "exercise-id" : exerciseId, _token : $('meta[name="csrf-token"]').attr('content'),} ,
+                success: function (data) {
+                    // console.log(data);
+                    $('.search-result[data-id='+ data + ']').remove();
+                }
+            });
+        }
+    });
+});
+
+// search comment content
+$(document).ready(function () {
+    $('#search-comment').keyup(delay(function (e) {
+        e.preventDefault();
+        var query = $(this).val();
+        // console.log(query);
+        if (query != '' && query.length >= 1) {
+            $.ajax({
+                url: 'admin/comments/search',
+                method: "GET",
+                data: { query: query },
+                dataType: "JSON",
+                success: function (data) {
+                    // console.log(data);
+                    if (data.length > 0) {
+                        var output = '';
+                        $.each(data, function (key, val) {
+                        console.log(val);
+                            output += '<tr class="search-result" data-id="'+ val.id +'">';
+                            output += '<td>'+ val.id + '</td>';
+                            output += '<td>'+ val.userName + '</td>';
+                            output += '<td>'+ val.courseOrLesson + '</td>';
+                            output += '<td>'+ val.content + '</td>';
+                            output += '<td>'
+                            output += '<a href="admin/comments/' + val.id +'" class="btn btn-warning">Detail</a>';
+                            output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete-comment" data-title="Delete Comment" data-comment-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
+                            output += '</td>'
+                            output += '</tr>';
+                        });
+                        $('#list-search-comments').html(output);
+                        output2 = '';
+                        $('#search-no-result-comment').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
+                    } else {
+                        output1 = '';
+                        output2 = 'No result';
+                        $('#list-search-comments').html(output1);
+                        $('#search-no-result-comment').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
+                    }
+                }
+            });
+        } else {
+            location.reload();
+        }
+    }, 250));
+});
+
+// delete comment
+$(document).ajaxComplete(function () {
+    $('.search-delete-comment').on('click', function () {
+        var delComment = confirm('Are you sure you want to delete?');
+        if(delComment) {
+            var commentId = $(this).data('comment-id');
+            $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN' : $('meta[name=“csrf-token”]').attr('content')
+                }
+            });
+            $.ajax({
+                url: 'admin/comments/search/delete',
+                type: 'DELETE',
+                dataType: 'JSON',
+                data: { "comment-id" : commentId, _token : $('meta[name="csrf-token"]').attr('content'),} ,
                 success: function (data) {
                     // console.log(data);
                     $('.search-result[data-id='+ data + ']').remove();

@@ -85,7 +85,7 @@
             @endforeach
           </tbody>
         </table>
-        <div class="box-footer clearfix">
+        <div class="box-footer clearfix" id="pagination">
           <ul class="pagination pagination-sm no-margin pull-right">
             {{ $courses->links() }}
           </ul>

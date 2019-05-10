@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Exercise;
+use App\Models\Comment;
 
 class SearchService
 {
@@ -160,4 +162,107 @@ class SearchService
         return $id;
     }
 
+    /**
+     * Get exercise based on query
+     *
+     * @param object $query [query get exercise]
+     *
+     * @return collection
+     */
+    public function getExerciseName($query)
+    {
+        return Exercise::where('title', 'LIKE', "%{$query}%")->paginate(config('define.page_site'))->appends(['search'=> $query]);
+    }
+
+    /**
+     * Get exercise based on query
+     *
+     * @param object $query [query get exercise]
+     *
+     * @return collection
+     */
+    public function ajaxGetExerciseName($query)
+    {
+        $exercises = Exercise::where('title', 'LIKE', "%{$query}%")->get();
+            $items = [];
+            foreach ($exercises as $key => $exercise) {
+                $items[$key]['id'] = $exercise->id;
+                $items[$key]['title'] = $exercise->title;
+                $items[$key]['lesson'] = $exercise->lesson->name;
+            }
+            return $items;
+    }
+
+    /**
+     * Function destroy exercise
+     *
+     * @param Exercise $id
+     *
+     * @return App\Services\SearchService
+    **/
+    public function deleteExercise($id)
+    {
+        $exercise = Exercise::find($id);
+        $exercise->delete();
+        return $id;
+    }
+
+    /**
+     * Get comment based on query
+     *
+     * @param object $query [query get comment]
+     *
+     * @return collection
+     */
+    public function getCommentContent($query)
+    {
+        $comments = Comment::join('user_profiles', 'comments.user_id', '=', 'user_profiles.user_id')
+                    ->where('content', 'LIKE', "%{$query}%")
+                    ->orWhere('name', 'LIKE', "%{$query}%")
+                    ->paginate(config('define.page_site'))->appends(['search'=> $query]);
+        return $comments;
+    }
+
+    /**
+     * Get comment based on query
+     *
+     * @param object $query [query get comment]
+     *
+     * @return collection
+     */
+    public function ajaxGetCommentContent($query)
+    {
+        $comments = Comment::join('user_profiles', 'comments.user_id', '=', 'user_profiles.user_id')
+                    ->select('comments.*')
+                    ->where('content', 'LIKE', "%{$query}%")
+                    ->orWhere('name', 'LIKE', "%{$query}%")
+                    ->get();
+            $items = [];
+            // \Log::info($comments);
+            foreach ($comments as $key => $comment) {
+                $items[$key]['id'] = $comment->id;
+                $items[$key]['userName'] = $comment->user->userProfile->name;
+                $items[$key]['courseOrLesson'] = $comment->commentable->name;
+                $items[$key]['content'] = $comment->content;
+            }
+            return $items;
+    }
+
+    /**
+     * Function destroy comment
+     *
+     * @param Comment $id
+     *
+     * @return App\Services\SearchService
+    **/
+    public function deleteComment($id)
+    {
+        $comment = Comment::find($id);
+        if ($comment->parent === null) {
+            Comment::where('id', $id)->orWhere('parent_id', $id)->delete();
+        } else {
+            Comment::where('id', $id)->delete();
+        }
+        return $id;
+    }
 }
