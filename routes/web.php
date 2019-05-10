@@ -25,6 +25,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::delete('/exercises/search/delete', 'SearchController@deleteExercise')->name('exercises.search.delete');
     Route::get('/comments/search', 'SearchController@getCommentContent')->name('comments.search');
     Route::delete('/comments/search/delete', 'SearchController@deleteComment')->name('comments.search.delete');
+    Route::get('/vocabularies/search', 'SearchController@getVocabulary')->name('vocabularies.search');
+    Route::delete('/vocabularies/search/delete', 'SearchController@deleteVocabulary')->name('vocabularies.search.delete');
     Route::resource('users', 'UserController');
     Route::resource('courses', 'CourseController');
     Route::resource('levels', 'LevelController');

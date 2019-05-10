@@ -2,11 +2,9 @@ function confirmedDelete() {
   return confirm(trans('delete'));
 }
 
-$(document).ready(function () {
-$('.uba_audioButton').on('click', function () {
-  console.log('aaa');
-  $(this).find('audio').trigger('play');
-});
+$(document).on('click', '.uba_audioButton', function () {
+    // console.log('aaa');
+    $(this).find('audio').trigger('play');
 });
 
 $(function () {

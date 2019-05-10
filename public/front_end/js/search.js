@@ -378,7 +378,7 @@ $(document).ready(function () {
                     if (data.length > 0) {
                         var output = '';
                         $.each(data, function (key, val) {
-                        console.log(val);
+                        // console.log(val);
                             output += '<tr class="search-result" data-id="'+ val.id +'">';
                             output += '<td>'+ val.id + '</td>';
                             output += '<td>'+ val.userName + '</td>';
@@ -427,6 +427,92 @@ $(document).ajaxComplete(function () {
                 type: 'DELETE',
                 dataType: 'JSON',
                 data: { "comment-id" : commentId, _token : $('meta[name="csrf-token"]').attr('content'),} ,
+                success: function (data) {
+                    // console.log(data);
+                    $('.search-result[data-id='+ data + ']').remove();
+                }
+            });
+        }
+    });
+});
+
+// search vocabulary
+$(document).ready(function () {
+    $('#search-vocabulary').keyup(delay(function (e) {
+        e.preventDefault();
+        var query = $(this).val();
+        // console.log(query);
+        if (query != '' && query.length >= 1) {
+            $.ajax({
+                url: 'admin/vocabularies/search',
+                method: "GET",
+                data: { query: query },
+                dataType: "JSON",
+                success: function (data) {
+                    // console.log(data);
+                    if (data.length > 0) {
+                        var output = '';
+                        $.each(data, function (key, val) {
+                        // console.log(val);
+                            output += '<tr class="row search-result" data-id="'+ val.id +'">';
+                            output += '<td style="text-align: center;">'+ val.id + '</td>';
+                            output += '<td style="text-align: center;">'+ val.vocabulary + '</td>';
+                            output += '<td style="text-align: center;">'+ val.phonetic_spelling + '</td>';
+                            output += '<td style="text-align: center;">'+ val.word_type + '</td>';
+                            output += '<td style="text-align: center;">'+ val.means + '</td>';
+                            output += '<td style="cursor:pointer;text-align: center;">'
+                            output += '<a type="button" class="uba_audioButton" >'
+                            output += '<audio>'
+                            output += '<source src="' + val.sound + '" type="audio/mpeg">'
+                            output += '</audio>'
+                            output += '</a>'
+                            output += '</td>'
+                            output += '<td style="text-align: center;">'
+                            output += '<a href="admin/vocabularies/' + val.id +'" class="btn btn-warning">Detail</a>';
+                            output += '</td>'
+                            output += '<td style="text-align: center;">'
+                            output += '<a href="admin/vocabularies/' + val.id +'/edit" class="btn btn-warning">Edit</a>';
+                            output+= '<button type="submit" class="btn btn-danger form-delete btn-delete-item search-delete-vocabulary" data-title="Delete Vocabulary" data-vocabulary-id="'+ val.id + '" data-token="'+ val.token +'">Delete</button>'; 
+                            output += '</td>'
+                            output += '</tr>';
+                        });
+                        $('#list-search-vocabularies').html(output);
+                        output2 = '';
+                        $('#search-no-result-vocabulary').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
+                    } else {
+                        output1 = '';
+                        output2 = 'No result';
+                        $('#list-search-vocabularies').html(output1);
+                        $('#search-no-result-vocabulary').html(output2);
+                        output3 = '';
+                        $('#pagination').html(output3);
+                    }
+                }
+            });
+        } else {
+            location.reload();
+        }
+    }, 250));
+});
+
+// delete vocabulary
+$(document).ajaxComplete(function () {
+    $('.search-delete-vocabulary').on('click', function () {
+        var delVocabulary = confirm('Are you sure you want to delete?');
+        if(delVocabulary) {
+            var vocabularyId = $(this).data('vocabulary-id');
+            $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN' : $('meta[name=“csrf-token”]').attr('content')
+                }
+            });
+            $.ajax({
+                url: 'admin/vocabularies/search/delete',
+                type: 'DELETE',
+                dataType: 'JSON',
+                data: { "vocabulary-id" : vocabularyId, _token : $('meta[name="csrf-token"]').attr('content'),} ,
                 success: function (data) {
                     // console.log(data);
                     $('.search-result[data-id='+ data + ']').remove();

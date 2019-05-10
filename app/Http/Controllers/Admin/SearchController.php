@@ -177,4 +177,38 @@ class SearchController extends Controller
         $response = app(SearchService::class)->deleteComment($comment_id);
         return response()->json($response);
     }
+
+    /**
+     * Get comment from keyword in search field
+     *
+     *@param request $request [request to get comment]
+     *
+     * @return compare view
+     */
+    public function getVocabulary(Request $request)
+    {
+        // dd(1);
+        if ($request->ajax()) {
+            $response = app(SearchService::class)->ajaxGetVocabulary($request->get('query'));
+            return response()->json($response);
+        } else {
+            $query = $request->get('search');
+            $vocabularies = app(SearchService::class)->getVocabulary($query);
+            return view('backend.vocabularies.search')->with(['vocabularies' => $vocabularies,'query' => $query]);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Request $request 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteVocabulary(Request $request)
+    {
+        $vocabulary_id = $request->get('vocabulary-id');
+        $response = app(SearchService::class)->deleteVocabulary($vocabulary_id);
+        return response()->json($response);
+    }
 }

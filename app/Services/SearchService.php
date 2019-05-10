@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Exercise;
 use App\Models\Comment;
+use App\Models\Vocabulary;
 
 class SearchService
 {
@@ -263,6 +264,44 @@ class SearchService
         } else {
             Comment::where('id', $id)->delete();
         }
+        return $id;
+    }
+
+    /**
+     * Get vocabulary based on query
+     *
+     * @param object $query [query get vocabulary]
+     *
+     * @return collection
+     */
+    public function getVocabulary($query)
+    {
+        return Vocabulary::where('vocabulary', 'LIKE', "%{$query}%")->paginate(config('define.page_site'))->appends(['search'=> $query]);
+    }
+
+    /**
+     * Get vocabulary based on query
+     *
+     * @param object $query [query get vocabulary]
+     *
+     * @return collection
+     */
+    public function ajaxGetVocabulary($query)
+    {
+        return Vocabulary::where('vocabulary', 'LIKE', "%{$query}%")->get();
+    }
+
+    /**
+     * Function destroy exercise
+     *
+     * @param Exercise $id
+     *
+     * @return App\Services\SearchService
+    **/
+    public function deleteVocabulary($id)
+    {
+        $vocabulary = Vocabulary::find($id);
+        $vocabulary->delete();
         return $id;
     }
 }
