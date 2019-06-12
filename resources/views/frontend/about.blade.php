@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="about-text-container">
-                        <p><span>@lang('layout_user.aboutus.welcome')</span> {!! $system->aboutus !!}</p>
+                        <p><h4>@lang('layout_user.aboutus.welcome')</h4> {!! $system->aboutus !!}</p>
                         <div class="about-us">
                             <span>@lang('layout_user.aboutus.span_1')</span>
                             <span>@lang('layout_user.aboutus.span_2')</span>
@@ -129,7 +129,7 @@
     <!--End of Skill And Experience Area-->
     <!--Members Area Start-->
     <div class="teachers-area padding-top">
-        <div class="container">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title-wrapper">
@@ -182,7 +182,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <!--End of Members Area-->
 @endsection

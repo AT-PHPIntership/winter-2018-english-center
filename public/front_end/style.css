@@ -457,7 +457,7 @@ body {
 }
 .mainmenu ul.sub-menu ul.inside-menu {
     left: 178px;
-    top: -2px;
+    top: -14px;
     width: 220px;
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
@@ -938,7 +938,7 @@ body {
 .single-product-text {
     background: #f6f6f6 none repeat scroll 0 0;
     border-bottom: 3px solid #86bc42;
-    padding: 23px 24px 22px;
+    padding: 30px 180px 30px;
 }
 .single-product-text h4 a:hover {color: #86bc42;}
 .single-product-text h5 {
@@ -2807,6 +2807,7 @@ p {
     color: #fff;
     text-transform: uppercase;
     font-size: 16px;
+    margin-left: 25px;
 }
 
 /*process*/

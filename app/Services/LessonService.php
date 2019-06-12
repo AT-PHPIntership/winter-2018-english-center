@@ -13,7 +13,6 @@ use Event;
 use Auth;
 use JavaScript;
 use Carbon;
-
 class LessonService
 {
     /**
@@ -283,5 +282,24 @@ class LessonService
             }
             return false;
         }
+    }
+
+    /**
+     * Function index get recent lesson
+     *
+     * @param \Illuminate\Http\Request $id lesson
+     *
+     * @return App\Services\LessonService
+    **/
+    public function countLessonLearn($id)
+    {
+        if (Auth::check()) {
+            $countLesson = DB::table('schedules')->select(DB::raw('count(*) as countLesson') )
+            ->where([
+                ['course_id', $id],
+                ['user_id', Auth()->user()->id]
+                ])->first()->countLesson;
+        }
+        return $countLesson;
     }
 }

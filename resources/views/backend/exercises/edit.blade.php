@@ -23,16 +23,16 @@
           @method('PUT')
           @csrf
           <div class="box-body">
-            <div class="form-group">
+            <div class="form-group exercise">
               <label>@lang('exercise.list_exercise.exercises')</label>
-              <input name="title" type="text" class="form-control" value="{{ $exercise->title }}">
+              <input name="title" type="text" class="form-control title" value="{{ $exercise->title }}">
               @if ($errors->has('title'))
               <span class="text-red help is-danger">* {{ $errors->first('title') }}</span>
               @endif
             </div>
             <div class="form-group">
               <label>@lang('exercise.list_exercise.lessons')</label>
-              <select name="lesson_id" class="form-control">
+              <select name="lesson_id" class="form-control lesson">
                 @if( $exercise->lesson_id == null)
                 <option value="">@lang('course.create_course.select')</option>
                 @foreach ($lessons as $lesson)
@@ -52,31 +52,30 @@
             <div class="form-group">
               <button type='button' id="add-questions" class="btn btn-default">+</button>
             </div>
-            <div class="form-group">
+            <div id="question" class="col-md-10 col-xs-offset-1">
               @if($exercise->questions != null)
               @foreach ($exercise->questions as $a => $question)
-              <div id="question" class="col-md-10 col-xs-offset-1">
-                <div class="box box-info">
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label>{{ __('exercise.update_exercise.question') }}</label>
-                      <input type="hidden" name="questions[{{$a}}][id]" class="form-control" value="{{ $question->id }}">
-                      <input name="questions[{{$a}}][content]" class="form-control" value="{{ $question->content }}">
-                    </div>
-                    @foreach ($question->answers as $key => $answers)
-                    <div class="form-group">
-                      <label class="col-sm-2 col-xs-offset-2 control-label">Answer {{ $key + 1 }}</label>
-                      <div class="col-lg-6">
-                        <div class="input-group">
-                          <input name="questions[{{ $a }}][answers][]" type="text" class="form-control" value="{{ $answers->answers }}">
-                          <span class="input-group-addon">
-                          <input {{ $answers->status ? "checked" : "" }} type="radio" name="questions[{{ $a }}][status]]" class="radio" value="{{ $key }}">
-                          </span>
-                        </div>
+              <div class="box box-info">
+                <button style="margin-top: -15px; margin-right: -15px " type='button' id="remove-questions" class="btn btn-default pull-right">x</button>
+                <div class="box-body box-question">
+                  <div class="form-group">
+                    <label>{{ __('exercise.update_exercise.question') }}</label>
+                    <input type="hidden" name="questions[{{$a}}][id]" class="form-control" value="{{ $question->id }}">
+                    <input name="questions[{{$a}}][content]" class="form-control questions" value="{{ $question->content }}">
+                  </div>
+                  @foreach ($question->answers as $key => $answers)
+                  <div class="form-group">
+                    <label class="col-sm-2 col-xs-offset-2 control-label">Answer {{ $key + 1 }}</label>
+                    <div class="col-lg-6">
+                      <div class="input-group">
+                        <input name="questions[{{ $a }}][answers][]" type="text" class="form-control answer answers-key" value="{{ $answers->answers }}">
+                        <span class="input-group-addon">
+                        <input {{ $answers->status ? "checked" : "" }} type="radio" name="questions[{{ $a }}][status]" class="radio" value="{{ $key }}">
+                        </span>
                       </div>
                     </div>
-                    @endforeach
                   </div>
+                  @endforeach
                 </div>
               </div>
               @endforeach
@@ -86,7 +85,7 @@
           <div class="box-footer">
             <a href="{{ route('admin.exercises.index') }}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
             <button type="reset" class="btn btn-default pull-right">@lang('course.create_course.reset')</button>
-            <button type="submit" class="btn btn-primary pull-right">@lang('course.create_course.btn')</button>
+            <button type="submit" class="btn btn-primary pull-right edit-exercise">@lang('course.create_course.btn')</button>
           </div>
         </form>
       </div>

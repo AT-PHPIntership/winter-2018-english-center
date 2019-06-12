@@ -53,7 +53,6 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-
         $response = app(ExerciseService::class)->store($request->get('exercises'), $request->get('lessonId'), $request->get('questions'), $request->get('totalAnswer'), $request->get('status'));
         return response()->json($response);
     }
@@ -80,7 +79,6 @@ class ExerciseController extends Controller
      */
     public function update(CreateExerciseRequest $request, Exercise $exercise)
     {
-        // dd($request->all());
         app(ExerciseService::class)->update($request->all(), $exercise);
         return redirect()->route('admin.exercises.index')->with('success', __('common.success'));
     }

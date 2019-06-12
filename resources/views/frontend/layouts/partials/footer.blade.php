@@ -31,7 +31,7 @@
                     <div class="footer-logo">
                         <a href=""><img src="front_end/img/logo/footer.png" alt=""></a>
                     </div>
-                    <p>@lang('layout_user.footer.social')</p>
+                    <p style="color: #fff;">@lang('layout_user.footer.social')</p>
                     <div class="social-icons">
                         <a href="#"><i class="zmdi zmdi-facebook"></i></a>
                         <a href="#"><i class="zmdi zmdi-rss"></i></a>

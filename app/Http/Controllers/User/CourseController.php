@@ -45,11 +45,12 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         $hasLearnLatestLesson = app(LessonService::class)->hasLearnLatestLesson($course->id);
+        $countLessonLearn = app(LessonService::class)->countLessonLearn($course->id);
         $lessons = app(LessonService::class)->allLesson();
         $countView = app(CourseService::class)->countViewCourse($course->id);
         $rates = app(RateService::class)->getAll($course->id);
         $orderLearn = app(CourseService::class)->historyLesson($course, $lessons);
-        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn', 'hasLearnLatestLesson', 'rates'));
+        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn', 'hasLearnLatestLesson', 'rates', 'countLessonLearn'));
     }
 
     /**

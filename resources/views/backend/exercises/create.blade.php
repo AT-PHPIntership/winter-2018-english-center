@@ -16,7 +16,7 @@
   </ol>
 </section>
 <section class="content">
-<divc class="row">
+<div class="row">
   <div class="col-md-12">
     <div class="box box-primary">
       <form action="" method="POST">
@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="box-footer">
-            <a href="#" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
+            <a href="{{ route('admin.exercises.index')}}" class="btn btn-info btn-default">@lang('course.create_course.back')</a>
             <button type="reset" class="btn btn-default pull-right">@lang('course.create_course.reset')</button>
             <button type="button" class="btn btn-primary pull-right create-exercise">@lang('course.create_course.btn')</button>
           </div>
