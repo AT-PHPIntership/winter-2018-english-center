@@ -57,7 +57,7 @@
                                 </span>
                             </div>
                         </li>
-                        <li class="list-group-item text-center">
+                       {{--  <li class="list-group-item text-center">
                             <div class="row">
                                 <b class="col-lg-6">@lang('user.show_list_user.show_user.created_at')</b>
                                 <span class="col-lg-6">{{ $user->userProfile->created_at }}</span>
@@ -68,7 +68,7 @@
                                 <b class="col-lg-6">@lang('user.show_list_user.show_user.updated_at')</b>
                                 <span class="col-lg-6">{{ $user->userProfile->updated_at }}</span>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                     <a href="{{ route('admin.users.index') }}" class="btn btn-primary"><b>@lang('user.show_list_user.show_user.button')</b></a>
                     <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning">@lang('common.edit')</a>

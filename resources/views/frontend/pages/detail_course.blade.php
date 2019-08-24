@@ -29,7 +29,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="overlay-effect">
-                  <a href=""><img src="front_end/img/event/{{ $course->image}}"></a>
+                  <a><img src="front_end/img/event/{{ $course->image}}"></a>
                 </div>
               </div>
               <div class="col-md-6">
@@ -80,24 +80,23 @@
 
           <!-- rating  course-->
          <div class="comments">
-            <h4 class="title">Ratings</h4>
+            <h4 class="title">Student's assessment</h4>
             @if(Auth::check())
                 @if($hasLearnLatestLesson == 'true')
                 <div class="rating-link">
                   <div class="single-item-rating user-rating">
                     <i class="zmdi zmdi-star"></i>
+                    {{-- <i class="zmdi zmdi-star"></i>
                     <i class="zmdi zmdi-star"></i>
                     <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star"></i>
+                    <i class="zmdi zmdi-star"></i> --}}
                   </div>
-                  <a class="rating" href="{{ route('user.rating', $course->id )}}">Rating Link</a>
+                  <a class="rating" href="{{ route('user.rating', $course->id )}}">Review</a>
                 </div>
                 @endif
             @endif
             <ol class="comment-list">
             @foreach($rates as $rate)
-                @if($rate->course_id === $course->id)
                   <li class="comment-border" data-id='{{ $rate->id }}'>
                     <article id="{{$rate->id}}">
                       <img alt='' src="{{ !(substr($rate->user->userProfile['url'],0,4) == 'http') ? 'storage/avatar/' .$rate->user->userProfile['url'] : $rate->user->userProfile['url'] }}" class='avatar avatar-60 photo'/>            
@@ -119,7 +118,6 @@
                       </div>
                     </article>
                   </li>
-                  @endif
             @endforeach
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
@@ -132,7 +130,7 @@
           
           <!-- comment course -->
           <div class="comments">
-            <h4 class="title">{{ __('layout_user.courses.course_detail.cmt') }}</h4>
+              <h4 class="title"><i class="zmdi zmdi-comments"></i>{{ __('layout_user.courses.course_detail.cmt') }}</h4>
             <div class="single-comment">
                 <div class="comment-text">
                     <textarea class="form-control" id='comment-text' name="review" placeholder="{{ __('layout_user.lessons.lesson_detail.comment.enter_comment') }}"></textarea>
@@ -151,8 +149,7 @@
                       <p class="author"><strong>{{$comment->user->userProfile['name'] }}</strong></p>
                       <p class="date"><a><time>{{$comment->created_at}}</time></a>
                       @if(Auth::check())
-                        @if(Auth::user()->id == $comment->user_id )
-                         - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
+                        @if(Auth::user()->id == $comment->user_id ) - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
                         @endif
                       @endif
                         <span class="reply"><a class="add-reply" id='{{$comment->id}}'>Reply</a></span>
@@ -172,10 +169,10 @@
                           <p class="author"><strong>{{$reply->user->userProfile['name'] }}</strong></p>
                           <p class="date"><a><time>{{$reply->created_at}}</time></a>
                           @if(Auth::check())
-                            @if(Auth::user()->id == $comment->user_id )
-                             - <a href="" title="Edit Comment">Edit</a> - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
+                            @if(Auth::user()->id == $reply->user_id ) - <a class="delete-comment" id="{{$comment->id}}">Delete</a>
                             @endif
                           @endif
+                           </p>
                         </div>
                         <section>
                           <p>{{$reply->content}}</p>
@@ -235,7 +232,7 @@
                 <div class="single-item-text-info">
                   <span>{{ __('layout_user.courses.course_detail.date_time') }}<span>{{ $parentCourse->created_at}}</span></span>
                 </div>
-                <p>{!! str_limit($parentCourse->content, 78) !!}</p>
+                {!! str_limit($parentCourse->content, 72) !!}
                 <div class="single-item-content">
                   <div class="single-item-comment-view">
                     <span><i class="zmdi zmdi-eye"></i>{{ $parentCourse->count_view }}</span>

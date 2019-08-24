@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -17,6 +18,7 @@ Route::get('/', function () {
 
 // Route admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'adminLogin'], function() {
+
     Route::get('/', 'HomeController@index')->name('dashboard');
 
     Route::resource('users', 'UserController');
@@ -30,8 +32,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
 
     Route::post('exercises/store', 'ExerciseController@store');
 
-    Route::resource('exercises', 'ExerciseController')->only(['index', 'show', 'create', 'edit', 'update', 'destroy']);
-    
+    Route::post('exercises/update', 'ExerciseController@update')->name('exercise.update');
+
+    Route::resource('exercises', 'ExerciseController')->only(['index', 'show', 'create', 'edit', 'destroy']);
+
     Route::resource('lessons', 'LessonController');
 
     Route::resource('comments', 'CommentController');
@@ -43,6 +47,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::resource('sliders', 'SliderController');
 });
 
+// Route login, logout for ADMIN
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin\Auth'], function() {
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
     Route::post('/login', 'LoginController@login')->name('login');
@@ -70,6 +75,9 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'middleware' => 'userLogin
         Route::delete('delete/comment', 'LessonController@deleteComment');
         Route::put('user/vip', 'LessonController@upgradeVip')->name('upgradeVip');
         Route::post('edit/comment', 'LessonController@editComment');
+        Route::get('my-course', 'HomeController@processLearn')->name('process');
+        Route::post('process', 'HomeController@process');
+        Route::post('process_detail', 'HomeController@processDetail');
 
         //changeAccount
         // Route::get('account/email', 'CourseController@showEmailForm');

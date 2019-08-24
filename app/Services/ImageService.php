@@ -50,4 +50,19 @@ class ImageService
         $image->move('storage/slider', $fileName);
         return $fileName;
     }
+
+    /**
+     * Upload images courses
+     *
+     *  @param object $image image
+     *
+     *  @return $fileName
+     */
+    public function uploadImageCourse($image)
+    {
+        $faker = Faker::create();
+        $fileName = $faker->uuid . '_' . $image->getClientOriginalName();
+        $image->move('front_end/img/event', $fileName);
+        return $fileName;
+    }
 }

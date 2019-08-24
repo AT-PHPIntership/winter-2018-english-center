@@ -27,6 +27,7 @@ class CreateCourseRequest extends FormRequest
             'name' => 'required|string',
             'parent_id' => 'nullable|exists:courses,id',
             'content' => 'required_with:parent_id|nullable|min:3',
+            'image' => 'required|mimes:jpg,jpeg,png',
         ];
     }
     

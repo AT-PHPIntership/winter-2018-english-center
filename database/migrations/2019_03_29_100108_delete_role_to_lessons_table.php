@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddOrderToCoursesTable extends Migration
+class DeleteRoleToLessonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddOrderToCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::table('courses', function (Blueprint $table) {
-            $table->integer('order')->after('flag');
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->dropColumn('role');
         });
     }
 
@@ -25,8 +25,8 @@ class AddOrderToCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::table('courses', function (Blueprint $table) {
-            $table->dropColumn('order');
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->boolean('role')->comment('0:TRIAL account, 1:VIP account');
         });
     }
 }

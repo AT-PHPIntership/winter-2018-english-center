@@ -18,7 +18,7 @@
 <section class="content">
   <!-- Info boxes -->
   <div class="row">
-    
+
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
@@ -32,7 +32,7 @@
       <!-- /.info-box -->
     </div>
     <!-- /.col -->
-    
+
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
         <span class="info-box-icon bg-aqua"><i class="fa fa-calendar"></i></span>
@@ -58,7 +58,7 @@
       </div>
       <!-- /.info-box -->
     </div>
-    
+
     <!-- /.col -->
     <!-- fix for small devices only -->
     {{-- <div class="clearfix visible-sm-block"></div> --}}
@@ -82,7 +82,7 @@
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->
-    <div class="col-md-7">
+    {{-- <div class="col-md-7">
        <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">{{ __('dashboard.count_user') }}</h3>
@@ -100,10 +100,10 @@
         </div>
         <!-- /.box-body -->
       </div>
-    </div>
+    </div> --}}
     <!-- /.col -->
 
-    <div class="col-md-5">
+    <div class="col-md-6">
 
       <div class="box box-default">
         <div class="box-header with-border">
@@ -119,17 +119,17 @@
           <div class="row">
             <div class="col-md-7">
               <div class="chart-responsive">
-                <canvas id="pieChart" height="155" width="192" style="width: 192px; height: 155px;"></canvas>
+                <canvas id="pieChart" height="155" width="192"></canvas>
               </div>
               <!-- ./chart-responsive -->
             </div>
             <!-- /.col -->
             <div class="col-md-5">
               <ul class="chart-legend clearfix">
-               
+
                 <li><i class="fa fa-circle-o text-red"></i> {{ $statisticals['maxCourseUser'][0]->name }}</li>
                 <li><i class="fa fa-circle-o text-green"></i> {{ $statisticals['maxCourseUser'][1]->name }}</li>
-                {{-- <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxCourseUser'][2]->name }}</li> --}}
+                <li><i class="fa fa-circle-o text-yellow"></i> {{ $statisticals['maxCourseUser'][2]->name }}</li>
               </ul>
             </div>
             <!-- /.col -->
@@ -144,9 +144,10 @@
 </section>
 <!-- /.content -->
 <div class="control-sidebar-bg"></div>
-{{-- <script type="text/javascript">
+
+<script type="text/javascript">
     var course1 = {!! json_encode($statisticals['maxCourseUser'][0]) !!};
     var course2 = {!! json_encode($statisticals['maxCourseUser'][1]) !!};
     var course3 = {!! json_encode($statisticals['maxCourseUser'][2]) !!};
-</script> --}}
+</script>
 @endsection

@@ -164,7 +164,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-teacher-item">
                         <div class="single-teacher-image">
-                            <a href="#"><img src="front_end/img/member/2.jpg" alt=""></a>
+                            <a href="#"><img src="front_end/img/member/2.jpeg" alt=""></a>
                         </div>
                         <div class="single-teacher-text">
                             <h3><a href="#">@lang('layout_user.aboutus.name2')</a></h3>

@@ -32,13 +32,13 @@
             <div class="box">
                 <div class="box-body">
                     <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
+                        {{-- <li class="list-group-item">
                             <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.id') }}</b>
                                 <span class="col-lg-10">{{ $lesson->id }}</span>
                             </div>
                         </li>
-                        <li class="list-group-item">
+ --}}                        <li class="list-group-item">
                             <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.name') }}</b>
                                 <span class="col-lg-10">{{ $lesson->name }}</span>
@@ -79,12 +79,6 @@
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <b class="col-lg-2">{{ __('lesson.list_lesson.role') }}</b>
-                                <span class="col-lg-10">{{ $lesson->role_name }}</span>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.show_lesson.exercise') }}</b>
                                 <span class="col-lg-10">
                                     @foreach($lesson->exercises as $exercise)
@@ -109,19 +103,19 @@
                                 <span class="col-lg-10">{{ $lesson->count_view }}</span>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        {{-- <li class="list-group-item">
                             <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.show_lesson.total_rating') }}</b>
                                 <span class="col-lg-10">{{ $lesson->total_rating }}</span>
                             </div>
-                        </li>
+                        </li> --}}
                         <li class="list-group-item">
                             <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.show_lesson.average') }}</b>
                                 <span class="col-lg-10">{{ $lesson->average }}</span>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        {{-- <li class="list-group-item">
                             <div class="row">
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.show_lesson.created_at') }}</b>
                                 <span class="col-lg-10">{{ $lesson->created_at }}</span>
@@ -132,7 +126,7 @@
                                 <b class="col-lg-2">{{ __('lesson.list_lesson.show_lesson.updated_at') }}</b>
                                 <span class="col-lg-10">{{ $lesson->updated_at }}</span>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                     <a href="{{ URL::previous() }}" class="btn btn-primary"><b>@lang('common.back')</b></a>
                 </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CourseService;
 use App\Services\LessonService;
+use App\Services\RateService;
 use App\Services\CommentService;
 use App\Models\Course;
 
@@ -45,9 +46,10 @@ class CourseController extends Controller
     {
         $lessons = app(LessonService::class)->allLesson();
         $countView = app(CourseService::class)->countViewCourse($course->id);
+        $rates = app(RateService::class)->getAll($course->id);
         $orderLearn = app(CourseService::class)->historyLesson($course, $lessons);
         $hasLearnLatestLesson = app(LessonService::class)->hasLearnLatestLesson($course->id);
-        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn', 'hasLearnLatestLesson'));
+        return view('frontend.pages.detail_course', compact('course', 'lessons', 'countView', 'orderLearn', 'hasLearnLatestLesson', 'rates'));
     }
 
     /**
@@ -60,7 +62,6 @@ class CourseController extends Controller
      */
     public function elementComment(Request $request, $element)
     {
-        // dd($element);
         $response = app(CommentService::class)->comment($request->get('userId'), $request->get('elementId'), $request->get('content'), $element);
         return response()->json($response);
     }

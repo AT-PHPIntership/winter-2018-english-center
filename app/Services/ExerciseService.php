@@ -53,9 +53,9 @@ class ExerciseService
                 if ($i == $key) {
                     $data['questions'][] = [
                         [
-                        'content' => $value,
-                        'answers' => $totalAnswer[$i],
-                        'status' => $status[$i],
+                            'content' => $value,
+                            'answers' => $totalAnswer[$i],
+                            'status' => $status[$i],
                         ]
                     ][0];
                 }
@@ -78,18 +78,39 @@ class ExerciseService
     /**
      * Function update exercise
      *
-     * @param ValidationExercise $data     requestExercise
-     * @param Exercise           $exercise exercise
+     * @param ValidationExercise $exercises       requestExercise
+     * @param Lesson             $lessonId        lesson
+     * @param Question           $questionId      question
+     * @param Question           $questionContent question
+     * @param Answer             $totalAnswer     answer
+     * @param Answer             $status          answer
+     * @param Exercise           $exercise        exercise
      *
      * @return App\Services\ExerciseService
     **/
-    public function update($data, $exercise)
+    public function update($exercises, $lessonId, $questionId, $questionContent, $totalAnswer, $status, $exercise)
     {
-        // dd($data['questions']);
+        $data = [];
+        $data['title'] = $exercises;
+        $data['lesson_id'] = $lessonId;
+        foreach ($questionId as $i => $value) {
+            foreach ($questionContent as $key => $val) {
+                if ($i == $key) {
+                    $data['questions'][] = [
+                        [
+                            'id' => $value,
+                            'content' => $val,
+                            'answers' => $totalAnswer[$i],
+                            'status' => $status[$i],
+                        ]
+                    ][0];
+                }
+            }
+        }
+        
         $exercise->update($data);
         foreach ($data['questions'] as $question) {
-            // $questionId = Question::find($question['id']);
-            // dd($questionId);
+            $questionId = Question::find($question['id']);
             $questionId->update(array_except($question, ['answers', 'status']));
             $questionId->answers()->delete();
             collect($question['answers'])->map(function ($v, $k) use ($question, &$answers) {
@@ -100,6 +121,7 @@ class ExerciseService
         }
         Answer::insert($answers);
     }
+
 
     /**
      * Function destroy exercise

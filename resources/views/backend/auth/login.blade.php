@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('styles')
-	<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 		<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="bower_components/select2/dist/css/select2.min.css">
@@ -21,6 +21,9 @@
 @endsection
 @section('content')
 <div class="limiter">
+	<div dusk="test-example">
+
+	</div>
     <div class="container-login100">
         <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
             <form class="login100-form validate-form" method="POST" action="{{ route('admin.login') }}">
@@ -63,7 +66,7 @@
                         </span>
                     @endif
                 </div>
-                
+
                 <div class="container-login100-form-btn p-t-25">
                     <button type="submit" class="login100-form-btn">
                         {{ __('common.btn_login')}}

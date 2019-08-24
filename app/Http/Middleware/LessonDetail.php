@@ -17,15 +17,18 @@ class LessonDetail
      */
     public function handle($request, Closure $next)
     {
-        // $url = explode('/', url()->current());
-        // $lessonId = (int) end($url);
-        // $maxLessonCourse5 = Auth::user()->lessons->where('course_id', 5)->max('order');
-        // $maxLessonCourse6 = Auth::user()->lessons->where('course_id', 6)->max('order');
-        // if (($lessonId <= ($maxLessonCourse5+1)) || (Auth::user()->role->name == "VIP") || (Auth::user()->role->name == "Admin" || (Auth::user()->role->name == "Trial"))) {
+        $url = explode('/', url()->current());
+        $lessonId = (int) end($url);
+        if (($lessonId)%5 === 0) {
+            $courseId = (int) ($lessonId/5 +4);
+        } else {
+            $courseId = (int) ($lessonId/5 +5);
+        }
+        $role = Auth::user()->role->name;
+        $maxLessonCourse = Auth::user()->lessons->where('course_id', $courseId)->max('order');
+        if (($lessonId <= ($maxLessonCourse+1))||(($lessonId-1)%5 === 0)|| ($role === 'Admin')) {
             return $next($request);
-        // } elseif (($lessonId >5) && ($lessonId-5) <= ($maxLessonCourse6+1)) {
-        //     return $next($request);
-        // }
-        // return abort(404);
+        }
+        return abort(401);
     }
 }

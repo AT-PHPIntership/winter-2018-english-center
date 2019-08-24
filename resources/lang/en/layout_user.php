@@ -56,7 +56,7 @@ return [
         ],
         'course_detail' =>[
             'course_detail' => 'Course Detail',
-            'cmt' => 'Comments',
+            'cmt' => ' Comments',
             'related_courses' => 'Related Courses',
             'date_time' => 'Date Time: ',
             'lessons' => 'Lessons',
@@ -77,7 +77,7 @@ return [
         'lesson_detail' => [
             'lesson_detail' => 'Lesson Details',
             'recent_lesson' => 'Recent Lesson',
-            'exercise' => 'Exercise',
+            'exercise' => 'Exercises',
             'complete_exercise' => 'After completing the exercise, click "',
             'complete_exercise_below' => '" below',
             'comment' => [
@@ -105,7 +105,8 @@ return [
         'google' => 'Google',
         'not_member' => 'Not a member?',
         'sign_up' => 'Sign up now',
-        'warning' => 'You must Login!'
+        'active' => 'Your account not actived! Please check your mail!',
+        'warning' => 'You must login!'
     ],
     'register' => [
         'title' => 'Register',
@@ -173,8 +174,8 @@ return [
         'levels_%' => '50%',
         'members' => 'OUR MEMBERS',
         'member' => 'Member',
-        'name1' => 'Phan Thi Cam',
-        'name2' => 'Tran Xuan Phuong',
+        'name1' => 'Phuong Tran',
+        'name2' => 'Meo win',
         'position' => 'Developer Educat'
     ],
     'levels' => [
@@ -210,5 +211,8 @@ return [
             'title' => 'Latest Rating Lessons',
             'desc' => 'There are many rates of lessons',
         ],
-    ]
+    ],
+    'wishlist' => [
+        'title' => 'My course'
+    ],
 ];

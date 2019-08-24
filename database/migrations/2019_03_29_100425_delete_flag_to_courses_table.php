@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLevelsTable extends Migration
+class DeleteFlagToCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_level', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('level');
-            $table->timestamps();
+        Schema::table('courses', function (Blueprint $table) {
+            $table->dropColumn('flag');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_level');
+        Schema::table('courses', function (Blueprint $table) {
+            $table->boolean('flag')->comment('0:TRIAL account, 1:VIP account');
+        });
     }
 }

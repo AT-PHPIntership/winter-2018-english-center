@@ -22,7 +22,7 @@ class LessonController extends Controller
     public function show(Lesson $lesson)
     {
         $lessons = app(LessonService::class)->getLesson($lesson);
-        $recentLessons = app(LessonService::class)->recentLesson();
+        $recentLessons = app(LessonService::class)->recentLesson($lesson);
         $countView = app(LessonService::class)->countViewLesson($lesson->id);
         $progressLearn = app(LessonService::class)->progressLearn($lesson->id);
         return view('frontend.pages.detail_lesson', compact('lessons', 'recentLessons', 'countView', 'progressLearn'));

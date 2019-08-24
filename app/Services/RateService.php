@@ -11,11 +11,13 @@ class RateService
     /**
      * Function index get all level
      *
+     * @param Rate $id rating
+     *
      * @return App\Services\RateService
     **/
-    public function getAll()
+    public function getAll($id)
     {
-        return Rating::latest()->paginate(3);
+        return Rating::where('course_id', $id)->latest()->paginate(3);
     }
     /**
      * Store and Update a newly created resource in storage.

@@ -16,7 +16,6 @@ class HomeController extends Controller
     public function index()
     {
         $statisticals = app(StastiticalService::class)->getData();
-        // dd($statisticals);
         return view('backend.index')->with('statisticals', $statisticals);
     }
 }

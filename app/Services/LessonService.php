@@ -135,11 +135,14 @@ class LessonService
     /**
      * Function index get recent lesson
      *
+     * @param \Illuminate\Http\Request $lesson Lesson
+     *
      * @return App\Services\LessonService
     **/
-    public function recentLesson()
+    public function recentLesson($lesson)
     {
-        return Lesson::orderBy('created_at', config('define.order_by_desc'))->limit(3)->get();
+        $courseId =  $lesson->course->id;
+        return Lesson::where('course_id', $courseId)->orderBy('created_at', config('define.order_by_desc'))->limit(4)->get();
     }
 
     /**
@@ -189,15 +192,9 @@ class LessonService
             }
         }
         $goalableLesson = Lesson::find(intval($lessonId))->goals->pluck('goal_id')->first();
-        $goalLesson = \DB::table('goals')->select('goal')->where('id', $goalableLesson)->first()->goal;
+        $goalLesson = optional(\DB::table('goals')->select('goal')->where('id', $goalableLesson)->first())->goal;
         $lesson = Lesson::with('course')->where('id', intval($lessonId))->get();
         $totalLesson = $lesson->pluck('course')->pluck('id')->first();
-        $order = Lesson::where('id', $lessonId)->pluck('order')->first();
-        $nextOrder = Lesson::where([
-            ['course_id', '=', $courseId],
-            ['order', '>', $order],
-        ])->min('order');
-        $nextLesson = Lesson::where('order', $nextOrder)->pluck('role')->first();
 
         if (!isset($correct)) {
             DB::table('schedules')->updateOrInsert(
@@ -208,6 +205,7 @@ class LessonService
                 ],
                 [
                     'score' => 0,
+                    'created_at' => Carbon\Carbon::now(),
                 ]
             );
             $result['correct'] = 0;
@@ -220,6 +218,7 @@ class LessonService
                 ],
                 [
                     'score' => count($correct),
+                    'created_at' => Carbon\Carbon::now(),
                 ]
             );
             $result['correct'] = $correct;
@@ -227,13 +226,10 @@ class LessonService
         
         $score = DB::table('schedules')->select(DB::raw('sum(score) as score'))->groupBy('schedules.user_id', 'schedules.course_id')->first()->score;
         
-        $role  = User::find($userId)->role->name;
         $result['total'] = $answer;
         $result['goal'] = $goalLesson;
         $result['courseId'] = $totalLesson + 1;
-        $result['role'] = $role;
         $result['score'] = $score;
-        $result['nextLesson'] = $nextLesson;
         $result['totalCourse'] = $totalCourse;
         $result['learnedCourse'] = $learnedCourse;
         return $result;

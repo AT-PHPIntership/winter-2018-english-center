@@ -52,19 +52,6 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="role">{{ __('lesson.create_lesson.role') }}</label>
-                            <select class="form-control" name="role">
-                                <option value="">Select Role</option>
-                                <option value="{{  App\Models\Lesson::TRIAL }}">{{ config('define.trial') }}</option>
-                                <option value="{{  App\Models\Lesson::VIP }}">{{ config('define.vip') }}</option>
-                            </select>
-                            @if ($errors->has('role'))
-                                <span class="help-block col-sm-12">
-                                    <strong class="col-xs-12 col-sm-12 text-danger">{{ $errors->first('role') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        <div class="form-group">
                             <label for="level">{{ __('lesson.create_lesson.level') }}</label>
                             <select class="form-control" name="level_id">
                                 <option value="">Select Level</option>

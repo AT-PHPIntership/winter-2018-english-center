@@ -28,10 +28,11 @@ class CommentService
     **/
     public function comment($userId, $elementId, $content, $element)
     {
+        $contents = strip_tags($content);
         $comment = Comment::create([
                 'user_id' => $userId,
                 'commentable_id' => $elementId,
-                'content' => $content,
+                'content' => $contents,
                 'commentable_type' => $element,
         ]);
         $comment['userName'] = $comment->user->userProfile->name;
@@ -52,10 +53,11 @@ class CommentService
     **/
     public function reply($userId, $elementId, $content, $parentComment, $element)
     {
+        $contents = strip_tags($content);
         $comment = Comment::create([
             'user_id' => $userId,
             'commentable_id' => $elementId,
-            'content' => $content,
+            'content' => $contents,
             'commentable_type' => $element,
             'parent_id' => $parentComment,
         ]);
