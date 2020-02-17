@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @section('content')
 <section class="content-header">
-  <h1>@lang('lesson.list_lesson.title')</h1>
+  <h1>@lang('lesson.list_lesson.title') Search</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
@@ -11,18 +11,6 @@
     <li class="active">@lang('lesson.list_lesson.title')</li>
   </ol>
 </section>
-<!-- search form -->
-<form action="{{ route('admin.lessons.search') }}" method="get" class="sidebar-form" id="sidebar-form">
-    <div class="input-group">
-        <input type="text" name="search" class="form-control" id="search-lesson" placeholder="Search...">
-        <span class="input-group-btn">
-            <button type="submit" class="btn btn-flat"><i class="fa fa-search"></i>
-            </button>
-        </span>
-    </div>
-</form>
-<div id="search-no-result-lesson" class="no-result"></div>
-<!-- /.search form -->
 <section class="content">
     <div class="row">
         @if (Session::has('success'))
@@ -49,7 +37,7 @@
                             <th class="col-lg-2">{{ __('lesson.list_lesson.action') }}</th>
                         </tr>
                     </thead>
-                    <tbody id="list-search-lessons">
+                    <tbody>
                         @foreach($lessons as $lesson)
                         <tr class="row">
                             <td>{{ $lesson->id }}</td>
@@ -71,7 +59,7 @@
                         @endforeach 
                     </tbody>
                     </table>
-                    <div class="box-footer clearfix" id="pagination">
+                    <div class="box-footer clearfix">
                         <ul class="pagination pagination-sm no-margin pull-right">
                             {{ $lessons->links() }}
                         </ul>

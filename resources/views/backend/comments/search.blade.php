@@ -9,21 +9,9 @@
       <i class="fas fa-tachometer-alt"></i>@lang('layout_admin.home')
       </a>
     </li>
-    <li class="active">List Comments</li>
+    <li class="active">List Comments Search</li>
   </ol>
 </section>
-<!-- search form -->
-<form action="{{ route('admin.comments.search') }}" method="get" class="sidebar-form" id="sidebar-form">
-    <div class="input-group">
-        <input type="text" name="search" class="form-control" id="search-comment" placeholder="Search...">
-        <span class="input-group-btn">
-            <button type="submit" class="btn btn-flat"><i class="fa fa-search"></i>
-            </button>
-        </span>
-    </div>
-</form>
-<div id="search-no-result-comment" class="no-result"></div>
-<!-- /.search form -->
 <section class="content">
   <div class="row">
   @if (Session::has('success'))
@@ -49,11 +37,11 @@
               <th>@lang('course.list_course.action')</th>
             </tr>
           </thead>
-          <tbody id="list-search-comments">
+          <tbody>
             @foreach ($comments as $key => $comment)
             <tr>
               <td>{{ $comment->id }}</td>
-              <td>{{ $comment->user->userProfile->name }}</td>
+              <td>{{ $comment->name }}</td>
               <td>{{ $comment->commentable->name }}</td>
               <td width="300px">{{ $comment->content }}</td>
               <td>

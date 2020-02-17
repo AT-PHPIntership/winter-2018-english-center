@@ -9,7 +9,7 @@
           <h1 class="text-center">{{ __('layout_user.courses.course_detail.course_detail') }}</h1>
           <div class="breadcrumb-bar">
             <ul class="breadcrumb text-center">
-              <li><a href="index.html">{{ __('layout_user.header.home') }}</a></li>
+              <li><a href="{{ route('user.home') }}">{{ __('layout_user.header.home') }}</a></li>
               <li>{{ __('layout_user.courses.course_detail.course_detail') }}</li>
             </ul>
           </div>
@@ -80,7 +80,7 @@
          <div class="comments">
             <h4 class="title">Ratings</h4>
             @if(Auth::check())
-                @if($hasLearnLatestLesson == 'true')
+                @if($hasLearnLatestLesson == 'true' && $countLessonLearn == 5)
                 <div class="rating-link">
                   <div class="single-item-rating user-rating">
                     <i class="zmdi zmdi-star"></i>

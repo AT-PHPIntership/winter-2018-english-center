@@ -1,0 +1,38 @@
+[
+    {
+        "level": "SEVERE",
+        "message": "https:\/\/englishcenter.me\/admin\/lessons\/1 253 Mixed Content: The page at 'https:\/\/englishcenter.me\/admin\/lessons\/1' was loaded over HTTPS, but requested an insecure resource 'http:\/\/www.ryan.com\/'. This request has been blocked; the content must be served over HTTPS.",
+        "source": "security",
+        "timestamp": 1557204161333
+    },
+    {
+        "level": "SEVERE",
+        "message": "https:\/\/englishcenter.me\/storage\/lesson\/https:\/\/lorempixel.com\/640\/480\/?33983 - Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "source": "network",
+        "timestamp": 1557204161769
+    },
+    {
+        "level": "WARNING",
+        "message": "https:\/\/englishcenter.me\/bower_components\/jquery\/dist\/jquery.min.js 1:30929 \"jQuery.Deferred exception: Cannot read property 'getContext' of undefined\" \"TypeError: Cannot read property 'getContext' of undefined\\n    at HTMLDocument.\\u003Canonymous> (https:\/\/englishcenter.me\/bower_components\/admin-lte\/dist\/js\/pages\/dashboard2.js:15:49)\\n    at l (https:\/\/englishcenter.me\/bower_components\/jquery\/dist\/jquery.min.js:2:29375)\\n    at c (https:\/\/englishcenter.me\/bower_components\/jquery\/dist\/jquery.min.js:2:29677)\" undefined",
+        "source": "console-api",
+        "timestamp": 1557204162175
+    },
+    {
+        "level": "WARNING",
+        "message": "https:\/\/englishcenter.me\/bower_components\/jquery\/dist\/jquery.min.js 1:30929 \"jQuery.Deferred exception: Cannot read property 'getContext' of undefined\" \"TypeError: Cannot read property 'getContext' of undefined\\n    at HTMLDocument.\\u003Canonymous> (https:\/\/englishcenter.me\/js\/general.js:19:43)\\n    at l (https:\/\/englishcenter.me\/bower_components\/jquery\/dist\/jquery.min.js:2:29375)\\n    at c (https:\/\/englishcenter.me\/bower_components\/jquery\/dist\/jquery.min.js:2:29677)\" undefined",
+        "source": "console-api",
+        "timestamp": 1557204162183
+    },
+    {
+        "level": "SEVERE",
+        "message": "https:\/\/englishcenter.me\/bower_components\/jquery\/dist\/jquery.min.js 1:31039 Uncaught TypeError: Cannot read property 'getContext' of undefined",
+        "source": "javascript",
+        "timestamp": 1557204162264
+    },
+    {
+        "level": "SEVERE",
+        "message": "https:\/\/englishcenter.me\/bower_components\/jquery\/dist\/jquery.min.js 1:31039 Uncaught TypeError: Cannot read property 'getContext' of undefined",
+        "source": "javascript",
+        "timestamp": 1557204162264
+    }
+]

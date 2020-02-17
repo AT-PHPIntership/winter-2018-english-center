@@ -4,7 +4,7 @@
     <div class="box-body box-question">
       <div class="form-group">
         <label>{{ __('question.create_question.title') }}</label>
-        <input name="questions-key" type="text" class="form-control questions" placeholder="Enter question">
+        <input name="questions[key][content]" type="text" class="form-control questions" placeholder="Enter question">
       </div>
       <div class="form-group">
         <label class="col-sm-2 col-xs-offset-2 control-label">{{ __('question.create_question.answer1') }}</label>
@@ -12,7 +12,7 @@
           <div class="input-group">
             <input name="questions[key][answers][]" type="text" class="form-control answer answers-key">
             <span class="input-group-addon">
-            <input id="radio1" type="radio" name="questions[key][status]]" class="radio" value="0">
+            <input id="radio1" type="radio" name="questions[key][status]" class="radio" value="0">
             </span>
           </div>
         </div>
@@ -23,7 +23,7 @@
           <div class="input-group">
             <input name="questions[key][answers][]" type="text" class="form-control answer answers-key">
             <span class="input-group-addon">
-            <input id="radio2" type="radio" name="questions[key][status]]" class="radio" value="1">
+            <input id="radio2" type="radio" name="questions[key][status]" class="radio" value="1">
             </span>
           </div>
         </div>
@@ -34,7 +34,7 @@
           <div class="input-group">
             <input name="questions[key][answers][]" type="text" class="form-control answer answers-key">
             <span class="input-group-addon">
-            <input id="radio3" type="radio" name="questions[key][status]]" class="radio" value="2">
+            <input id="radio3" type="radio" name="questions[key][status]" class="radio" value="2">
             </span>
           </div>
         </div>
@@ -45,7 +45,7 @@
           <div class="input-group" name="status">
             <input name="questions[key][answers][]" type="text" class="form-control answer answers-key">
             <span class="input-group-addon">
-            <input id="radio4" type="radio" name="questions[key][status]]" class="radio" value="3">
+            <input id="radio4" type="radio" name="questions[key][status]" class="radio" value="3">
             </span>
           </div>
         </div>

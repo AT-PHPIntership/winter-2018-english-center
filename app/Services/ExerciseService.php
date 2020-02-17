@@ -63,6 +63,13 @@ class ExerciseService
         }
         
         $exercise = Exercise::create($data);
+        $this->createQuestionAnswer($data, $exercise);
+        return ['success', 'Success!'];
+    }
+
+
+    private function createQuestionAnswer($data, $exercise)
+    {
         foreach ($data['questions'] as $value) {
             $question = $exercise->questions()->create($value);
             collect($value['answers'])->map(function ($v, $k) use ($question, $value, &$answers) {
@@ -72,7 +79,6 @@ class ExerciseService
             });
         }
         Answer::insert($answers);
-        return ['success', 'Success!'];
     }
 
     /**
@@ -86,17 +92,8 @@ class ExerciseService
     public function update($data, $exercise)
     {
         $exercise->update($data);
-        foreach ($data['questions'] as $question) {
-            $questionId = Question::find($question['id']);
-            $questionId->update(array_except($question, ['answers', 'status']));
-            $questionId->answers()->delete();
-            collect($question['answers'])->map(function ($v, $k) use ($question, &$answers) {
-                $answers[$question['id'].$k]['answers'] = $v;
-                $answers[$question['id'].$k]['status'] = $k == $question['status'];
-                $answers[$question['id'].$k]['question_id'] = $question['id'];
-            });
-        }
-        Answer::insert($answers);
+        $exercise->questions()->delete();
+        $this->createQuestionAnswer($data, $exercise);
     }
 
     /**

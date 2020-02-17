@@ -151,7 +151,7 @@ $(document).on('click', '.add-reply', function () {
     var replyId = $(this).attr('id');
     var output = '';
     output += '<div class="single-comment comment-reply" data-id=' + replyId + '>';
-    output += '<p class="discuss-lesson">' + ' <a class="cancelReply">' + comment('cancel') + '</a></p>';
+    output += '<p class="discuss-lesson">' + comment('add') + ' <a class="cancelReply">' + comment('cancel') + '</a></p>';
     output += '<div class="single-comment">';
     output += '<div class="comment-text">';
     output += '<textarea class="form-control" id="reply-text" name="review" placeholder="' + comment('write') + '"></textarea>';
@@ -382,14 +382,12 @@ $(document).on('click', '.js-course', function () {
           output += '<tr>'
           output += '<th style="text-align: center;">ID</th>';
           output += '<th style="text-align: center;">Course</th>';
-          output += '<th style="text-align: center;">Start Date</th>';
-          output += '<th style="text-align: center;">End Date</th>';
           output += '<th style="text-align: center;">Status</th>';
           output += '</tr>';
           output += '</thead>';
           output += '<tbody id="js-body-lesson">';
           $.each(data, function (key, val) {
-            if (val.name_course != null) {
+            //if (val.name_course != null) {
               output += '<tr id="js-item">';
               output += '<td><p>' + val.key + '</p></td>';
               output += '<td>';
@@ -397,23 +395,23 @@ $(document).on('click', '.js-course', function () {
               output += '<a class="lesson-name" href="detail/course/' + val.id + '">' + val.name_course + '</a>';
               output += '</p>';
               output += '</td>';
-              output += '<td>';
-              output += '<p>' + val.start_date + '</p>';
-              output += '</td>';
-              output += '<td>';
-              output += '<p> -- </p>';
-              output += '</td>';
-              if (val.total_lesson < 5) {
-                output += '<td class="status" style="color: #77bc00;" data-user=' + userId + ' data-course="' + val.id + '">';
+              if (val.total_lesson == null) {
+                output += '<td class="status" style="color: #F36D00;" data-user=' + userId + ' data-course="' + val.id + '">';
+                output += '<p>None</p>';
+                output += '</td>';
+              } else {
+                if (val.total_lesson < 5) {
+                output += '<td class="status" style="color: #F36D00;" data-user=' + userId + ' data-course="' + val.id + '">';
                 output += '<p>Active</p>';
                 output += '</td>';
               } else {
-                output += '<td class="status" style="color: #F36D00;" data-user=' + userId + ' data-course="' + val.id + '">';
+                output += '<td class="status" style="color: #77bc00;" data-user=' + userId + ' data-course="' + val.id + '">';
                 output += '<p>Done</p>';
                 output += '</td>';
               }
+              }
               output += '</tr>';
-            }
+            //}
           });
           output += '</tbody>';
           output += '</table>';
@@ -451,11 +449,9 @@ $(document).on('click', '.status', function () {
           var total = 0;
           output += '<table class="table setting-product-table lesson">';
           output += '<thead>';
-          output += '<tr>'
+          output += '<tr>';
           output += '<th style="text-align: center;">ID</th>';
           output += '<th style="text-align: center;">Lesson</th>';
-          output += '<th style="text-align: center;">Start Date</th>';
-          output += '<th style="text-align: center;">End Date</th>';
           output += '<th style="text-align: center;">Progress</th>';
           output += '</tr>';
           output += '</thead>';
@@ -467,12 +463,6 @@ $(document).on('click', '.status', function () {
             output += '<p>';
             output += '<a class="lesson-name" href="detail/lesson/' + val.id + '">' + val.name_lesson + '</a>';
             output += '</p>';
-            output += '</td>';
-            output += '<td>';
-            output += '<p>' + val.date_start + '</p>';
-            output += '</td>';
-            output += '<td>';
-            output += '<p> -- </p>';
             output += '</td>';
             output += '<td>';
             output += '<p>';

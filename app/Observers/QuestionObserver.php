@@ -2,9 +2,9 @@
 
 namespace App\Observers;
 
-use App\Models\User;
+use App\Models\Question;
 
-class UserObserver
+class QuestionObserver
 {
     /**
      * Handle the user "deleting" event.
@@ -13,8 +13,8 @@ class UserObserver
      *
      * @return void
      */
-    public function deleting(User $user)
+    public function deleting(Question $question)
     {
-        $user->userProfile()->delete();
+        $question->answers()->delete();
     }
 }

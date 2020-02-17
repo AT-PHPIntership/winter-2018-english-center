@@ -1,7 +1,7 @@
 <?php
     return [
         'list_level' => [
-            'title' => 'List Level',
+            'title' => 'List Levels',
             'id' => 'ID',
             'level' => 'Level',
         ],

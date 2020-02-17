@@ -26,13 +26,22 @@ class StastiticalService
                         ->orderBy('total', 'desc')
                         ->limit(5)
                         ->get();
-        $statistical = [
-            'totalCourses' => $totalCourses,
-            'totalLessons' => $totalLessons,
-            'totalUsers' => $totalUsers,
-            'maxCourseUser' => $maxCourseUser,
-            'totalRatingCourses' => $totalRatingCourses,
-        ];
+        if (head($maxCourseUser) == null) {
+            $statistical = [
+                'totalCourses' => $totalCourses,
+                'totalLessons' => $totalLessons,
+                'totalUsers' => $totalUsers,
+                'totalRatingCourses' => $totalRatingCourses,
+            ];
+        } else {
+            $statistical = [
+                'totalCourses' => $totalCourses,
+                'totalLessons' => $totalLessons,
+                'totalUsers' => $totalUsers,
+                'maxCourseUser' => $maxCourseUser,
+                'totalRatingCourses' => $totalRatingCourses,
+            ];
+        }
         return $statistical;
     }
 }

@@ -23,6 +23,6 @@ class ChangeNameLessonVocabulariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lesson_vocabulary');
+        Schema::rename('lesson_vocabulary', 'lesson_vocabularies');
     }
 }

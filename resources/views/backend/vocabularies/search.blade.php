@@ -2,7 +2,7 @@
 @section('title', 'HOME')
 @section('content')
 <section class="content-header">
-  <h1>@lang('vocabulary.title')</h1>
+  <h1>@lang('vocabulary.title') Search</h1>
   <ol class="breadcrumb">
     <li>
       <a href="{{ route('admin.dashboard') }}">
@@ -12,18 +12,6 @@
     <li class="active">@lang('vocabulary.title')</li>
   </ol>
 </section>
-<!-- search form -->
-<form action="{{ route('admin.vocabularies.search') }}" method="get" class="sidebar-form" id="sidebar-form">
-    <div class="input-group">
-        <input type="text" name="search" class="form-control" id="search-vocabulary" placeholder="Search...">
-        <span class="input-group-btn">
-            <button type="submit" class="btn btn-flat"><i class="fa fa-search"></i>
-            </button>
-        </span>
-    </div>
-</form>
-<div id="search-no-result-vocabulary" class="no-result"></div>
-<!-- /.search form -->
 <section class="content">
   <div class="row">
   @if (Session::has('success'))
@@ -53,7 +41,7 @@
               <th style="text-align: center;">@lang('vocabulary.list_vocabulary.action')</th>
             </tr>
           </thead>
-          <tbody id="list-search-vocabularies">
+          <tbody>
             @foreach ($vocabularies as $key => $vocabulary)
             <tr class="row">
               <td style="text-align: center;">{{ $vocabulary->id }}</td>
@@ -85,7 +73,7 @@
             @endforeach
           </tbody>
         </table>
-        <div class="box-footer clearfix" id="pagination">
+        <div class="box-footer clearfix">
           <ul class="pagination pagination-sm no-margin pull-right">
             {{ $vocabularies->links() }}
           </ul>

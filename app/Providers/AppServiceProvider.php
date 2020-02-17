@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Models\User;
 use App\Observers\UserObserver;
+use App\Observers\QuestionObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use JavaScript;
+use App\Models\Question;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->putPHPToJavaScript();
         User::observe(UserObserver::class);
+        Question::observe(QuestionObserver::class);
         Relation::morphMap([
             'lessons' => 'App\Models\Lesson',
             'courses' => 'App\Models\Course',

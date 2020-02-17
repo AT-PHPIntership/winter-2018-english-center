@@ -1,7 +1,7 @@
 <?php
     return [
         'list_course' => [
-            'title' => 'List Course',
+            'title' => 'List Courses',
             'id' => 'ID',
             'name' => 'Course Name',
             'parent' => 'Course Parent',

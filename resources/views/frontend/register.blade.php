@@ -17,6 +17,7 @@
 	<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="css/util.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" href="front_end/style.css">
 	<!--===============================================================================================-->
 @endsection
 @section('content')

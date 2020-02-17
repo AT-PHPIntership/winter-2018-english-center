@@ -17,6 +17,7 @@ $(document).ready(function(){
   validateField('.questions', '.form-group', "* Please enter question name");
   validateField('.answer', '.col-lg-6', "* Please enter answer name");
 });
+
 function validateField(elementClass, parentClass, messageError) {
   $('#question').on("blur", elementClass, function(event){
     $(this).parents(parentClass).find('.errors').remove();
@@ -44,17 +45,25 @@ function validateField(elementClass, parentClass, messageError) {
   });
 }
 function validateStatus(){
-  var boxQuestions = $(".box-question");
+  var status = true;
+  var boxQuestions = $("#question .box-question");
+  console.log(boxQuestions);
   $('.error-status').remove();
-  for(var i = 0; i < boxQuestions.length -1; i++){
+  console.log(boxQuestions.length);
+  for(var i = 0; i < boxQuestions.length; i++){
     var answersChecked = $(boxQuestions[i]).find('input[type="radio"]:checked').length;
+
+    console.log("anser " + answersChecked);
     if(answersChecked === 0){
       var error = $("<p class='error-status' style='color: red;'>* Please choose correction answer</p>");
       $(boxQuestions[i]).append(error);
+      status=false;
     }
   }
+  return status;
 }
 function validate(elementClass, parentClass, messageError){
+  var result = true;
   var fields = $(elementClass);
   for(var i = 0 ; i < fields.length - 1; i++){
     var value = $(fields[i]).val();
@@ -62,8 +71,10 @@ function validate(elementClass, parentClass, messageError){
     if(value == ""){
       $(error).html(messageError);
       $(fields[i]).parents(parentClass).append(error);
+      result = false;
     }
   }
+  return result;
 }
 $(document).ready(function() {
   $('body').on('click', '.create-exercise', function() {
@@ -73,7 +84,9 @@ $(document).ready(function() {
     $('.error-lesson').remove();
     validate('.questions', '.form-group', "* Please enter question name");
     validate('.answer', '.col-lg-6', "* Please enter answer name");
-    validateStatus();
+    if(!validateStatus()) {
+      return false;
+    }
     var exercises = $('.title').val();
     var lessonId = $('.lesson').val();
     var questions = $('.questions').map(function() {
@@ -124,4 +137,37 @@ $(document).ready(function() {
       }
     }
   });
+});
+$(document).on('click', '.edit-exercise', function() {
+    $('.errors').remove();
+    $('.error-exercise').remove();
+    $('.error-lesson').remove();
+
+    if(!validate('.questions', '.form-group', "* Please enter question name")) {
+      result = false;
+    };
+    if(!validate('.answer', '.col-lg-6', "* Please enter answer name")) {
+      result = false;
+    }
+
+    var result =true;
+    var exercises = $('.title').val();
+    var lessonId = $('.lesson').val();
+    if (exercises == '') {
+      var error = $("<span class='text-red help is-danger error-exercise'>* Please enter exercise name</span>");
+      $('.exercise').append(error);
+      result = false;
+    }
+    if(lessonId == '') {
+      var errorLesson = $("<span class='text-red help is-danger error-lesson'>* Please enter lesson name</span>");
+      $('.lessons').append(errorLesson);
+      result = false;
+    }
+    
+    validate('.questions', '.form-group', "* Please enter question name");
+    validate('.answer', '.col-lg-6', "* Please enter answer name");
+    if(!validateStatus()) {
+        result = false;
+    }
+    return result;
 });

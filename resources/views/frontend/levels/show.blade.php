@@ -9,7 +9,7 @@
             <h1 class="text-center">{{ __('layout_user.levels.name') }}</h1>
             <div class="breadcrumb-bar">
                 <ul class="breadcrumb text-center">
-                <li><a href="index.html">{{ __('layout_user.header.home') }}</a></li>
+                <li><a href="{{ route('user.home') }}">{{ __('layout_user.header.home') }}</a></li>
                 <li>{{ __('layout_user.levels.title') }}</li>
                 </ul>
             </div>
